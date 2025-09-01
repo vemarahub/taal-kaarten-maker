@@ -67,6 +67,86 @@ const themaDat = [
       { id: "2-18", question: "Hoe laat sport je?", answer: "Ik sport elke woensdag om 1 uur 's middags" },
       { id: "2-19", question: "Hoe laat werk jij?", answer: "Ik werk van 9 uur 's ochtends tot 5 uur 's avonds" }
     ]
+  },
+  {
+    id: 3,
+    title: "Thema 3: Begroetingen en Welzijn",
+    description: "Leer begroetingen, over je welzijn spreken en afspraken maken",
+    color: "bg-gradient-to-br from-accent to-muted",
+    questions: [
+      { id: "3-1", question: "Hoe gaat het? :)", answer: "Het gaat goed. (En met jou?)" },
+      { id: "3-2", question: "Hoe gaat het? :(", answer: "Het gaat niet goed." },
+      { id: "3-3", question: "Hoe gaat het? :|", answer: "Het gaat niet zo goed" },
+      { id: "3-4", question: "Alles goed?", answer: "Ja, prima! En met jou?" },
+      { id: "3-5", question: "Hoe gaat het met je moeder? :)", answer: "Het gaat goed met mijn moeder." },
+      { id: "3-6", question: "Hoe gaat het met je moeder? :(", answer: "Het gaat niet zo goed met mijn moeder." },
+      { id: "3-7", question: "Waar woont je moeder?", answer: "Mijn moeder woont in Pakistan." },
+      { id: "3-8", question: "Ben je ziek?", answer: "Nee, ik ben niet ziek." },
+      { id: "3-9", question: "Wat drink je 's ochtends?", answer: "Ik drink 's ochtends citroenwater" },
+      { id: "3-10", question: "Wat drink je 's avonds?", answer: "Ik drink 's avonds cola" },
+      { id: "3-11", question: "Wat drink je 's middags?", answer: "Ik drink 's middags koffie" },
+      { id: "3-12", question: "Wat drink je in het weekend?", answer: "Ik drink in het weekend bier" },
+      { id: "3-13", question: "Drink je thee of koffie?", answer: "Ik drink graag koffie" },
+      { id: "3-14", question: "Wil je suiker in je thee?", answer: "Ja, ik wil graag suiker in mijn thee" },
+      { id: "3-15", question: "Wil je suiker in je koffie?", answer: "Ja, ik wil graag suiker in mijn koffie" },
+      { id: "3-16", question: "Wanneer wil je afspreken?", answer: "Ik wil graag in het weekend afspreken" }
+    ]
+  },
+  {
+    id: 4,
+    title: "Thema 4: Eten en Drinken",
+    description: "Leer over voedsel, maaltijden en restaurant bezoeken",
+    color: "bg-gradient-to-br from-primary to-secondary",
+    questions: [
+      { id: "4-1", question: "Wat eet je vanavond?", answer: "Vanavond eet ik rijst" },
+      { id: "4-2", question: "Wat eet jij als toetje?", answer: "Ik eet vanillevla als toetje" },
+      { id: "4-3", question: "Wat eet jij als lunch?", answer: "Ik eet rijst met curry als lunch" },
+      { id: "4-4", question: "Wat eet jij als ontbijt?", answer: "Ik eet een boterham met kaas als ontbijt" },
+      { id: "4-5", question: "Welk eten vind je lekker?", answer: "Ik vind naan lekker, dat is een soort brood" },
+      { id: "4-6", question: "Wat drink je bij het eten?", answer: "Ik drink niets bij het eten" },
+      { id: "4-7", question: "Wat eet of drink je in het weekend?", answer: "Ik eet rijst met kip in het weekend" },
+      { id: "4-8", question: "Eet jij vlees?", answer: "Ja, ik eet vlees" },
+      { id: "4-9", question: "Eet jij vis?", answer: "Ja, ik eet vis" },
+      { id: "4-10", question: "Wat vind je niet lekker?", answer: "Ik vind broccoli niet lekker" },
+      { id: "4-11", question: "Welke gezonde dingen eet je vaak?", answer: "Ik eet vaak muesli, yoghurt en fruit" },
+      { id: "4-12", question: "Welke ongezonde dingen eet je?", answer: "Meestal eet ik chocoladetaart" },
+      { id: "4-13", question: "Eet je vaak ongezonde dingen?", answer: "Ja, ik eet vaak ongezonde dingen (zoals chips)" },
+      { id: "4-14", question: "Eet en drink je veel vet en suiker?", answer: "Nee, ik eet en drink niet veel vet en geen suiker" },
+      { id: "4-15", question: "Eet je veel groente en fruit?", answer: "Ja, ik eet veel groente en fruit" },
+      { id: "4-16", question: "Welk eten is typisch voor je geboorteland?", answer: "Naan is typisch voor mijn geboorteland, India. Het is een soort brood." },
+      { id: "4-17", question: "Ga je vaak uit eten?", answer: "Ja, ik ga vaak uit eten in mijn geboorteland, maar niet in Nederland" },
+      { id: "4-18", question: "Naar welk restaurant ga je graag?", answer: "Ik ga graag naar Koreaanse restaurants." },
+      { id: "4-19", question: "Wanneer ga je uit eten?", answer: "Ik ga meestal 's ochtends uit eten" },
+      { id: "4-20", question: "Hoe laat ga je eten in een restaurant?", answer: "Ik ga meestal rond 6 uur 's avonds naar een restaurant" },
+      { id: "4-21", question: "Met wie ga je meestal uit eten?", answer: "Ik ga meestal uit met mijn gezin" },
+      { id: "4-22", question: "Bestel je vaak eten op internet?", answer: "Ja, ik bestel vaak eten op internet" },
+      { id: "4-23", question: "Wat voor eten bestel je op internet?", answer: "Ik bestel vaak pizza op internet" }
+    ]
+  },
+  {
+    id: 5,
+    title: "Thema 5: Wonen en Huisinrichting",
+    description: "Leer over woonsituaties, huizen en meubels",
+    color: "bg-gradient-to-br from-accent to-primary",
+    questions: [
+      { id: "5-1", question: "In wat voor huis woon je?", answer: "Ik woon in een rijtjeshuis" },
+      { id: "5-2", question: "Hoeveel kamers heeft je huis?", answer: "Mijn huis heeft vier kamers" },
+      { id: "5-3", question: "Heb je een balkon of een tuin?", answer: "Ik heb een tuin" },
+      { id: "5-4", question: "In wat voor buurt woon je?", answer: "Ik woon in een rustige buurt" },
+      { id: "5-5", question: "Met wie woon je?", answer: "Ik woon met mijn gezin" },
+      { id: "5-6", question: "Ben je blij met je huis?", answer: "Ja, ik ben blij met mijn huis" },
+      { id: "5-7", question: "In wat voor huis wil je graag wonen?", answer: "Ik wil graag in een groot appartement wonen" },
+      { id: "5-8", question: "Hoeveel huur wil je betalen?", answer: "Ik wil maximaal 1000 euro huur betalen" },
+      { id: "5-9", question: "Hoe groot is je huis?", answer: "Mijn huis is ongeveer 100 vierkante meter" },
+      { id: "5-10", question: "Welke meubels heb je in je huis?", answer: "Ik heb een bank, een tafel, een tv-meubel, twee stoelen en een bureau" },
+      { id: "5-11", question: "Zijn je meubels groot of klein?", answer: "Mijn meubels zijn klein" },
+      { id: "5-12", question: "Vind je je meubels mooi?", answer: "Ja, ik vind mijn meubels mooi" },
+      { id: "5-13", question: "Zijn jouw meubels nieuw of tweedehands?", answer: "Sommige meubels zijn nieuw en sommige meubels zijn tweedehands" },
+      { id: "5-14", question: "Welke kleuren heb je in je huis?", answer: "Ik heb pastelkleuren in mijn huis" },
+      { id: "5-15", question: "Heb je veel licht in je huis?", answer: "Ja, ik heb veel licht in mijn huis" },
+      { id: "5-16", question: "Heb je een huurwoning of een koopwoning?", answer: "Ik heb een koopwoning" },
+      { id: "5-17", question: "Woon je in een stad of in een dorp?", answer: "Ik woon in een kleine stad" }
+    ]
   }
 ];
 
@@ -215,7 +295,7 @@ export default function Vragenlijst() {
               <CardTitle className="text-muted-foreground">Binnenkort beschikbaar</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Thema 3, 4, en meer komen binnenkort!</p>
+              <p className="text-muted-foreground">Meer thema's komen binnenkort!</p>
             </CardContent>
           </Card>
         </div>
