@@ -18,11 +18,11 @@ const Index = () => {
         
         <div className="relative container mx-auto px-4 py-32 text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            TaalPal
+            Taal - Pal
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Leer Nederlands op een interactieve manier met onze geavanceerde vragenlijst systeem. 
-            Perfect voor A2-niveau studenten die hun conversatievaardigheden willen verbeteren.
+            Learn Dutch interactively with vocabulary and quizes and more.
+            Perfect for A2-level students who want to improve their conversation skills.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -61,7 +61,7 @@ const Index = () => {
       <section className="container mx-auto px-4 py-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Waarom TaalPal Kiezen?
+            Waarom Taal - Pal Kiezen?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Onze platform biedt een unieke aanpak om Nederlands te leren door middel van 
