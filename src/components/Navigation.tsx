@@ -19,14 +19,14 @@ const navItems = [
     icon: Home,
   },
   {
-    href: '/vragenlijst',
-    label: 'Interactions',
-    icon: BookOpen,
-  },
-  {
     href: '/vocabulary',
     label: 'Vocabulary',
     icon: Languages,
+  },
+  {
+    href: '/vragenlijst',
+    label: 'Interactions',
+    icon: BookOpen,
   },
   {
     href: '/grammar',

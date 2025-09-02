@@ -34,16 +34,17 @@ const Index = () => {
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
-            <Link to="/vragenlijst">
-              <Button size="lg" className="w-full text-white bg-white/10 hover:bg-white/20 border border-white/20 flex items-center gap-2">
-                <BookOpen className="w-4 h-4" />
-                Interactions
-              </Button>
-            </Link>
+           
             <Link to="/vocabulary">
               <Button size="lg" variant="outline" className="w-full text-white border-white/30 hover:bg-white/10 flex items-center gap-2">
                 <Languages className="w-4 h-4" />
                 Vocabulary
+              </Button>
+            </Link>
+             <Link to="/vragenlijst">
+              <Button size="lg" className="w-full text-white bg-white/10 hover:bg-white/20 border border-white/20 flex items-center gap-2">
+                <BookOpen className="w-4 h-4" />
+                Interactions
               </Button>
             </Link>
             <Link to="/grammar">
