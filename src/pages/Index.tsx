@@ -33,40 +33,6 @@ const Index = () => {
             Perfect for A2-level students who want to improve their conversation skills.
           </p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
-           
-            <Link to="/vocabulary">
-              <Button size="lg" variant="outline" className="w-full text-white border-white/30 hover:bg-white/10 flex items-center gap-2">
-                <Languages className="w-4 h-4" />
-                Vocabulary
-              </Button>
-            </Link>
-             <Link to="/vragenlijst">
-              <Button size="lg" variant="outline" className="w-full text-white border-white/30 hover:bg-white/10 flex items-center gap-2">
-                <BookOpen className="w-4 h-4" />
-                Interactions
-              </Button>
-            </Link>
-            <Link to="/grammar">
-              <Button size="lg" variant="outline" className="w-full text-white border-white/30 hover:bg-white/10 flex items-center gap-2">
-                <Puzzle className="w-4 h-4" />
-                Grammer
-              </Button>
-            </Link>
-            <Link to="/youtube">
-              <Button size="lg" variant="outline" className="w-full text-white border-white/30 hover:bg-white/10 flex items-center gap-2">
-                <Youtube className="w-4 h-4" />
-                Video's
-              </Button>
-            </Link>
-            <Link to="/misc">
-              <Button size="lg" variant="outline" className="w-full text-white border-white/30 hover:bg-white/10 flex items-center gap-2">
-                <MoreHorizontal className="w-4 h-4" />
-                Misc
-              </Button>
-            </Link>
-          </div>
-          
           <div className="flex flex-wrap justify-center gap-8 text-white/80">
             <div className="flex items-center space-x-2">
               <Target className="w-5 h-5" />
