@@ -86,7 +86,7 @@ export default function Vocabulary() {
 
   // Group subsections by thema
   const themaGroups = vocabularyData.reduce((acc, subsection) => {
-    const themaName = subsection.title.split(':')[0];
+    const themaName = subsection.title.split(':').slice(0, 2).join(':');
     if (!acc[themaName]) acc[themaName] = [];
     acc[themaName].push(subsection);
     return acc;

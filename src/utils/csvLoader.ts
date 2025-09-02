@@ -189,7 +189,7 @@ export async function loadVocabularyData(): Promise<VocabularyThema[]> {
       sections.forEach((words, sectionName) => {
         vocabularyThemas.push({
           id: id++,
-          title: `${themaName}: ${sectionName}`,
+          title: `${getThemaTitle(themaName)}: ${sectionName}`,
           description: `Learn Dutch words for ${sectionName.toLowerCase()}`,
           words,
           color: getThemaColor(id - 1)
@@ -235,6 +235,14 @@ function generateExample(dutch: string): string {
   };
   
   return examples[dutch] || `Ik gebruik het woord "${dutch}".`;
+}
+
+function getThemaTitle(themaName: string): string {
+  const themaTitles: { [key: string]: string } = {
+    'Thema 1': 'Thema 1: Wie Ben Je?',
+    'Thema 2': 'Thema 2: Boodschappen'
+  };
+  return themaTitles[themaName] || themaName;
 }
 
 function getThemaColor(index: number): string {
