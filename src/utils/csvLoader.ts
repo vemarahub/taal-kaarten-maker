@@ -12,6 +12,22 @@ export interface Thema {
   questions: Question[];
 }
 
+export interface VocabularyWord {
+  dutch: string;
+  english: string;
+  article?: string;
+  pronunciation?: string;
+  example?: string;
+}
+
+export interface VocabularyThema {
+  id: number;
+  title: string;
+  description: string;
+  words: VocabularyWord[];
+  color: string;
+}
+
 const THEMA_CONFIGS = [
   {
     id: 1,
@@ -130,6 +146,121 @@ export async function loadThemaDataFromExcel(): Promise<Thema[]> {
     console.error('Error loading thema data:', error);
     return getFallbackData();
   }
+}
+
+export async function loadVocabularyData(): Promise<VocabularyThema[]> {
+  try {
+    const response = await fetch('/vocabulary.csv');
+    const csvText = await response.text();
+    const rows = parseCSV(csvText);
+    
+    const vocabularyMap = new Map<string, Map<string, VocabularyWord[]>>();
+    
+    // Skip header row and process data
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i];
+      if (row[0] && row[1] && row[2] && row[3]) {
+        const word: VocabularyWord = {
+          dutch: row[0].replace(/"/g, '').trim(),
+          english: row[1].replace(/"/g, '').trim(),
+          example: generateExample(row[0].replace(/"/g, '').trim())
+        };
+        
+        const thema = row[2].replace(/"/g, '').trim();
+        const section = row[3].replace(/"/g, '').trim();
+        
+        if (!vocabularyMap.has(thema)) {
+          vocabularyMap.set(thema, new Map());
+        }
+        
+        const themaMap = vocabularyMap.get(thema)!;
+        if (!themaMap.has(section)) {
+          themaMap.set(section, []);
+        }
+        
+        themaMap.get(section)!.push(word);
+      }
+    }
+    
+    const vocabularyThemas: VocabularyThema[] = [];
+    let id = 1;
+    
+    vocabularyMap.forEach((sections, themaName) => {
+      sections.forEach((words, sectionName) => {
+        vocabularyThemas.push({
+          id: id++,
+          title: `${themaName}: ${sectionName}`,
+          description: `Learn Dutch words for ${sectionName.toLowerCase()}`,
+          words,
+          color: getThemaColor(id - 1)
+        });
+      });
+    });
+    
+    return vocabularyThemas;
+  } catch (error) {
+    console.error('Error loading vocabulary data:', error);
+    return getVocabularyFallbackData();
+  }
+}
+
+function generateExample(dutch: string): string {
+  const examples: { [key: string]: string } = {
+    'dat': 'Dat is mijn huis.',
+    'dit': 'Dit is mijn boek.',
+    'dorp': 'Ik woon in een klein dorp.',
+    'een': 'Ik heb een auto.',
+    'één': 'Ik heb één zus.',
+    'gaan': 'Ik ga naar school.',
+    'hij': 'Hij werkt hard.',
+    'ik': 'Ik ben student.',
+    'in': 'Ik woon in Amsterdam.',
+    'jaar': 'Dit jaar leer ik Nederlands.',
+    'komen': 'Ik kom uit India.',
+    'leren': 'Ik leer Nederlands op school.',
+    'maand': 'Deze maand heb ik veel les.',
+    'naar': 'Ik ga naar de winkel.',
+    'Nederland': 'Ik woon in Nederland.',
+    'Nederlands': 'Ik spreek Nederlands.',
+    'niet': 'Ik ben niet ziek.',
+    'nu': 'Nu ga ik naar huis.',
+    'school': 'Ik ga naar school.',
+    'stad': 'Amsterdam is een grote stad.',
+    'uit': 'Ik kom uit Pakistan.',
+    'werken': 'Ik werk bij een bedrijf.',
+    'winkel': 'De winkel is open.',
+    'wonen': 'Ik woon in Almere.',
+    'ze': 'Ze zijn aardig.',
+    'zijn': 'Ik ben gelukkig.'
+  };
+  
+  return examples[dutch] || `Ik gebruik het woord "${dutch}".`;
+}
+
+function getThemaColor(index: number): string {
+  const colors = [
+    "bg-gradient-to-br from-primary to-primary-glow",
+    "bg-gradient-to-br from-secondary to-accent",
+    "bg-gradient-to-br from-accent to-muted",
+    "bg-gradient-to-br from-primary to-secondary",
+    "bg-gradient-to-br from-accent to-primary"
+  ];
+  return colors[index % colors.length];
+}
+
+function getVocabularyFallbackData(): VocabularyThema[] {
+  return [
+    {
+      id: 1,
+      title: "Thema 1: Basis Woorden",
+      description: "Essential Dutch words for daily use",
+      color: "bg-gradient-to-br from-primary to-primary-glow",
+      words: [
+        { dutch: "dat", english: "that", example: "Dat is mijn huis." },
+        { dutch: "dit", english: "this", example: "Dit is mijn boek." }
+      ]
+    }
+  ];
 }
 
 function getFallbackData(): Thema[] {

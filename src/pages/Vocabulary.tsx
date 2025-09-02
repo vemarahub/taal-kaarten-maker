@@ -1,102 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { VocabularyCard } from '@/components/VocabularyCard';
 import { VocabularyPractice } from '@/components/VocabularyPractice';
 import Navigation from '@/components/Navigation';
-import { ArrowLeft, BookOpen, Target, Volume2 } from 'lucide-react';
+import { ArrowLeft, BookOpen, Target, Volume2, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import heroImage from '@/assets/dutch-hero.jpg';
+import { loadVocabularyData, type VocabularyThema } from '@/utils/csvLoader';
 
-interface VocabularyWord {
-  dutch: string;
-  english: string;
-  article?: string;
-  pronunciation?: string;
-  example?: string;
-}
 
-interface VocabularyThema {
-  id: number;
-  title: string;
-  description: string;
-  words: VocabularyWord[];
-  color: string;
-}
-
-const vocabularyData: VocabularyThema[] = [
-  {
-    id: 1,
-    title: "Thema 1: Basis Woorden",
-    description: "Essentiële Nederlandse woorden voor dagelijks gebruik",
-    color: "bg-gradient-to-br from-primary to-primary-glow",
-    words: [
-      { dutch: "dat", english: "that", example: "Dat is mijn huis." },
-      { dutch: "dit", english: "this", example: "Dit is mijn boek." },
-      { dutch: "dorp", english: "village", article: "het", example: "Ik woon in een klein dorp." },
-      { dutch: "een", english: "a/an", example: "Ik heb een auto." },
-      { dutch: "één", english: "one", example: "Ik heb één zus." },
-      { dutch: "gaan", english: "to go", example: "Ik ga naar school." },
-      { dutch: "hij", english: "he", example: "Hij werkt hard." },
-      { dutch: "ik", english: "I", example: "Ik ben student." },
-      { dutch: "in", english: "in", example: "Ik woon in Amsterdam." },
-      { dutch: "jaar", english: "year", article: "het", example: "Dit jaar leer ik Nederlands." },
-      { dutch: "komen", english: "to come", example: "Ik kom uit India." },
-      { dutch: "leren", english: "to learn", example: "Ik leer Nederlands op school." },
-      { dutch: "maand", english: "month", article: "de", example: "Deze maand heb ik veel les." },
-      { dutch: "naar", english: "to", example: "Ik ga naar de winkel." },
-      { dutch: "Nederland", english: "Netherlands", example: "Ik woon in Nederland." },
-      { dutch: "Nederlands", english: "Dutch", example: "Ik spreek Nederlands." },
-      { dutch: "niet", english: "not", example: "Ik ben niet ziek." },
-      { dutch: "nu", english: "now", example: "Nu ga ik naar huis." },
-      { dutch: "school", english: "school", article: "de", example: "Ik ga naar school." },
-      { dutch: "stad", english: "city", article: "de", example: "Amsterdam is een grote stad." },
-      { dutch: "uit", english: "from/out", example: "Ik kom uit Pakistan." },
-      { dutch: "werken", english: "to work", example: "Ik werk bij een bedrijf." },
-      { dutch: "winkel", english: "store", article: "de", example: "De winkel is open." },
-      { dutch: "wonen", english: "to live", example: "Ik woon in Almere." },
-      { dutch: "ze", english: "they", example: "Ze zijn aardig." },
-      { dutch: "zijn", english: "to be", example: "Ik ben gelukkig." }
-    ]
-  },
-  {
-    id: 2,
-    title: "Thema 1: Persoonlijke Informatie",
-    description: "Woorden voor het delen van persoonlijke informatie",
-    color: "bg-gradient-to-br from-secondary to-accent",
-    words: [
-      { dutch: "achternaam", english: "surname/last name", article: "de", example: "Mijn achternaam is Jansen." },
-      { dutch: "al", english: "already", example: "Ik woon al twee jaar hier." },
-      { dutch: "en", english: "and", example: "Ik heet Piet en ik kom uit India." },
-      { dutch: "hallo", english: "hello", example: "Hallo, hoe gaat het?" },
-      { dutch: "hebben", english: "to have", example: "Ik heb een telefoon." },
-      { dutch: "heten", english: "to be called", example: "Ik heet Piet." },
-      { dutch: "hoe", english: "how", example: "Hoe heet je?" },
-      { dutch: "hoelang", english: "how long", example: "Hoelang woon je hier?" },
-      { dutch: "ja", english: "yes", example: "Ja, ik werk." },
-      { dutch: "je", english: "you/your", example: "Wat is je naam?" },
-      { dutch: "jij", english: "you", example: "Waar woon jij?" },
-      { dutch: "kloppen", english: "to be correct", example: "Dat klopt!" },
-      { dutch: "les", english: "lesson", article: "de", example: "Ik heb Nederlandse les." },
-      { dutch: "leuk", english: "nice/fun", example: "De les is leuk." },
-      { dutch: "mijn", english: "my", example: "Mijn naam is Piet." },
-      { dutch: "Nederlands", english: "Dutch", example: "Ik leer Nederlands." },
-      { dutch: "oké", english: "okay", example: "Oké, tot ziens!" },
-      { dutch: "ook", english: "also", example: "Ik werk ook." },
-      { dutch: "spellen", english: "to spell", example: "Kun je je naam spellen?" },
-      { dutch: "telefoonnummer", english: "phone number", article: "het", example: "Wat is je telefoonnummer?" },
-      { dutch: "vandaan", english: "from", example: "Waar kom je vandaan?" },
-      { dutch: "voornaam", english: "first name", article: "de", example: "Mijn voornaam is Piet." },
-      { dutch: "waar", english: "where", example: "Waar woon je?" },
-      { dutch: "wat", english: "what", example: "Wat is je naam?" }
-    ]
-  }
-];
 
 export default function Vocabulary() {
   const [selectedThema, setSelectedThema] = useState<number | null>(null);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [vocabularyData, setVocabularyData] = useState<VocabularyThema[]>([]);
+  const [loading, setLoading] = useState(true);
   const { toast } = useToast();
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setLoading(true);
+        const data = await loadVocabularyData();
+        setVocabularyData(data);
+      } catch (error) {
+        console.error('Failed to load vocabulary data:', error);
+        toast({
+          title: "Fout bij laden",
+          description: "Er is een probleem opgetreden bij het laden van de woordenlijsten.",
+          variant: "destructive"
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, [toast]);
 
   const handleStartPractice = (themaId: number) => {
     setSelectedThema(themaId);
@@ -133,6 +74,17 @@ export default function Vocabulary() {
 
   const currentThema = vocabularyData.find(t => t.id === selectedThema);
   const currentWord = currentThema?.words[currentWordIndex];
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-primary" />
+          <p className="text-muted-foreground">Woordenlijsten loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (selectedThema && currentWord) {
     return (
