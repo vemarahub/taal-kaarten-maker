@@ -6,6 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Vragenlijst from "./pages/Vragenlijst";
 import Vocabulary from "./pages/Vocabulary";
+import Grammar from "./pages/Grammar";
+import Youtube from "./pages/Youtube";
+import Misc from "./pages/Misc";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +23,9 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/vragenlijst" element={<Vragenlijst />} />
           <Route path="/vocabulary" element={<Vocabulary />} />
+          <Route path="/grammar" element={<Grammar />} />
+          <Route path="/youtube" element={<Youtube />} />
+          <Route path="/misc" element={<Misc />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

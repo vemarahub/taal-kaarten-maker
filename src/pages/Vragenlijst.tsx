@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { ThemaCard } from '@/components/ThemaCard';
 import { QuestionCard } from '@/components/QuestionCard';
+import Navigation from '@/components/Navigation';
 import { ArrowLeft, BookOpen, Target, Users, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import heroImage from '@/assets/dutch-hero.jpg';
@@ -87,7 +88,7 @@ export default function Vragenlijst() {
   if (selectedThema && currentQuestion) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
-        {/* Header */}
+        {/* Navigation */}
         <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
@@ -99,11 +100,11 @@ export default function Vragenlijst() {
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Terug naar Thema's
               </Button>
+              <Navigation />
               <div className="text-center">
                 <h1 className="text-xl font-bold text-foreground">{currentThema?.title}</h1>
                 <p className="text-sm text-muted-foreground">Nederlandse Vragenlijst</p>
               </div>
-              <div className="w-32" /> {/* Spacer for centering */}
             </div>
           </div>
         </header>
@@ -125,6 +126,13 @@ export default function Vragenlijst() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
+      {/* Navigation */}
+      <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
+        <div className="container mx-auto px-4 py-4">
+          <Navigation />
+        </div>
+      </header>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div 

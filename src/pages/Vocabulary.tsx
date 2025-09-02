@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { VocabularyCard } from '@/components/VocabularyCard';
 import { VocabularyPractice } from '@/components/VocabularyPractice';
+import Navigation from '@/components/Navigation';
 import { ArrowLeft, BookOpen, Target, Volume2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import heroImage from '@/assets/dutch-hero.jpg';
@@ -174,6 +175,13 @@ export default function Vocabulary() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
+      {/* Navigation */}
+      <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
+        <div className="container mx-auto px-4 py-4">
+          <Navigation />
+        </div>
+      </header>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div 

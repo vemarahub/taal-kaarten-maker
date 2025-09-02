@@ -1,13 +1,21 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { BookOpen, MessageCircle, Target, Award, ArrowRight, Play } from 'lucide-react';
+import Navigation from '@/components/Navigation';
+import { BookOpen, MessageCircle, Target, Award, ArrowRight, Play, Languages, Youtube, Puzzle, MoreHorizontal } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import heroImage from '@/assets/dutch-hero.jpg';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
+      {/* Navigation */}
+      <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
+        <div className="container mx-auto px-4 py-4">
+          <Navigation />
+        </div>
+      </header>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div 
@@ -25,17 +33,35 @@ const Index = () => {
             Perfect for A2-level students who want to improve their conversation skills.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
             <Link to="/vragenlijst">
-              <Button variant="hero" size="lg" className="text-lg px-8 py-4">
-                <Play className="w-5 h-5 mr-2" />
-                Nederlandse Vragenlijst
+              <Button size="lg" className="w-full text-white bg-white/10 hover:bg-white/20 border border-white/20 flex items-center gap-2">
+                <BookOpen className="w-4 h-4" />
+                Vragenlijst
               </Button>
             </Link>
             <Link to="/vocabulary">
-              <Button variant="outline" size="lg" className="text-lg px-8 py-4 bg-white/10 border-white/30 text-white hover:bg-white/20">
-                <BookOpen className="w-5 h-5 mr-2" />
-                Nederlandse Woordenlijst
+              <Button size="lg" variant="outline" className="w-full text-white border-white/30 hover:bg-white/10 flex items-center gap-2">
+                <Languages className="w-4 h-4" />
+                Woordenlijst
+              </Button>
+            </Link>
+            <Link to="/grammar">
+              <Button size="lg" variant="outline" className="w-full text-white border-white/30 hover:bg-white/10 flex items-center gap-2">
+                <Puzzle className="w-4 h-4" />
+                Grammatica
+              </Button>
+            </Link>
+            <Link to="/youtube">
+              <Button size="lg" variant="outline" className="w-full text-white border-white/30 hover:bg-white/10 flex items-center gap-2">
+                <Youtube className="w-4 h-4" />
+                Video's
+              </Button>
+            </Link>
+            <Link to="/misc">
+              <Button size="lg" variant="outline" className="w-full text-white border-white/30 hover:bg-white/10 flex items-center gap-2">
+                <MoreHorizontal className="w-4 h-4" />
+                Overig
               </Button>
             </Link>
           </div>
