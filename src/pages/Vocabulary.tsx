@@ -40,8 +40,8 @@ export default function Vocabulary() {
     loadData();
   }, [toast]);
 
-  const handleSelectThema = (themaName: string) => {
-    setSelectedThemaName(themaName);
+  const handleSelectTopic = (topicName: string) => {
+    setSelectedThemaName(topicName);
     setSelectedSubsection(null);
   };
 
@@ -59,7 +59,7 @@ export default function Vocabulary() {
     setCurrentWordIndex(0);
   };
 
-  const handleBackToThemas = () => {
+  const handleBackToTopics = () => {
     setSelectedThemaName(null);
     setSelectedSubsection(null);
     setCurrentWordIndex(0);
@@ -84,11 +84,12 @@ export default function Vocabulary() {
     }
   };
 
-  // Group subsections by thema
-  const themaGroups = vocabularyData.reduce((acc, subsection) => {
-    const themaName = subsection.title.split(':').slice(0, 2).join(':');
-    if (!acc[themaName]) acc[themaName] = [];
-    acc[themaName].push(subsection);
+  // Group subsections by topic
+  const topicGroups = vocabularyData.reduce((acc, subsection) => {
+    const parts = subsection.title.split(': ');
+    const topicName = parts.length >= 2 ? `${parts[0]}: ${parts[1]}` : parts[0];
+    if (!acc[topicName]) acc[topicName] = [];
+    acc[topicName].push(subsection);
     return acc;
   }, {} as Record<string, VocabularyThema[]>);
 
@@ -191,27 +192,27 @@ export default function Vocabulary() {
       <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-           Choose a Thema
+           Choose a Topic
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            First select a thema, then choose a specific subsection to practice vocabulary.
+            First select a topic, then choose a specific subsection to practice vocabulary.
           </p>
         </div>
 
-        {/* Show thema selection or subsection selection */}
+        {/* Show topic selection or subsection selection */}
         {!selectedThemaName ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {Object.keys(themaGroups).map((themaName) => (
-              <Card key={themaName} className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectThema(themaName)}>
+            {Object.keys(topicGroups).map((topicName) => (
+              <Card key={topicName} className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectTopic(topicName)}>
                 <CardHeader>
-                  <CardTitle className="text-xl">{themaName}</CardTitle>
+                  <CardTitle className="text-xl">{topicName}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-4">
-                    {themaGroups[themaName].length} subsections available
+                    {topicGroups[topicName].length} subsections available
                   </p>
                   <Button className="w-full">
-                    Select Thema
+                    Select Topic
                   </Button>
                 </CardContent>
               </Card>
@@ -222,16 +223,16 @@ export default function Vocabulary() {
             <div className="mb-8">
               <Button
                 variant="ghost"
-                onClick={handleBackToThemas}
+                onClick={handleBackToTopics}
                 className="text-muted-foreground hover:text-foreground mb-4"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Themas
+                Back to Topics
               </Button>
               <h3 className="text-2xl font-bold text-center">{selectedThemaName} - Choose Subsection</h3>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              {themaGroups[selectedThemaName]?.map((subsection) => (
+              {topicGroups[selectedThemaName]?.map((subsection) => (
                 <VocabularyCard
                   key={subsection.id}
                   thema={subsection}

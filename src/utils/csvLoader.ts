@@ -166,33 +166,33 @@ export async function loadVocabularyData(): Promise<VocabularyThema[]> {
           example: generateExample(row[0].replace(/"/g, '').trim())
         };
         
-        const thema = row[2].replace(/"/g, '').trim();
+        const topic = row[2].replace(/"/g, '').trim();
         const section = row[3].replace(/"/g, '').trim();
         
-        if (!vocabularyMap.has(thema)) {
-          vocabularyMap.set(thema, new Map());
+        if (!vocabularyMap.has(topic)) {
+          vocabularyMap.set(topic, new Map());
         }
         
-        const themaMap = vocabularyMap.get(thema)!;
-        if (!themaMap.has(section)) {
-          themaMap.set(section, []);
+        const topicMap = vocabularyMap.get(topic)!;
+        if (!topicMap.has(section)) {
+          topicMap.set(section, []);
         }
         
-        themaMap.get(section)!.push(word);
+        topicMap.get(section)!.push(word);
       }
     }
     
     const vocabularyThemas: VocabularyThema[] = [];
     let id = 1;
     
-    vocabularyMap.forEach((sections, themaName) => {
+    vocabularyMap.forEach((sections, topicName) => {
       sections.forEach((words, sectionName) => {
         vocabularyThemas.push({
           id: id++,
-          title: `${getThemaTitle(themaName)}: ${sectionName}`,
+          title: `${getTopicTitle(topicName)}: ${sectionName}`,
           description: `Learn Dutch words for ${sectionName.toLowerCase()}`,
           words,
-          color: getThemaColor(id - 1)
+          color: getTopicColor(id - 1)
         });
       });
     });
@@ -237,15 +237,15 @@ function generateExample(dutch: string): string {
   return examples[dutch] || `Ik gebruik het woord "${dutch}".`;
 }
 
-function getThemaTitle(themaName: string): string {
-  const themaTitles: { [key: string]: string } = {
-    'Thema 1': 'Thema 1: Wie Ben Je?',
-    'Thema 2': 'Thema 2: Boodschappen'
+function getTopicTitle(topicName: string): string {
+  const topicTitles: { [key: string]: string } = {
+    'Topic 1': 'Topic 1: Wie Ben Je?',
+    'Topic 2': 'Topic 2: Boodschappen'
   };
-  return themaTitles[themaName] || themaName;
+  return topicTitles[topicName] || topicName;
 }
 
-function getThemaColor(index: number): string {
+function getTopicColor(index: number): string {
   const colors = [
     "bg-gradient-to-br from-primary to-primary-glow",
     "bg-gradient-to-br from-secondary to-accent",
@@ -260,7 +260,7 @@ function getVocabularyFallbackData(): VocabularyThema[] {
   return [
     {
       id: 1,
-      title: "Thema 1: Basis Woorden",
+      title: "Topic 1: Basis Woorden"
       description: "Essential Dutch words for daily use",
       color: "bg-gradient-to-br from-primary to-primary-glow",
       words: [
