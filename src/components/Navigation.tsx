@@ -20,17 +20,17 @@ const navItems = [
   },
   {
     href: '/vragenlijst',
-    label: 'Vragenlijst',
+    label: 'Interactions',
     icon: BookOpen,
   },
   {
     href: '/vocabulary',
-    label: 'Woordenlijst',
+    label: 'Vocabulary',
     icon: Languages,
   },
   {
     href: '/grammar',
-    label: 'Grammatica',
+    label: 'Grammer',
     icon: Puzzle,
   },
   {
@@ -40,7 +40,7 @@ const navItems = [
   },
   {
     href: '/misc',
-    label: 'Overig',
+    label: 'Misc',
     icon: MoreHorizontal,
   },
 ];
