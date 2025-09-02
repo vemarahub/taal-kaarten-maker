@@ -150,7 +150,7 @@ export async function loadThemaDataFromExcel(): Promise<Thema[]> {
 
 export async function loadVocabularyData(): Promise<VocabularyThema[]> {
   try {
-    const response = await fetch('/vocabulary.csv');
+    const response = await fetch(`/vocabulary.csv?t=${Date.now()}`);
     const csvText = await response.text();
     const rows = parseCSV(csvText);
     
