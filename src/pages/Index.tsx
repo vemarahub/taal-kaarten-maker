@@ -26,7 +26,7 @@ const Index = () => {
         
         <div className="relative container mx-auto px-4 py-32 text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            Taal - Pal
+            HelloWereld
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
             Learn Dutch interactively with vocabulary and quizes and more.
@@ -88,7 +88,7 @@ const Index = () => {
       <section className="container mx-auto px-4 py-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Why Choose Taal - Pal?
+            Why Choose HelloWereld?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
         Our platform offers a unique approach to learning Dutch through
