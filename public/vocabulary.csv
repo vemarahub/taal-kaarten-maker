@@ -1,199 +1,297 @@
 dutch,english,topic,section
-dat,that,Topic 1,Basis Woorden
-dit,this,Topic 1,Basis Woorden
-dorp,village,Topic 1,Basis Woorden
-een,a/an,Topic 1,Basis Woorden
-één,one,Topic 1,Basis Woorden
-gaan,to go,Topic 1,Basis Woorden
-hij,he,Topic 1,Basis Woorden
-ik,I,Topic 1,Basis Woorden
-in,in,Topic 1,Basis Woorden
-jaar,year,Topic 1,Basis Woorden
-komen,to come,Topic 1,Basis Woorden
-leren,to learn,Topic 1,Basis Woorden
-maand,month,Topic 1,Basis Woorden
-naar,to,Topic 1,Basis Woorden
-Nederland,Netherlands,Topic 1,Basis Woorden
-Nederlands,Dutch,Topic 1,Basis Woorden
-niet,not,Topic 1,Basis Woorden
-nu,now,Topic 1,Basis Woorden
-school,school,Topic 1,Basis Woorden
-stad,city,Topic 1,Basis Woorden
-uit,from/out,Topic 1,Basis Woorden
-werken,to work,Topic 1,Basis Woorden
-winkel,store,Topic 1,Basis Woorden
-wonen,to live,Topic 1,Basis Woorden
-ze,they,Topic 1,Basis Woorden
-zijn,to be,Topic 1,Basis Woorden
-achternaam,surname/last name,Topic 1,Persoonlijke Informatie
-al,already,Topic 1,Persoonlijke Informatie
-en,and,Topic 1,Persoonlijke Informatie
-hallo,hello,Topic 1,Persoonlijke Informatie
-hebben,to have,Topic 1,Persoonlijke Informatie
-heten,to be called,Topic 1,Persoonlijke Informatie
-hoe,how,Topic 1,Persoonlijke Informatie
-hoelang,how long,Topic 1,Persoonlijke Informatie
-ja,yes,Topic 1,Persoonlijke Informatie
-je,you/your,Topic 1,Persoonlijke Informatie
-jij,you,Topic 1,Persoonlijke Informatie
-kloppen,to be correct,Topic 1,Persoonlijke Informatie
-les,lesson,Topic 1,Persoonlijke Informatie
-leuk,nice/fun,Topic 1,Persoonlijke Informatie
-mijn,my,Topic 1,Persoonlijke Informatie
-Nederlands,Dutch,Topic 1,Persoonlijke Informatie
-oké,okay,Topic 1,Persoonlijke Informatie
-ook,also,Topic 1,Persoonlijke Informatie
-spellen,to spell,Topic 1,Persoonlijke Informatie
-telefoonnummer,phone number,Topic 1,Persoonlijke Informatie
-vandaan,from,Topic 1,Persoonlijke Informatie
-voornaam,first name,Topic 1,Persoonlijke Informatie
-waar,where,Topic 1,Persoonlijke Informatie
-wat,what,Topic 1,Persoonlijke Informatie
-adres,address,Topic 1,Een formulier invullen
-april,April,Topic 1,Een formulier invullen
-e-mailadres,email address,Topic 1,Een formulier invullen
-formulier,form,Topic 1,Een formulier invullen
-geboortedatum,date of birth,Topic 1,Een formulier invullen
-geboren,born,Topic 1,Een formulier invullen
-gemeente,municipality,Topic 1,Een formulier invullen
-gemeentehuis,town hall,Topic 1,Een formulier invullen
-goedemorgen,good morning,Topic 1,Een formulier invullen
-helpen,to help,Topic 1,Een formulier invullen
-invullen,to fill in,Topic 1,Een formulier invullen
-kunnen,can,Topic 1,Een formulier invullen
-man,man,Topic 1,Een formulier invullen
-meneer,sir,Topic 1,Een formulier invullen
-mobiel,mobile,Topic 1,Een formulier invullen
-nationaliteit,nationality,Topic 1,Een formulier invullen
-nieuw,new,Topic 1,Een formulier invullen
-op,at,Topic 1,Een formulier invullen
-postcode,postcode,Topic 1,Een formulier invullen
-u,you [formal],Topic 1,Een formulier invullen
-uw,your [formal],Topic 1,Een formulier invullen
-vrouw,woman,Topic 1,Een formulier invullen
-woonplaats,place of residence,Topic 1,Een formulier invullen
-zullen,will,Topic 1,Een formulier invullen
-alleen,on my own,Topic 1,Welkom nieuwe buurvrouw
-appen,to send a text message,Topic 1,Welkom nieuwe buurvrouw
-buren,neighbours,Topic 1,Welkom nieuwe buurvrouw
-buurvrouw,female neighbour,Topic 1,Welkom nieuwe buurvrouw
-geen,no,Topic 1,Welkom nieuwe buurvrouw
-getrouwd,married,Topic 1,Welkom nieuwe buurvrouw
-graag,gladly,Topic 1,Welkom nieuwe buurvrouw
-hobby,hobby,Topic 1,Welkom nieuwe buurvrouw
-houden van,to love,Topic 1,Welkom nieuwe buurvrouw
-huis,house,Topic 1,Welkom nieuwe buurvrouw
-jullie,you [plural],Topic 1,Welkom nieuwe buurvrouw
-kind,child,Topic 1,Welkom nieuwe buurvrouw
-koken,to cook,Topic 1,Welkom nieuwe buurvrouw
-met,with,Topic 1,Welkom nieuwe buurvrouw
-nog,yet,Topic 1,Welkom nieuwe buurvrouw
-ontmoeten,to meet,Topic 1,Welkom nieuwe buurvrouw
-oud,old,Topic 1,Welkom nieuwe buurvrouw
-poes,cat,Topic 1,Welkom nieuwe buurvrouw
-restaurant,restaurant,Topic 1,Welkom nieuwe buurvrouw
-sporten,to do sports,Topic 1,Welkom nieuwe buurvrouw
-week,week,Topic 1,Welkom nieuwe buurvrouw
-weekend,weekend,Topic 1,Welkom nieuwe buurvrouw
-welkom,welcome,Topic 1,Welkom nieuwe buurvrouw
-wie,who,Topic 1,Welkom nieuwe buurvrouw
-willen,to want,Topic 1,Welkom nieuwe buurvrouw
-ander,other,Topic 2,Wie doet de boodschappen?
-appel,apple,Topic 2,Wie doet de boodschappen?
-banaan,banana,Topic 2,Wie doet de boodschappen?
-bijna,almost,Topic 2,Wie doet de boodschappen?
-boodschappen,groceries,Topic 2,Wie doet de boodschappen?
-doen,to do,Topic 2,Wie doet de boodschappen?
-dus,so,Topic 2,Wie doet de boodschappen?
-eten,food,Topic 2,Wie doet de boodschappen?
-fruit,fruit,Topic 2,Wie doet de boodschappen?
-groente,vegetable,Topic 2,Wie doet de boodschappen?
-kip,chicken,Topic 2,Wie doet de boodschappen?
-kopen,to buy,Topic 2,Wie doet de boodschappen?
-lijst,list,Topic 2,Wie doet de boodschappen?
-maken,to make,Topic 2,Wie doet de boodschappen?
-markt,market,Topic 2,Wie doet de boodschappen?
-meer,more,Topic 2,Wie doet de boodschappen?
-of,or,Topic 2,Wie doet de boodschappen?
-praten,to talk,Topic 2,Wie doet de boodschappen?
-rijst,rice,Topic 2,Wie doet de boodschappen?
-supermarkt,supermarket,Topic 2,Wie doet de boodschappen?
-thuis,at home,Topic 2,Wie doet de boodschappen?
-tomaat,tomato,Topic 2,Wie doet de boodschappen?
-vis,fish,Topic 2,Wie doet de boodschappen?
-vlees,meat,Topic 2,Wie doet de boodschappen?
-we,we,Topic 2,Wie doet de boodschappen?
-wortel,carrot,Topic 2,Wie doet de boodschappen?
-aardappel,potato,Topic 2,Wie kan ik helpen?
-alsjeblieft,please / here you go,Topic 2,Wie kan ik helpen?
-alstublieft,please / here you go,Topic 2,Wie kan ik helpen?
-anders,else,Topic 2,Wie kan ik helpen?
-dag,bye,Topic 2,Wie kan ik helpen?
-dan,then,Topic 2,Wie kan ik helpen?
-ei,egg,Topic 2,Wie kan ik helpen?
-fijn,nice,Topic 2,Wie kan ik helpen?
-goed,good,Topic 2,Wie kan ik helpen?
-gram,gram,Topic 2,Wie kan ik helpen?
-hoeveel,how much,Topic 2,Wie kan ik helpen?
-iets,something,Topic 2,Wie kan ik helpen?
-jammer,too bad,Topic 2,Wie kan ik helpen?
-kaas,cheese,Topic 2,Wie kan ik helpen?
-kijken,to look,Topic 2,Wie kan ik helpen?
-kilo,kilo,Topic 2,Wie kan ik helpen?
-mevrouw,madam,Topic 2,Wie kan ik helpen?
-mogen,to may,Topic 2,Wie kan ik helpen?
-nee,no,Topic 2,Wie kan ik helpen?
-nemen,to take,Topic 2,Wie kan ik helpen?
-pinnen,to pay by debit card,Topic 2,Wie kan ik helpen?
-verkoper,seller,Topic 2,Wie kan ik helpen?
-voor,for,Topic 2,Wie kan ik helpen?
-zeggen,to say,Topic 2,Wie kan ik helpen?
-altijd,always,Topic 2,Waar doe je boodschappen?
-bakker,baker,Topic 2,Waar doe je boodschappen?
-brood,bread,Topic 2,Waar doe je boodschappen?
-buurt,neighbourhood,Topic 2,Waar doe je boodschappen?
-dinsdag,Tuesday,Topic 2,Waar doe je boodschappen?
-duur,expensive,Topic 2,Waar doe je boodschappen?
-goedkoop,cheap,Topic 2,Waar doe je boodschappen?
-halen,to get,Topic 2,Waar doe je boodschappen?
-hier,here,Topic 2,Waar doe je boodschappen?
-hoor,that's fine,Topic 2,Waar doe je boodschappen?
-kennen,to know,Topic 2,Waar doe je boodschappen?
-meestal,usually,Topic 2,Waar doe je boodschappen?
-middag,afternoon,Topic 2,Waar doe je boodschappen?
-natuurlijk,of course,Topic 2,Waar doe je boodschappen?
-ochtend,morning,Topic 2,Waar doe je boodschappen?
-soms,sometimes,Topic 2,Waar doe je boodschappen?
-straat,street,Topic 2,Waar doe je boodschappen?
-veel,many,Topic 2,Waar doe je boodschappen?
-ver,far,Topic 2,Waar doe je boodschappen?
-vers,fresh,Topic 2,Waar doe je boodschappen?
-vragen,to ask,Topic 2,Waar doe je boodschappen?
-wanneer,when,Topic 2,Waar doe je boodschappen?
-wel,on the other hand,Topic 2,Waar doe je boodschappen?
-welk,which,Topic 2,Waar doe je boodschappen?
-zaterdag,Saturday,Topic 2,Waar doe je boodschappen?
-zien,to see,Topic 2,Waar doe je boodschappen?
-chips,potato chips,Topic 2,Is de Jumbo nog open?
-denken,to think,Topic 2,Is de Jumbo nog open?
-dicht,closed,Topic 2,Is de Jumbo nog open?
-fietsen,to (ride a) bike,Topic 2,Is de Jumbo nog open?
-half,half,Topic 2,Is de Jumbo nog open?
-internet,Internet,Topic 2,Is de Jumbo nog open?
-keuken,kitchen,Topic 2,Is de Jumbo nog open?
-laat,late,Topic 2,Is de Jumbo nog open?
-leeg,empty,Topic 2,Is de Jumbo nog open?
-liggen,to lie,Topic 2,Is de Jumbo nog open?
-maandag,Monday,Topic 2,Is de Jumbo nog open?
-open,open,Topic 2,Is de Jumbo nog open?
-openingstijden,opening hours,Topic 2,Is de Jumbo nog open?
-'s avonds,in the evening,Topic 2,Is de Jumbo nog open?
-'s middags,in the afternoon,Topic 2,Is de Jumbo nog open?
-'s morgens,in the morning,Topic 2,Is de Jumbo nog open?
-'s nachts,at night,Topic 2,Is de Jumbo nog open?
-'s ochtends,in the morning,Topic 2,Is de Jumbo nog open?
-snel,fast,Topic 2,Is de Jumbo nog open?
-tot,until,Topic 2,Is de Jumbo nog open?
-uur,o'clock,Topic 2,Is de Jumbo nog open?
-weten,to know,Topic 2,Is de Jumbo nog open?
-zak,bag,Topic 2,Is de Jumbo nog open?
+dat,that,Topic 1,Basic Words
+dit,this,Topic 1,Basic Words
+dorp,village,Topic 1,Basic Words
+een,a/an,Topic 1,Basic Words
+één,one,Topic 1,Basic Words
+gaan,to go,Topic 1,Basic Words
+hij,he,Topic 1,Basic Words
+ik,I,Topic 1,Basic Words
+in,in,Topic 1,Basic Words
+jaar,year,Topic 1,Basic Words
+komen,to come,Topic 1,Basic Words
+leren,to learn,Topic 1,Basic Words
+maand,month,Topic 1,Basic Words
+naar,to,Topic 1,Basic Words
+Nederland,Netherlands,Topic 1,Basic Words
+Nederlands,Dutch,Topic 1,Basic Words
+niet,not,Topic 1,Basic Words
+nu,now,Topic 1,Basic Words
+school,school,Topic 1,Basic Words
+stad,city,Topic 1,Basic Words
+uit,from/out,Topic 1,Basic Words
+werken,to work,Topic 1,Basic Words
+winkel,store,Topic 1,Basic Words
+wonen,to live,Topic 1,Basic Words
+ze,they,Topic 1,Basic Words
+zijn,to be,Topic 1,Basic Words
+achternaam,surname/last name,Topic 1,Personal Information
+al,already,Topic 1,Personal Information
+en,and,Topic 1,Personal Information
+hallo,hello,Topic 1,Personal Information
+hebben,to have,Topic 1,Personal Information
+heten,to be called,Topic 1,Personal Information
+hoe,how,Topic 1,Personal Information
+hoelang,how long,Topic 1,Personal Information
+ja,yes,Topic 1,Personal Information
+je,you/your,Topic 1,Personal Information
+jij,you,Topic 1,Personal Information
+kloppen,to be correct,Topic 1,Personal Information
+les,lesson,Topic 1,Personal Information
+leuk,nice/fun,Topic 1,Personal Information
+mijn,my,Topic 1,Personal Information
+Nederlands,Dutch,Topic 1,Personal Information
+oké,okay,Topic 1,Personal Information
+ook,also,Topic 1,Personal Information
+spellen,to spell,Topic 1,Personal Information
+telefoonnummer,phone number,Topic 1,Personal Information
+vandaan,from,Topic 1,Personal Information
+voornaam,first name,Topic 1,Personal Information
+waar,where,Topic 1,Personal Information
+wat,what,Topic 1,Personal Information
+adres,address,Topic 1,Filling out a form
+april,April,Topic 1,Filling out a form
+e-mailadres,email address,Topic 1,Filling out a form
+formulier,form,Topic 1,Filling out a form
+geboortedatum,date of birth,Topic 1,Filling out a form
+geboren,born,Topic 1,Filling out a form
+gemeente,municipality,Topic 1,Filling out a form
+gemeentehuis,town hall,Topic 1,Filling out a form
+goedemorgen,good morning,Topic 1,Filling out a form
+helpen,to help,Topic 1,Filling out a form
+invullen,to fill in,Topic 1,Filling out a form
+kunnen,can,Topic 1,Filling out a form
+man,man,Topic 1,Filling out a form
+meneer,sir,Topic 1,Filling out a form
+mobiel,mobile,Topic 1,Filling out a form
+nationaliteit,nationality,Topic 1,Filling out a form
+nieuw,new,Topic 1,Filling out a form
+op,at,Topic 1,Filling out a form
+postcode,postcode,Topic 1,Filling out a form
+u,you [formal],Topic 1,Filling out a form
+uw,your [formal],Topic 1,Filling out a form
+vrouw,woman,Topic 1,Filling out a form
+woonplaats,place of residence,Topic 1,Filling out a form
+zullen,will,Topic 1,Filling out a form
+alleen,on my own,Topic 1,Welcome new neighbor
+appen,to send a text message,Topic 1,Welcome new neighbor
+buren,neighbours,Topic 1,Welcome new neighbor
+buurvrouw,female neighbour,Topic 1,Welcome new neighbor
+geen,no,Topic 1,Welcome new neighbor
+getrouwd,married,Topic 1,Welcome new neighbor
+graag,gladly,Topic 1,Welcome new neighbor
+hobby,hobby,Topic 1,Welcome new neighbor
+houden van,to love,Topic 1,Welcome new neighbor
+huis,house,Topic 1,Welcome new neighbor
+jullie,you [plural],Topic 1,Welcome new neighbor
+kind,child,Topic 1,Welcome new neighbor
+koken,to cook,Topic 1,Welcome new neighbor
+met,with,Topic 1,Welcome new neighbor
+nog,yet,Topic 1,Welcome new neighbor
+ontmoeten,to meet,Topic 1,Welcome new neighbor
+oud,old,Topic 1,Welcome new neighbor
+poes,cat,Topic 1,Welcome new neighbor
+restaurant,restaurant,Topic 1,Welcome new neighbor
+sporten,to do sports,Topic 1,Welcome new neighbor
+week,week,Topic 1,Welcome new neighbor
+weekend,weekend,Topic 1,Welcome new neighbor
+welkom,welcome,Topic 1,Welcome new neighbor
+wie,who,Topic 1,Welcome new neighbor
+willen,to want,Topic 1,Welcome new neighbor
+ander,other,Topic 2,Who does the shopping?
+appel,apple,Topic 2,Who does the shopping?
+banaan,banana,Topic 2,Who does the shopping?
+bijna,almost,Topic 2,Who does the shopping?
+boodschappen,groceries,Topic 2,Who does the shopping?
+doen,to do,Topic 2,Who does the shopping?
+dus,so,Topic 2,Who does the shopping?
+eten,food,Topic 2,Who does the shopping?
+fruit,fruit,Topic 2,Who does the shopping?
+groente,vegetable,Topic 2,Who does the shopping?
+kip,chicken,Topic 2,Who does the shopping?
+kopen,to buy,Topic 2,Who does the shopping?
+lijst,list,Topic 2,Who does the shopping?
+maken,to make,Topic 2,Who does the shopping?
+markt,market,Topic 2,Who does the shopping?
+meer,more,Topic 2,Who does the shopping?
+of,or,Topic 2,Who does the shopping?
+praten,to talk,Topic 2,Who does the shopping?
+rijst,rice,Topic 2,Who does the shopping?
+supermarkt,supermarket,Topic 2,Who does the shopping?
+thuis,at home,Topic 2,Who does the shopping?
+tomaat,tomato,Topic 2,Who does the shopping?
+vis,fish,Topic 2,Who does the shopping?
+vlees,meat,Topic 2,Who does the shopping?
+we,we,Topic 2,Who does the shopping?
+wortel,carrot,Topic 2,Who does the shopping?
+aardappel,potato,Topic 2,How can I help you?
+alsjeblieft,please / here you go,Topic 2,How can I help you?
+alstublieft,please / here you go,Topic 2,How can I help you?
+anders,else,Topic 2,How can I help you?
+dag,bye,Topic 2,How can I help you?
+dan,then,Topic 2,How can I help you?
+ei,egg,Topic 2,How can I help you?
+fijn,nice,Topic 2,How can I help you?
+goed,good,Topic 2,How can I help you?
+gram,gram,Topic 2,How can I help you?
+hoeveel,how much,Topic 2,How can I help you?
+iets,something,Topic 2,How can I help you?
+jammer,too bad,Topic 2,How can I help you?
+kaas,cheese,Topic 2,How can I help you?
+kijken,to look,Topic 2,How can I help you?
+kilo,kilo,Topic 2,How can I help you?
+mevrouw,madam,Topic 2,How can I help you?
+mogen,to may,Topic 2,How can I help you?
+nee,no,Topic 2,How can I help you?
+nemen,to take,Topic 2,How can I help you?
+pinnen,to pay by debit card,Topic 2,How can I help you?
+verkoper,seller,Topic 2,How can I help you?
+voor,for,Topic 2,How can I help you?
+zeggen,to say,Topic 2,How can I help you?
+altijd,always,Topic 2,Where do you shop?
+bakker,baker,Topic 2,Where do you shop?
+brood,bread,Topic 2,Where do you shop?
+buurt,neighbourhood,Topic 2,Where do you shop?
+dinsdag,Tuesday,Topic 2,Where do you shop?
+duur,expensive,Topic 2,Where do you shop?
+goedkoop,cheap,Topic 2,Where do you shop?
+halen,to get,Topic 2,Where do you shop?
+hier,here,Topic 2,Where do you shop?
+hoor,that's fine,Topic 2,Where do you shop?
+kennen,to know,Topic 2,Where do you shop?
+meestal,usually,Topic 2,Where do you shop?
+middag,afternoon,Topic 2,Where do you shop?
+natuurlijk,of course,Topic 2,Where do you shop?
+ochtend,morning,Topic 2,Where do you shop?
+soms,sometimes,Topic 2,Where do you shop?
+straat,street,Topic 2,Where do you shop?
+veel,many,Topic 2,Where do you shop?
+ver,far,Topic 2,Where do you shop?
+vers,fresh,Topic 2,Where do you shop?
+vragen,to ask,Topic 2,Where do you shop?
+wanneer,when,Topic 2,Where do you shop?
+wel,on the other hand,Topic 2,Where do you shop?
+welk,which,Topic 2,Where do you shop?
+zaterdag,Saturday,Topic 2,Where do you shop?
+zien,to see,Topic 2,Where do you shop?
+chips,potato chips,Topic 2,Is the Jumbo still open?
+denken,to think,Topic 2,Is the Jumbo still open?
+dicht,closed,Topic 2,Is the Jumbo still open?
+fietsen,to (ride a) bike,Topic 2,Is the Jumbo still open?
+half,half,Topic 2,Is the Jumbo still open?
+internet,Internet,Topic 2,Is the Jumbo still open?
+keuken,kitchen,Topic 2,Is the Jumbo still open?
+laat,late,Topic 2,Is the Jumbo still open?
+leeg,empty,Topic 2,Is the Jumbo still open?
+liggen,to lie,Topic 2,Is the Jumbo still open?
+maandag,Monday,Topic 2,Is the Jumbo still open?
+open,open,Topic 2,Is the Jumbo still open?
+openingstijden,opening hours,Topic 2,Is the Jumbo still open?
+'s avonds,in the evening,Topic 2,Is the Jumbo still open?
+'s middags,in the afternoon,Topic 2,Is the Jumbo still open?
+'s morgens,in the morning,Topic 2,Is the Jumbo still open?
+'s nachts,at night,Topic 2,Is the Jumbo still open?
+'s ochtends,in the morning,Topic 2,Is the Jumbo still open?
+snel,fast,Topic 2,Is the Jumbo still open?
+tot,until,Topic 2,Is the Jumbo still open?
+uur,o'clock,Topic 2,Is the Jumbo still open?
+weten,to know,Topic 2,Is the Jumbo still open?
+zak,bag,Topic 2,Is the Jumbo still open?
+alles,everything,Topic 3,Nice weather right?
+beterschap,get well soon,Topic 3,Nice weather right?
+bezig,doing (well),Topic 3,Nice weather right?
+broer,brother,Topic 3,Nice weather right?
+daar,there,Topic 3,Nice weather right?
+druk,busy,Topic 3,Nice weather right?
+een beetje,a little bit,Topic 3,Nice weather right?
+eindelijk,finally,Topic 3,Nice weather right?
+groet,greeting,Topic 3,Nice weather right?
+lekker,nice,Topic 3,Nice weather right?
+lopen,to walk,Topic 3,Nice weather right?
+moeder,mother,Topic 3,Nice weather right?
+morgen,tomorrow,Topic 3,Nice weather right?
+paracetamol,paracetamol,Topic 3,Nice weather right?
+prima,fine,Topic 3,Nice weather right?
+steeds,still,Topic 3,Nice weather right?
+vervelend,unpleasant,Topic 3,Nice weather right?
+vriend,friend (male),Topic 3,Nice weather right?
+vriendin,friend (female),Topic 3,Nice weather right?
+waarom,why,Topic 3,Nice weather right?
+warm,warm,Topic 3,Nice weather right?
+weer,weather,Topic 3,Nice weather right?
+worden,to become,Topic 3,Nice weather right?
+ziek,ill,Topic 3,Nice weather right?
+zo,so,Topic 3,Nice weather right?
+zon,sun,Topic 3,Nice weather right?
+zus,sister,Topic 3,Nice weather right?
+bezoek,visit,Topic 3,Nice to see you
+binnenkomen,to come in,Topic 3,Nice to see you
+drinken,to drink,Topic 3,Nice to see you
+eruitzien,to look,Topic 3,Nice to see you
+geven,to give,Topic 3,Nice to see you
+horen,to hear,Topic 3,Nice to see you
+huilen,to cry,Topic 3,Nice to see you
+jas,coat,Topic 3,Nice to see you
+jongen,boy,Topic 3,Nice to see you
+klein,little,Topic 3,Nice to see you
+koffie,coffee,Topic 3,Nice to see you
+lachen,to laugh,Topic 3,Nice to see you
+lief,sweet,Topic 3,Nice to see you
+melk,milk,Topic 3,Nice to see you
+moe,tired,Topic 3,Nice to see you
+slapen,to sleep,Topic 3,Nice to see you
+suiker,sugar,Topic 3,Nice to see you
+thee,tea,Topic 3,Nice to see you
+zelf,self,Topic 3,Nice to see you
+zitten,to sit,Topic 3,Nice to see you
+zonder,without,Topic 3,Nice to see you
+zwart,black,Topic 3,Nice to see you
+avond,evening,Topic 3,Come watch football with me?
+beginnen,to start,Topic 3,Come watch football with me?
+begrijpen,to understand,Topic 3,Come watch football with me?
+bellen,to call (by telephone),Topic 3,Come watch football with me?
+bier,beer,Topic 3,Come watch football with me?
+blijven,to stay,Topic 3,Come watch football with me?
+deze,this,Topic 3,Come watch football with me?
+die,those,Topic 3,Come watch football with me?
+echt,really,Topic 3,Come watch football with me?
+eten,to eat,Topic 3,Come watch football with me?
+genoeg,enough,Topic 3,Come watch football with me?
+gezellig,nice,Topic 3,Come watch football with me?
+heel,whole,Topic 3,Come watch football with me?
+keer,occasion,Topic 3,Come watch football with me?
+later,later,Topic 3,Come watch football with me?
+lawaai,noise,Topic 3,Come watch football with me?
+luisteren,to listen,Topic 3,Come watch football with me?
+rustig,quiet,Topic 3,Come watch football with me?
+uitnodigen,to invite,Topic 3,Come watch football with me?
+vakantie,holiday,Topic 3,Come watch football with me?
+voetbal,football,Topic 3,Come watch football with me?
+vrijdag,Friday,Topic 3,Come watch football with me?
+weer,again,Topic 3,Come watch football with me?
+weg,away,Topic 3,Come watch football with me?
+afgesproken,it's a deal,Topic 3,Congratulations!
+afspraak,appointment,Topic 3,Congratulations!
+baan,job,Topic 3,Congratulations!
+bericht,message,Topic 3,Congratulations!
+blij,happy,Topic 3,Congratulations!
+februari,February,Topic 3,Congratulations!
+feestje,party,Topic 3,Congratulations!
+feliciteren,to congratulate,Topic 3,Congratulations!
+gauw,soon,Topic 3,Congratulations!
+gefeliciteerd,congratulations,Topic 3,Congratulations!
+geleden,ago,Topic 3,Congratulations!
+januari,January,Topic 3,Congratulations!
+jarig,(having a) birthday,Topic 3,Congratulations!
+klinken,to sound,Topic 3,Congratulations!
+krijgen,to receive,Topic 3,Congratulations!
+misschien,maybe,Topic 3,Congratulations!
+net,just,Topic 3,Congratulations!
+nieuws,news,Topic 3,Congratulations!
+succes,success,Topic 3,Congratulations!
+uitnodiging,invitation,Topic 3,Congratulations!
+vanavond,tonight,Topic 3,Congratulations!
+vandaag,today,Topic 3,Congratulations!
+verjaardag,birthday,Topic 3,Congratulations!
+volgend,next,Topic 3,Congratulations!
+zeker,definitely,Topic 3,Congratulations!

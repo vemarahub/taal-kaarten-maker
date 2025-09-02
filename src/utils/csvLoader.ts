@@ -239,8 +239,9 @@ function generateExample(dutch: string): string {
 
 function getTopicTitle(topicName: string): string {
   const topicTitles: { [key: string]: string } = {
-    'Topic 1': 'Topic 1: Wie Ben Je?',
-    'Topic 2': 'Topic 2: Boodschappen'
+    'Topic 1': 'Topic 1: Who Are You?',
+    'Topic 2': 'Topic 2: Shopping',
+    'Topic 3': 'Topic 3: Social Conversations'
   };
   return topicTitles[topicName] || topicName;
 }
