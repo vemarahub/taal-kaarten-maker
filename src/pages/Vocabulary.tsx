@@ -100,10 +100,25 @@ export default function Vocabulary() {
 
   // Group subsections by topic
   const topicGroups = vocabularyData.reduce((acc, subsection) => {
-    const parts = subsection.title.split(': ');
-    const topicName = parts.length >= 2 ? `${parts[0]}: ${parts[1]}` : parts[0];
-    if (!acc[topicName]) acc[topicName] = [];
-    acc[topicName].push(subsection);
+    // Find which topic this subsection belongs to by checking the words
+    const sampleWord = subsection.words[0];
+    if (sampleWord) {
+      // We need to determine topic from the CSV data structure
+      // For now, let's use a simple mapping based on subsection names
+      let topicName = 'Topic 1: Who Are You?';
+      
+      const shoppingSections = ['Who does the shopping?', 'How can I help you?', 'Where do you shop?', 'Is the Jumbo still open?'];
+      const socialSections = ['Nice weather right?', 'Nice to see you', 'Come watch football with me?', 'Congratulations!'];
+      
+      if (shoppingSections.includes(subsection.title)) {
+        topicName = 'Topic 2: Shopping';
+      } else if (socialSections.includes(subsection.title)) {
+        topicName = 'Topic 3: Social Conversations';
+      }
+      
+      if (!acc[topicName]) acc[topicName] = [];
+      acc[topicName].push(subsection);
+    }
     return acc;
   }, {} as Record<string, VocabularyThema[]>);
 

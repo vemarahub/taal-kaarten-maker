@@ -189,7 +189,7 @@ export async function loadVocabularyData(): Promise<VocabularyThema[]> {
       sections.forEach((words, sectionName) => {
         vocabularyThemas.push({
           id: id++,
-          title: `${getTopicTitle(topicName)}: ${sectionName}`,
+          title: sectionName,
           description: `Learn Dutch words for ${sectionName.toLowerCase()}`,
           words,
           color: getTopicColor(id - 1)
