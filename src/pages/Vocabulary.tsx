@@ -12,7 +12,8 @@ import { loadVocabularyData, type VocabularyThema } from '@/utils/csvLoader';
 
 
 export default function Vocabulary() {
-  const [selectedThema, setSelectedThema] = useState<number | null>(null);
+  const [selectedThemaName, setSelectedThemaName] = useState<string | null>(null);
+  const [selectedSubsection, setSelectedSubsection] = useState<number | null>(null);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [vocabularyData, setVocabularyData] = useState<VocabularyThema[]>([]);
   const [loading, setLoading] = useState(true);
@@ -39,8 +40,13 @@ export default function Vocabulary() {
     loadData();
   }, [toast]);
 
-  const handleStartPractice = (themaId: number) => {
-    setSelectedThema(themaId);
+  const handleSelectThema = (themaName: string) => {
+    setSelectedThemaName(themaName);
+    setSelectedSubsection(null);
+  };
+
+  const handleStartPractice = (subsectionId: number) => {
+    setSelectedSubsection(subsectionId);
     setCurrentWordIndex(0);
     toast({
       title: "Woordenlijst gestart! 📚",
@@ -48,21 +54,27 @@ export default function Vocabulary() {
     });
   };
 
+  const handleBackToSubsections = () => {
+    setSelectedSubsection(null);
+    setCurrentWordIndex(0);
+  };
+
   const handleBackToThemas = () => {
-    setSelectedThema(null);
+    setSelectedThemaName(null);
+    setSelectedSubsection(null);
     setCurrentWordIndex(0);
   };
 
   const handleNextWord = () => {
-    const currentThema = vocabularyData.find(t => t.id === selectedThema);
-    if (currentThema && currentWordIndex < currentThema.words.length - 1) {
+    const currentSubsection = vocabularyData.find(t => t.id === selectedSubsection);
+    if (currentSubsection && currentWordIndex < currentSubsection.words.length - 1) {
       setCurrentWordIndex(prev => prev + 1);
     } else {
       toast({
         title: "Gefeliciteerd! 🎉",
         description: "Je hebt alle woorden bekeken!",
       });
-      handleBackToThemas();
+      handleBackToSubsections();
     }
   };
 
@@ -72,8 +84,16 @@ export default function Vocabulary() {
     }
   };
 
-  const currentThema = vocabularyData.find(t => t.id === selectedThema);
-  const currentWord = currentThema?.words[currentWordIndex];
+  // Group subsections by thema
+  const themaGroups = vocabularyData.reduce((acc, subsection) => {
+    const themaName = subsection.title.split(':')[0];
+    if (!acc[themaName]) acc[themaName] = [];
+    acc[themaName].push(subsection);
+    return acc;
+  }, {} as Record<string, VocabularyThema[]>);
+
+  const currentSubsection = vocabularyData.find(t => t.id === selectedSubsection);
+  const currentWord = currentSubsection?.words[currentWordIndex];
 
   if (loading) {
     return (
@@ -86,7 +106,7 @@ export default function Vocabulary() {
     );
   }
 
-  if (selectedThema && currentWord) {
+  if (selectedSubsection && currentWord) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
         {/* Header */}
@@ -95,14 +115,14 @@ export default function Vocabulary() {
             <div className="flex items-center justify-between">
               <Button
                 variant="ghost"
-                onClick={handleBackToThemas}
+                onClick={handleBackToSubsections}
                 className="text-muted-foreground hover:text-foreground"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Vocabulary
+                Back to Subsections
               </Button>
               <div className="text-center">
-                <h1 className="text-xl font-bold text-foreground">{currentThema?.title}</h1>
+                <h1 className="text-xl font-bold text-foreground">{currentSubsection?.title}</h1>
                 <p className="text-sm text-muted-foreground">Practise Vocabulary</p>
               </div>
               <div className="w-48" />
@@ -115,7 +135,7 @@ export default function Vocabulary() {
           <VocabularyPractice
             word={currentWord}
             wordNumber={currentWordIndex + 1}
-            totalWords={currentThema.words.length}
+            totalWords={currentSubsection.words.length}
             onNext={handleNextWord}
             onPrevious={handlePreviousWord}
             showNavigation={true}
@@ -171,22 +191,56 @@ export default function Vocabulary() {
       <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-           Choose a Wordlist
+           Choose a Thema
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Select a topic to learn Dutch words with translations, pronunciations, and example sentences.
+            First select a thema, then choose a specific subsection to practice vocabulary.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {vocabularyData.map((thema) => (
-            <VocabularyCard
-              key={thema.id}
-              thema={thema}
-              onStartPractice={handleStartPractice}
-            />
-          ))}
-        </div>
+        {/* Show thema selection or subsection selection */}
+        {!selectedThemaName ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {Object.keys(themaGroups).map((themaName) => (
+              <Card key={themaName} className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectThema(themaName)}>
+                <CardHeader>
+                  <CardTitle className="text-xl">{themaName}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground mb-4">
+                    {themaGroups[themaName].length} subsections available
+                  </p>
+                  <Button className="w-full">
+                    Select Thema
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        ) : (
+          <div>
+            <div className="mb-8">
+              <Button
+                variant="ghost"
+                onClick={handleBackToThemas}
+                className="text-muted-foreground hover:text-foreground mb-4"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Themas
+              </Button>
+              <h3 className="text-2xl font-bold text-center">{selectedThemaName} - Choose Subsection</h3>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {themaGroups[selectedThemaName]?.map((subsection) => (
+                <VocabularyCard
+                  key={subsection.id}
+                  thema={subsection}
+                  onStartPractice={handleStartPractice}
+                />
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Coming Soon */}
         <div className="mt-12 text-center">
