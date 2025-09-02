@@ -109,11 +109,14 @@ export default function Vocabulary() {
       
       const shoppingSections = ['Who does the shopping?', 'How can I help you?', 'Where do you shop?', 'Is the Jumbo still open?'];
       const socialSections = ['Nice weather right?', 'Nice to see you', 'Come watch football with me?', 'Congratulations!'];
+      const foodSections = ['What do we eat tonight', 'What would you like to eat', 'How Healthy', 'Eating Out'];
       
       if (shoppingSections.includes(subsection.title)) {
         topicName = 'Topic 2: Shopping';
       } else if (socialSections.includes(subsection.title)) {
         topicName = 'Topic 3: Social Conversations';
+      } else if (foodSections.includes(subsection.title)) {
+        topicName = 'Topic 4: Food and Drinks';
       }
       
       if (!acc[topicName]) acc[topicName] = [];
