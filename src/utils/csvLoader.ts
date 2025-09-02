@@ -260,7 +260,7 @@ function getVocabularyFallbackData(): VocabularyThema[] {
   return [
     {
       id: 1,
-      title: "Topic 1: Basis Woorden"
+      title: "Topic 1: Basis Woorden",
       description: "Essential Dutch words for daily use",
       color: "bg-gradient-to-br from-primary to-primary-glow",
       words: [

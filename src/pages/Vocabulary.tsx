@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import { VocabularyCard } from '@/components/VocabularyCard';
 import { VocabularyPractice } from '@/components/VocabularyPractice';
 import Navigation from '@/components/Navigation';
-import { ArrowLeft, BookOpen, Target, Volume2, Loader2 } from 'lucide-react';
+import { ArrowLeft, BookOpen, Target, Volume2, Loader2, Search } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import heroImage from '@/assets/dutch-hero.jpg';
-import { loadVocabularyData, type VocabularyThema } from '@/utils/csvLoader';
+import { loadVocabularyData, type VocabularyThema, type VocabularyWord } from '@/utils/csvLoader';
 
 
 
@@ -17,6 +18,8 @@ export default function Vocabulary() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [vocabularyData, setVocabularyData] = useState<VocabularyThema[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<VocabularyWord[]>([]);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -39,6 +42,19 @@ export default function Vocabulary() {
 
     loadData();
   }, [toast]);
+
+  useEffect(() => {
+    if (searchQuery.trim()) {
+      const allWords = vocabularyData.flatMap(topic => topic.words);
+      const results = allWords.filter(word => 
+        word.dutch.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        word.english.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSearchResults(results);
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchQuery, vocabularyData]);
 
   const handleSelectTopic = (topicName: string) => {
     setSelectedThemaName(topicName);
@@ -188,7 +204,7 @@ export default function Vocabulary() {
         </div>
       </section>
 
-      {/* Vocabulary Themas Section */}
+      {/* Vocabulary Topics Section */}
       <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -199,8 +215,46 @@ export default function Vocabulary() {
           </p>
         </div>
 
-        {/* Show topic selection or subsection selection */}
-        {!selectedThemaName ? (
+        {/* Search Bar */}
+        <div className="max-w-md mx-auto mb-8">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+            <Input
+              type="text"
+              placeholder="Search Dutch or English words..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10"
+            />
+          </div>
+        </div>
+
+        {/* Search Results */}
+        {searchResults.length > 0 && (
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4 text-center">Search Results ({searchResults.length})</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              {searchResults.slice(0, 12).map((word, index) => (
+                <Card key={index} className="p-4">
+                  <div className="text-center">
+                    <p className="font-semibold text-lg">{word.dutch}</p>
+                    <p className="text-muted-foreground">{word.english}</p>
+                    {word.example && (
+                      <p className="text-sm text-muted-foreground mt-2 italic">{word.example}</p>
+                    )}
+                  </div>
+                </Card>
+              ))}
+            </div>
+            {searchResults.length > 12 && (
+              <p className="text-center text-muted-foreground mt-4">Showing first 12 results</p>
+            )}
+          </div>
+        )}
+
+        {/* Show topic selection or subsection selection (only if no search) */}
+        {!searchQuery && (
+          !selectedThemaName ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {Object.keys(topicGroups).map((topicName) => (
               <Card key={topicName} className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectTopic(topicName)}>
@@ -241,6 +295,7 @@ export default function Vocabulary() {
               ))}
             </div>
           </div>
+        ))
         )}
 
         {/* Coming Soon */}
