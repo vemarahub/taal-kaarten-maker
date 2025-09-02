@@ -10,8 +10,6 @@ import { useToast } from '@/hooks/use-toast';
 import heroImage from '@/assets/dutch-hero.jpg';
 import { loadVocabularyData, type VocabularyThema, type VocabularyWord } from '@/utils/csvLoader';
 
-
-
 export default function Vocabulary() {
   const [selectedThemaName, setSelectedThemaName] = useState<string | null>(null);
   const [selectedSubsection, setSelectedSubsection] = useState<number | null>(null);
@@ -126,7 +124,6 @@ export default function Vocabulary() {
   if (selectedSubsection && currentWord) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
-        {/* Header */}
         <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
@@ -147,7 +144,6 @@ export default function Vocabulary() {
           </div>
         </header>
 
-        {/* Word Practice */}
         <main className="container mx-auto px-4 py-8">
           <VocabularyPractice
             word={currentWord}
@@ -164,14 +160,12 @@ export default function Vocabulary() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
-      {/* Navigation */}
       <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4">
           <Navigation />
         </div>
       </header>
 
-      {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -204,7 +198,6 @@ export default function Vocabulary() {
         </div>
       </section>
 
-      {/* Vocabulary Topics Section */}
       <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -215,7 +208,6 @@ export default function Vocabulary() {
           </p>
         </div>
 
-        {/* Search Bar */}
         <div className="max-w-md mx-auto mb-8">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
@@ -229,7 +221,6 @@ export default function Vocabulary() {
           </div>
         </div>
 
-        {/* Search Results */}
         {searchResults.length > 0 && (
           <div className="mb-8">
             <h3 className="text-xl font-semibold mb-4 text-center">Search Results ({searchResults.length})</h3>
@@ -252,7 +243,6 @@ export default function Vocabulary() {
           </div>
         )}
 
-        {/* Show topic selection or subsection selection (only if no search) */}
         {!searchQuery && (
           !selectedThemaName ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -298,95 +288,6 @@ export default function Vocabulary() {
           )
         )}
 
-        {/* Coming Soon */}
-        <div className="mt-12 text-center">
-          <Card className="max-w-md mx-auto opacity-60">
-            <CardHeader>
-              <CardTitle className="text-muted-foreground">coming Soon</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">More Vocabulary Coming Soon!</p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-    </div>
-  );
-}word.dutch}</p>
-                    <p className="text-muted-foreground">{word.english}</p>
-                    {word.example && (
-                      <p className="text-sm text-muted-foreground mt-2 italic">{word.example}</p>
-                    )}
-                  </div>
-                </Card>
-              ))}
-            </div>
-            {searchResults.length > 12 && (
-              <p className="text-center text-muted-foreground mt-4">Showing first 12 results</p>
-            )}
-          </div>
-        )}word.dutch}</p>
-                    <p className="text-muted-foreground">{word.english}</p>
-                    {word.example && (
-                      <p className="text-sm text-muted-foreground mt-2 italic">{word.example}</p>
-                    )}
-                  </div>
-                </Card>
-              ))}
-            </div>
-            {searchResults.length > 12 && (
-              <p className="text-center text-muted-foreground mt-4">Showing first 12 results</p>
-            )}
-          </div>
-        )}
-
-        {/* Show topic selection or subsection selection (only if no search) */}
-        {!searchQuery && (
-          !selectedThemaName ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {Object.keys(topicGroups).map((topicName) => (
-                <Card key={topicName} className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectTopic(topicName)}>
-                  <CardHeader>
-                    <CardTitle className="text-xl">{topicName}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-4">
-                      {topicGroups[topicName].length} subsections available
-                    </p>
-                    <Button className="w-full">
-                      Select Topic
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : (
-            <div>
-              <div className="mb-8">
-                <Button
-                  variant="ghost"
-                  onClick={handleBackToTopics}
-                  className="text-muted-foreground hover:text-foreground mb-4"
-                >
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Back to Topics
-                </Button>
-                <h3 className="text-2xl font-bold text-center">{selectedThemaName} - Choose Subsection</h3>
-              </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                {topicGroups[selectedThemaName]?.map((subsection) => (
-                  <VocabularyCard
-                    key={subsection.id}
-                    thema={subsection}
-                    onStartPractice={handleStartPractice}
-                  />
-                ))}
-              </div>
-            </div>
-          )
-        )}
-
-        {/* Coming Soon */}
         <div className="mt-12 text-center">
           <Card className="max-w-md mx-auto opacity-60">
             <CardHeader>
