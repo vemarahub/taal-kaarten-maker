@@ -7,7 +7,7 @@ import Navigation from '@/components/Navigation';
 import { ArrowLeft, BookOpen, Target, Users, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import heroImage from '@/assets/dutch-hero.jpg';
-import { loadThemaDataFromExcel, type Thema } from '@/utils/csvLoader';
+import { loadTopicDataFromExcel, type Thema } from '@/utils/csvLoader';
 
 export default function Vragenlijst() {
   const [selectedThema, setSelectedThema] = useState<number | null>(null);
@@ -20,7 +20,7 @@ export default function Vragenlijst() {
     const loadData = async () => {
       try {
         setLoading(true);
-        const data = await loadThemaDataFromExcel();
+        const data = await loadTopicDataFromExcel();
         setThemaDat(data);
       } catch (error) {
         console.error('Failed to load thema data:', error);

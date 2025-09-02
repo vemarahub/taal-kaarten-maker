@@ -28,39 +28,39 @@ export interface VocabularyThema {
   color: string;
 }
 
-const THEMA_CONFIGS = [
+const TOPIC_CONFIGS = [
   {
     id: 1,
-    title: "Thema 1: Persoonlijke Informatie",
-    description: "Leer jezelf voor te stellen en persoonlijke informatie te delen in het Nederlands",
+    title: "Topic 1: Personal Information",
+    description: "Learn to introduce yourself and share personal information in Dutch",
     color: "bg-gradient-to-br from-primary to-primary-glow",
     csvFile: "thema1.csv"
   },
   {
     id: 2,
-    title: "Thema 2: Dagelijkse Activiteiten", 
-    description: "Leer over dagelijkse activiteiten, winkelen en tijdsindeling",
+    title: "Topic 2: Daily Activities", 
+    description: "Learn about daily activities, shopping and time management",
     color: "bg-gradient-to-br from-secondary to-accent",
     csvFile: "thema2.csv"
   },
   {
     id: 3,
-    title: "Thema 3: Begroetingen en Welzijn",
-    description: "Leer begroetingen, over je welzijn spreken en afspraken maken",
+    title: "Topic 3: Greetings and Wellbeing",
+    description: "Learn greetings, talking about your wellbeing and making appointments",
     color: "bg-gradient-to-br from-accent to-muted",
     csvFile: "thema3.csv"
   },
   {
     id: 4,
-    title: "Thema 4: Eten en Drinken",
-    description: "Leer over voedsel, maaltijden en restaurant bezoeken", 
+    title: "Topic 4: Food and Drinks",
+    description: "Learn about food, meals and restaurant visits", 
     color: "bg-gradient-to-br from-primary to-secondary",
     csvFile: "thema4.csv"
   },
   {
     id: 5,
-    title: "Thema 5: Wonen en Huisinrichting",
-    description: "Leer over woningsituaties, huizen en meubels",
+    title: "Topic 5: Housing and Furnishing",
+    description: "Learn about housing situations, homes and furniture",
     color: "bg-gradient-to-br from-accent to-primary",
     csvFile: "thema5.csv"
   },
@@ -103,11 +103,11 @@ function parseCSV(text: string): string[][] {
   return rows;
 }
 
-export async function loadThemaDataFromExcel(): Promise<Thema[]> {
+export async function loadTopicDataFromExcel(): Promise<Thema[]> {
   try {
-    const themas: Thema[] = [];
+    const topics: Thema[] = [];
     
-    for (const config of THEMA_CONFIGS) {
+    for (const config of TOPIC_CONFIGS) {
       try {
         const response = await fetch(`/${config.csvFile}`);
         const csvText = await response.text();
@@ -128,7 +128,7 @@ export async function loadThemaDataFromExcel(): Promise<Thema[]> {
         }
         
         if (questions.length > 0) {
-          themas.push({
+          topics.push({
             id: config.id,
             title: config.title,
             description: config.description,
@@ -141,7 +141,7 @@ export async function loadThemaDataFromExcel(): Promise<Thema[]> {
       }
     }
     
-    return themas.length > 0 ? themas : getFallbackData();
+    return topics.length > 0 ? topics : getFallbackData();
   } catch (error) {
     console.error('Error loading thema data:', error);
     return getFallbackData();
@@ -276,8 +276,8 @@ function getFallbackData(): Thema[] {
   return [
     {
       id: 1,
-      title: "Thema 1: Persoonlijke Informatie",
-      description: "Leer jezelf voor te stellen en persoonlijke informatie te delen in het Nederlands",
+      title: "Topic 1: Personal Information",
+      description: "Learn to introduce yourself and share personal information in Dutch",
       color: "bg-gradient-to-br from-primary to-primary-glow",
       questions: [
         { id: "1-1", question: "Wie ben je?", answer: "Ik ben Alper" },
@@ -285,6 +285,6 @@ function getFallbackData(): Thema[] {
         // ... more questions would be here in a real fallback
       ]
     }
-    // ... more themas would be here
+    // ... more topics would be here
   ];
 }
