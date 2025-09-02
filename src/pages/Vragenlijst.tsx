@@ -79,7 +79,7 @@ export default function Vragenlijst() {
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-primary" />
-          <p className="text-muted-foreground">Thema's laden...</p>
+          <p className="text-muted-foreground">Thema's loading...</p>
         </div>
       </div>
     );
@@ -98,12 +98,12 @@ export default function Vragenlijst() {
                 className="text-muted-foreground hover:text-foreground"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Terug naar Thema's
+                Back to Themes
               </Button>
               <Navigation />
               <div className="text-center">
                 <h1 className="text-xl font-bold text-foreground">{currentThema?.title}</h1>
-                <p className="text-sm text-muted-foreground">Nederlandse Vragenlijst</p>
+                <p className="text-sm text-muted-foreground">Practise Interactions</p>
               </div>
             </div>
           </div>
@@ -143,24 +143,24 @@ export default function Vragenlijst() {
         
         <div className="relative container mx-auto px-4 py-24 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Nederlandse Vragenlijst
+            Practise Interactions
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Oefen Nederlandse conversatie met interactieve vragenthema's. Perfect voor A2-niveau studenten.
+            Practice Dutch conversation with interactive question themes. Perfect for A2-level students.
           </p>
           
           <div className="flex flex-wrap justify-center gap-6 text-white/80">
             <div className="flex items-center space-x-2">
               <BookOpen className="w-5 h-5" />
-              <span>Interactieve Lessen</span>
+              <span>Interactive Learning</span>
             </div>
             <div className="flex items-center space-x-2">
               <Target className="w-5 h-5" />
-              <span>A2 Niveau</span>
+              <span>A2 Level</span>
             </div>
             <div className="flex items-center space-x-2">
               <Users className="w-5 h-5" />
-              <span>Nederlandse Uitspraak</span>
+              <span>Listening Practise</span>
             </div>
           </div>
         </div>
@@ -170,11 +170,11 @@ export default function Vragenlijst() {
       <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Kies een Thema
+            Choose a Theme
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Selecteer een thema om te beginnen met oefenen. Elk thema bevat verschillende vragen 
-            die je helpen je Nederlandse conversatievaardigheden te verbeteren.
+           Select a topic to start practicing. Each topic contains several questions
+that will help you improve your Dutch conversation skills.
           </p>
         </div>
 
@@ -192,10 +192,10 @@ export default function Vragenlijst() {
         <div className="mt-12 text-center">
           <Card className="max-w-md mx-auto opacity-60">
             <CardHeader>
-              <CardTitle className="text-muted-foreground">Binnenkort beschikbaar</CardTitle>
+              <CardTitle className="text-muted-foreground">Coming soon</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Meer thema's komen binnenkort!</p>
+              <p className="text-muted-foreground">More Themes coming soon!</p>
             </CardContent>
           </Card>
         </div>

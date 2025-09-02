@@ -147,11 +147,11 @@ export default function Vocabulary() {
                 className="text-muted-foreground hover:text-foreground"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Terug naar Woordenlijsten
+                Back to Vocabulary
               </Button>
               <div className="text-center">
                 <h1 className="text-xl font-bold text-foreground">{currentThema?.title}</h1>
-                <p className="text-sm text-muted-foreground">Nederlandse Woordenlijst</p>
+                <p className="text-sm text-muted-foreground">Practise Vocabulary</p>
               </div>
               <div className="w-48" />
             </div>
@@ -192,24 +192,24 @@ export default function Vocabulary() {
         
         <div className="relative container mx-auto px-4 py-24 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Nederlandse Woordenlijst
+            Practise Vocabulary
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Leer Nederlandse woorden met betekenis, uitspraak en voorbeeldzinnen. Perfect voor woordenschat uitbreiding.
+            Learn Dutch words with their meanings, pronunciations, and example sentences. Perfect for expanding your vocabulary.
           </p>
           
           <div className="flex flex-wrap justify-center gap-6 text-white/80">
             <div className="flex items-center space-x-2">
               <BookOpen className="w-5 h-5" />
-              <span>Woordenschat</span>
+              <span>Vocabulary</span>
             </div>
             <div className="flex items-center space-x-2">
               <Volume2 className="w-5 h-5" />
-              <span>Nederlandse Uitspraak</span>
+              <span>Dutch Pronunciation</span>
             </div>
             <div className="flex items-center space-x-2">
               <Target className="w-5 h-5" />
-              <span>Voorbeeldzinnen</span>
+              <span>Example sentences</span>
             </div>
           </div>
         </div>
@@ -219,10 +219,10 @@ export default function Vocabulary() {
       <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Kies een Woordenlijst
+           Choose a Wordlist
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Selecteer een thema om Nederlandse woorden te leren met vertalingen, uitspraak en voorbeeldzinnen.
+            Select a topic to learn Dutch words with translations, pronunciations, and example sentences.
           </p>
         </div>
 
@@ -240,10 +240,10 @@ export default function Vocabulary() {
         <div className="mt-12 text-center">
           <Card className="max-w-md mx-auto opacity-60">
             <CardHeader>
-              <CardTitle className="text-muted-foreground">Binnenkort beschikbaar</CardTitle>
+              <CardTitle className="text-muted-foreground">coming Soon</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Meer woordenlijsten komen binnenkort!</p>
+              <p className="text-muted-foreground">More Vocabulary Coming Soon!</p>
             </CardContent>
           </Card>
         </div>

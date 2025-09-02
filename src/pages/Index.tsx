@@ -144,7 +144,7 @@ const Index = () => {
         <div className="text-center">
           <Card className="max-w-2xl mx-auto bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20">
             <CardHeader>
-              <CardTitle className="text-2xl text-foreground">Klaar om te beginnen?</CardTitle>
+              <CardTitle className="text-2xl text-foreground">Ready to get started?</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-6">
