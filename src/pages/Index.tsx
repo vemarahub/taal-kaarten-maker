@@ -42,7 +42,7 @@ const Index = () => {
               </Button>
             </Link>
              <Link to="/vragenlijst">
-              <Button size="lg" className="w-full text-white bg-white/10 hover:bg-white/20 border border-white/20 flex items-center gap-2">
+              <Button size="lg" variant="outline" className="w-full text-white border-white/30 hover:bg-white/10 flex items-center gap-2">
                 <BookOpen className="w-4 h-4" />
                 Interactions
               </Button>
