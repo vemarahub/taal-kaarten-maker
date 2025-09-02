@@ -250,52 +250,65 @@ export default function Vocabulary() {
               <p className="text-center text-muted-foreground mt-4">Showing first 12 results</p>
             )}
           </div>
+        )}word.dutch}</p>
+                    <p className="text-muted-foreground">{word.english}</p>
+                    {word.example && (
+                      <p className="text-sm text-muted-foreground mt-2 italic">{word.example}</p>
+                    )}
+                  </div>
+                </Card>
+              ))}
+            </div>
+            {searchResults.length > 12 && (
+              <p className="text-center text-muted-foreground mt-4">Showing first 12 results</p>
+            )}
+          </div>
         )}
 
         {/* Show topic selection or subsection selection (only if no search) */}
         {!searchQuery && (
           !selectedThemaName ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {Object.keys(topicGroups).map((topicName) => (
-              <Card key={topicName} className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectTopic(topicName)}>
-                <CardHeader>
-                  <CardTitle className="text-xl">{topicName}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4">
-                    {topicGroups[topicName].length} subsections available
-                  </p>
-                  <Button className="w-full">
-                    Select Topic
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        ) : (
-          <div>
-            <div className="mb-8">
-              <Button
-                variant="ghost"
-                onClick={handleBackToTopics}
-                className="text-muted-foreground hover:text-foreground mb-4"
-              >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Topics
-              </Button>
-              <h3 className="text-2xl font-bold text-center">{selectedThemaName} - Choose Subsection</h3>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              {topicGroups[selectedThemaName]?.map((subsection) => (
-                <VocabularyCard
-                  key={subsection.id}
-                  thema={subsection}
-                  onStartPractice={handleStartPractice}
-                />
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {Object.keys(topicGroups).map((topicName) => (
+                <Card key={topicName} className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectTopic(topicName)}>
+                  <CardHeader>
+                    <CardTitle className="text-xl">{topicName}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground mb-4">
+                      {topicGroups[topicName].length} subsections available
+                    </p>
+                    <Button className="w-full">
+                      Select Topic
+                    </Button>
+                  </CardContent>
+                </Card>
               ))}
             </div>
-          </div>
-        ))
+          ) : (
+            <div>
+              <div className="mb-8">
+                <Button
+                  variant="ghost"
+                  onClick={handleBackToTopics}
+                  className="text-muted-foreground hover:text-foreground mb-4"
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back to Topics
+                </Button>
+                <h3 className="text-2xl font-bold text-center">{selectedThemaName} - Choose Subsection</h3>
+              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                {topicGroups[selectedThemaName]?.map((subsection) => (
+                  <VocabularyCard
+                    key={subsection.id}
+                    thema={subsection}
+                    onStartPractice={handleStartPractice}
+                  />
+                ))}
+              </div>
+            </div>
+          )
         )}
 
         {/* Coming Soon */}
