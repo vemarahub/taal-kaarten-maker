@@ -29,8 +29,8 @@ export default function Vocabulary() {
       } catch (error) {
         console.error('Failed to load vocabulary data:', error);
         toast({
-          title: "Fout bij laden",
-          description: "Er is een probleem opgetreden bij het laden van de woordenlijsten.",
+          title: "Loading Error",
+          description: "There was a problem loading the vocabulary lists.",
           variant: "destructive"
         });
       } finally {
@@ -63,8 +63,8 @@ export default function Vocabulary() {
     setSelectedSubsection(subsectionId);
     setCurrentWordIndex(0);
     toast({
-      title: "Woordenlijst gestart! 📚",
-      description: "Veel succes met je Nederlandse woorden!",
+      title: "Vocabulary Started! 📚",
+      description: "Good luck with your Dutch words!",
     });
   };
 
@@ -85,8 +85,8 @@ export default function Vocabulary() {
       setCurrentWordIndex(prev => prev + 1);
     } else {
       toast({
-        title: "Gefeliciteerd! 🎉",
-        description: "Je hebt alle woorden bekeken!",
+        title: "Congratulations! 🎉",
+        description: "You have viewed all words!",
       });
       handleBackToSubsections();
     }
@@ -130,7 +130,7 @@ export default function Vocabulary() {
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-primary" />
-          <p className="text-muted-foreground">Woordenlijsten loading...</p>
+          <p className="text-muted-foreground">Vocabulary loading...</p>
         </div>
       </div>
     );

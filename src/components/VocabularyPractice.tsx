@@ -46,11 +46,11 @@ export const VocabularyPractice: React.FC<VocabularyPracticeProps> = ({
             <div className="flex items-center space-x-2">
               <BookOpen className="w-5 h-5 text-primary" />
               <CardTitle className="text-lg text-foreground">
-                Woord {wordNumber} van {totalWords}
+                Word {wordNumber} of {totalWords}
               </CardTitle>
             </div>
             <div className="text-sm text-muted-foreground">
-              Woordenlijst
+              Vocabulary
             </div>
           </div>
         </CardHeader>
@@ -81,7 +81,7 @@ export const VocabularyPractice: React.FC<VocabularyPracticeProps> = ({
               className="mb-6"
             >
               <Volume2 className="w-5 h-5 mr-2" />
-              Uitspraak
+              Pronunciation
             </Button>
           </div>
 
@@ -92,7 +92,7 @@ export const VocabularyPractice: React.FC<VocabularyPracticeProps> = ({
               variant={showTranslation ? "default" : "secondary"}
               size="lg"
             >
-              {showTranslation ? "Verberg Vertaling" : "Toon Vertaling"}
+              {showTranslation ? "Hide Translation" : "Show Translation"}
             </Button>
           </div>
 
@@ -104,7 +104,7 @@ export const VocabularyPractice: React.FC<VocabularyPracticeProps> = ({
               </div>
               {word.example && (
                 <div className="mt-4 p-4 bg-background/50 rounded-md">
-                  <p className="text-muted-foreground text-sm mb-1">Voorbeeld:</p>
+                  <p className="text-muted-foreground text-sm mb-1">Example:</p>
                   <p className="text-foreground italic">{word.example}</p>
                 </div>
               )}
@@ -121,7 +121,7 @@ export const VocabularyPractice: React.FC<VocabularyPracticeProps> = ({
                 size="lg"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Vorige
+                Previous
               </Button>
               
               <div className="text-center">
@@ -141,7 +141,7 @@ export const VocabularyPractice: React.FC<VocabularyPracticeProps> = ({
                 variant="default"
                 size="lg"
               >
-                {wordNumber === totalWords ? "Voltooien" : "Volgende"} 
+                {wordNumber === totalWords ? "Complete" : "Next"} 
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>

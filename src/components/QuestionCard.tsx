@@ -40,8 +40,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
       speechSynthesis.speak(utterance);
     } else {
       toast({
-        title: "Audio niet beschikbaar",
-        description: "Je browser ondersteunt geen spraakuitvoer.",
+        title: "Audio not available",
+        description: "Your browser does not support speech output.",
         variant: "destructive"
       });
     }
@@ -55,8 +55,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   const markCorrect = () => {
     setIsAnswerCorrect(true);
     toast({
-      title: "Goed gedaan! ✅",
-      description: "Je antwoord was correct!",
+      title: "Well done! ✅",
+      description: "Your answer was correct!",
       variant: "default"
     });
   };
@@ -64,8 +64,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   const markIncorrect = () => {
     setIsAnswerCorrect(false);
     toast({
-      title: "Probeer opnieuw 🤔",
-      description: "Bekijk het juiste antwoord en probeer het te onthouden.",
+      title: "Try again 🤔",
+      description: "Look at the correct answer and try to remember it.",
       variant: "destructive"
     });
   };
@@ -76,7 +76,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
       <div className="mb-6">
         <div className="flex justify-between items-center mb-2">
           <span className="text-sm text-muted-foreground">
-            Vraag {questionNumber} van {totalQuestions}
+            Question {questionNumber} of {totalQuestions}
           </span>
           <span className="text-sm font-medium text-primary">
             {Math.round((questionNumber / totalQuestions) * 100)}%
@@ -100,13 +100,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-foreground mb-4">
-            Nederlandstalige Vraag
+            Dutch Question
           </CardTitle>
           
           {/* Question */}
           <div className="bg-muted/50 rounded-lg p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-primary">Vraag:</h3>
+              <h3 className="text-lg font-semibold text-primary">Question:</h3>
               <Button
                 variant="ghost"
                 size="sm"
@@ -114,7 +114,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                 className="text-primary hover:bg-primary/10"
               >
                 <Volume2 className="w-4 h-4 mr-2" />
-                Luister
+                Listen
               </Button>
             </div>
             <p className="text-xl font-medium text-foreground leading-relaxed">
@@ -128,7 +128,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           <div className={`transition-all duration-300 ${showAnswer ? 'opacity-100' : 'opacity-50'}`}>
             <div className="bg-accent/20 rounded-lg p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-secondary">Antwoord:</h3>
+                <h3 className="text-lg font-semibold text-secondary">Answer:</h3>
                 <div className="flex space-x-2">
                   <Button
                     variant="ghost"
@@ -138,7 +138,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                     disabled={!showAnswer}
                   >
                     <Volume2 className="w-4 h-4 mr-2" />
-                    Luister
+                    Listen
                   </Button>
                   <Button
                     variant="ghost"
@@ -147,7 +147,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                     className="text-muted-foreground hover:bg-muted"
                   >
                     {showAnswer ? <EyeOff className="w-4 h-4 mr-2" /> : <Eye className="w-4 h-4 mr-2" />}
-                    {showAnswer ? 'Verberg' : 'Toon'}
+                    {showAnswer ? 'Hide' : 'Show'}
                   </Button>
                 </div>
               </div>
@@ -158,7 +158,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                 </p>
               ) : (
                 <p className="text-muted-foreground italic">
-                  Klik op "Toon" om het antwoord te zien
+                  Click "Show" to see the answer
                 </p>
               )}
             </div>
@@ -168,7 +168,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           {showAnswer && (
             <div className="flex flex-col space-y-3">
               <p className="text-center text-sm text-muted-foreground">
-                Hoe ging het met deze vraag?
+                How did you do with this question?
               </p>
               <div className="flex space-x-4 justify-center">
                 <Button
@@ -185,7 +185,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   className="flex-1 max-w-40"
                 >
                   <RotateCcw className="w-4 h-4 mr-2" />
-                  Probeer opnieuw
+                  Try again
                 </Button>
               </div>
             </div>
@@ -198,7 +198,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             onClick={onPrevious}
             disabled={!showNavigation || questionNumber === 1}
           >
-            Vorige
+            Previous
           </Button>
           
           <Button
@@ -215,7 +215,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             onClick={onNext}
             disabled={!showNavigation}
           >
-            {questionNumber === totalQuestions ? 'Voltooien' : 'Volgende'}
+            {questionNumber === totalQuestions ? 'Complete' : 'Next'}
           </Button>
         </CardFooter>
       </Card>

@@ -25,8 +25,8 @@ export default function Vragenlijst() {
       } catch (error) {
         console.error('Failed to load thema data:', error);
         toast({
-          title: "Fout bij laden",
-          description: "Er is een probleem opgetreden bij het laden van de thema's.",
+          title: "Loading Error",
+          description: "There was a problem loading the themes.",
           variant: "destructive"
         });
       } finally {
@@ -41,8 +41,8 @@ export default function Vragenlijst() {
     setSelectedThema(themaId);
     setCurrentQuestionIndex(0);
     toast({
-      title: "Oefening gestart! 🎯",
-      description: "Veel succes met je Nederlandse vragen!",
+      title: "Practice Started! 🎯",
+      description: "Good luck with your Dutch questions!",
     });
   };
 
@@ -58,8 +58,8 @@ export default function Vragenlijst() {
     } else {
       // Completed all questions
       toast({
-        title: "Gefeliciteerd! 🎉",
-        description: "Je hebt alle vragen voltooid!",
+        title: "Congratulations! 🎉",
+        description: "You have completed all questions!",
       });
       handleBackToThemas();
     }
@@ -79,7 +79,7 @@ export default function Vragenlijst() {
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-primary" />
-          <p className="text-muted-foreground">Thema's loading...</p>
+          <p className="text-muted-foreground">Themes loading...</p>
         </div>
       </div>
     );
