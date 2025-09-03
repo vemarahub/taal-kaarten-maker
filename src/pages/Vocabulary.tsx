@@ -110,6 +110,7 @@ export default function Vocabulary() {
       const shoppingSections = ['Who does the shopping?', 'How can I help you?', 'Where do you shop?', 'Is the Jumbo still open?'];
       const socialSections = ['Nice weather right?', 'Nice to see you', 'Come watch football with me?', 'Congratulations!'];
       const foodSections = ['What do we eat tonight', 'What would you like to eat', 'How Healthy', 'Eating Out'];
+  const livingSections = ['This is my house', 'Note in Apartment', 'A lovely house', 'Rooms'];
       
       if (shoppingSections.includes(subsection.title)) {
         topicName = 'Topic 2: Shopping';
@@ -117,6 +118,8 @@ export default function Vocabulary() {
         topicName = 'Topic 3: Social Conversations';
       } else if (foodSections.includes(subsection.title)) {
         topicName = 'Topic 4: Food and Drinks';
+      } else if (livingSections.includes(subsection.title)) {
+        topicName = 'Topic 5: Living';
       }
       
       if (!acc[topicName]) acc[topicName] = [];
