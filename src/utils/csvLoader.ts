@@ -244,7 +244,8 @@ function getTopicTitle(topicName: string): string {
     'Topic 3': 'Topic 3: Social Conversations',
     'Topic 4': 'Topic 4: Food and Drinks',
   'Topic 5': 'Topic 5: Living',
-  'Topic 6': 'Topic 6: Travelling and Directions'
+  'Topic 6': 'Topic 6: Travelling and Directions',
+  'Topic 7': 'Topic 7: GP, drugstore and pharmacy'
   };
   return topicTitles[topicName] || topicName;
 }
