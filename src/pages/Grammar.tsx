@@ -25,24 +25,24 @@ export default function Grammar() {
         
         <div className="relative container mx-auto px-4 py-24 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Nederlandse Grammatica
+            Dutch Grammar
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Leer de basisregels van de Nederlandse grammatica. Perfect voor beginners en gevorderden.
+            Learn the basic rules of Dutch grammar. Perfect for beginners and advanced learners.
           </p>
           
           <div className="flex flex-wrap justify-center gap-6 text-white/80">
             <div className="flex items-center space-x-2">
               <BookOpen className="w-5 h-5" />
-              <span>Basisregels</span>
+              <span>Basic Rules</span>
             </div>
             <div className="flex items-center space-x-2">
               <Target className="w-5 h-5" />
-              <span>Voorbeelden</span>
+              <span>Examples</span>
             </div>
             <div className="flex items-center space-x-2">
               <Users className="w-5 h-5" />
-              <span>Oefeningen</span>
+              <span>Exercises</span>
             </div>
           </div>
         </div>
@@ -52,38 +52,38 @@ export default function Grammar() {
       <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Grammatica Onderwerpen
+            Grammar Topics
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ontdek verschillende grammaticaonderwerpen om je Nederlandse taalvaardigheden te verbeteren.
+            Discover various grammar topics to improve your Dutch language skills.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <Card className="text-center">
             <CardHeader>
-              <CardTitle className="text-muted-foreground">Werkwoorden</CardTitle>
+              <CardTitle className="text-muted-foreground">Verbs</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Binnenkort beschikbaar</p>
+              <p className="text-muted-foreground">Coming soon</p>
             </CardContent>
           </Card>
 
           <Card className="text-center">
             <CardHeader>
-              <CardTitle className="text-muted-foreground">Zelfstandige Naamwoorden</CardTitle>
+              <CardTitle className="text-muted-foreground">Nouns</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Binnenkort beschikbaar</p>
+              <p className="text-muted-foreground">Coming soon</p>
             </CardContent>
           </Card>
 
           <Card className="text-center">
             <CardHeader>
-              <CardTitle className="text-muted-foreground">Bijvoeglijke Naamwoorden</CardTitle>
+              <CardTitle className="text-muted-foreground">Adjectives</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Binnenkort beschikbaar</p>
+              <p className="text-muted-foreground">Coming soon</p>
             </CardContent>
           </Card>
         </div>
