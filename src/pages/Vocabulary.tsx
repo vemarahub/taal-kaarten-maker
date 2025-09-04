@@ -114,6 +114,7 @@ export default function Vocabulary() {
   const travellingSections = ['How late is the train', 'Can I ask you a question?', 'Sorry I will be late', 'How do you travel'];
   const healthcareSections = ['Consultation Hours', 'Making Appointment', 'Pharmacy'];
   const neighbourhoodSections = ['Ideal house', 'Where is taalcafe', 'With neighbours', 'Discussion with neighbours'];
+  const shoppingSections2 = ['What will you wear', 'Goods return', 'Buying second hand', 'Returning packages'];
       
       if (shoppingSections.includes(subsection.title)) {
         topicName = 'Topic 2: Shopping';
@@ -129,6 +130,8 @@ export default function Vocabulary() {
         topicName = 'Topic 7: GP, drugstore and pharmacy';
       } else if (neighbourhoodSections.includes(subsection.title)) {
         topicName = 'Topic 8: House, street and neighbourhood';
+      } else if (shoppingSections2.includes(subsection.title)) {
+        topicName = 'Topic 9: Buying and Returning';
       }
       
       if (!acc[topicName]) acc[topicName] = [];
