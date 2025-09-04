@@ -64,14 +64,13 @@ const TOPIC_CONFIGS = [
     color: "bg-gradient-to-br from-accent to-primary",
     csvFile: "thema5.csv"
   },
-  // Add new themas here - just add thema6.csv to public folder and add config below
-  // {
-  //   id: 6,
-  //   title: "Thema 6: Your Title",
-  //   description: "Your description",
-  //   color: "bg-gradient-to-br from-secondary to-primary",
-  //   csvFile: "thema6.csv"
-  // }
+  {
+    id: 6,
+    title: "Topic 6: Travel and Transportation",
+    description: "Learn about different modes of transport and travel experiences",
+    color: "bg-gradient-to-br from-secondary to-primary",
+    csvFile: "thema6.csv"
+  }
 ];
 
 function parseCSV(text: string): string[][] {
