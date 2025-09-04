@@ -162,7 +162,7 @@ export async function loadVocabularyData(): Promise<VocabularyThema[]> {
         const word: VocabularyWord = {
           dutch: row[0].replace(/"/g, '').trim(),
           english: row[1].replace(/"/g, '').trim(),
-          example: generateExample(row[0].replace(/"/g, '').trim())
+          example: row[4] ? row[4].replace(/"/g, '').trim() : generateExample(row[0].replace(/"/g, '').trim())
         };
         
         const topic = row[2].replace(/"/g, '').trim();
