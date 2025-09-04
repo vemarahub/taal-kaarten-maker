@@ -247,7 +247,8 @@ function getTopicTitle(topicName: string): string {
   'Topic 7': 'Topic 7: GP, drugstore and pharmacy',
   'Topic 8': 'Topic 8: House, street and neighbourhood',
   'Topic 9': 'Topic 9: Buying and Returning',
-  'Topic 10': 'Topic 10: Safety in Traffic'
+  'Topic 10': 'Topic 10: Safety in Traffic',
+  'Topic 11': 'Topic 11: Free Time'
   };
   return topicTitles[topicName] || topicName;
 }
