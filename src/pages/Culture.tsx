@@ -219,7 +219,7 @@ export default function Culture() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroImage})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-orange/90 to-blue/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-600/90 to-blue-600/90" />
         
         <div className="relative container mx-auto px-4 py-24 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
@@ -266,6 +266,19 @@ export default function Culture() {
               <CardContent>
                 <p className="text-muted-foreground mb-4">
                   Learn about housing, utilities, and living arrangements in the Netherlands.
+                </p>
+                <Button className="w-full">
+                  Select Topic
+                </Button>
+              </CardContent>
+            </Card>
+            <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectTopic('Topic 2: Dealing with Others')}>
+              <CardHeader>
+                <CardTitle className="text-xl">Topic 2: Dealing with Others</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Learn about Dutch culture, communication, traditions, and social interactions.
                 </p>
                 <Button className="w-full">
                   Select Topic

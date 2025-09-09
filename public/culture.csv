@@ -4,19 +4,19 @@ gezinsmigrant,family migrant,Topic 1,Een nieuwe huurwoning,iemand die naar Neder
 huishouden,household,Topic 1,Een nieuwe huurwoning,de bewoners van een huis,the residents of a house
 huurcommissie,rent committee,Topic 1,Een nieuwe huurwoning,een organisatie die help bij problemen tussen huurders en verhuurders,an organization that helps with problems between tenants and landlords
 huurcontract,rental contract,Topic 1,Een nieuwe huurwoning,een schriftelijke overeenkomst tussen iemand die iets huurt en iemand die iets verhuurt,a written agreement between someone who rents and someone who rents out
-huurder,tenant,Topic 1,Een nieuwe huurwoning,persoon die iets huurt bijvoorbeeld een woning
-huurtoeslag,housing allowance,Topic 1,Een nieuwe huurwoning,geld dat je van de overheid krijgt om de huur van je huis te betalen
-maximum,maximum,Topic 1,Een nieuwe huurwoning,het meeste; het hoogste
-onderhoud,maintenance,Topic 1,Een nieuwe huurwoning,wat je doet om te zorgen dat iets goed blijft werken of dat iets mooi blijft
-servicekosten,service costs,Topic 1,Een nieuwe huurwoning,het geld dat je betaalt aan de verhuurder voor diensten en voorzieningen zoals schoonmaak en reparaties
-sociale huurwoning,social housing,Topic 1,Een nieuwe huurwoning,huurwoning voor mensen met een lager inkomen; de woningen hebben een maximale huurprijs
-urgentieverklaring,urgency declaration,Topic 1,Een nieuwe huurwoning,een verklaring voor iemand die met spoed een woning nodig heeft; die persoon krijgt dan voorrang
-verhuurder,landlord,Topic 1,Een nieuwe huurwoning,een organisatie of persoon die iets verhuurt bijvoorbeeld een woning
-vluchteling,refugee,Topic 1,Een nieuwe huurwoning,iemand die gevlucht is uit een ander land
-voorrang,priority,Topic 1,Een nieuwe huurwoning,het recht om iets als eerste te mogen doen
-vrije sector,private sector,Topic 1,Een nieuwe huurwoning,huurwoningen die geen sociale huurwoningen zijn; de huurprijs is hoger dan van een sociale huurwoning
-woningbouwvereniging,housing association,Topic 1,Een nieuwe huurwoning,een organisatie die woonruimtes bouwt en verhuurt
-woningcorporatie,housing corporation,Topic 1,Een nieuwe huurwoning,een organisatie die woonruimtes bouwt en verhuurt
+huurder,tenant,Topic 1,Een nieuwe huurwoning,persoon die iets huurt bijvoorbeeld een woning,person who rents something for example a house
+huurtoeslag,housing allowance,Topic 1,Een nieuwe huurwoning,geld dat je van de overheid krijgt om de huur van je huis te betalen,money you get from the government to pay the rent of your house
+maximum,maximum,Topic 1,Een nieuwe huurwoning,het meeste; het hoogste,the most; the highest
+onderhoud,maintenance,Topic 1,Een nieuwe huurwoning,wat je doet om te zorgen dat iets goed blijft werken of dat iets mooi blijft,what you do to ensure something keeps working well or stays nice
+servicekosten,service costs,Topic 1,Een nieuwe huurwoning,het geld dat je betaalt aan de verhuurder voor diensten en voorzieningen zoals schoonmaak en reparaties,the money you pay to the landlord for services and facilities such as cleaning and repairs
+sociale huurwoning,social housing,Topic 1,Een nieuwe huurwoning,huurwoning voor mensen met een lager inkomen; de woningen hebben een maximale huurprijs,rental housing for people with lower income; the houses have a maximum rent price
+urgentieverklaring,urgency declaration,Topic 1,Een nieuwe huurwoning,een verklaring voor iemand die met spoed een woning nodig heeft; die persoon krijgt dan voorrang,a declaration for someone who urgently needs housing; that person then gets priority
+verhuurder,landlord,Topic 1,Een nieuwe huurwoning,een organisatie of persoon die iets verhuurt bijvoorbeeld een woning,an organization or person who rents out something for example a house
+vluchteling,refugee,Topic 1,Een nieuwe huurwoning,iemand die gevlucht is uit een ander land,someone who has fled from another country
+voorrang,priority,Topic 1,Een nieuwe huurwoning,het recht om iets als eerste te mogen doen,the right to be allowed to do something first
+vrije sector,private sector,Topic 1,Een nieuwe huurwoning,huurwoningen die geen sociale huurwoningen zijn; de huurprijs is hoger dan van een sociale huurwoning,rental houses that are not social housing; the rent is higher than social housing
+woningbouwvereniging,housing association,Topic 1,Een nieuwe huurwoning,een organisatie die woonruimtes bouwt en verhuurt,an organization that builds and rents out living spaces
+woningcorporatie,housing corporation,Topic 1,Een nieuwe huurwoning,een organisatie die woonruimtes bouwt en verhuurt,an organization that builds and rents out living spaces
 bedenktijd,cooling-off period,Topic 1,Een huis kopen,de tijd die de koper van een huis krijgt om de koop te annuleren
 belasting,tax,Topic 1,Een huis kopen,het bedrag van je salaris of van prijzen dat je aan de overheid moet betalen
 bezichtiging,viewing,Topic 1,Een huis kopen,het bezoeken en uitgebreid bekijken van een woning die te koop of te huur is
@@ -66,3 +66,49 @@ recyclen,recycle,Topic 1,Schoon en veilig,iets nieuws maken van het materiaal va
 restafval,residual waste,Topic 1,Schoon en veilig,het huishoudelijk afval dat overblijft nadat het recyclebare afval is gescheiden
 schadelijke stoffen,harmful substances,Topic 1,Schoon en veilig,dingen die ongezond of gevaarlijk zijn voor mensen
 statiegeld,deposit,Topic 1,Schoon en veilig,geld dat je betaalt als je een volle fles koopt en dat je terugkrijgt als je de lege fles weer terugbrengt
+culturele achtergrond,cultural background,Topic 2,Iedereen is anders,de normen waarden en gewoonten die je gewend bent door de cultuur waarin je opgegroeid bent,the norms values and customs you are used to from the culture you grew up in
+misverstand,misunderstanding,Topic 2,Iedereen is anders,een situatie waarin mensen elkaar niet goed begrijpen,a situation where people do not understand each other well
+nieuwkomers,newcomers,Topic 2,Iedereen is anders,iemand die niet in Nederland geboren is en nog niet zo lang in Nederland woont,someone who was not born in the Netherlands and has not lived in the Netherlands for very long
+regio,region,Topic 2,Iedereen is anders,een groot gebied met verschillende gemeentes dat op een bepaalde manier verbonden is,a large area with different municipalities that is connected in a certain way
+vrijheid,freedom,Topic 2,Iedereen is anders,de situatie waarin je vrij bent; je mag zelf bepalen wat je wilt doen,the situation in which you are free; you can decide for yourself what you want to do
+direct communiceren,direct communication,Topic 2,Communiceren,je zegt precies en eerlijk wat je bedoelt,you say exactly and honestly what you mean
+feedback,feedback,Topic 2,Communiceren,opmerkingen over wat goed en niet goed gaat,comments about what is going well and what is not going well
+indirect communiceren,indirect communication,Topic 2,Communiceren,je zegt iets maar je bedoelt iets anders,you say something but you mean something else
+officiële instantie,official institution,Topic 2,Communiceren,een organisatie van de overheid,a government organization
+gelijkheid,equality,Topic 2,Vrijheid en gelijkheid,er is gelijkheid als groepen mensen dezelfde kansen en rechten hebben,there is equality when groups of people have the same opportunities and rights
+gepast,appropriate,Topic 2,Vrijheid en gelijkheid,gepast gedrag is gedrag met goede manieren zoals het hoort,appropriate behavior is behavior with good manners as it should be
+homoseksualiteit,homosexuality,Topic 2,Vrijheid en gelijkheid,de seksuele voorkeur voor iemand van hetzelfde geslacht,the sexual preference for someone of the same gender
+LHBTIQ+,LGBTIQ+,Topic 2,Vrijheid en gelijkheid,deze afkorting staat voor lesbisch homoseksueel biseksueel transgender en intersekse,this abbreviation stands for lesbian homosexual bisexual transgender and intersex
+samenwonen,cohabitation,Topic 2,Vrijheid en gelijkheid,samen in één huis wonen vooral zonder getrouwd te zijn,living together in one house especially without being married
+vrijheid,freedom,Topic 2,Vrijheid en gelijkheid,de toestand waarin je vrij bent,the state in which you are free
+Bevrijdingsdag,Liberation Day,Topic 2,Feesten en tradities,feestdag op 5 mei Nederland viert dan het einde van de Tweede Wereldoorlog in 1945,holiday on May 5 the Netherlands celebrates the end of World War II in 1945
+carnaval,carnival,Topic 2,Feesten en tradities,een feest in februari of maart waarbij mensen zich verkleden,a festival in February or March where people dress up
+Dodenherdenking,Remembrance Day,Topic 2,Feesten en tradities,een moment op 4 mei om 20.00 uur is iedereen in Nederland tweede minuten stil,a moment on May 4 at 8:00 PM everyone in the Netherlands is silent for two minutes
+Eid al-Fitr,Eid al-Fitr,Topic 2,Feesten en tradities,islamitische feestdag waarop het einde van de vastenmaand ramadan gevierd wordt,Islamic holiday celebrating the end of the fasting month of Ramadan
+Goede Vrijdag,Good Friday,Topic 2,Feesten en tradities,christelijke feestdag waarop de kruisiging en dood van Jezus wordt herdacht,Christian holiday commemorating the crucifixion and death of Jesus
+Hemelvaart,Ascension Day,Topic 2,Feesten en tradities,een christelijk feest veertig dagen na Pasen op donderdag,a Christian festival forty days after Easter on Thursday
+hindoeïstisch,Hindu,Topic 2,Feesten en tradities,volgens een religie uit India waarbij men gelooft in meerdere goden en in meerdere levens,according to a religion from India where people believe in multiple gods and multiple lives
+joods,Jewish,Topic 2,Feesten en tradities,iets wat joods is hoort bij het geloof van de joden,something that is Jewish belongs to the faith of the Jews
+katholiek,Catholic,Topic 2,Feesten en tradities,de katholieke kerk is de christelijke kerk waarvan de paus in Rome het hoofd is,the Catholic Church is the Christian church of which the Pope in Rome is the head
+Kerst,Christmas,Topic 2,Feesten en tradities,een christelijk feest op 25 en 26 december waarbij de geboorte van Jezus gevierd wordt,a Christian festival on December 25 and 26 celebrating the birth of Jesus
+kerstavond,Christmas Eve,Topic 2,Feesten en tradities,de avond voor kerst op 24 december,the evening before Christmas on December 24
+Keti Koti,Keti Koti,Topic 2,Feesten en tradities,de dagen waarop de afschaffing van de slavernij wordt herdacht en gevierd,the days on which the abolition of slavery is commemorated and celebrated
+Koningsdag,King's Day,Topic 2,Feesten en tradities,de dag waarop de verjaardag van de koning gevierd wordt 27 april,the day on which the king's birthday is celebrated April 27
+officiële vrije dag,official holiday,Topic 2,Feesten en tradities,een dag waarop het hele land vrij heeft van werk of school,a day when the whole country is free from work or school
+oliebol,olieball,Topic 2,Feesten en tradities,een zachte ronde koek die in hete olie is gebakken,a soft round cake that is baked in hot oil
+oud en nieuw,New Year's Eve,Topic 2,Feesten en tradities,feest dat wordt gevierd aan het einde van het oude jaar en aan het begin van het nieuwe jaar,festival celebrated at the end of the old year and at the beginning of the new year
+Pakjesavond,St. Nicholas Eve,Topic 2,Feesten en tradities,feest op de avond van 5 december waarbij kinderen cadeautjes krijgen van Sinterklaas,festival on the evening of December 5 where children receive gifts from St. Nicholas
+ramadan,Ramadan,Topic 2,Feesten en tradities,de maand waarin moslims overdag niets mogen eten of drinken,the month in which Muslims are not allowed to eat or drink during the day
+Sinterklaas,St. Nicholas,Topic 2,Feesten en tradities,een heilige die op 5 december en in de weken ervoor cadeaus geeft aan kinderen,a saint who gives gifts to children on December 5 and in the weeks before
+slavernij,slavery,Topic 2,Feesten en tradities,mensen zijn niet vrij omdat ze het bezit zijn van iemand anders,people are not free because they are the property of someone else
+Tweede Wereldoorlog,World War II,Topic 2,Feesten en tradities,een grote oorlog van 1939 tot 1945,a major war from 1939 to 1945
+vastentijd,Lent,Topic 2,Feesten en tradities,een periode van 40 dagen voor Pasen waarin sommige mensen minder eten,a period of 40 days before Easter when some people eat less
+vuurwerk,fireworks,Topic 2,Feesten en tradities,iets wat knalt en licht geeft als je het aansteekt,something that bangs and gives light when you light it
+condoleren,to offer condolences,Topic 2,Contact met anderen,gevoel tonen als iemand is overleden,showing feeling when someone has died
+contributie,membership fee,Topic 2,Contact met anderen,geld dat je betaalt als je lid bent van een club of van een vereniging,money you pay when you are a member of a club or association
+gecondoleerd,my condolences,Topic 2,Contact met anderen,dit zeg je als iemand overleden is om te laten zien dat je het erg vindt,this is what you say when someone has died to show that you feel sorry
+hobby,hobby,Topic 2,Contact met anderen,iets dat je graag doet in je vrije tijd,something you like to do in your free time
+kraamvisite,maternity visit,Topic 2,Contact met anderen,bezoek dat langskomt bij de ouders die net een kind hebben gekregen,visit that comes to parents who have just had a child
+sociale contacten,social contacts,Topic 2,Contact met anderen,de mensen die je kent en waar je mee omgaat,the people you know and interact with
+veel sterkte,much strength,Topic 2,Contact met anderen,dit zeg je om iemand moed te geven die problemen heeft,this is what you say to give courage to someone who has problems
+vereniging,association,Topic 2,Contact met anderen,een organisatie van mensen die hetzelfde doel of dezelfde interesse hebben,an organization of people who have the same goal or the same interest

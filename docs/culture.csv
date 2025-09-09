@@ -4,65 +4,111 @@ gezinsmigrant,family migrant,Topic 1,Een nieuwe huurwoning,iemand die naar Neder
 huishouden,household,Topic 1,Een nieuwe huurwoning,de bewoners van een huis,the residents of a house
 huurcommissie,rent committee,Topic 1,Een nieuwe huurwoning,een organisatie die help bij problemen tussen huurders en verhuurders,an organization that helps with problems between tenants and landlords
 huurcontract,rental contract,Topic 1,Een nieuwe huurwoning,een schriftelijke overeenkomst tussen iemand die iets huurt en iemand die iets verhuurt,a written agreement between someone who rents and someone who rents out
-huurder,tenant,Topic 1,Een nieuwe huurwoning,persoon die iets huurt bijvoorbeeld een woning
-huurtoeslag,housing allowance,Topic 1,Een nieuwe huurwoning,geld dat je van de overheid krijgt om de huur van je huis te betalen
-maximum,maximum,Topic 1,Een nieuwe huurwoning,het meeste; het hoogste
-onderhoud,maintenance,Topic 1,Een nieuwe huurwoning,wat je doet om te zorgen dat iets goed blijft werken of dat iets mooi blijft
-servicekosten,service costs,Topic 1,Een nieuwe huurwoning,het geld dat je betaalt aan de verhuurder voor diensten en voorzieningen zoals schoonmaak en reparaties
-sociale huurwoning,social housing,Topic 1,Een nieuwe huurwoning,huurwoning voor mensen met een lager inkomen; de woningen hebben een maximale huurprijs
-urgentieverklaring,urgency declaration,Topic 1,Een nieuwe huurwoning,een verklaring voor iemand die met spoed een woning nodig heeft; die persoon krijgt dan voorrang
-verhuurder,landlord,Topic 1,Een nieuwe huurwoning,een organisatie of persoon die iets verhuurt bijvoorbeeld een woning
-vluchteling,refugee,Topic 1,Een nieuwe huurwoning,iemand die gevlucht is uit een ander land
-voorrang,priority,Topic 1,Een nieuwe huurwoning,het recht om iets als eerste te mogen doen
-vrije sector,private sector,Topic 1,Een nieuwe huurwoning,huurwoningen die geen sociale huurwoningen zijn; de huurprijs is hoger dan van een sociale huurwoning
-woningbouwvereniging,housing association,Topic 1,Een nieuwe huurwoning,een organisatie die woonruimtes bouwt en verhuurt
-woningcorporatie,housing corporation,Topic 1,Een nieuwe huurwoning,een organisatie die woonruimtes bouwt en verhuurt
-bedenktijd,cooling-off period,Topic 1,Een huis kopen,de tijd die de koper van een huis krijgt om de koop te annuleren
-belasting,tax,Topic 1,Een huis kopen,het bedrag van je salaris of van prijzen dat je aan de overheid moet betalen
-bezichtiging,viewing,Topic 1,Een huis kopen,het bezoeken en uitgebreid bekijken van een woning die te koop of te huur is
-bod doen,make an offer,Topic 1,Een huis kopen,een voorstel doen voor een prijs die je wilt betalen bijvoorbeeld voor een huis
-budget,budget,Topic 1,Een huis kopen,het maximale bedrag dat je kunt of wilt betalen voor iets bijvoorbeeld voor een huis
-eigenaar,owner,Topic 1,Een huis kopen,iemand die iets bezit bijvoorbeeld iemand die een eigen huis heeft gekocht
-financiering,financing,Topic 1,Een huis kopen,het regelen van geld om bijvoorbeeld een huis te kopen
-hypotheek afsluiten,take out a mortgage,Topic 1,Een huis kopen,geld lenen van bijvoorbeeld een bank zodat je een huis kunt kopen
-hypotheekadviseur,mortgage advisor,Topic 1,Een huis kopen,iemand die helpt bij het afsluiten van een hypotheek
-hypotheekrenteaftrek,mortgage interest deduction,Topic 1,Een huis kopen,mensen die rente moeten betalen omdat ze een hypotheek hebben hoeven minder belasting te betalen
-koopcontract,purchase contract,Topic 1,Een huis kopen,een officiële overeenkomst tussen iemand die iets koopt en iemand die iets verkoopt
-koopsom,purchase price,Topic 1,Een huis kopen,het bedrag dat je betaalt voor het huis dat je hebt gekocht
-makelaar,real estate agent,Topic 1,Een huis kopen,iemand die voor zijn beroep mensen helpt bij het kopen of verkopen van een huis
-notaris,notary,Topic 1,Een huis kopen,iemand die de papieren regelt bijvoorbeeld voor iemand die een huis koopt
-onderhandelen,negotiate,Topic 1,Een huis kopen,praten over de prijs van een woning en proberen een afspraak over de prijs te maken
-rente,interest,Topic 1,Een huis kopen,extra geld dat je aan de bank moet betalen als je een hypotheek of andere lening hebt
-tegenbod,counteroffer,Topic 1,Een huis kopen,antwoord op een bod dat eerder gedaan is
-vraagprijs,asking price,Topic 1,Een huis kopen,het bedrag dat de verkoper vraagt bijvoorbeeld voor een huis
-cv-ketel,central heating boiler,Topic 1,Gas water licht en internet,een apparaat dat water warm maakt voor de centrale verwarming
-energieleverancier,energy supplier,Topic 1,Gas water licht en internet,een bedrijf dat energie verkoopt aan consumenten en bedrijven
-groene stroom,green electricity,Topic 1,Gas water licht en internet,energie uit duurzame energiebronnen zoals de wind en de zon
-jaarafrekening,annual statement,Topic 1,Gas water licht en internet,de energierekening over het afgelopen jaar
-leveringskosten,delivery costs,Topic 1,Gas water licht en internet,het geld dat de energieleverancier betaalt voor het leveren van de energie
-meterkast,meter cupboard,Topic 1,Gas water licht en internet,een kast in je huis waarin de meters voor water gas en stroom zich bevinden
-meterstand,meter reading,Topic 1,Gas water licht en internet,een getal op de meter voor water gas of stroom dat laat zien hoeveel je ervan gebruikt hebt
-milieu,environment,Topic 1,Gas water licht en internet,het water de grond en de lucht om ons heen
-netbeheer,grid management,Topic 1,Gas water licht en internet,de transport van gas en elektriciteit naar je huis; daarvoor betaal je ook geld aan de energieleverancier
-pakket,package,Topic 1,Gas water licht en internet,een groep dingen die bij elkaar horen; als je een internetabonnement afsluit kun je uit verschillende pakketten kiezen
-provider,provider,Topic 1,Gas water licht en internet,een bedrijf dat zorgt dat klanten internet kunnen gebruiken of mobiel kunnen telefoneren
-variabel contract,variable contract,Topic 1,Gas water licht en internet,het bedrag dat je moet betalen kan veranderen: het kan omhoog of omlaag gaan
-vast contract,fixed contract,Topic 1,Gas water licht en internet,het contract blijft hetzelfde voor een langere periode je moet elke maand hetzelfde bedrag betalen
-verbruik,consumption,Topic 1,Gas water licht en internet,de hoeveelheid energie die een apparaat gebruikt om te werken
-voorschot,advance payment,Topic 1,Gas water licht en internet,geld dat je betaalt voor energie die je in de toekomst gaat gebruiken
-afval inzamelen,waste collection,Topic 1,Schoon en veilig,het ophalen van afval van de bewoners door de gemeente
-afval scheiden,waste separation,Topic 1,Schoon en veilig,het sorteren van afval op basis van de verschillende materialen van het afval: plastic papier rest gft etc
-afvalkalender,waste calendar,Topic 1,Schoon en veilig,een lijst met de data waarop het vuilnis wordt opgehaald
-afvalpas,waste pass,Topic 1,Schoon en veilig,een kaartje dat je nodig hebt om een afvalcontainer te openen
-gft,organic waste,Topic 1,Schoon en veilig,het groente- fruit- en tuinafval
-grofvuil,bulky waste,Topic 1,Schoon en veilig,het afval dat te groot en/of te zwaar is om in de container te doen
-huis-aan-huis,door-to-door,Topic 1,Schoon en veilig,elk huis afgaan
-huishoudelijk afval,household waste,Topic 1,Schoon en veilig,het afval dat ontstaat binnen een huishouden
-klein chemisch afval,small chemical waste,Topic 1,Schoon en veilig,het huishoudelijk afval waar chemische stoffen in zitten zoals batterijen
-kliko,wheelie bin,Topic 1,Schoon en veilig,een grote bak op wieltjes waarin je afval gooit meestal bij een huis
-kringloopwinkel,thrift store,Topic 1,Schoon en veilig,een winkel waar je spullen kunt brengen of kopen die niet nieuw zijn
-milieustraat,recycling center,Topic 1,Schoon en veilig,een locatie waar je gescheiden huishoudelijk afval en grofvuil naartoe kunt brengen
-recyclen,recycle,Topic 1,Schoon en veilig,iets nieuws maken van het materiaal van oude spullen
-restafval,residual waste,Topic 1,Schoon en veilig,het huishoudelijk afval dat overblijft nadat het recyclebare afval is gescheiden
-schadelijke stoffen,harmful substances,Topic 1,Schoon en veilig,dingen die ongezond of gevaarlijk zijn voor mensen
-statiegeld,deposit,Topic 1,Schoon en veilig,geld dat je betaalt als je een volle fles koopt en dat je terugkrijgt als je de lege fles weer terugbrengt
+huurder,tenant,Topic 1,Een nieuwe huurwoning,persoon die iets huurt bijvoorbeeld een woning,person who rents something for example a house
+huurtoeslag,housing allowance,Topic 1,Een nieuwe huurwoning,geld dat je van de overheid krijgt om de huur van je huis te betalen,money you get from the government to pay the rent of your house
+maximum,maximum,Topic 1,Een nieuwe huurwoning,het meeste; het hoogste,the most; the highest
+onderhoud,maintenance,Topic 1,Een nieuwe huurwoning,wat je doet om te zorgen dat iets goed blijft werken of dat iets mooi blijft,what you do to ensure something keeps working well or stays nice
+servicekosten,service costs,Topic 1,Een nieuwe huurwoning,het geld dat je betaalt aan de verhuurder voor diensten en voorzieningen zoals schoonmaak en reparaties,the money you pay to the landlord for services and facilities such as cleaning and repairs
+sociale huurwoning,social housing,Topic 1,Een nieuwe huurwoning,huurwoning voor mensen met een lager inkomen; de woningen hebben een maximale huurprijs,rental housing for people with lower income; the houses have a maximum rent price
+urgentieverklaring,urgency declaration,Topic 1,Een nieuwe huurwoning,een verklaring voor iemand die met spoed een woning nodig heeft; die persoon krijgt dan voorrang,a declaration for someone who urgently needs housing; that person then gets priority
+verhuurder,landlord,Topic 1,Een nieuwe huurwoning,een organisatie of persoon die iets verhuurt bijvoorbeeld een woning,an organization or person who rents out something for example a house
+vluchteling,refugee,Topic 1,Een nieuwe huurwoning,iemand die gevlucht is uit een ander land,someone who has fled from another country
+voorrang,priority,Topic 1,Een nieuwe huurwoning,het recht om iets als eerste te mogen doen,the right to be allowed to do something first
+vrije sector,private sector,Topic 1,Een nieuwe huurwoning,huurwoningen die geen sociale huurwoningen zijn; de huurprijs is hoger dan van een sociale huurwoning,rental houses that are not social housing; the rent is higher than social housing
+woningbouwvereniging,housing association,Topic 1,Een nieuwe huurwoning,een organisatie die woonruimtes bouwt en verhuurt,an organization that builds and rents out living spaces
+woningcorporatie,housing corporation,Topic 1,Een nieuwe huurwoning,een organisatie die woonruimtes bouwt en verhuurt,an organization that builds and rents out living spaces
+bedenktijd,cooling-off period,Topic 1,Een huis kopen,de tijd die de koper van een huis krijgt om de koop te annuleren,the time the buyer of a house gets to cancel the purchase
+belasting,tax,Topic 1,Een huis kopen,het bedrag van je salaris of van prijzen dat je aan de overheid moet betalen,the amount of your salary or prices that you must pay to the government
+bezichtiging,viewing,Topic 1,Een huis kopen,het bezoeken en uitgebreid bekijken van een woning die te koop of te huur is,visiting and thoroughly viewing a house that is for sale or rent
+bod doen,make an offer,Topic 1,Een huis kopen,een voorstel doen voor een prijs die je wilt betalen bijvoorbeeld voor een huis,making a proposal for a price you want to pay for example for a house
+budget,budget,Topic 1,Een huis kopen,het maximale bedrag dat je kunt of wilt betalen voor iets bijvoorbeeld voor een huis,the maximum amount you can or want to pay for something for example a house
+eigenaar,owner,Topic 1,Een huis kopen,iemand die iets bezit bijvoorbeeld iemand die een eigen huis heeft gekocht,someone who owns something for example someone who bought their own house
+financiering,financing,Topic 1,Een huis kopen,het regelen van geld om bijvoorbeeld een huis te kopen,arranging money to for example buy a house
+hypotheek afsluiten,take out a mortgage,Topic 1,Een huis kopen,geld lenen van bijvoorbeeld een bank zodat je een huis kunt kopen,borrowing money from for example a bank so you can buy a house
+hypotheekadviseur,mortgage advisor,Topic 1,Een huis kopen,iemand die helpt bij het afsluiten van een hypotheek,someone who helps with taking out a mortgage
+hypotheekrenteaftrek,mortgage interest deduction,Topic 1,Een huis kopen,mensen die rente moeten betalen omdat ze een hypotheek hebben hoeven minder belasting te betalen,people who have to pay interest because they have a mortgage need to pay less tax
+koopcontract,purchase contract,Topic 1,Een huis kopen,een officiële overeenkomst tussen iemand die iets koopt en iemand die iets verkoopt,an official agreement between someone who buys something and someone who sells something
+koopsom,purchase price,Topic 1,Een huis kopen,het bedrag dat je betaalt voor het huis dat je hebt gekocht,the amount you pay for the house you bought
+makelaar,real estate agent,Topic 1,Een huis kopen,iemand die voor zijn beroep mensen helpt bij het kopen of verkopen van een huis,someone who professionally helps people with buying or selling a house
+notaris,notary,Topic 1,Een huis kopen,iemand die de papieren regelt bijvoorbeeld voor iemand die een huis koopt,someone who arranges the paperwork for example for someone buying a house
+onderhandelen,negotiate,Topic 1,Een huis kopen,praten over de prijs van een woning en proberen een afspraak over de prijs te maken,talking about the price of a house and trying to make an agreement about the price
+rente,interest,Topic 1,Een huis kopen,extra geld dat je aan de bank moet betalen als je een hypotheek of andere lening hebt,extra money you have to pay to the bank when you have a mortgage or other loan
+tegenbod,counteroffer,Topic 1,Een huis kopen,antwoord op een bod dat eerder gedaan is,response to an offer that was made earlier
+vraagprijs,asking price,Topic 1,Een huis kopen,het bedrag dat de verkoper vraagt bijvoorbeeld voor een huis,the amount the seller asks for example for a house
+cv-ketel,central heating boiler,Topic 1,Gas water licht en internet,een apparaat dat water warm maakt voor de centrale verwarming,a device that heats water for central heating
+energieleverancier,energy supplier,Topic 1,Gas water licht en internet,een bedrijf dat energie verkoopt aan consumenten en bedrijven,a company that sells energy to consumers and businesses
+groene stroom,green electricity,Topic 1,Gas water licht en internet,energie uit duurzame energiebronnen zoals de wind en de zon,energy from sustainable sources like wind and sun
+jaarafrekening,annual statement,Topic 1,Gas water licht en internet,de energierekening over het afgelopen jaar,the energy bill for the past year
+leveringskosten,delivery costs,Topic 1,Gas water licht en internet,het geld dat de energieleverancier betaalt voor het leveren van de energie,the money the energy supplier pays for delivering the energy
+meterkast,meter cupboard,Topic 1,Gas water licht en internet,een kast in je huis waarin de meters voor water gas en stroom zich bevinden,a cupboard in your house where the meters for water gas and electricity are located
+meterstand,meter reading,Topic 1,Gas water licht en internet,een getal op de meter voor water gas of stroom dat laat zien hoeveel je ervan gebruikt hebt,a number on the meter for water gas or electricity that shows how much you have used
+milieu,environment,Topic 1,Gas water licht en internet,het water de grond en de lucht om ons heen,the water ground and air around us
+netbeheer,grid management,Topic 1,Gas water licht en internet,de transport van gas en elektriciteit naar je huis; daarvoor betaal je ook geld aan de energieleverancier,the transport of gas and electricity to your house; you also pay money to the energy supplier for this
+pakket,package,Topic 1,Gas water licht en internet,een groep dingen die bij elkaar horen; als je een internetabonnement afsluit kun je uit verschillende pakketten kiezen,a group of things that belong together; when you take out an internet subscription you can choose from different packages
+provider,provider,Topic 1,Gas water licht en internet,een bedrijf dat zorgt dat klanten internet kunnen gebruiken of mobiel kunnen telefoneren,a company that ensures customers can use internet or make mobile phone calls
+variabel contract,variable contract,Topic 1,Gas water licht en internet,het bedrag dat je moet betalen kan veranderen: het kan omhoog of omlaag gaan,the amount you have to pay can change: it can go up or down
+vast contract,fixed contract,Topic 1,Gas water licht en internet,het contract blijft hetzelfde voor een langere periode je moet elke maand hetzelfde bedrag betalen,the contract stays the same for a longer period you have to pay the same amount every month
+verbruik,consumption,Topic 1,Gas water licht en internet,de hoeveelheid energie die een apparaat gebruikt om te werken,the amount of energy a device uses to work
+voorschot,advance payment,Topic 1,Gas water licht en internet,geld dat je betaalt voor energie die je in de toekomst gaat gebruiken,money you pay for energy you will use in the future
+afval inzamelen,waste collection,Topic 1,Schoon en veilig,het ophalen van afval van de bewoners door de gemeente,the collection of waste from residents by the municipality
+afval scheiden,waste separation,Topic 1,Schoon en veilig,het sorteren van afval op basis van de verschillende materialen van het afval: plastic papier rest gft etc,sorting waste based on the different materials of the waste: plastic paper residual organic etc
+afvalkalender,waste calendar,Topic 1,Schoon en veilig,een lijst met de data waarop het vuilnis wordt opgehaald,a list with the dates when garbage is collected
+afvalpas,waste pass,Topic 1,Schoon en veilig,een kaartje dat je nodig hebt om een afvalcontainer te openen,a card you need to open a waste container
+gft,organic waste,Topic 1,Schoon en veilig,het groente- fruit- en tuinafval,the vegetable fruit and garden waste
+grofvuil,bulky waste,Topic 1,Schoon en veilig,het afval dat te groot en/of te zwaar is om in de container te doen,waste that is too big and/or too heavy to put in the container
+huis-aan-huis,door-to-door,Topic 1,Schoon en veilig,elk huis afgaan,going to every house
+huishoudelijk afval,household waste,Topic 1,Schoon en veilig,het afval dat ontstaat binnen een huishouden,waste that is created within a household
+klein chemisch afval,small chemical waste,Topic 1,Schoon en veilig,het huishoudelijk afval waar chemische stoffen in zitten zoals batterijen,household waste that contains chemical substances such as batteries
+kliko,wheelie bin,Topic 1,Schoon en veilig,een grote bak op wieltjes waarin je afval gooit meestal bij een huis,a large bin on wheels in which you throw waste usually at a house
+kringloopwinkel,thrift store,Topic 1,Schoon en veilig,een winkel waar je spullen kunt brengen of kopen die niet nieuw zijn,a store where you can bring or buy things that are not new
+milieustraat,recycling center,Topic 1,Schoon en veilig,een locatie waar je gescheiden huishoudelijk afval en grofvuil naartoe kunt brengen,a location where you can bring separated household waste and bulky waste
+recyclen,recycle,Topic 1,Schoon en veilig,iets nieuws maken van het materiaal van oude spullen,making something new from the material of old things
+restafval,residual waste,Topic 1,Schoon en veilig,het huishoudelijk afval dat overblijft nadat het recyclebare afval is gescheiden,household waste that remains after recyclable waste is separated
+schadelijke stoffen,harmful substances,Topic 1,Schoon en veilig,dingen die ongezond of gevaarlijk zijn voor mensen,things that are unhealthy or dangerous for people
+statiegeld,deposit,Topic 1,Schoon en veilig,geld dat je betaalt als je een volle fles koopt en dat je terugkrijgt als je de lege fles weer terugbrengt,money you pay when you buy a full bottle and get back when you return the empty bottle
+culturele achtergrond,cultural background,Topic 2,Iedereen is anders,de normen waarden en gewoonten die je gewend bent door de cultuur waarin je opgegroeid bent,the norms values and customs you are used to from the culture you grew up in
+misverstand,misunderstanding,Topic 2,Iedereen is anders,een situatie waarin mensen elkaar niet goed begrijpen,a situation where people do not understand each other well
+nieuwkomers,newcomers,Topic 2,Iedereen is anders,iemand die niet in Nederland geboren is en nog niet zo lang in Nederland woont,someone who was not born in the Netherlands and has not lived in the Netherlands for very long
+regio,region,Topic 2,Iedereen is anders,een groot gebied met verschillende gemeentes dat op een bepaalde manier verbonden is,a large area with different municipalities that is connected in a certain way
+vrijheid,freedom,Topic 2,Iedereen is anders,de situatie waarin je vrij bent; je mag zelf bepalen wat je wilt doen,the situation in which you are free; you can decide for yourself what you want to do
+direct communiceren,direct communication,Topic 2,Communiceren,je zegt precies en eerlijk wat je bedoelt,you say exactly and honestly what you mean
+feedback,feedback,Topic 2,Communiceren,opmerkingen over wat goed en niet goed gaat,comments about what is going well and what is not going well
+indirect communiceren,indirect communication,Topic 2,Communiceren,je zegt iets maar je bedoelt iets anders,you say something but you mean something else
+officiële instantie,official institution,Topic 2,Communiceren,een organisatie van de overheid,a government organization
+gelijkheid,equality,Topic 2,Vrijheid en gelijkheid,er is gelijkheid als groepen mensen dezelfde kansen en rechten hebben,there is equality when groups of people have the same opportunities and rights
+gepast,appropriate,Topic 2,Vrijheid en gelijkheid,gepast gedrag is gedrag met goede manieren zoals het hoort,appropriate behavior is behavior with good manners as it should be
+homoseksualiteit,homosexuality,Topic 2,Vrijheid en gelijkheid,de seksuele voorkeur voor iemand van hetzelfde geslacht,the sexual preference for someone of the same gender
+LHBTIQ+,LGBTIQ+,Topic 2,Vrijheid en gelijkheid,deze afkorting staat voor lesbisch homoseksueel biseksueel transgender en intersekse,this abbreviation stands for lesbian homosexual bisexual transgender and intersex
+samenwonen,cohabitation,Topic 2,Vrijheid en gelijkheid,samen in één huis wonen vooral zonder getrouwd te zijn,living together in one house especially without being married
+vrijheid,freedom,Topic 2,Vrijheid en gelijkheid,de toestand waarin je vrij bent,the state in which you are free
+Bevrijdingsdag,Liberation Day,Topic 2,Feesten en tradities,feestdag op 5 mei Nederland viert dan het einde van de Tweede Wereldoorlog in 1945,holiday on May 5 the Netherlands celebrates the end of World War II in 1945
+carnaval,carnival,Topic 2,Feesten en tradities,een feest in februari of maart waarbij mensen zich verkleden,a festival in February or March where people dress up
+Dodenherdenking,Remembrance Day,Topic 2,Feesten en tradities,een moment op 4 mei om 20.00 uur is iedereen in Nederland tweede minuten stil,a moment on May 4 at 8:00 PM everyone in the Netherlands is silent for two minutes
+Eid al-Fitr,Eid al-Fitr,Topic 2,Feesten en tradities,islamitische feestdag waarop het einde van de vastenmaand ramadan gevierd wordt,Islamic holiday celebrating the end of the fasting month of Ramadan
+Goede Vrijdag,Good Friday,Topic 2,Feesten en tradities,christelijke feestdag waarop de kruisiging en dood van Jezus wordt herdacht,Christian holiday commemorating the crucifixion and death of Jesus
+Hemelvaart,Ascension Day,Topic 2,Feesten en tradities,een christelijk feest veertig dagen na Pasen op donderdag,a Christian festival forty days after Easter on Thursday
+hindoeïstisch,Hindu,Topic 2,Feesten en tradities,volgens een religie uit India waarbij men gelooft in meerdere goden en in meerdere levens,according to a religion from India where people believe in multiple gods and multiple lives
+joods,Jewish,Topic 2,Feesten en tradities,iets wat joods is hoort bij het geloof van de joden,something that is Jewish belongs to the faith of the Jews
+katholiek,Catholic,Topic 2,Feesten en tradities,de katholieke kerk is de christelijke kerk waarvan de paus in Rome het hoofd is,the Catholic Church is the Christian church of which the Pope in Rome is the head
+Kerst,Christmas,Topic 2,Feesten en tradities,een christelijk feest op 25 en 26 december waarbij de geboorte van Jezus gevierd wordt,a Christian festival on December 25 and 26 celebrating the birth of Jesus
+kerstavond,Christmas Eve,Topic 2,Feesten en tradities,de avond voor kerst op 24 december,the evening before Christmas on December 24
+Keti Koti,Keti Koti,Topic 2,Feesten en tradities,de dagen waarop de afschaffing van de slavernij wordt herdacht en gevierd,the days on which the abolition of slavery is commemorated and celebrated
+Koningsdag,King's Day,Topic 2,Feesten en tradities,de dag waarop de verjaardag van de koning gevierd wordt 27 april,the day on which the king's birthday is celebrated April 27
+officiële vrije dag,official holiday,Topic 2,Feesten en tradities,een dag waarop het hele land vrij heeft van werk of school,a day when the whole country is free from work or school
+oliebol,olieball,Topic 2,Feesten en tradities,een zachte ronde koek die in hete olie is gebakken,a soft round cake that is baked in hot oil
+oud en nieuw,New Year's Eve,Topic 2,Feesten en tradities,feest dat wordt gevierd aan het einde van het oude jaar en aan het begin van het nieuwe jaar,festival celebrated at the end of the old year and at the beginning of the new year
+Pakjesavond,St. Nicholas Eve,Topic 2,Feesten en tradities,feest op de avond van 5 december waarbij kinderen cadeautjes krijgen van Sinterklaas,festival on the evening of December 5 where children receive gifts from St. Nicholas
+ramadan,Ramadan,Topic 2,Feesten en tradities,de maand waarin moslims overdag niets mogen eten of drinken,the month in which Muslims are not allowed to eat or drink during the day
+Sinterklaas,St. Nicholas,Topic 2,Feesten en tradities,een heilige die op 5 december en in de weken ervoor cadeaus geeft aan kinderen,a saint who gives gifts to children on December 5 and in the weeks before
+slavernij,slavery,Topic 2,Feesten en tradities,mensen zijn niet vrij omdat ze het bezit zijn van iemand anders,people are not free because they are the property of someone else
+Tweede Wereldoorlog,World War II,Topic 2,Feesten en tradities,een grote oorlog van 1939 tot 1945,a major war from 1939 to 1945
+vastentijd,Lent,Topic 2,Feesten en tradities,een periode van 40 dagen voor Pasen waarin sommige mensen minder eten,a period of 40 days before Easter when some people eat less
+vuurwerk,fireworks,Topic 2,Feesten en tradities,iets wat knalt en licht geeft als je het aansteekt,something that bangs and gives light when you light it
+condoleren,to offer condolences,Topic 2,Contact met anderen,gevoel tonen als iemand is overleden,showing feeling when someone has died
+contributie,membership fee,Topic 2,Contact met anderen,geld dat je betaalt als je lid bent van een club of van een vereniging,money you pay when you are a member of a club or association
+gecondoleerd,my condolences,Topic 2,Contact met anderen,dit zeg je als iemand overleden is om te laten zien dat je het erg vindt,this is what you say when someone has died to show that you feel sorry
+hobby,hobby,Topic 2,Contact met anderen,iets dat je graag doet in je vrije tijd,something you like to do in your free time
+kraamvisite,maternity visit,Topic 2,Contact met anderen,bezoek dat langskomt bij de ouders die net een kind hebben gekregen,visit that comes to parents who have just had a child
+sociale contacten,social contacts,Topic 2,Contact met anderen,de mensen die je kent en waar je mee omgaat,the people you know and interact with
+veel sterkte,much strength,Topic 2,Contact met anderen,dit zeg je om iemand moed te geven die problemen heeft,this is what you say to give courage to someone who has problems
+vereniging,association,Topic 2,Contact met anderen,een organisatie van mensen die hetzelfde doel of dezelfde interesse hebben,an organization of people who have the same goal or the same interest
