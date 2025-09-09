@@ -125,6 +125,7 @@ export default function Vocabulary() {
   const jobSections = ['Patient & Reliable', 'Apply Now', 'Know your Network', 'Job Interview'];
   const natureSections = ['Weather', 'Winter and Summer', 'Getting Pet', 'Mountains'];
   const spendingSections = ['Spending Money', 'Buying Goods', 'Tax', 'Happiness from Money'];
+  const mediaSections = ['Watching Media', 'Social Media', 'In the News', 'Religion'];
       
       if (shoppingSections.includes(subsection.title)) {
         topicName = 'Topic 2: Shopping';
@@ -162,6 +163,8 @@ export default function Vocabulary() {
         topicName = 'Topic 18: Nature';
       } else if (spendingSections.includes(subsection.title)) {
         topicName = 'Topic 19: Spending & Saving';
+      } else if (mediaSections.includes(subsection.title)) {
+        topicName = 'Topic 20: Media & Communication';
       }
       
       if (!acc[topicName]) acc[topicName] = [];
