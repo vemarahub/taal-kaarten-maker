@@ -119,6 +119,7 @@ export default function Vocabulary() {
   const freeTimeSections = ['Are you coming?', 'Can I say no', 'Can you cover for me', 'We are free on sunday'];
   const learningSections = ['learning and studying - basischool', 'Study Plan', 'middelbare school', 'Learning Dutch'];
   const utilitiesSections = ['Getting a DishWasher', 'Energy Saving', 'Good Tips for Energy', 'home service'];
+  const familySections = ['Family Visiting', 'Marriage & Divorce', 'Getting Married', 'Resembling each other'];
       
       if (shoppingSections.includes(subsection.title)) {
         topicName = 'Topic 2: Shopping';
@@ -144,6 +145,8 @@ export default function Vocabulary() {
         topicName = 'Topic 12: Learning and Studying';
       } else if (utilitiesSections.includes(subsection.title)) {
         topicName = 'Topic 13: Gas, Water Electricity';
+      } else if (familySections.includes(subsection.title)) {
+        topicName = 'Topic 14: Family and Relatives';
       }
       
       if (!acc[topicName]) acc[topicName] = [];

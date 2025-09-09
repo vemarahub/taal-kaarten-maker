@@ -1283,3 +1283,103 @@ tijdstip,time,Topic 13,home service,Op welk tijdstip komt hij?
 type,type,Topic 13,home service,Welk type heb je nodig?
 wassen,to wash,Topic 13,home service,Ik ga de was doen.
 zolder,attic,Topic 13,home service,Op zolder staat veel spullen.
+bloedheet,very hot,Topic 14,Family Visiting,Het is bloedheet vandaag.
+cadeau,gift,Topic 14,Family Visiting,Ik geef een cadeau.
+extra,extra,Topic 14,Family Visiting,Ik neem extra kleren mee.
+hotel,hotel,Topic 14,Family Visiting,We slapen in een hotel.
+jaloers,jealous,Topic 14,Family Visiting,Ik ben jaloers op je.
+jazeker,absolutely,Topic 14,Family Visiting,Jazeker ga ik mee.
+klimaat,climate,Topic 14,Family Visiting,Het klimaat is warm.
+laten zien,to show,Topic 14,Family Visiting,Ik ga je de stad laten zien.
+meemaken,to experience,Topic 14,Family Visiting,Ik ga veel meemaken.
+natuur,nature,Topic 14,Family Visiting,De natuur is prachtig.
+nul,zero,Topic 14,Family Visiting,Het is nul graden.
+oma,grandma,Topic 14,Family Visiting,Ik bezoek mijn oma.
+perfect,perfect,Topic 14,Family Visiting,Het weer is perfect.
+schijnen,to shine,Topic 14,Family Visiting,De zon gaat schijnen.
+tijdelijk,temporarily,Topic 14,Family Visiting,Ik blijf tijdelijk hier.
+uiteraard,of course,Topic 14,Family Visiting,Uiteraard kom ik.
+uitgebreid,extensively,Topic 14,Family Visiting,We praten uitgebreid.
+uitrusten,to rest,Topic 14,Family Visiting,Ik ga uitrusten.
+vliegen,to fly,Topic 14,Family Visiting,Ik ga vliegen naar huis.
+vliegticket,airline ticket,Topic 14,Family Visiting,Ik koop een vliegticket.
+voet,foot,Topic 14,Family Visiting,Mijn voet doet pijn.
+vriezen,to freeze,Topic 14,Family Visiting,Het gaat vriezen.
+wereld,world,Topic 14,Family Visiting,Ik reis de wereld rond.
+zee,sea,Topic 14,Family Visiting,We gaan naar de zee.
+zich voelen,to feel,Topic 14,Family Visiting,Ik voel me goed.
+afspreken,to make an appointment,Topic 14,Marriage & Divorce,Ik ga een afspraak afspreken.
+alleenstaand,single,Topic 14,Marriage & Divorce,Ik ben alleenstaand.
+cultuur,culture,Topic 14,Marriage & Divorce,Ik leer over de cultuur.
+dalen,to decrease,Topic 14,Marriage & Divorce,De prijzen gaan dalen.
+eindigen,to end,Topic 14,Marriage & Divorce,De relatie gaat eindigen.
+gemiddeld,average,Topic 14,Marriage & Divorce,Het gemiddelde is hoog.
+gescheiden,divorced,Topic 14,Marriage & Divorce,Zij is gescheiden.
+huwelijk,marriage,Topic 14,Marriage & Divorce,Het huwelijk is mooi.
+ongetrouwd,unmarried,Topic 14,Marriage & Divorce,Hij is ongetrouwd.
+ontmoeting,encounter,Topic 14,Marriage & Divorce,De ontmoeting was leuk.
+opvoeding,upbringing,Topic 14,Marriage & Divorce,Mijn opvoeding was goed.
+partner,partner,Topic 14,Marriage & Divorce,Mijn partner is lief.
+populair,popular,Topic 14,Marriage & Divorce,Dat is populair.
+relatie,relationship,Topic 14,Marriage & Divorce,Onze relatie is goed.
+samenwonen,to live together,Topic 14,Marriage & Divorce,We gaan samenwonen.
+scheiden,to divorce,Topic 14,Marriage & Divorce,Ze gaan scheiden.
+scheiding,divorce,Topic 14,Marriage & Divorce,De scheiding is moeilijk.
+toenemen,to increase,Topic 14,Marriage & Divorce,De kosten nemen toe.
+traditioneel,traditional,Topic 14,Marriage & Divorce,Dat is traditioneel.
+uitstellen,to delay,Topic 14,Marriage & Divorce,We stellen het uit.
+vanzelfsprekend,the natural thing to do,Topic 14,Marriage & Divorce,Dat is vanzelfsprekend.
+verliefd,in love,Topic 14,Marriage & Divorce,Ik ben verliefd.
+verwachting,expectation,Topic 14,Marriage & Divorce,Mijn verwachting is hoog.
+zorg,care,Topic 14,Marriage & Divorce,Ik geef veel zorg.
+Azië,Asia,Topic 14,Getting Married,Ik ga naar Azië.
+bloem,flower,Topic 14,Getting Married,Ik koop een bloem.
+bruidsboeket,wedding bouquet,Topic 14,Getting Married,Het bruidsboeket is mooi.
+foto,photo,Topic 14,Getting Married,Ik maak een foto.
+fotograaf,photographer,Topic 14,Getting Married,De fotograaf komt.
+gast,guest,Topic 14,Getting Married,Elke gast krijgt eten.
+hartstikke,extremely,Topic 14,Getting Married,Dat is hartstikke leuk.
+hopelijk,hopefully,Topic 14,Getting Married,Hopelijk regent het niet.
+huwelijksreis,honeymoon,Topic 14,Getting Married,We gaan op huwelijksreis.
+nerveus,nervous,Topic 14,Getting Married,Ik ben nerveus.
+niemand,nobody,Topic 14,Getting Married,Niemand komt te laat.
+opa,grandpa,Topic 14,Getting Married,Mijn opa is er ook.
+papa,dad,Topic 14,Getting Married,Papa loopt met me mee.
+pech,bad luck,Topic 14,Getting Married,Wat een pech.
+regelen,to arrange,Topic 14,Getting Married,Ik ga alles regelen.
+regenen,to rain,Topic 14,Getting Married,Het gaat regenen.
+ring,ring,Topic 14,Getting Married,De ring is prachtig.
+stadhuis,city hall,Topic 14,Getting Married,We trouwen op het stadhuis.
+taart,cake,Topic 14,Getting Married,De taart is lekker.
+trouwjurk,wedding dress,Topic 14,Getting Married,Mijn trouwjurk is wit.
+uitzoeken,to pick out,Topic 14,Getting Married,Ik ga een jurk uitzoeken.
+vergeten,to forget,Topic 14,Getting Married,Ik mag niets vergeten.
+versturen,to send,Topic 14,Getting Married,Ik ga uitnodigingen versturen.
+verwachten,to expect,Topic 14,Getting Married,Ik verwacht veel gasten.
+zich herinneren,to remember,Topic 14,Getting Married,Ik herinner me alles.
+aardig,nice,Topic 14,Resembling each other,Hij is aardig.
+baard,beard,Topic 14,Resembling each other,Hij heeft een baard.
+blond,blond,Topic 14,Resembling each other,Zij heeft blond haar.
+bruin,brown,Topic 14,Resembling each other,Zijn ogen zijn bruin.
+eigenwijs,stubborn,Topic 14,Resembling each other,Zij is eigenwijs.
+gecondoleerd,sorry for your loss,Topic 14,Resembling each other,Gecondoleerd met je verlies.
+grap,joke,Topic 14,Resembling each other,Hij maakt een grap.
+grappig,funny,Topic 14,Resembling each other,Dat is grappig.
+herinnering,memory,Topic 14,Resembling each other,Ik heb een mooie herinnering.
+herkennen,to recognize,Topic 14,Resembling each other,Ik herken je.
+huid,skin,Topic 14,Resembling each other,Zijn huid is donker.
+karakter,character,Topic 14,Resembling each other,Hij heeft een goed karakter.
+krul,curl,Topic 14,Resembling each other,Zij heeft krullen.
+lengte,length,Topic 14,Resembling each other,Wat is je lengte?
+lijken op,to resemble,Topic 14,Resembling each other,Je lijkt op je moeder.
+ongeduldig,impatient,Topic 14,Resembling each other,Ik ben ongeduldig.
+oog,eye,Topic 14,Resembling each other,Zijn oog is blauw.
+oor,ear,Topic 14,Resembling each other,Mijn oor doet pijn.
+steil,straight,Topic 14,Resembling each other,Haar haar is steil.
+tegenkomen,to run into,Topic 14,Resembling each other,Ik kom je tegen.
+toevallig,accidentally,Topic 14,Resembling each other,Toevallig zie ik je.
+uiterlijk,appearance,Topic 14,Resembling each other,Zijn uiterlijk is mooi.
+verdrietig,sad,Topic 14,Resembling each other,Ik ben verdrietig.
+vrolijk,cheerful,Topic 14,Resembling each other,Zij is vrolijk.
+zich schamen,to be ashamed,Topic 14,Resembling each other,Ik schaam me.
+zulk,such,Topic 14,Resembling each other,Zulk weer is fijn.
