@@ -120,6 +120,7 @@ export default function Vocabulary() {
   const learningSections = ['learning and studying - basischool', 'Study Plan', 'middelbare school', 'Learning Dutch'];
   const utilitiesSections = ['Getting a DishWasher', 'Energy Saving', 'Good Tips for Energy', 'home service'];
   const familySections = ['Family Visiting', 'Marriage & Divorce', 'Getting Married', 'Resembling each other'];
+  const activitiesSections = ['Becoming Activity Members', 'Keeping Up', 'Sports', 'Appearance'];
       
       if (shoppingSections.includes(subsection.title)) {
         topicName = 'Topic 2: Shopping';
@@ -147,6 +148,8 @@ export default function Vocabulary() {
         topicName = 'Topic 13: Gas, Water Electricity';
       } else if (familySections.includes(subsection.title)) {
         topicName = 'Topic 14: Family and Relatives';
+      } else if (activitiesSections.includes(subsection.title)) {
+        topicName = 'Topic 15: Outside Activities';
       }
       
       if (!acc[topicName]) acc[topicName] = [];
