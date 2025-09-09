@@ -1,4 +1,4 @@
-import { Home, BookOpen, Languages, Youtube, Puzzle, MoreHorizontal } from 'lucide-react';
+import { Home, BookOpen, Languages, Youtube, Puzzle, MoreHorizontal, Globe } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   NavigationMenu,
@@ -37,6 +37,11 @@ const navItems = [
     href: '/youtube',
     label: 'Video\'s',
     icon: Youtube,
+  },
+  {
+    href: '/culture',
+    label: 'Culture',
+    icon: Globe,
   },
   {
     href: '/misc',

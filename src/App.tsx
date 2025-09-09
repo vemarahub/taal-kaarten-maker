@@ -8,6 +8,7 @@ import Vragenlijst from "./pages/Vragenlijst";
 import Vocabulary from "./pages/Vocabulary";
 import Grammar from "./pages/Grammar";
 import Youtube from "./pages/Youtube";
+import Culture from "./pages/Culture";
 import Misc from "./pages/Misc";
 import NotFound from "./pages/NotFound";
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/vocabulary" element={<Vocabulary />} />
           <Route path="/grammar" element={<Grammar />} />
           <Route path="/youtube" element={<Youtube />} />
+          <Route path="/culture" element={<Culture />} />
           <Route path="/misc" element={<Misc />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
