@@ -129,6 +129,34 @@ export default function Culture() {
     }
   };
 
+  const getSectionEnglishTitle = (dutchTitle: string): string => {
+    const sectionTitles: Record<string, string> = {
+      'Een nieuwe huurwoning': 'A New Rental Home',
+      'Een huis kopen': 'Buying a House',
+      'Gas water licht en internet': 'Gas, Water, Electricity and Internet',
+      'Schoon en veilig': 'Clean and Safe',
+      'Iedereen is anders': 'Everyone is Different',
+      'Communiceren': 'Communicating',
+      'Vrijheid en gelijkheid': 'Freedom and Equality',
+      'Feesten en tradities': 'Festivals and Traditions',
+      'Contact met anderen': 'Contact with Others',
+      'Naar de dokter': 'Going to the Doctor',
+      'Een verwijzing': 'A Referral',
+      'De apotheek': 'The Pharmacy',
+      'Spoed': 'Emergency',
+      'De tandarts': 'The Dentist',
+      'Kinderen en gezin': 'Children and Family',
+      'Een zorgverzekering': 'Health Insurance',
+      'Hulpverlening': 'Care Services',
+      'Soorten onderwijs': 'Types of Education',
+      'Zo gaat dat op school': 'How School Works',
+      'De kosten van het onderwijs': 'Education Costs',
+      'Kinderopvang': 'Childcare',
+      'Hulp bij opvoeding': 'Parenting Support'
+    };
+    return sectionTitles[dutchTitle] || dutchTitle;
+  };
+
   const currentSection = cultureData.find(s => s.id === selectedSection);
   const currentWord = currentSection?.words[currentWordIndex];
 
@@ -158,8 +186,10 @@ export default function Culture() {
                 Back to Sections
               </Button>
               <div className="text-center">
-                <h1 className="text-xl font-bold text-foreground">{currentSection?.title}</h1>
-                <p className="text-sm text-muted-foreground">Culture Study</p>
+                <h1 className="text-xl font-bold text-foreground">
+                  {getSectionEnglishTitle(currentSection?.title || '')}
+                </h1>
+                <p className="text-sm text-muted-foreground">{currentSection?.title}</p>
               </div>
               <div className="w-48" />
             </div>
@@ -258,7 +288,7 @@ export default function Culture() {
         </div>
 
         {!selectedTopic ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectTopic('Topic 1: Living')}>
               <CardHeader>
                 <CardTitle className="text-xl">Topic 1: Living</CardTitle>
@@ -285,6 +315,32 @@ export default function Culture() {
                 </Button>
               </CardContent>
             </Card>
+            <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectTopic('Topic 3: Health')}>
+              <CardHeader>
+                <CardTitle className="text-xl">Topic 3: Health</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Learn about healthcare system, medical services, and health insurance in the Netherlands.
+                </p>
+                <Button className="w-full">
+                  Select Topic
+                </Button>
+              </CardContent>
+            </Card>
+            <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectTopic('Topic 4: Education & Upbringing')}>
+              <CardHeader>
+                <CardTitle className="text-xl">Topic 4: Education & Upbringing</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Learn about the Dutch education system, childcare, and parenting support.
+                </p>
+                <Button className="w-full">
+                  Select Topic
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         ) : (
           <div>
@@ -303,7 +359,10 @@ export default function Culture() {
               {cultureData.map((section) => (
                 <Card key={section.id} className="cursor-pointer hover:shadow-lg transition-shadow">
                   <CardHeader>
-                    <CardTitle className="text-lg">{section.title}</CardTitle>
+                    <CardTitle className="text-lg">
+                      {getSectionEnglishTitle(section.title)}
+                    </CardTitle>
+                    <p className="text-sm text-muted-foreground">{section.title}</p>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground mb-4">
@@ -317,7 +376,7 @@ export default function Culture() {
                     </Button>
                   </CardContent>
                 </Card>
-              ))}
+              ))
             </div>
           </div>
         )}
