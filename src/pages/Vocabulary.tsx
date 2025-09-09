@@ -124,7 +124,7 @@ export default function Vocabulary() {
   const governmentSections = ['Throwing Waste', 'In the Gemeente', 'Arranging Online', 'Health Insurance'];
   const jobSections = ['Patient & Reliable', 'Apply Now', 'Know your Network', 'Job Interview'];
   const natureSections = ['Weather', 'Winter and Summer', 'Getting Pet', 'Mountains'];
-  const spendingSections = ['Spending Money', 'Buying Goods'];
+  const spendingSections = ['Spending Money', 'Buying Goods', 'Tax', 'Happiness from Money'];
       
       if (shoppingSections.includes(subsection.title)) {
         topicName = 'Topic 2: Shopping';
