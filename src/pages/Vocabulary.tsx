@@ -118,6 +118,7 @@ export default function Vocabulary() {
   const trafficSections = ['Stop here', 'What happened', 'Life threatening', 'Speaking to police'];
   const freeTimeSections = ['Are you coming?', 'Can I say no', 'Can you cover for me', 'We are free on sunday'];
   const learningSections = ['learning and studying - basischool', 'Study Plan', 'middelbare school', 'Learning Dutch'];
+  const utilitiesSections = ['Getting a DishWasher', 'Energy Saving', 'Good Tips for Energy', 'home service'];
       
       if (shoppingSections.includes(subsection.title)) {
         topicName = 'Topic 2: Shopping';
@@ -141,6 +142,8 @@ export default function Vocabulary() {
         topicName = 'Topic 11: Free Time';
       } else if (learningSections.includes(subsection.title)) {
         topicName = 'Topic 12: Learning and Studying';
+      } else if (utilitiesSections.includes(subsection.title)) {
+        topicName = 'Topic 13: Gas, Water Electricity';
       }
       
       if (!acc[topicName]) acc[topicName] = [];
