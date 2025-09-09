@@ -104,8 +104,21 @@ export default function Vocabulary() {
   const handleWordOfTheDay = () => {
     const allWords = vocabularyData.flatMap(topic => topic.words);
     if (allWords.length > 0) {
-      const randomIndex = Math.floor(Math.random() * allWords.length);
-      setRandomWord(allWords[randomIndex]);
+      const availableWords = allWords.filter(word => !usedWords.has(word.dutch));
+      
+      if (availableWords.length === 0) {
+        setUsedWords(new Set());
+        const randomIndex = Math.floor(Math.random() * allWords.length);
+        const selectedWord = allWords[randomIndex];
+        setRandomWord(selectedWord);
+        setUsedWords(new Set([selectedWord.dutch]));
+      } else {
+        const randomIndex = Math.floor(Math.random() * availableWords.length);
+        const selectedWord = availableWords[randomIndex];
+        setRandomWord(selectedWord);
+        setUsedWords(prev => new Set([...prev, selectedWord.dutch]));
+      }
+      
       setShowRandomWordAnswer(false);
       toast({
         title: "Word of the Day! 🌟",
