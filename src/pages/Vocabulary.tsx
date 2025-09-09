@@ -18,6 +18,9 @@ export default function Vocabulary() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<VocabularyWord[]>([]);
+  const [randomWord, setRandomWord] = useState<VocabularyWord | null>(null);
+  const [showRandomWordAnswer, setShowRandomWordAnswer] = useState(false);
+  const [usedWords, setUsedWords] = useState<Set<string>>(new Set());
   const { toast } = useToast();
 
   useEffect(() => {
@@ -96,6 +99,28 @@ export default function Vocabulary() {
     if (currentWordIndex > 0) {
       setCurrentWordIndex(prev => prev - 1);
     }
+  };
+
+  const handleWordOfTheDay = () => {
+    const allWords = vocabularyData.flatMap(topic => topic.words);
+    if (allWords.length > 0) {
+      const randomIndex = Math.floor(Math.random() * allWords.length);
+      setRandomWord(allWords[randomIndex]);
+      setShowRandomWordAnswer(false);
+      toast({
+        title: "Word of the Day! 🌟",
+        description: "Can you guess the meaning?",
+      });
+    }
+  };
+
+  const handleShowAnswer = () => {
+    setShowRandomWordAnswer(true);
+  };
+
+  const handleCloseRandomWord = () => {
+    setRandomWord(null);
+    setShowRandomWordAnswer(false);
   };
 
   // Group subsections by topic
@@ -275,6 +300,15 @@ export default function Vocabulary() {
         </div>
 
         <div className="max-w-md mx-auto mb-8">
+          <div className="mb-4">
+            <Button
+              onClick={handleWordOfTheDay}
+              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-3"
+              disabled={vocabularyData.length === 0}
+            >
+              🌟 Word of the Day
+            </Button>
+          </div>
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
             <Input
@@ -309,7 +343,50 @@ export default function Vocabulary() {
           </div>
         )}
 
-        {!searchQuery && (
+        {randomWord && (
+          <div className="mb-8">
+            <Card className="max-w-md mx-auto border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50">
+              <CardHeader className="text-center">
+                <CardTitle className="text-2xl text-purple-700">🌟 Word of the Day</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center space-y-4">
+                <div className="text-3xl font-bold text-gray-800">{randomWord.dutch}</div>
+                {showRandomWordAnswer ? (
+                  <div className="space-y-3">
+                    <div className="text-xl text-purple-600 font-semibold">{randomWord.english}</div>
+                    {randomWord.example && (
+                      <div className="text-sm text-gray-600 italic bg-white p-3 rounded-lg">
+                        {randomWord.example}
+                      </div>
+                    )}
+                    <div className="flex gap-2">
+                      <Button onClick={handleWordOfTheDay} className="flex-1">
+                        Next Word
+                      </Button>
+                      <Button onClick={handleCloseRandomWord} variant="outline" className="flex-1">
+                        Close
+                      </Button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    <p className="text-gray-600">What does this Dutch word mean?</p>
+                    <div className="flex gap-2">
+                      <Button onClick={handleShowAnswer} className="flex-1">
+                        Show Answer
+                      </Button>
+                      <Button onClick={handleCloseRandomWord} variant="outline" className="flex-1">
+                        Close
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
+        {!searchQuery && !randomWord && (
           !selectedThemaName ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {Object.keys(topicGroups).map((topicName) => (
