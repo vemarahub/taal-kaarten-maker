@@ -124,6 +124,7 @@ export default function Vocabulary() {
   const governmentSections = ['Throwing Waste', 'In the Gemeente', 'Arranging Online', 'Health Insurance'];
   const jobSections = ['Patient & Reliable', 'Apply Now', 'Know your Network', 'Job Interview'];
   const natureSections = ['Weather', 'Winter and Summer', 'Getting Pet', 'Mountains'];
+  const spendingSections = ['Spending Money', 'Buying Goods'];
       
       if (shoppingSections.includes(subsection.title)) {
         topicName = 'Topic 2: Shopping';
@@ -159,6 +160,8 @@ export default function Vocabulary() {
         topicName = 'Topic 17: Looking for Work';
       } else if (natureSections.includes(subsection.title)) {
         topicName = 'Topic 18: Nature';
+      } else if (spendingSections.includes(subsection.title)) {
+        topicName = 'Topic 19: Spending & Saving';
       }
       
       if (!acc[topicName]) acc[topicName] = [];
