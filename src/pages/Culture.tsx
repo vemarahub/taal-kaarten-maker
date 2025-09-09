@@ -376,7 +376,7 @@ export default function Culture() {
                     </Button>
                   </CardContent>
                 </Card>
-              ))
+              ))}
             </div>
           </div>
         )}
