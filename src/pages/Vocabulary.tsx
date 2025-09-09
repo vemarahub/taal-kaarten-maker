@@ -122,6 +122,9 @@ export default function Vocabulary() {
   const familySections = ['Family Visiting', 'Marriage & Divorce', 'Getting Married', 'Resembling each other'];
   const activitiesSections = ['Becoming Activity Members', 'Keeping Up', 'Sports', 'Appearance'];
   const governmentSections = ['Throwing Waste', 'In the Gemeente', 'Arranging Online', 'Health Insurance'];
+  const jobSections = ['Patient & Reliable', 'Apply Now', 'Know your Network', 'Job Interview'];
+  const jobSections = ['Patient & Reliable', 'Know your Network', 'Apply Now'];
+  const workSections = ['Patient & Reliable'];
       
       if (shoppingSections.includes(subsection.title)) {
         topicName = 'Topic 2: Shopping';
@@ -153,6 +156,12 @@ export default function Vocabulary() {
         topicName = 'Topic 15: Outside Activities';
       } else if (governmentSections.includes(subsection.title)) {
         topicName = 'Topic 16: Municipality & Government';
+      } else if (jobSections.includes(subsection.title)) {
+        topicName = 'Topic 17: Looking for Work';
+      } else if (jobSections.includes(subsection.title)) {
+        topicName = 'Topic 17: Looking for Work';
+      } else if (workSections.includes(subsection.title)) {
+        topicName = 'Topic 17: Looking for Work';
       }
       
       if (!acc[topicName]) acc[topicName] = [];
