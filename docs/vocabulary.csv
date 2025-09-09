@@ -1630,30 +1630,58 @@ sociaal,social,Topic 17,Patient & Reliable,Zij is sociaal.
 stage,internship,Topic 17,Patient & Reliable,Ik loop stage.
 therapie,therapy,Topic 17,Patient & Reliable,Ik volg therapie.
 wiskunde,math,Topic 17,Patient & Reliable,Ik ben goed in wiskunde.
-behulpzaam,helpful,Topic 17,Patient & Reliable,Hij is behulpzaam.
-beschrijven,to describe,Topic 17,Patient & Reliable,Ik ga mijn ervaring beschrijven.
-bezorger,deliveryman,Topic 17,Patient & Reliable,De bezorger brengt het pakket.
-creatief,creative,Topic 17,Patient & Reliable,Zij is creatief.
-depressie,depression,Topic 17,Patient & Reliable,Hij heeft een depressie.
-enthousiast,enthusiastic,Topic 17,Patient & Reliable,Ik ben enthousiast.
-ervaren,experienced,Topic 17,Patient & Reliable,Hij is ervaren.
-flexibel,flexible,Topic 17,Patient & Reliable,Ik ben flexibel.
-functie,function,Topic 17,Patient & Reliable,Mijn functie is interessant.
-geduldig,patient,Topic 17,Patient & Reliable,Zij is geduldig.
-gevoel,feeling,Topic 17,Patient & Reliable,Ik heb een goed gevoel.
-handig,handy,Topic 17,Patient & Reliable,Dat is handig.
-kennis,knowledge,Topic 17,Patient & Reliable,Ik heb veel kennis.
-klant,customer,Topic 17,Patient & Reliable,De klant is tevreden.
-kritisch,critical,Topic 17,Patient & Reliable,Hij is kritisch.
-kwaliteit,quality,Topic 17,Patient & Reliable,De kwaliteit is goed.
-leiding,leadership,Topic 17,Patient & Reliable,Hij geeft leiding.
-mode,fashion,Topic 17,Patient & Reliable,Mode is belangrijk.
-passen bij,to match,Topic 17,Patient & Reliable,Dit past bij mij.
-sfeer,atmosphere,Topic 17,Patient & Reliable,De sfeer is goed.
-sociaal,social,Topic 17,Patient & Reliable,Zij is sociaal.
-stage,internship,Topic 17,Patient & Reliable,Ik loop stage.
-therapie,therapy,Topic 17,Patient & Reliable,Ik volg therapie.
-wiskunde,math,Topic 17,Patient & Reliable,Ik ben goed in wiskunde.
+aanpakken,to go about,Topic 17,Know your Network,Ik ga het probleem aanpakken.
+adviseren,to advise,Topic 17,Know your Network,Ik ga je adviseren.
+begin,start,Topic 17,Know your Network,Het begin is moeilijk.
+belang,importance,Topic 17,Know your Network,Het belang van netwerken.
+beseffen,to realize,Topic 17,Know your Network,Ik besef het nu.
+bestaan uit,to consist of,Topic 17,Know your Network,Het team bestaat uit vijf mensen.
+bijeenkomst,meeting,Topic 17,Know your Network,We hebben een bijeenkomst.
+borrel,drink,Topic 17,Know your Network,We gaan naar de borrel.
+carrière,career,Topic 17,Know your Network,Mijn carrière gaat goed.
+ex-,former,Topic 17,Know your Network,Mijn ex-collega helpt me.
+interviewen,to interview,Topic 17,Know your Network,Ik ga hem interviewen.
+leidinggevende,leader,Topic 17,Know your Network,Mijn leidinggevende is aardig.
+netwerk,network,Topic 17,Know your Network,Mijn netwerk is groot.
+netwerken,to network,Topic 17,Know your Network,Ik ga netwerken op het evenement.
+neutraal,neutral,Topic 17,Know your Network,Ik blijf neutraal.
+nuttig,helpful,Topic 17,Know your Network,Dat is nuttig advies.
+resultaat,result,Topic 17,Know your Network,Het resultaat is goed.
+uitbreiden,to expand,Topic 17,Know your Network,Ik ga mijn netwerk uitbreiden.
+uitkering,benefit,Topic 17,Know your Network,Ik krijg een uitkering.
+uitzendbureau,employment agency,Topic 17,Know your Network,Het uitzendbureau helpt me.
+vacature,vacancy,Topic 17,Know your Network,Er is een vacature.
+werkervaring,work experience,Topic 17,Know your Network,Ik heb veel werkervaring.
+werkgever,employer,Topic 17,Know your Network,Mijn werkgever is tevreden.
+werkloos,unemployed,Topic 17,Know your Network,Ik ben werkloos.
+werknemer,employee,Topic 17,Know your Network,Ik ben een goede werknemer.
+werkzaamheden,work activities,Topic 17,Know your Network,Mijn werkzaamheden zijn gevarieerd.
+werkzoekende,job seeker,Topic 17,Know your Network,Ik ben werkzoekende.
+afdeling,department,Topic 17,Apply Now,Ik werk op de afdeling verkoop.
+beantwoorden,to answer,Topic 17,Apply Now,Ik ga de vraag beantwoorden.
+bereid,prepared,Topic 17,Apply Now,Ik ben bereid om te werken.
+bereikbaar,accessible,Topic 17,Apply Now,Ik ben telefonisch bereikbaar.
+beschikbaar,available,Topic 17,Apply Now,Ik ben beschikbaar voor werk.
+bieden,to offer,Topic 17,Apply Now,Wij bieden een goed salaris.
+bruto,gross,Topic 17,Apply Now,Het bruto salaris is hoog.
+cv,CV,Topic 17,Apply Now,Ik stuur mijn cv mee.
+doorzettingsvermogen,perseverance,Topic 17,Apply Now,Ik heb doorzettingsvermogen.
+eis,requirement,Topic 17,Apply Now,Dit is een belangrijke eis.
+fulltime,full time,Topic 17,Apply Now,Ik werk fulltime.
+omschrijving,description,Topic 17,Apply Now,De omschrijving is duidelijk.
+opnemen,to answer,Topic 17,Apply Now,Ik neem de telefoon op.
+personeelszaken,human resources department,Topic 17,Apply Now,Personeelszaken belt me.
+receptie,reception,Topic 17,Apply Now,Ik meld me bij de receptie.
+receptionist,receptionist,Topic 17,Apply Now,De receptionist helpt me.
+salaris,salary,Topic 17,Apply Now,Mijn salaris is goed.
+snelweg,highway,Topic 17,Apply Now,Het kantoor ligt bij de snelweg.
+sollicitatiebrief,application letter,Topic 17,Apply Now,Ik schrijf een sollicitatiebrief.
+solliciteren,to apply for a job,Topic 17,Apply Now,Ik ga solliciteren.
+vaardigheid,skill,Topic 17,Apply Now,Ik heb goede vaardigheden.
+verantwoordelijk,responsible,Topic 17,Apply Now,Ik ben verantwoordelijk.
+vloeiend,fluent,Topic 17,Apply Now,Ik spreek vloeiend Nederlands.
+voldoende,sufficient,Topic 17,Apply Now,Mijn ervaring is voldoende.
+zeer,very,Topic 17,Apply Now,Ik ben zeer gemotiveerd.
 aanpakken,to go about,Topic 17,Know your Network,Ik ga het probleem aanpakken.
 adviseren,to advise,Topic 17,Know your Network,Ik ga je adviseren.
 begin,start,Topic 17,Know your Network,Het begin is moeilijk.
@@ -1691,31 +1719,6 @@ bruto,gross,Topic 17,Apply Now,Mijn bruto salaris is hoog.
 cv,CV,Topic 17,Apply Now,Ik stuur mijn cv mee.
 doorzettingsvermogen,perseverance,Topic 17,Apply Now,Ik heb doorzettingsvermogen.
 eis,requirement,Topic 17,Apply Now,Ervaring is een eis.
-fulltime,full time,Topic 17,Apply Now,Ik werk fulltime.
-omschrijving,description,Topic 17,Apply Now,De omschrijving is duidelijk.
-opnemen,to answer,Topic 17,Apply Now,Ik neem de telefoon op.
-personeelszaken,human resources department,Topic 17,Apply Now,Personeelszaken belt me.
-receptie,reception,Topic 17,Apply Now,Ik meld me bij de receptie.
-receptionist,receptionist,Topic 17,Apply Now,De receptionist helpt me.
-salaris,salary,Topic 17,Apply Now,Mijn salaris is goed.
-snelweg,highway,Topic 17,Apply Now,Het kantoor ligt bij de snelweg.
-sollicitatiebrief,application letter,Topic 17,Apply Now,Ik schrijf een sollicitatiebrief.
-solliciteren,to apply for a job,Topic 17,Apply Now,Ik ga solliciteren.
-vaardigheid,skill,Topic 17,Apply Now,Ik heb goede vaardigheden.
-verantwoordelijk,responsible,Topic 17,Apply Now,Ik ben verantwoordelijk.
-vloeiend,fluent,Topic 17,Apply Now,Ik spreek vloeiend Nederlands.
-voldoende,sufficient,Topic 17,Apply Now,Mijn ervaring is voldoende.
-zeer,very,Topic 17,Apply Now,Ik ben zeer gemotiveerd.
-afdeling,department,Topic 17,Apply Now,Ik werk op de afdeling verkoop.
-beantwoorden,to answer,Topic 17,Apply Now,Ik ga de vraag beantwoorden.
-bereid,prepared,Topic 17,Apply Now,Ik ben bereid om te werken.
-bereikbaar,accessible,Topic 17,Apply Now,Ik ben telefonisch bereikbaar.
-beschikbaar,available,Topic 17,Apply Now,Ik ben beschikbaar voor werk.
-bieden,to offer,Topic 17,Apply Now,Wij bieden een goed salaris.
-bruto,gross,Topic 17,Apply Now,Het bruto salaris is hoog.
-cv,CV,Topic 17,Apply Now,Ik stuur mijn cv mee.
-doorzettingsvermogen,perseverance,Topic 17,Apply Now,Ik heb doorzettingsvermogen.
-eis,requirement,Topic 17,Apply Now,Dit is een belangrijke eis.
 fulltime,full time,Topic 17,Apply Now,Ik werk fulltime.
 omschrijving,description,Topic 17,Apply Now,De omschrijving is duidelijk.
 opnemen,to answer,Topic 17,Apply Now,Ik neem de telefoon op.
@@ -1834,29 +1837,6 @@ waddeneiland,Wadden Island,Topic 18,Winter and Summer,We bezoeken een waddeneila
 westen,west,Topic 18,Winter and Summer,De zon gaat onder in het westen.
 wisselvallig,changeable,Topic 18,Winter and Summer,Het weer is wisselvallig.
 zacht,soft,Topic 18,Winter and Summer,Het weer is zacht vandaag.
-aaien,to pet,Topic 18,Getting Pet,Ik aai de hond.
-allergisch,allergic,Topic 18,Getting Pet,Ik ben allergisch voor katten.
-beest,animal,Topic 18,Getting Pet,Dat is een lief beest.
-dier,animal,Topic 18,Getting Pet,Een hond is een huisdier.
-eenzaam,lonely,Topic 18,Getting Pet,Ik voel me eenzaam zonder huisdier.
-kat,cat,Topic 18,Getting Pet,De kat slaapt op de bank.
-knuffelen,to cuddle,Topic 18,Getting Pet,Ik knuffel mijn konijn.
-konijn,rabbit,Topic 18,Getting Pet,Het konijn eet wortels.
-nadeel,disadvantage,Topic 18,Getting Pet,Een nadeel is de kosten.
-ongezellig,unsociable,Topic 18,Getting Pet,Zonder huisdier is het ongezellig.
-opgroeien,to grow up,Topic 18,Getting Pet,Kinderen groeien op met huisdieren.
-praatje,chat,Topic 18,Getting Pet,Ik maak een praatje over mijn kat.
-rommel,mess,Topic 18,Getting Pet,De hond maakt rommel.
-ruiken,to smell,Topic 18,Getting Pet,Ik ruik de hond.
-schattig,cute,Topic 18,Getting Pet,De puppy is zo schattig.
-slang,snake,Topic 18,Getting Pet,Een slang is een exotisch huisdier.
-spin,spider,Topic 18,Getting Pet,Sommige mensen houden van spinnen.
-thuiskomen,to come home,Topic 18,Getting Pet,Als ik thuiskom begroet de hond me.
-toestaan,to allow,Topic 18,Getting Pet,De verhuurder staat huisdieren toe.
-verbieden,to prohibit,Topic 18,Getting Pet,Hier zijn huisdieren verboden.
-verzorgen,to care for,Topic 18,Getting Pet,Ik verzorg mijn huisdier goed.
-vogel,bird,Topic 18,Getting Pet,De vogel zingt mooi.
-wild,wild,Topic 18,Getting Pet,Wilde dieren horen niet thuis.
 aaien,to pet,Topic 18,Getting Pet,Ik aai de hond.
 allergisch,allergic,Topic 18,Getting Pet,Ik ben allergisch voor katten.
 beest,animal,Topic 18,Getting Pet,Dat is een lief beest.
