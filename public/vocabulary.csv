@@ -1483,3 +1483,102 @@ verandering,change,Topic 15,Appearance,Dat is een grote verandering.
 voordat,before,Topic 15,Appearance,Voordat ik ga douchen.
 zaak,store,Topic 15,Appearance,Ik ga naar de zaak.
 zich scheren,to shave,Topic 15,Appearance,Hij gaat zich scheren.
+afval,waste,Topic 16,Throwing Waste,Ik gooi het afval weg.
+bak,container,Topic 16,Throwing Waste,De bak is vol.
+batterij,battery,Topic 16,Throwing Waste,De batterij is leeg.
+beker,cup,Topic 16,Throwing Waste,Ik drink uit een beker.
+blik,can,Topic 16,Throwing Waste,Het blik is van aluminium.
+chemisch,chemical,Topic 16,Throwing Waste,Dat is chemisch afval.
+container,container,Topic 16,Throwing Waste,De container staat vol.
+deel,part,Topic 16,Throwing Waste,Een deel van het afval.
+gooien,to throw,Topic 16,Throwing Waste,Ik ga het gooien.
+grofvuil,bulky waste,Topic 16,Throwing Waste,Grofvuil wordt apart opgehaald.
+helft,half,Topic 16,Throwing Waste,De helft is recyclebaar.
+karton,cardboard,Topic 16,Throwing Waste,Karton kan gerecycled worden.
+krat,crate,Topic 16,Throwing Waste,Het krat is van plastic.
+matras,mattress,Topic 16,Throwing Waste,Het oude matras moet weg.
+olie,oil,Topic 16,Throwing Waste,Olie is schadelijk voor het milieu.
+plastic,plastic,Topic 16,Throwing Waste,Plastic duurt lang om af te breken.
+pot,pot,Topic 16,Throwing Waste,De pot is van glas.
+restje,leftover,Topic 16,Throwing Waste,Er is een restje over.
+schadelijk,harmful,Topic 16,Throwing Waste,Dat is schadelijk voor de natuur.
+schil,peel,Topic 16,Throwing Waste,De schil van de appel.
+statiegeld,deposit,Topic 16,Throwing Waste,Op flessen zit statiegeld.
+stof,substance,Topic 16,Throwing Waste,Deze stof is giftig.
+terechtkomen,to end up,Topic 16,Throwing Waste,Het komt in de zee terecht.
+terugbrengen,to return,Topic 16,Throwing Waste,Ik breng de fles terug.
+verzamelen,to collect,Topic 16,Throwing Waste,We verzamelen het afval.
+vuilnis,garbage,Topic 16,Throwing Waste,Het vuilnis wordt opgehaald.
+weggooien,to throw away,Topic 16,Throwing Waste,Ik gooi het weg.
+aangifte,report,Topic 16,In the Gemeente,Ik doe aangifte van diefstal.
+aanvragen,to apply for,Topic 16,In the Gemeente,Ik ga een paspoort aanvragen.
+aanwezig,present,Topic 16,In the Gemeente,Ik ben aanwezig bij de vergadering.
+arts,doctor,Topic 16,In the Gemeente,De arts ondertekent het document.
+automatisch,automatic,Topic 16,In the Gemeente,Het proces gaat automatisch.
+beide,both,Topic 16,In the Gemeente,Beide documenten zijn nodig.
+betaling,payment,Topic 16,In the Gemeente,De betaling is verwerkt.
+bevalling,childbirth,Topic 16,In the Gemeente,Na de bevalling krijg je een akte.
+bewijs,proof,Topic 16,In the Gemeente,Ik heb bewijs nodig.
+daarnaast,in addition,Topic 16,In the Gemeente,Daarnaast moet je een foto meenemen.
+document,document,Topic 16,In the Gemeente,Het document is geldig.
+doorgeven,to pass on,Topic 16,In the Gemeente,Ik geef de informatie door.
+familielid,family member,Topic 16,In the Gemeente,Een familielid moet aanwezig zijn.
+geboorte,birth,Topic 16,In the Gemeente,De geboorte moet aangegeven worden.
+geldig,valid,Topic 16,In the Gemeente,Mijn paspoort is geldig.
+identiteitskaart,identity card,Topic 16,In the Gemeente,Ik heb mijn identiteitskaart bij me.
+kwijtraken,to lose,Topic 16,In the Gemeente,Ik ben mijn paspoort kwijtgeraakt.
+legitimatie,identification,Topic 16,In the Gemeente,Ik toon mijn legitimatie.
+legitimatiebewijs,proof of identity,Topic 16,In the Gemeente,Een legitimatiebewijs is verplicht.
+mailen,to send an e-mail,Topic 16,In the Gemeente,Ik ga het document mailen.
+ondertekenen,to sign,Topic 16,In the Gemeente,Ik moet het formulier ondertekenen.
+opschrijven,to write down,Topic 16,In the Gemeente,Ik schrijf de gegevens op.
+opsturen,to send,Topic 16,In the Gemeente,Ik stuur het formulier op.
+pasfoto,passport photo,Topic 16,In the Gemeente,Ik heb een pasfoto nodig.
+paspoort,passport,Topic 16,In the Gemeente,Mijn paspoort is verlopen.
+persoon,person,Topic 16,In the Gemeente,Elke persoon heeft een BSN.
+verklaring,declaration,Topic 16,In the Gemeente,Ik onderteken de verklaring.
+belasting,tax,Topic 16,Arranging Online,Ik betaal belasting.
+brief,letter,Topic 16,Arranging Online,Ik krijg een brief.
+Burgerservicenummer,citizen service number,Topic 16,Arranging Online,Mijn Burgerservicenummer is geheim.
+code,code,Topic 16,Arranging Online,Ik voer de code in.
+dame,lady,Topic 16,Arranging Online,De dame helpt me.
+DigiD,DigiD (digital signature),Topic 16,Arranging Online,Ik log in met DigiD.
+dom,stupid,Topic 16,Arranging Online,Dat is dom.
+gebruikersnaam,username,Topic 16,Arranging Online,Mijn gebruikersnaam is uniek.
+hoofdletter,capital letter,Topic 16,Arranging Online,Gebruik een hoofdletter.
+leesteken,punctuation mark,Topic 16,Arranging Online,Een leesteken is nodig.
+onthouden,to remember,Topic 16,Arranging Online,Ik moet het wachtwoord onthouden.
+overheid,government,Topic 16,Arranging Online,De overheid regelt veel zaken.
+pensioen,pension,Topic 16,Arranging Online,Ik spaar voor mijn pensioen.
+persoonlijk,in person,Topic 16,Arranging Online,Ik ga persoonlijk naar het kantoor.
+post,post,Topic 16,Arranging Online,De post wordt bezorgd.
+tandarts,dentist,Topic 16,Arranging Online,Ik ga naar de tandarts.
+uitstekend,excellent,Topic 16,Arranging Online,Dat is uitstekend.
+verbaasd,surprised,Topic 16,Arranging Online,Ik ben verbaasd.
+verzekerd,insured,Topic 16,Arranging Online,Ik ben verzekerd.
+verzekering,insurance,Topic 16,Arranging Online,Mijn verzekering dekt alles.
+werkdag,working day,Topic 16,Arranging Online,Vandaag is een werkdag.
+zaak,matter,Topic 16,Arranging Online,Deze zaak is belangrijk.
+zorgverzekering,health insurance,Topic 16,Arranging Online,Ik heb een zorgverzekering.
+aanvullend,additional,Topic 16,Health Insurance,Ik heb een aanvullende verzekering.
+basis,basis,Topic 16,Health Insurance,De basisverzekering is verplicht.
+behandeling,treatment,Topic 16,Health Insurance,De behandeling wordt vergoed.
+bepalen,to determine,Topic 16,Health Insurance,De arts bepaalt de behandeling.
+bezoek,visit,Topic 16,Health Insurance,Een bezoek aan de dokter.
+bloed,blood,Topic 16,Health Insurance,Er wordt bloed afgenomen.
+halverwege,halfway through,Topic 16,Health Insurance,Halverwege het jaar verander ik.
+hoogte,height,Topic 16,Health Insurance,De hoogte van de premie.
+kraamzorg,maternity care,Topic 16,Health Insurance,Kraamzorg is belangrijk.
+medisch,medical,Topic 16,Health Insurance,Medische zorg is duur.
+noodzakelijk,necessary,Topic 16,Health Insurance,Deze behandeling is noodzakelijk.
+opname,admission,Topic 16,Health Insurance,Een opname in het ziekenhuis.
+opzeggen,to cancel,Topic 16,Health Insurance,Ik ga mijn verzekering opzeggen.
+overzicht,overview,Topic 16,Health Insurance,Een overzicht van de kosten.
+polis,insurance policy,Topic 16,Health Insurance,Mijn polis loopt af.
+premie,premium,Topic 16,Health Insurance,De premie stijgt elk jaar.
+psychisch,psychological,Topic 16,Health Insurance,Psychische hulp is belangrijk.
+variëren,to vary,Topic 16,Health Insurance,De kosten variëren per behandeling.
+vergelijken,to compare,Topic 16,Health Insurance,Ik vergelijk verschillende verzekeringen.
+vergoeden,to reimburse,Topic 16,Health Insurance,De verzekering vergoedt de kosten.
+verzekeren,to insure,Topic 16,Health Insurance,Ik verzeker mezelf tegen ziektekosten.
+zorgkosten,healthcare costs,Topic 16,Health Insurance,De zorgkosten stijgen elk jaar.

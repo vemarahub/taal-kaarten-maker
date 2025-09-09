@@ -121,6 +121,7 @@ export default function Vocabulary() {
   const utilitiesSections = ['Getting a DishWasher', 'Energy Saving', 'Good Tips for Energy', 'home service'];
   const familySections = ['Family Visiting', 'Marriage & Divorce', 'Getting Married', 'Resembling each other'];
   const activitiesSections = ['Becoming Activity Members', 'Keeping Up', 'Sports', 'Appearance'];
+  const governmentSections = ['Throwing Waste', 'In the Gemeente', 'Arranging Online', 'Health Insurance'];
       
       if (shoppingSections.includes(subsection.title)) {
         topicName = 'Topic 2: Shopping';
@@ -150,6 +151,8 @@ export default function Vocabulary() {
         topicName = 'Topic 14: Family and Relatives';
       } else if (activitiesSections.includes(subsection.title)) {
         topicName = 'Topic 15: Outside Activities';
+      } else if (governmentSections.includes(subsection.title)) {
+        topicName = 'Topic 16: Municipality & Government';
       }
       
       if (!acc[topicName]) acc[topicName] = [];
