@@ -352,6 +352,15 @@ interface ImperfectumQuizQuestion {
   type: 'regular';
 }
 
+interface PerfectumQuizQuestion {
+  infinitive: string;
+  sentence: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+  type: 'regular' | 'irregular' | 'auxiliary';
+}
+
 const negationQuizQuestions: NegationQuizQuestion[] = [
   {
     sentence: "Peter is groot. → Peter ___ groot.",
@@ -642,6 +651,57 @@ const referenceWordQuizQuestions: ReferenceWordQuizQuestion[] = [
   }
 ];
 
+const perfectumQuizQuestions: PerfectumQuizQuestion[] = [
+  {
+    infinitive: "werken",
+    sentence: "Ik ___ vandaag hard ___.",
+    options: ["heb gewerkt", "ben gewerkt", "heb werken"],
+    correct: 0,
+    explanation: "'Werken' → stem 'werk' → ik-vorm 'werk' → last letter 'k' is in 'sexy softketchup' → ge + werk + t = gewerkt. Use 'hebben' as auxiliary.",
+    type: 'regular'
+  },
+  {
+    infinitive: "reizen",
+    sentence: "Wij ___ naar Amsterdam ___.",
+    options: ["hebben gereisd", "zijn gereisd", "hebben reizen"],
+    correct: 1,
+    explanation: "'Reizen' → ik-vorm 'reis' → last letter 's' not in 'sexy softketchup' → ge + reis + d = gereisd. Use 'zijn' because of movement to a place (naar Amsterdam).",
+    type: 'regular'
+  },
+  {
+    infinitive: "vertellen",
+    sentence: "Hij ___ het verhaal ___.",
+    options: ["heeft geverteld", "heeft verteld", "is verteld"],
+    correct: 1,
+    explanation: "'Vertellen' starts with 'ver-' so no 'ge-' prefix → ik-vorm 'vertel' → last letter 'l' not in 'sexy softketchup' → vertel + d = verteld.",
+    type: 'regular'
+  },
+  {
+    infinitive: "zetten",
+    sentence: "Zij ___ de tafel ___.",
+    options: ["heeft gezett", "heeft gezet", "is gezet"],
+    correct: 1,
+    explanation: "'Zetten' → ik-vorm 'zet' (already ends in 't') → no extra 't' added → ge + zet = gezet.",
+    type: 'regular'
+  },
+  {
+    infinitive: "eten",
+    sentence: "Wij ___ pizza ___.",
+    options: ["hebben geëten", "hebben gegeten", "zijn gegeten"],
+    correct: 1,
+    explanation: "'Eten' is irregular → voltooid deelwoord is 'gegeten' (must be memorized). Use 'hebben' as auxiliary.",
+    type: 'irregular'
+  },
+  {
+    infinitive: "komen",
+    sentence: "Jullie ___ te laat ___.",
+    options: ["hebben gekomen", "zijn gekomen", "hebben komen"],
+    correct: 1,
+    explanation: "'Komen' is irregular → voltooid deelwoord is 'gekomen'. Always use 'zijn' with 'komen' (movement verb).",
+    type: 'irregular'
+  }
+];
+
 const imperfectumQuizQuestions: ImperfectumQuizQuestion[] = [
   {
     infinitive: "werken",
@@ -752,7 +812,7 @@ export default function Grammar() {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'negation' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords' | 'subordinateclauses' | 'imperfectum'>('basic');
+  const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'negation' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords' | 'subordinateclauses' | 'imperfectum' | 'perfectum'>('basic');
   const [showDutchText, setShowDutchText] = useState<{[key: string]: boolean}>({});
 
   const toggleDutchText = (key: string) => {
@@ -812,6 +872,9 @@ export default function Grammar() {
     if (selectedTopic === 'imperfectum') {
       return imperfectumQuizQuestions;
     }
+    if (selectedTopic === 'perfectum') {
+      return perfectumQuizQuestions;
+    }
     return verbQuizQuestions;
   };
 
@@ -841,7 +904,7 @@ export default function Grammar() {
     }
   };
 
-  const resetQuizWithType = (type: 'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords' | 'subordinateclauses' | 'imperfectum') => {
+  const resetQuizWithType = (type: 'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords' | 'subordinateclauses' | 'imperfectum' | 'perfectum') => {
     setQuizType(type);
     resetQuiz();
   };
@@ -3732,6 +3795,463 @@ export default function Grammar() {
     );
   }
 
+  if (selectedTopic === 'perfectum') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
+        <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <Button onClick={handleBackToTopics} variant="ghost" className="flex items-center gap-2">
+                <ArrowLeft className="w-4 h-4" />
+                Back to Topics
+              </Button>
+              <h1 className="text-2xl font-bold">Perfectum (Present Perfect)</h1>
+              <div className="w-32" />
+            </div>
+          </div>
+        </header>
+
+        <main className="container mx-auto px-4 py-8 space-y-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <CheckCircle className="w-6 h-6" />
+                What is Perfectum?
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Perfectum (voltooid tegenwoordige tijd) is the Dutch present perfect tense. It describes actions that were completed in the past but have relevance to the present. You form it with an auxiliary verb (hebben or zijn) plus a past participle (voltooid deelwoord).
+              </p>
+              
+              <div className="bg-blue-50 dark:bg-blue-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-blue-800 dark:text-blue-200">Structure: Auxiliary + Past Participle</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p className="font-semibold mb-2">Present tense:</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• Ik <strong>ben</strong></li>
+                      <li>• Ik <strong>eet</strong></li>
+                      <li>• Ik <strong>werk</strong></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-2">Present perfect:</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• Ik <strong>ben geweest</strong></li>
+                      <li>• Ik <strong>heb gegeten</strong></li>
+                      <li>• Ik <strong>heb gewerkt</strong></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Regular Past Participles (Zwakke Werkwoorden)
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Regular past participles usually begin with 'ge-' and end with '-t' or '-d'. The same 'sexy softketchup' rule from imperfectum applies: if the last letter of the ik-vorm is in 'sexy softketchup', add '-t'; otherwise add '-d'.
+              </p>
+              
+              <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-green-800 dark:text-green-200">Formation Rule: ge- + ik-vorm + t/d</h3>
+                <div className="text-center mb-4">
+                  <p className="text-xl font-mono font-bold">SEXY SOFTKETCHUP: X S F T K C H P</p>
+                </div>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p className="font-semibold mb-2">If last letter is in 'sexy softketchup':</p>
+                    <p className="text-sm">ge + ik-vorm + <strong>t</strong></p>
+                    <ul className="text-sm space-y-1 mt-2">
+                      <li>• werk → <strong>gewerkt</strong></li>
+                      <li>• fiets → <strong>gefietst</strong></li>
+                      <li>• hoop → <strong>gehoopt</strong></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-2">If last letter is NOT in 'sexy softketchup':</p>
+                    <p className="text-sm">ge + ik-vorm + <strong>d</strong></p>
+                    <ul className="text-sm space-y-1 mt-2">
+                      <li>• reis → <strong>gereisd</strong></li>
+                      <li>• verf → <strong>geverfd</strong></li>
+                      <li>• leer → <strong>geleerd</strong></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <BookOpen className="w-6 h-6" />
+                Special Cases for Past Participles
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="bg-yellow-50 dark:bg-yellow-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-yellow-800 dark:text-yellow-200">Case 1: Ik-vorm ends in 'd' or 't'</h3>
+                <p className="text-sm mb-3">No extra 'd' or 't' is added:</p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Infinitief</th>
+                        <th className="text-left p-2">Ik-vorm</th>
+                        <th className="text-left p-2">Past Participle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-2">zetten</td>
+                        <td className="p-2">zet</td>
+                        <td className="p-2 text-primary font-bold">gezet</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2">redden</td>
+                        <td className="p-2">red</td>
+                        <td className="p-2 text-primary font-bold">gered</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2">praten</td>
+                        <td className="p-2">praat</td>
+                        <td className="p-2 text-primary font-bold">gepraat</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div className="bg-red-50 dark:bg-red-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-red-800 dark:text-red-200">Case 2: Verbs with prefixes (no 'ge-')</h3>
+                <p className="text-sm mb-3">Verbs starting with ge-, ver-, be-, ont-, her- don't get an extra 'ge-':</p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Infinitief</th>
+                        <th className="text-left p-2">Ik-vorm</th>
+                        <th className="text-left p-2">Past Participle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-2">vertellen</td>
+                        <td className="p-2">vertel</td>
+                        <td className="p-2 text-primary font-bold">verteld</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2">bestellen</td>
+                        <td className="p-2">bestel</td>
+                        <td className="p-2 text-primary font-bold">besteld</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2">gebeuren</td>
+                        <td className="p-2">gebeur</td>
+                        <td className="p-2 text-primary font-bold">gebeurd</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Users className="w-6 h-6" />
+                Auxiliary Verbs: Hebben vs Zijn
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Most verbs use 'hebben' as auxiliary, but some use 'zijn'. The choice depends on the type of action and sometimes the context of the sentence.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="bg-blue-50 dark:bg-blue-950">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-blue-800 dark:text-blue-200">HEBBEN (most verbs)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm mb-2">Regular verbs usually take 'hebben':</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• Ik <strong>heb gewerkt</strong></li>
+                      <li>• Hij <strong>heeft gefietst</strong></li>
+                      <li>• Wij <strong>hebben besteld</strong></li>
+                    </ul>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-green-50 dark:bg-green-950">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-green-800 dark:text-green-200">ZIJN (movement/change)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm mb-2">Verbs of movement or change of state:</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• Ik <strong>ben gekomen</strong></li>
+                      <li>• Hij <strong>is gegaan</strong></li>
+                      <li>• Wij <strong>zijn geweest</strong></li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="bg-purple-50 dark:bg-purple-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-purple-800 dark:text-purple-200">Special Rule: Movement to a Place</h3>
+                <p className="text-sm mb-3">When 'naar' (to) appears with a place, use 'zijn':</p>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p className="font-semibold mb-2">With 'hebben' (general action):</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• We <strong>hebben</strong> in de bergen gereden</li>
+                      <li>• We <strong>hebben</strong> 10 km gefietst</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-2">With 'zijn' (to a place):</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• We <strong>zijn</strong> naar Amsterdam gereden</li>
+                      <li>• We <strong>zijn</strong> naar Zaandam gefietst</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <XCircle className="w-6 h-6" />
+                Irregular Past Participles (Sterke Werkwoorden)
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Many common verbs have irregular past participles that must be memorized. These don't follow the regular 'sexy softketchup' rule.
+              </p>
+              
+              <div className="bg-red-50 dark:bg-red-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-red-800 dark:text-red-200">Common Irregular Verbs (with 'hebben'):</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="text-left p-2">Infinitief</th>
+                          <th className="text-left p-2">Present Perfect</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b">
+                          <td className="p-2">denken</td>
+                          <td className="p-2 text-primary font-bold">heb gedacht</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="p-2">doen</td>
+                          <td className="p-2 text-primary font-bold">heb gedaan</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="p-2">drinken</td>
+                          <td className="p-2 text-primary font-bold">heb gedronken</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="p-2">eten</td>
+                          <td className="p-2 text-primary font-bold">heb gegeten</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="p-2">hebben</td>
+                          <td className="p-2 text-primary font-bold">heb gehad</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="p-2">kijken</td>
+                          <td className="p-2 text-primary font-bold">heb gekeken</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="text-left p-2">Infinitief</th>
+                          <th className="text-left p-2">Present Perfect</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b">
+                          <td className="p-2">kopen</td>
+                          <td className="p-2 text-primary font-bold">heb gekocht</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="p-2">krijgen</td>
+                          <td className="p-2 text-primary font-bold">heb gekregen</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="p-2">lezen</td>
+                          <td className="p-2 text-primary font-bold">heb gelezen</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="p-2">lopen</td>
+                          <td className="p-2 text-primary font-bold">heb gelopen</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="p-2">schrijven</td>
+                          <td className="p-2 text-primary font-bold">heb geschreven</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="p-2">zien</td>
+                          <td className="p-2 text-primary font-bold">heb gezien</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-green-800 dark:text-green-200">Irregular Verbs (with 'zijn'):</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Infinitief</th>
+                        <th className="text-left p-2">Present Perfect</th>
+                        <th className="text-left p-2">Example</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-2">zijn</td>
+                        <td className="p-2 text-primary font-bold">ben geweest</td>
+                        <td className="p-2 text-xs">Ik ben naar Frankrijk geweest</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2">komen</td>
+                        <td className="p-2 text-primary font-bold">ben gekomen</td>
+                        <td className="p-2 text-xs">Ik ben naar Nederland gekomen</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2">gaan</td>
+                        <td className="p-2 text-primary font-bold">ben gegaan</td>
+                        <td className="p-2 text-xs">Zijn jullie met het vliegtuig gegaan?</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2">worden</td>
+                        <td className="p-2 text-primary font-bold">ben geworden</td>
+                        <td className="p-2 text-xs">We zijn ziek geworden</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2">beginnen</td>
+                        <td className="p-2 text-primary font-bold">is begonnen</td>
+                        <td className="p-2 text-xs">De les is begonnen</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2">blijven</td>
+                        <td className="p-2 text-primary font-bold">zijn gebleven</td>
+                        <td className="p-2 text-xs">Zij zijn in Nederland gebleven</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Perfectum Practice Quiz
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {!quizCompleted ? (
+                <div className="space-y-6">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-semibold">Question {currentQuiz + 1} of {perfectumQuizQuestions.length}</h3>
+                    <div className="text-sm text-muted-foreground">Score: {score}/{perfectumQuizQuestions.length}</div>
+                  </div>
+                  
+                  <div className="text-center space-y-4">
+                    <p className="text-lg">Complete the sentence with the correct present perfect:</p>
+                    <div className="bg-muted/50 p-4 rounded-lg">
+                      <p className="text-xl font-bold text-primary">{perfectumQuizQuestions[currentQuiz].sentence}</p>
+                      <p className="text-sm text-muted-foreground mt-2">Infinitive: {perfectumQuizQuestions[currentQuiz].infinitive}</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4">
+                    {perfectumQuizQuestions[currentQuiz].options.map((option, index) => (
+                      <Button
+                        key={index}
+                        variant={selectedAnswer === index ? 
+                          (index === perfectumQuizQuestions[currentQuiz].correct ? "default" : "destructive") : 
+                          "outline"
+                        }
+                        className={`p-4 text-lg ${
+                          showResult && index === perfectumQuizQuestions[currentQuiz].correct ? 
+                          "bg-green-500 hover:bg-green-600" : ""
+                        }`}
+                        onClick={() => handleAnswerSelect(index)}
+                        disabled={showResult}
+                      >
+                        {showResult && index === perfectumQuizQuestions[currentQuiz].correct && (
+                          <CheckCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {showResult && selectedAnswer === index && index !== perfectumQuizQuestions[currentQuiz].correct && (
+                          <XCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {option}
+                      </Button>
+                    ))}
+                  </div>
+
+                  {showResult && (
+                    <div className="space-y-4">
+                      <div className="bg-muted p-4 rounded-lg">
+                        <p className="font-semibold mb-2">Explanation:</p>
+                        <p>{perfectumQuizQuestions[currentQuiz].explanation}</p>
+                        <p className="text-sm text-muted-foreground mt-2">
+                          Type: {perfectumQuizQuestions[currentQuiz].type === 'regular' ? 'Regular verb' : 
+                                perfectumQuizQuestions[currentQuiz].type === 'irregular' ? 'Irregular verb' : 'Auxiliary verb choice'}
+                        </p>
+                      </div>
+                      <Button onClick={handleNextQuestion} className="w-full">
+                        {currentQuiz < perfectumQuizQuestions.length - 1 ? "Next Question" : "Finish Quiz"}
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-center space-y-4">
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                  <h3 className="text-2xl font-bold">Quiz Completed!</h3>
+                  <p className="text-lg">Final Score: {score}/{perfectumQuizQuestions.length}</p>
+                  <Button onClick={() => resetQuizWithType('perfectum')} className="flex items-center gap-2">
+                    <RotateCcw className="w-4 h-4" />
+                    Try Again
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </main>
+      </div>
+    );
+  }
+
   if (selectedTopic === 'negation') {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
@@ -4442,6 +4962,23 @@ export default function Grammar() {
             <CardContent>
               <p className="text-muted-foreground mb-4">
                 Learn Dutch past tense for regular verbs: -te/-de endings with the 'sexy softketchup' rule.
+              </p>
+              <Button className="w-full">
+                Start Learning
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleTopicSelect('perfectum')}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5" />
+                Perfectum (Present Perfect)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-4">
+                Learn Dutch present perfect: auxiliary verbs (hebben/zijn) + past participles with ge- prefix.
               </p>
               <Button className="w-full">
                 Start Learning
