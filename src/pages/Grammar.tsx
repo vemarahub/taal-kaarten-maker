@@ -2557,6 +2557,9 @@ export default function Grammar() {
               )}
             </CardContent>
           </Card>
+            </>
+          )}
+          
           {selectedSubtopic === 'inflection' && (
             <>
               <Card>
