@@ -299,6 +299,32 @@ interface ConjunctionQuizQuestion {
   conjunctionType: 'en' | 'maar' | 'want' | 'dus' | 'of';
 }
 
+interface InversieQuizQuestion {
+  normalSentence: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+  inversionType: 'time' | 'place' | 'object';
+}
+
+interface AdjectiveQuizQuestion {
+  sentence: string;
+  adjective: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+  type: 'comparative' | 'superlative' | 'irregular';
+}
+
+interface AdjectiveInflectionQuizQuestion {
+  phrase: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+  wordType: 'de-word' | 'het-word';
+  articleType: 'definite' | 'indefinite' | 'demonstrative';
+}
+
 const negationQuizQuestions: NegationQuizQuestion[] = [
   {
     sentence: "Peter is groot. → Peter ___ groot.",
@@ -398,6 +424,172 @@ const conjunctionQuizQuestions: ConjunctionQuizQuestion[] = [
   }
 ];
 
+const inversieQuizQuestions: InversieQuizQuestion[] = [
+  {
+    normalSentence: "Ik eet straks een boterham met kaas",
+    options: ["Straks eet ik een boterham met kaas", "Straks ik eet een boterham met kaas", "Eet straks ik een boterham met kaas"],
+    correct: 0,
+    explanation: "Time first: Straks + verb + subject + rest",
+    inversionType: 'time'
+  },
+  {
+    normalSentence: "Sandra gaat zaterdag sporten",
+    options: ["Zaterdag Sandra gaat sporten", "Zaterdag gaat Sandra sporten", "Gaat zaterdag Sandra sporten"],
+    correct: 1,
+    explanation: "Time first: Zaterdag + verb + subject + rest",
+    inversionType: 'time'
+  },
+  {
+    normalSentence: "Veel mensen wonen in India",
+    options: ["In India veel mensen wonen", "In India wonen veel mensen", "Wonen in India veel mensen"],
+    correct: 1,
+    explanation: "Place first: In India + verb + subject",
+    inversionType: 'place'
+  },
+  {
+    normalSentence: "Hij eet die hamburger in 1 minuut op",
+    options: ["Die hamburger hij eet in 1 minuut op", "Die hamburger eet hij in 1 minuut op", "Eet die hamburger hij in 1 minuut op"],
+    correct: 1,
+    explanation: "Object first: Die hamburger + verb + subject + rest",
+    inversionType: 'object'
+  },
+  {
+    normalSentence: "Ik ga morgen met mijn moeder naar het park",
+    options: ["Morgen ik ga met mijn moeder naar het park", "Morgen ga ik met mijn moeder naar het park", "Ga morgen ik met mijn moeder naar het park"],
+    correct: 1,
+    explanation: "Time first: Morgen + verb + subject + rest",
+    inversionType: 'time'
+  }
+];
+
+const adjectiveQuizQuestions: AdjectiveQuizQuestion[] = [
+  {
+    sentence: "Paul is oud. Yusuf is ___ dan Paul.",
+    adjective: "oud",
+    options: ["ouder", "oudst", "het oudst"],
+    correct: 0,
+    explanation: "Comparative: oud + -er = ouder (than)",
+    type: 'comparative'
+  },
+  {
+    sentence: "Yassin is klein. Sanne is kleiner dan Yassin. Johan is ___.",
+    adjective: "klein",
+    options: ["kleiner", "het kleinst", "kleinst"],
+    correct: 1,
+    explanation: "Superlative: het + klein + -st = het kleinst",
+    type: 'superlative'
+  },
+  {
+    sentence: "Dit eten is lekker. Dat eten is ___ dan dit eten.",
+    adjective: "lekker",
+    options: ["lekkerder", "lekker", "het lekkerst"],
+    correct: 0,
+    explanation: "Comparative with 'r' ending: lekker + -der = lekkerder",
+    type: 'comparative'
+  },
+  {
+    sentence: "Hij speelt goed voetbal. Zij speelt ___ dan hij.",
+    adjective: "goed",
+    options: ["goeder", "beter", "het best"],
+    correct: 1,
+    explanation: "Irregular: goed → beter (comparative)",
+    type: 'irregular'
+  },
+  {
+    sentence: "Ik heb veel geld. Jij hebt ___ geld dan ik.",
+    adjective: "veel",
+    options: ["veeler", "meer", "het meest"],
+    correct: 1,
+    explanation: "Irregular: veel → meer (comparative)",
+    type: 'irregular'
+  },
+  {
+    sentence: "Van alle studenten werkt Anna ___.",
+    adjective: "goed",
+    options: ["beter", "het best", "goedst"],
+    correct: 1,
+    explanation: "Irregular superlative: goed → het best",
+    type: 'irregular'
+  }
+];
+
+const adjectiveInflectionQuizQuestions: AdjectiveInflectionQuizQuestion[] = [
+  {
+    phrase: "___ aardige man (de man)",
+    options: ["De aardige", "De aardig", "Een aardige"],
+    correct: 0,
+    explanation: "De-word + definite article: always add -e",
+    wordType: 'de-word',
+    articleType: 'definite'
+  },
+  {
+    phrase: "___ aardig man (de man)",
+    options: ["Een aardige", "Een aardig", "De aardige"],
+    correct: 0,
+    explanation: "De-word + indefinite article: always add -e",
+    wordType: 'de-word',
+    articleType: 'indefinite'
+  },
+  {
+    phrase: "___ mooi huis (het huis)",
+    options: ["Het mooie", "Het mooi", "Een mooie"],
+    correct: 0,
+    explanation: "Het-word + definite article: always add -e",
+    wordType: 'het-word',
+    articleType: 'definite'
+  },
+  {
+    phrase: "___ mooi huis (het huis)",
+    options: ["Een mooi", "Een mooie", "Het mooi"],
+    correct: 0,
+    explanation: "Het-word + 'een': NO -e (only exception!)",
+    wordType: 'het-word',
+    articleType: 'indefinite'
+  },
+  {
+    phrase: "___ kleine baby (deze/die)",
+    options: ["Deze kleine", "Deze klein", "Dit kleine"],
+    correct: 0,
+    explanation: "After deze/die/dit/dat: always add -e",
+    wordType: 'de-word',
+    articleType: 'demonstrative'
+  },
+  {
+    phrase: "___ kleine kindje (dit/dat)",
+    options: ["Dit kleine", "Dit klein", "Deze kleine"],
+    correct: 0,
+    explanation: "After deze/die/dit/dat: always add -e",
+    wordType: 'het-word',
+    articleType: 'demonstrative'
+  }
+];aat Sandra sporten", "Gaat zaterdag Sandra sporten"],
+    correct: 1,
+    explanation: "Time first: Zaterdag + verb + subject + rest",
+    inversionType: 'time'
+  },
+  {
+    normalSentence: "Veel mensen wonen in India",
+    options: ["In India veel mensen wonen", "In India wonen veel mensen", "Wonen in India veel mensen"],
+    correct: 1,
+    explanation: "Place first: In India + verb + subject",
+    inversionType: 'place'
+  },
+  {
+    normalSentence: "Hij eet die hamburger in 1 minuut op",
+    options: ["Die hamburger hij eet in 1 minuut op", "Die hamburger eet hij in 1 minuut op", "Eet die hamburger hij in 1 minuut op"],
+    correct: 1,
+    explanation: "Object first: Die hamburger + verb + subject + rest",
+    inversionType: 'object'
+  },
+  {
+    normalSentence: "Ik ga morgen met mijn moeder naar het park",
+    options: ["Morgen ik ga met mijn moeder naar het park", "Morgen ga ik met mijn moeder naar het park", "Ga morgen ik met mijn moeder naar het park"],
+    correct: 1,
+    explanation: "Time first: Morgen + verb + subject + rest",
+    inversionType: 'time'
+  }
+];
+
 export default function Grammar() {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [selectedSubtopic, setSelectedSubtopic] = useState<string | null>(null);
@@ -406,7 +598,7 @@ export default function Grammar() {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'negation' | 'structure' | 'order' | 'conjunction'>('basic');
+  const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'negation' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection'>('basic');
   const [showDutchText, setShowDutchText] = useState<{[key: string]: boolean}>({});
 
   const toggleDutchText = (key: string) => {
@@ -450,6 +642,13 @@ export default function Grammar() {
       if (quizType === 'conjunction') return conjunctionQuizQuestions;
       return sentenceStructureQuizQuestions;
     }
+    if (selectedTopic === 'inversie') {
+      return inversieQuizQuestions;
+    }
+    if (selectedTopic === 'adjectives') {
+      if (quizType === 'inflection') return adjectiveInflectionQuizQuestions;
+      return adjectiveQuizQuestions;
+    }
     return verbQuizQuestions;
   };
 
@@ -479,7 +678,7 @@ export default function Grammar() {
     }
   };
 
-  const resetQuizWithType = (type: 'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'structure' | 'order' | 'conjunction') => {
+  const resetQuizWithType = (type: 'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection') => {
     setQuizType(type);
     resetQuiz();
   };
@@ -1578,6 +1777,1019 @@ export default function Grammar() {
     );
   }
 
+  if (selectedTopic === 'inversie') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
+        <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <Button onClick={handleBackToTopics} variant="ghost" className="flex items-center gap-2">
+                <ArrowLeft className="w-4 h-4" />
+                Back to Topics
+              </Button>
+              <h1 className="text-2xl font-bold">Inversie (Word Order Inversion)</h1>
+              <div className="w-32" />
+            </div>
+          </div>
+        </header>
+
+        <main className="container mx-auto px-4 py-8 space-y-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <RotateCcw className="w-6 h-6" />
+                What is Inversie?
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => toggleDutchText('inversie-intro')}
+                  className="ml-auto"
+                >
+                  {showDutchText['inversie-intro'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  Dutch
+                </Button>
+              </CardTitle>
+              {showDutchText['inversie-intro'] && (
+                <p className="text-sm text-muted-foreground">Wat is inversie?</p>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Inversie means you don't always have to start a main clause with the subject! You can begin a sentence with time, place, or even the object. When you do this, the subject moves to right after the first verb, while the rest of the sentence stays the same. This makes Dutch more flexible and natural-sounding.
+              </p>
+              {showDutchText['inversie-intro'] && (
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Inversie betekent dat je een hoofdzin niet altijd met het onderwerp hoeft te beginnen! Je kunt een zin beginnen met tijd, plaats, of zelfs het object. Het onderwerp komt dan direct na het eerste werkwoord.
+                </p>
+              )}
+              
+              <div className="bg-blue-50 dark:bg-blue-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-blue-800 dark:text-blue-200">Normal vs Inversie Structure:</h3>
+                <div className="space-y-4">
+                  <div>
+                    <p className="font-semibold mb-2">Normal Order:</p>
+                    <div className="bg-white/50 dark:bg-black/20 p-3 rounded">
+                      <p className="font-mono">Subject + Verb + Rest</p>
+                      <p className="text-sm text-muted-foreground">Ik eet straks een boterham met kaas</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-2">With Inversie:</p>
+                    <div className="bg-white/50 dark:bg-black/20 p-3 rounded">
+                      <p className="font-mono">Time/Place/Object + Verb + Subject + Rest</p>
+                      <p className="text-sm text-muted-foreground">Straks eet ik een boterham met kaas</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Clock className="w-6 h-6" />
+                Starting with Time
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => toggleDutchText('time-inversie')}
+                  className="ml-auto"
+                >
+                  {showDutchText['time-inversie'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  Dutch
+                </Button>
+              </CardTitle>
+              {showDutchText['time-inversie'] && (
+                <p className="text-sm text-muted-foreground">Beginnen met tijd</p>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Starting with time expressions is very common in Dutch. It emphasizes when something happens and makes the sentence flow more naturally in conversation.
+              </p>
+              
+              <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-green-800 dark:text-green-200">Examples:</h3>
+                <div className="space-y-3">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="font-semibold mb-1 text-green-700 dark:text-green-300">Normal:</p>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded">Ik eet straks een boterham met kaas</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-1 text-green-700 dark:text-green-300">With Inversie:</p>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded"><strong>Straks</strong> eet ik een boterham met kaas</p>
+                    </div>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded">Sandra gaat zaterdag sporten</p>
+                    </div>
+                    <div>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded"><strong>Zaterdag</strong> gaat Sandra sporten</p>
+                    </div>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded">Ik ga morgen met mijn moeder naar het park</p>
+                    </div>
+                    <div>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded"><strong>Morgen</strong> ga ik met mijn moeder naar het park</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <MapPin className="w-6 h-6" />
+                Starting with Place
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => toggleDutchText('place-inversie')}
+                  className="ml-auto"
+                >
+                  {showDutchText['place-inversie'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  Dutch
+                </Button>
+              </CardTitle>
+              {showDutchText['place-inversie'] && (
+                <p className="text-sm text-muted-foreground">Beginnen met plaats</p>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Starting with place expressions emphasizes location and is often used to contrast different places or to set the scene.
+              </p>
+              
+              <div className="bg-yellow-50 dark:bg-yellow-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-yellow-800 dark:text-yellow-200">Examples:</h3>
+                <div className="space-y-3">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="font-semibold mb-1 text-yellow-700 dark:text-yellow-300">Normal:</p>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded">Veel mensen wonen in India</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-1 text-yellow-700 dark:text-yellow-300">With Inversie:</p>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded"><strong>In India</strong> wonen veel mensen</p>
+                    </div>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded">Je ziet veel planten in het park</p>
+                    </div>
+                    <div>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded"><strong>In het park</strong> zie je veel planten</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Starting with Object
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => toggleDutchText('object-inversie')}
+                  className="ml-auto"
+                >
+                  {showDutchText['object-inversie'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  Dutch
+                </Button>
+              </CardTitle>
+              {showDutchText['object-inversie'] && (
+                <p className="text-sm text-muted-foreground">Beginnen met object</p>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Starting with the object is less common but very effective for emphasis. It's often used to express strong feelings or to highlight what you're talking about.
+              </p>
+              
+              <div className="bg-red-50 dark:bg-red-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-red-800 dark:text-red-200">Examples:</h3>
+                <div className="space-y-3">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="font-semibold mb-1 text-red-700 dark:text-red-300">Normal:</p>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded">Hij eet die hamburger in 1 minuut op!</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-1 text-red-700 dark:text-red-300">With Inversie:</p>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded"><strong>Die hamburger</strong> eet hij in 1 minuut op!</p>
+                    </div>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded">Ik wil die vervelende vrouw een klap geven</p>
+                    </div>
+                    <div>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded"><strong>Die vervelende vrouw</strong> wil ik een klap geven</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-xs mt-3 text-red-700 dark:text-red-300">Note: Object inversie is often used for emphasis or strong emotions</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <BookOpen className="w-6 h-6" />
+                Detailed Structure Schema
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="bg-purple-50 dark:bg-purple-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-purple-800 dark:text-purple-200">Inversie Structure:</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2 bg-purple-100 dark:bg-purple-900">Tijd/Plaats/Object</th>
+                        <th className="text-left p-2 bg-blue-100 dark:bg-blue-900">1e werkwoord</th>
+                        <th className="text-left p-2 bg-green-100 dark:bg-green-900">Subject</th>
+                        <th className="text-left p-2 bg-yellow-100 dark:bg-yellow-900">Tijd</th>
+                        <th className="text-left p-2 bg-orange-100 dark:bg-orange-900">Object/Manier</th>
+                        <th className="text-left p-2 bg-pink-100 dark:bg-pink-900">Plaats</th>
+                        <th className="text-left p-2 bg-red-100 dark:bg-red-900">2e werkwoord</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold text-purple-700">'s Middags</td>
+                        <td className="p-2 font-semibold text-blue-700">eet</td>
+                        <td className="p-2 font-semibold text-green-700">ik</td>
+                        <td className="p-2">om drie uur</td>
+                        <td className="p-2">een boterham met kaas</td>
+                        <td className="p-2"></td>
+                        <td className="p-2"></td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold text-purple-700">Zaterdag</td>
+                        <td className="p-2 font-semibold text-blue-700">gaat</td>
+                        <td className="p-2 font-semibold text-green-700">Sandra</td>
+                        <td className="p-2"></td>
+                        <td className="p-2"></td>
+                        <td className="p-2"></td>
+                        <td className="p-2 text-red-600 font-bold">sporten</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold text-purple-700">In India</td>
+                        <td className="p-2 font-semibold text-blue-700">wonen</td>
+                        <td className="p-2 font-semibold text-green-700">veel mensen</td>
+                        <td className="p-2"></td>
+                        <td className="p-2"></td>
+                        <td className="p-2"></td>
+                        <td className="p-2"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Inversie Practice Quiz
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {!quizCompleted ? (
+                <div className="space-y-6">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-semibold">Question {currentQuiz + 1} of {inversieQuizQuestions.length}</h3>
+                    <div className="text-sm text-muted-foreground">Score: {score}/{inversieQuizQuestions.length}</div>
+                  </div>
+                  
+                  <div className="text-center space-y-4">
+                    <p className="text-lg">Transform this sentence using inversie:</p>
+                    <div className="bg-muted/50 p-4 rounded-lg">
+                      <p className="text-xl font-bold text-primary">{inversieQuizQuestions[currentQuiz].normalSentence}</p>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-4">
+                    {inversieQuizQuestions[currentQuiz].options.map((option, index) => (
+                      <Button
+                        key={index}
+                        variant={selectedAnswer === index ? 
+                          (index === inversieQuizQuestions[currentQuiz].correct ? "default" : "destructive") : 
+                          "outline"
+                        }
+                        className={`p-4 text-lg text-left justify-start ${
+                          showResult && index === inversieQuizQuestions[currentQuiz].correct ? 
+                          "bg-green-500 hover:bg-green-600" : ""
+                        }`}
+                        onClick={() => handleAnswerSelect(index)}
+                        disabled={showResult}
+                      >
+                        {showResult && index === inversieQuizQuestions[currentQuiz].correct && (
+                          <CheckCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {showResult && selectedAnswer === index && index !== inversieQuizQuestions[currentQuiz].correct && (
+                          <XCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {option}
+                      </Button>
+                    ))}
+                  </div>
+
+                  {showResult && (
+                    <div className="space-y-4">
+                      <div className="bg-muted p-4 rounded-lg">
+                        <p className="font-semibold mb-2">Explanation:</p>
+                        <p>{inversieQuizQuestions[currentQuiz].explanation}</p>
+                        <p className="text-sm text-muted-foreground mt-2">
+                          Type: {inversieQuizQuestions[currentQuiz].inversionType === 'time' ? 'Time inversion' : 
+                                inversieQuizQuestions[currentQuiz].inversionType === 'place' ? 'Place inversion' : 'Object inversion'}
+                        </p>
+                      </div>
+                      <Button onClick={handleNextQuestion} className="w-full">
+                        {currentQuiz < inversieQuizQuestions.length - 1 ? "Next Question" : "Finish Quiz"}
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-center space-y-4">
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                  <h3 className="text-2xl font-bold">Quiz Completed!</h3>
+                  <p className="text-lg">Final Score: {score}/{inversieQuizQuestions.length}</p>
+                  <Button onClick={() => resetQuizWithType('inversie')} className="flex items-center gap-2">
+                    <RotateCcw className="w-4 h-4" />
+                    Try Again
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </main>
+      </div>
+    );
+  }
+
+  if (selectedTopic === 'adjectives') {
+    if (!selectedSubtopic) {
+      return (
+        <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
+          <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
+            <div className="container mx-auto px-4 py-4">
+              <div className="flex items-center justify-between">
+                <Button onClick={handleBackToTopics} variant="ghost" className="flex items-center gap-2">
+                  <ArrowLeft className="w-4 h-4" />
+                  Back to Topics
+                </Button>
+                <h1 className="text-2xl font-bold">Adjectives (Bijvoeglijke Naamwoorden)</h1>
+                <div className="w-32" />
+              </div>
+            </div>
+          </header>
+
+          <main className="container mx-auto px-4 py-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Choose an Adjective Topic
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Learn Dutch adjectives step by step, from comparisons to inflection rules.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSubtopicSelect('comparisons')}>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Target className="w-5 h-5" />
+                    1. Comparisons (Vergelijken)
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground mb-4">
+                    Learn comparative and superlative forms: kleiner, het kleinst.
+                  </p>
+                  <Button className="w-full">
+                    Start Learning
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSubtopicSelect('inflection')}>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <BookOpen className="w-5 h-5" />
+                    2. Inflection (Buigings-e)
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground mb-4">
+                    Learn when to add -e to adjectives before nouns: de kleine man, een mooi huis.
+                  </p>
+                  <Button className="w-full">
+                    Start Learning
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </main>
+        </div>
+      );
+    }
+
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
+        <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <Button onClick={handleBackToSubtopics} variant="ghost" className="flex items-center gap-2">
+                <ArrowLeft className="w-4 h-4" />
+                Back to Adjective Topics
+              </Button>
+              <h1 className="text-2xl font-bold">
+                {selectedSubtopic === 'comparisons' && 'Comparisons (Vergelijken)'}
+                {selectedSubtopic === 'inflection' && 'Inflection (Buigings-e)'}
+              </h1>
+              <div className="w-32" />
+            </div>
+          </div>
+        </header>
+
+        <main className="container mx-auto px-4 py-8 space-y-8">
+          {selectedSubtopic === 'comparisons' && (
+            <>
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Users className="w-6 h-6" />
+                What are Comparisons?
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => toggleDutchText('adjective-intro')}
+                  className="ml-auto"
+                >
+                  {showDutchText['adjective-intro'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  Dutch
+                </Button>
+              </CardTitle>
+              {showDutchText['adjective-intro'] && (
+                <p className="text-sm text-muted-foreground">Wat zijn vergelijkingen?</p>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                When you want to compare people or things and express differences, Dutch uses specific forms of adjectives. There are two main types: comparative (vergrotende trap) for comparing two things, and superlative (overtreffende trap) for expressing the highest degree among three or more.
+              </p>
+              {showDutchText['adjective-intro'] && (
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Als je mensen of dingen wilt vergelijken en je wilt zeggen wat het verschil is, gebruikt het Nederlands specifieke vormen van bijvoeglijke naamwoorden.
+                </p>
+              )}
+              
+              <div className="bg-blue-50 dark:bg-blue-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-blue-800 dark:text-blue-200">Three Forms of Adjectives:</h3>
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="text-center">
+                    <h4 className="font-semibold mb-2">Basic Form</h4>
+                    <p className="text-sm mb-1">Positief</p>
+                    <p className="font-mono bg-white/50 dark:bg-black/20 p-2 rounded">klein</p>
+                    <p className="text-xs mt-1">Paul is klein</p>
+                  </div>
+                  <div className="text-center">
+                    <h4 className="font-semibold mb-2">Comparative</h4>
+                    <p className="text-sm mb-1">Vergrotende trap</p>
+                    <p className="font-mono bg-white/50 dark:bg-black/20 p-2 rounded">kleiner</p>
+                    <p className="text-xs mt-1">Yusuf is kleiner</p>
+                  </div>
+                  <div className="text-center">
+                    <h4 className="font-semibold mb-2">Superlative</h4>
+                    <p className="text-sm mb-1">Overtreffende trap</p>
+                    <p className="font-mono bg-white/50 dark:bg-black/20 p-2 rounded">het kleinst</p>
+                    <p className="text-xs mt-1">Peter is het kleinst</p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Regular Adjectives (Regelmatig)
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => toggleDutchText('regular-adjectives')}
+                  className="ml-auto"
+                >
+                  {showDutchText['regular-adjectives'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  Dutch
+                </Button>
+              </CardTitle>
+              {showDutchText['regular-adjectives'] && (
+                <p className="text-sm text-muted-foreground">Regelmatige bijvoeglijke naamwoorden</p>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Most Dutch adjectives follow regular patterns. For the comparative, add '-er' to the adjective. For the superlative, add 'het' + adjective + '-st'.
+              </p>
+              
+              <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-green-800 dark:text-green-200">Regular Pattern: Add -er and -st</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Adjectief</th>
+                        <th className="text-left p-2">Comparatief</th>
+                        <th className="text-left p-2">Superlatief</th>
+                        <th className="text-left p-2">English</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">klein</td>
+                        <td className="p-2 text-primary font-bold">kleiner (dan)</td>
+                        <td className="p-2 text-red-600 font-bold">het kleinst</td>
+                        <td className="p-2 text-muted-foreground">small</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">leuk</td>
+                        <td className="p-2 text-primary font-bold">leuker (dan)</td>
+                        <td className="p-2 text-red-600 font-bold">het leukst</td>
+                        <td className="p-2 text-muted-foreground">nice/fun</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">groot</td>
+                        <td className="p-2 text-primary font-bold">groter (dan)</td>
+                        <td className="p-2 text-red-600 font-bold">het grootst</td>
+                        <td className="p-2 text-muted-foreground">big</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">dik</td>
+                        <td className="p-2 text-primary font-bold">dikker (dan)</td>
+                        <td className="p-2 text-red-600 font-bold">het dikst</td>
+                        <td className="p-2 text-muted-foreground">thick/fat</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">lief</td>
+                        <td className="p-2 text-primary font-bold">liever (dan)</td>
+                        <td className="p-2 text-red-600 font-bold">het liefst</td>
+                        <td className="p-2 text-muted-foreground">sweet/dear</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div className="bg-yellow-50 dark:bg-yellow-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-yellow-800 dark:text-yellow-200">Special Rule: Adjectives ending in 'r'</h3>
+                <p className="text-sm mb-3">When the adjective ends in 'r', add '-der' instead of '-er' for the comparative:</p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Adjectief</th>
+                        <th className="text-left p-2">Comparatief</th>
+                        <th className="text-left p-2">Superlatief</th>
+                        <th className="text-left p-2">English</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">lekker</td>
+                        <td className="p-2 text-primary font-bold">lekkerder</td>
+                        <td className="p-2 text-red-600 font-bold">het lekkerst</td>
+                        <td className="p-2 text-muted-foreground">tasty</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">duur</td>
+                        <td className="p-2 text-primary font-bold">duurder</td>
+                        <td className="p-2 text-red-600 font-bold">het duurst</td>
+                        <td className="p-2 text-muted-foreground">expensive</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <XCircle className="w-6 h-6" />
+                Irregular Adjectives (Onregelmatig)
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => toggleDutchText('irregular-adjectives')}
+                  className="ml-auto"
+                >
+                  {showDutchText['irregular-adjectives'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  Dutch
+                </Button>
+              </CardTitle>
+              {showDutchText['irregular-adjectives'] && (
+                <p className="text-sm text-muted-foreground">Onregelmatige bijvoeglijke naamwoorden</p>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Some important adjectives don't follow the regular pattern. These irregular forms must be memorized as they change completely in their comparative and superlative forms.
+              </p>
+              
+              <div className="bg-red-50 dark:bg-red-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-red-800 dark:text-red-200">Common Irregular Adjectives:</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Adjectief</th>
+                        <th className="text-left p-2">Comparatief</th>
+                        <th className="text-left p-2">Superlatief</th>
+                        <th className="text-left p-2">English</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b bg-white/20">
+                        <td className="p-2 font-semibold">goed</td>
+                        <td className="p-2 text-primary font-bold">beter dan</td>
+                        <td className="p-2 text-red-600 font-bold">het best</td>
+                        <td className="p-2 text-muted-foreground">good</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">veel</td>
+                        <td className="p-2 text-primary font-bold">meer dan</td>
+                        <td className="p-2 text-red-600 font-bold">het meest</td>
+                        <td className="p-2 text-muted-foreground">much/many</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">weinig</td>
+                        <td className="p-2 text-primary font-bold">minder dan</td>
+                        <td className="p-2 text-red-600 font-bold">het minst</td>
+                        <td className="p-2 text-muted-foreground">little/few</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">graag</td>
+                        <td className="p-2 text-primary font-bold">liever dan</td>
+                        <td className="p-2 text-red-600 font-bold">het liefst</td>
+                        <td className="p-2 text-muted-foreground">gladly</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-xs mt-3 text-red-700 dark:text-red-300">Note: These forms must be memorized - they don't follow regular patterns!</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <BookOpen className="w-6 h-6" />
+                Using Comparisons in Sentences
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="bg-blue-50 dark:bg-blue-950">
+                  <CardContent className="p-4">
+                    <h3 className="font-bold text-lg mb-3 text-blue-800 dark:text-blue-200">Comparative Examples:</h3>
+                    <div className="space-y-2 text-sm">
+                      <p><strong>Paul is oud.</strong><br/>Yusuf is <strong>ouder dan</strong> Paul.</p>
+                      <p><strong>Yassin is klein.</strong><br/>Sanne is <strong>kleiner dan</strong> Yassin.</p>
+                      <p><strong>Dit boek is goed.</strong><br/>Dat boek is <strong>beter dan</strong> dit boek.</p>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-green-50 dark:bg-green-950">
+                  <CardContent className="p-4">
+                    <h3 className="font-bold text-lg mb-3 text-green-800 dark:text-green-200">Superlative Examples:</h3>
+                    <div className="space-y-2 text-sm">
+                      <p><strong>Peter is het oudst</strong> van alle drie.</p>
+                      <p><strong>Johan is het kleinst</strong> in de klas.</p>
+                      <p><strong>Anna werkt het best</strong> van iedereen.</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+              
+              <div className="bg-purple-50 dark:bg-purple-950 p-4 rounded-lg">
+                <h3 className="font-bold text-lg mb-2 text-purple-800 dark:text-purple-200">Complete Example:</h3>
+                <p className="text-sm">Paul is oud. Yusuf is ouder dan Paul. Peter is het oudst.</p>
+                <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">Basic → Comparative (+ dan) → Superlative (het + -st)</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Adjective Comparison Quiz
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {!quizCompleted ? (
+                <div className="space-y-6">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-semibold">Question {currentQuiz + 1} of {adjectiveQuizQuestions.length}</h3>
+                    <div className="text-sm text-muted-foreground">Score: {score}/{adjectiveQuizQuestions.length}</div>
+                  </div>
+                  
+                  <div className="text-center space-y-4">
+                    <p className="text-lg">Complete the sentence:</p>
+                    <div className="bg-muted/50 p-4 rounded-lg">
+                      <p className="text-xl font-bold text-primary">{adjectiveQuizQuestions[currentQuiz].sentence}</p>
+                      <p className="text-sm text-muted-foreground mt-2">Adjective: {adjectiveQuizQuestions[currentQuiz].adjective}</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4">
+                    {adjectiveQuizQuestions[currentQuiz].options.map((option, index) => (
+                      <Button
+                        key={index}
+                        variant={selectedAnswer === index ? 
+                          (index === adjectiveQuizQuestions[currentQuiz].correct ? "default" : "destructive") : 
+                          "outline"
+                        }
+                        className={`p-4 text-lg ${
+                          showResult && index === adjectiveQuizQuestions[currentQuiz].correct ? 
+                          "bg-green-500 hover:bg-green-600" : ""
+                        }`}
+                        onClick={() => handleAnswerSelect(index)}
+                        disabled={showResult}
+                      >
+                        {showResult && index === adjectiveQuizQuestions[currentQuiz].correct && (
+                          <CheckCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {showResult && selectedAnswer === index && index !== adjectiveQuizQuestions[currentQuiz].correct && (
+                          <XCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {option}
+                      </Button>
+                    ))}
+                  </div>
+
+                  {showResult && (
+                    <div className="space-y-4">
+                      <div className="bg-muted p-4 rounded-lg">
+                        <p className="font-semibold mb-2">Explanation:</p>
+                        <p>{adjectiveQuizQuestions[currentQuiz].explanation}</p>
+                        <p className="text-sm text-muted-foreground mt-2">
+                          Type: {adjectiveQuizQuestions[currentQuiz].type === 'comparative' ? 'Comparative (vergrotende trap)' : 
+                                adjectiveQuizQuestions[currentQuiz].type === 'superlative' ? 'Superlative (overtreffende trap)' : 'Irregular form'}
+                        </p>
+                      </div>
+                      <Button onClick={handleNextQuestion} className="w-full">
+                        {currentQuiz < adjectiveQuizQuestions.length - 1 ? "Next Question" : "Finish Quiz"}
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-center space-y-4">
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                  <h3 className="text-2xl font-bold">Quiz Completed!</h3>
+                  <p className="text-lg">Final Score: {score}/{adjectiveQuizQuestions.length}</p>
+                  <Button onClick={() => resetQuizWithType('adjective')} className="flex items-center gap-2">
+                    <RotateCcw className="w-4 h-4" />
+                    Try Again
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+          {selectedSubtopic === 'inflection' && (
+            <>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <BookOpen className="w-6 h-6" />
+                    What is Adjective Inflection?
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <p className="text-lg leading-relaxed">
+                    Dutch adjectives often have two versions: with and without an extra '-e'. When an adjective comes AFTER a noun, it never gets an extra '-e'. But when it comes BEFORE a noun, it usually does get an '-e', depending on the type of noun and article used.
+                  </p>
+                  
+                  <div className="bg-blue-50 dark:bg-blue-950 p-6 rounded-lg">
+                    <h3 className="font-semibold mb-3 text-blue-800 dark:text-blue-200">Two Forms of Adjectives:</h3>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <h4 className="font-semibold mb-2">Without -e (after noun):</h4>
+                        <ul className="text-sm space-y-1">
+                          <li>• De fiets is <strong>mooi</strong></li>
+                          <li>• De relatie is <strong>serieus</strong></li>
+                          <li>• De kat is <strong>dik</strong></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2">With -e (before noun):</h4>
+                        <ul className="text-sm space-y-1">
+                          <li>• De <strong>mooie</strong> fiets</li>
+                          <li>• De <strong>serieuze</strong> relatie</li>
+                          <li>• De <strong>dikke</strong> kat</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <Target className="w-6 h-6" />
+                    DE-words with Adjectives
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <p className="text-lg leading-relaxed">
+                    DE-words (masculine and feminine nouns) ALWAYS get an '-e' on the adjective when it comes before the noun, regardless of whether you use 'de', 'een', or plural forms.
+                  </p>
+                  
+                  <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg">
+                    <h3 className="font-semibold mb-3 text-green-800 dark:text-green-200">DE-words: Always add -e</h3>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b">
+                            <th className="text-left p-2">Type</th>
+                            <th className="text-left p-2">Singular</th>
+                            <th className="text-left p-2">Plural</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-b">
+                            <td className="p-2 font-semibold">Without adjective</td>
+                            <td className="p-2">De man / Een man</td>
+                            <td className="p-2">De mannen / Mannen</td>
+                          </tr>
+                          <tr className="border-b">
+                            <td className="p-2 font-semibold">With adjective</td>
+                            <td className="p-2 text-primary font-bold">De aardige man / Een aardige man</td>
+                            <td className="p-2 text-primary font-bold">De aardige mannen / Aardige mannen</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <XCircle className="w-6 h-6" />
+                    HET-words with Adjectives
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <p className="text-lg leading-relaxed">
+                    HET-words (neuter nouns) follow a special rule: they get an '-e' on the adjective EXCEPT when used with 'een' in singular form. This is the only exception to remember!
+                  </p>
+                  
+                  <div className="bg-yellow-50 dark:bg-yellow-950 p-6 rounded-lg">
+                    <h3 className="font-semibold mb-3 text-yellow-800 dark:text-yellow-200">HET-words: One Exception</h3>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b">
+                            <th className="text-left p-2">Type</th>
+                            <th className="text-left p-2">Singular</th>
+                            <th className="text-left p-2">Plural</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-b">
+                            <td className="p-2 font-semibold">Without adjective</td>
+                            <td className="p-2">Het huis / Een huis</td>
+                            <td className="p-2">De huizen / Huizen</td>
+                          </tr>
+                          <tr className="border-b">
+                            <td className="p-2 font-semibold">With adjective</td>
+                            <td className="p-2">
+                              <span className="text-primary font-bold">Het mooie huis</span> / 
+                              <span className="text-red-600 font-bold">Een mooi huis</span>
+                            </td>
+                            <td className="p-2 text-primary font-bold">De mooie huizen / Mooie huizen</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div className="mt-4 p-4 bg-red-100 dark:bg-red-900 rounded">
+                      <p className="text-red-800 dark:text-red-200 font-semibold">Exception: HET-word + 'een' = NO -e</p>
+                      <p className="text-xs text-red-600 dark:text-red-400">Een mooi huis (not: een mooie huis)</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Target className="w-6 h-6" />
+                    Adjective Inflection Quiz
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {!quizCompleted ? (
+                    <div className="space-y-6">
+                      <div className="flex justify-between items-center">
+                        <h3 className="text-lg font-semibold">Question {currentQuiz + 1} of {adjectiveInflectionQuizQuestions.length}</h3>
+                        <div className="text-sm text-muted-foreground">Score: {score}/{adjectiveInflectionQuizQuestions.length}</div>
+                      </div>
+                      
+                      <div className="text-center space-y-4">
+                        <p className="text-lg">Choose the correct form:</p>
+                        <div className="bg-muted/50 p-4 rounded-lg">
+                          <p className="text-xl font-bold text-primary">{adjectiveInflectionQuizQuestions[currentQuiz].phrase}</p>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-4">
+                        {adjectiveInflectionQuizQuestions[currentQuiz].options.map((option, index) => (
+                          <Button
+                            key={index}
+                            variant={selectedAnswer === index ? 
+                              (index === adjectiveInflectionQuizQuestions[currentQuiz].correct ? "default" : "destructive") : 
+                              "outline"
+                            }
+                            className={`p-4 text-lg ${
+                              showResult && index === adjectiveInflectionQuizQuestions[currentQuiz].correct ? 
+                              "bg-green-500 hover:bg-green-600" : ""
+                            }`}
+                            onClick={() => handleAnswerSelect(index)}
+                            disabled={showResult}
+                          >
+                            {showResult && index === adjectiveInflectionQuizQuestions[currentQuiz].correct && (
+                              <CheckCircle className="w-5 h-5 mr-2" />
+                            )}
+                            {showResult && selectedAnswer === index && index !== adjectiveInflectionQuizQuestions[currentQuiz].correct && (
+                              <XCircle className="w-5 h-5 mr-2" />
+                            )}
+                            {option}
+                          </Button>
+                        ))}
+                      </div>
+
+                      {showResult && (
+                        <div className="space-y-4">
+                          <div className="bg-muted p-4 rounded-lg">
+                            <p className="font-semibold mb-2">Explanation:</p>
+                            <p>{adjectiveInflectionQuizQuestions[currentQuiz].explanation}</p>
+                          </div>
+                          <Button onClick={handleNextQuestion} className="w-full">
+                            {currentQuiz < adjectiveInflectionQuizQuestions.length - 1 ? "Next Question" : "Finish Quiz"}
+                          </Button>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="text-center space-y-4">
+                      <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                      <h3 className="text-2xl font-bold">Quiz Completed!</h3>
+                      <p className="text-lg">Final Score: {score}/{adjectiveInflectionQuizQuestions.length}</p>
+                      <Button onClick={() => resetQuizWithType('inflection')} className="flex items-center gap-2">
+                        <RotateCcw className="w-4 h-4" />
+                        Try Again
+                      </Button>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </>
+          )}
+        </main>
+      </div>
+    );
+  }
+
   if (selectedTopic === 'negation') {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
@@ -2201,6 +3413,23 @@ export default function Grammar() {
             </CardContent>
           </Card>
 
+          <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleTopicSelect('inversie')}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <RotateCcw className="w-5 h-5" />
+                Inversie (Word Order Inversion)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-4">
+                Learn how to start Dutch sentences with time, place, or objects instead of the subject.
+              </p>
+              <Button className="w-full">
+                Start Learning
+              </Button>
+            </CardContent>
+          </Card>
+
           <Card className="text-center">
             <CardHeader>
               <CardTitle className="text-muted-foreground">Nouns</CardTitle>
@@ -2210,12 +3439,20 @@ export default function Grammar() {
             </CardContent>
           </Card>
 
-          <Card className="text-center">
+          <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleTopicSelect('adjectives')}>
             <CardHeader>
-              <CardTitle className="text-muted-foreground">Adjectives</CardTitle>
+              <CardTitle className="flex items-center gap-2">
+                <Users className="w-5 h-5" />
+                Adjectives (Comparisons)
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Coming soon</p>
+              <p className="text-muted-foreground mb-4">
+                Learn Dutch adjective comparisons: comparative and superlative forms with regular and irregular patterns.
+              </p>
+              <Button className="w-full">
+                Start Learning
+              </Button>
             </CardContent>
           </Card>
 
