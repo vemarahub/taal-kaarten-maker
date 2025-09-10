@@ -325,6 +325,15 @@ interface AdjectiveInflectionQuizQuestion {
   articleType: 'definite' | 'indefinite' | 'demonstrative';
 }
 
+interface ReferenceWordQuizQuestion {
+  sentence: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+  type: 'subject' | 'object';
+  wordType: 'de-word' | 'het-word' | 'plural';
+}
+
 const negationQuizQuestions: NegationQuizQuestion[] = [
   {
     sentence: "Peter is groot. → Peter ___ groot.",
@@ -564,6 +573,57 @@ const adjectiveInflectionQuizQuestions: AdjectiveInflectionQuizQuestion[] = [
   }
 ];
 
+const referenceWordQuizQuestions: ReferenceWordQuizQuestion[] = [
+  {
+    sentence: "De borden zijn schoon. ___ staan in de kast.",
+    options: ["Hij", "Ze", "Het"],
+    correct: 1,
+    explanation: "'De borden' is plural, so we use 'ze'",
+    type: 'subject',
+    wordType: 'plural'
+  },
+  {
+    sentence: "Ik ga een broek kopen, maar ___ moet niet te lang zijn.",
+    options: ["hij", "ze", "het"],
+    correct: 0,
+    explanation: "'De broek' is a de-word singular, so we use 'hij'",
+    type: 'subject',
+    wordType: 'de-word'
+  },
+  {
+    sentence: "Mijn ouders wonen in een appartement. ___ is groot, maar lelijk.",
+    options: ["Hij", "Het", "Ze"],
+    correct: 1,
+    explanation: "'Het appartement' is a het-word, so we use 'het'",
+    type: 'subject',
+    wordType: 'het-word'
+  },
+  {
+    sentence: "Ik zoek mijn laptop. Ik kan ___ niet vinden.",
+    options: ["hem", "het", "ze"],
+    correct: 0,
+    explanation: "'De laptop' is a de-word, so object form is 'hem'",
+    type: 'object',
+    wordType: 'de-word'
+  },
+  {
+    sentence: "Het spel ligt in de kast. Heb jij ___ al eens gespeeld?",
+    options: ["hem", "het", "ze"],
+    correct: 1,
+    explanation: "'Het spel' is a het-word, so object form is 'het'",
+    type: 'object',
+    wordType: 'het-word'
+  },
+  {
+    sentence: "Ik zoek mijn spullen. Heb je ___ weggegooid?",
+    options: ["hem", "het", "ze"],
+    correct: 2,
+    explanation: "'De spullen' is plural, so object form is 'ze'",
+    type: 'object',
+    wordType: 'plural'
+  }
+];
+
 export default function Grammar() {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [selectedSubtopic, setSelectedSubtopic] = useState<string | null>(null);
@@ -572,7 +632,7 @@ export default function Grammar() {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'negation' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection'>('basic');
+  const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'negation' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords'>('basic');
   const [showDutchText, setShowDutchText] = useState<{[key: string]: boolean}>({});
 
   const toggleDutchText = (key: string) => {
@@ -623,6 +683,9 @@ export default function Grammar() {
       if (quizType === 'inflection') return adjectiveInflectionQuizQuestions;
       return adjectiveQuizQuestions;
     }
+    if (selectedTopic === 'referencewords') {
+      return referenceWordQuizQuestions;
+    }
     return verbQuizQuestions;
   };
 
@@ -652,7 +715,7 @@ export default function Grammar() {
     }
   };
 
-  const resetQuizWithType = (type: 'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection') => {
+  const resetQuizWithType = (type: 'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords') => {
     setQuizType(type);
     resetQuiz();
   };
@@ -2767,6 +2830,222 @@ export default function Grammar() {
     );
   }
 
+  if (selectedTopic === 'referencewords') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
+        <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <Button onClick={handleBackToTopics} variant="ghost" className="flex items-center gap-2">
+                <ArrowLeft className="w-4 h-4" />
+                Back to Topics
+              </Button>
+              <h1 className="text-2xl font-bold">Reference Words (Verwijswoorden voor Dingen)</h1>
+              <div className="w-32" />
+            </div>
+          </div>
+        </header>
+
+        <main className="container mx-auto px-4 py-8 space-y-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <BookOpen className="w-6 h-6" />
+                What are Reference Words?
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Reference words help avoid repetition in Dutch sentences. Instead of repeating the same noun multiple times, we use pronouns to refer back to things we've already mentioned. This makes speech and writing flow more naturally.
+              </p>
+              
+              <div className="bg-red-50 dark:bg-red-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-red-800 dark:text-red-200">Without Reference Words (repetitive):</h3>
+                <p className="text-sm mb-2">Ik heb een auto. De auto is wit. Ik heb de auto al 15 jaar.</p>
+              </div>
+              
+              <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-green-800 dark:text-green-200">With Reference Words (natural):</h3>
+                <p className="text-sm mb-2">Ik heb een auto. Hij is wit. Ik heb hem al 15 jaar.</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Reference Words as Subject
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                When the reference word is the subject of the sentence (who or what is doing the action), we use specific forms depending on whether the original noun was a de-word, het-word, or plural.
+              </p>
+              
+              <div className="bg-blue-50 dark:bg-blue-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-blue-800 dark:text-blue-200">Subject Reference Words:</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Original Noun</th>
+                        <th className="text-left p-2">Reference Word</th>
+                        <th className="text-left p-2">Example</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">De-words (singular)</td>
+                        <td className="p-2 text-primary font-bold">hij / die</td>
+                        <td className="p-2">De auto → Hij is wit / Die is wit</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">Het-words (singular)</td>
+                        <td className="p-2 text-primary font-bold">het / dat</td>
+                        <td className="p-2">Het boek → Het is dik / Dat is dik</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">Plural (all words)</td>
+                        <td className="p-2 text-primary font-bold">ze / die</td>
+                        <td className="p-2">De auto's → Ze zijn wit / Die zijn wit</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Users className="w-6 h-6" />
+                Reference Words as Object
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                When the reference word is the object of the sentence (what the action is being done to), we use different forms. The object forms are used after verbs and prepositions.
+              </p>
+              
+              <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-green-800 dark:text-green-200">Object Reference Words:</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Original Noun</th>
+                        <th className="text-left p-2">Reference Word</th>
+                        <th className="text-left p-2">Example</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">De-words (singular)</td>
+                        <td className="p-2 text-primary font-bold">hem</td>
+                        <td className="p-2">De auto → Ik zie hem niet</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">Het-words (singular)</td>
+                        <td className="p-2 text-primary font-bold">het</td>
+                        <td className="p-2">Het boek → Ik zie het niet</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">Plural (all words)</td>
+                        <td className="p-2 text-primary font-bold">ze</td>
+                        <td className="p-2">De auto's → Ik zie ze niet</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Reference Words Practice Quiz
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {!quizCompleted ? (
+                <div className="space-y-6">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-semibold">Question {currentQuiz + 1} of {referenceWordQuizQuestions.length}</h3>
+                    <div className="text-sm text-muted-foreground">Score: {score}/{referenceWordQuizQuestions.length}</div>
+                  </div>
+                  
+                  <div className="text-center space-y-4">
+                    <p className="text-lg">Complete the sentence with the correct reference word:</p>
+                    <div className="bg-muted/50 p-4 rounded-lg">
+                      <p className="text-xl font-bold text-primary">{referenceWordQuizQuestions[currentQuiz].sentence}</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4">
+                    {referenceWordQuizQuestions[currentQuiz].options.map((option, index) => (
+                      <Button
+                        key={index}
+                        variant={selectedAnswer === index ? 
+                          (index === referenceWordQuizQuestions[currentQuiz].correct ? "default" : "destructive") : 
+                          "outline"
+                        }
+                        className={`p-4 text-lg ${
+                          showResult && index === referenceWordQuizQuestions[currentQuiz].correct ? 
+                          "bg-green-500 hover:bg-green-600" : ""
+                        }`}
+                        onClick={() => handleAnswerSelect(index)}
+                        disabled={showResult}
+                      >
+                        {showResult && index === referenceWordQuizQuestions[currentQuiz].correct && (
+                          <CheckCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {showResult && selectedAnswer === index && index !== referenceWordQuizQuestions[currentQuiz].correct && (
+                          <XCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {option}
+                      </Button>
+                    ))}
+                  </div>
+
+                  {showResult && (
+                    <div className="space-y-4">
+                      <div className="bg-muted p-4 rounded-lg">
+                        <p className="font-semibold mb-2">Explanation:</p>
+                        <p>{referenceWordQuizQuestions[currentQuiz].explanation}</p>
+                        <p className="text-sm text-muted-foreground mt-2">
+                          Type: {referenceWordQuizQuestions[currentQuiz].type === 'subject' ? 'Subject form' : 'Object form'} - 
+                          {referenceWordQuizQuestions[currentQuiz].wordType === 'de-word' ? 'DE-word' : 
+                           referenceWordQuizQuestions[currentQuiz].wordType === 'het-word' ? 'HET-word' : 'Plural'}
+                        </p>
+                      </div>
+                      <Button onClick={handleNextQuestion} className="w-full">
+                        {currentQuiz < referenceWordQuizQuestions.length - 1 ? "Next Question" : "Finish Quiz"}
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-center space-y-4">
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                  <h3 className="text-2xl font-bold">Quiz Completed!</h3>
+                  <p className="text-lg">Final Score: {score}/{referenceWordQuizQuestions.length}</p>
+                  <Button onClick={() => resetQuizWithType('referencewords')} className="flex items-center gap-2">
+                    <RotateCcw className="w-4 h-4" />
+                    Try Again
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </main>
+      </div>
+    );
+  }
+
   if (selectedTopic === 'negation') {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
@@ -3433,12 +3712,20 @@ export default function Grammar() {
             </CardContent>
           </Card>
 
-          <Card className="text-center">
+          <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleTopicSelect('referencewords')}>
             <CardHeader>
-              <CardTitle className="text-muted-foreground">Sentence Structure</CardTitle>
+              <CardTitle className="flex items-center gap-2">
+                <ArrowLeft className="w-5 h-5" />
+                Reference Words (Verwijswoorden)
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Coming soon</p>
+              <p className="text-muted-foreground mb-4">
+                Learn Dutch reference words for things: hij/hem, het, ze - avoid repetition in sentences.
+              </p>
+              <Button className="w-full">
+                Start Learning
+              </Button>
             </CardContent>
           </Card>
         </div>
