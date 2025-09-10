@@ -270,6 +270,35 @@ interface NegationQuizQuestion {
   type: 'niet' | 'geen';
 }
 
+interface SentenceStructureQuizQuestion {
+  sentence: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+  parts: {
+    subject: string;
+    verb: string;
+    time?: string;
+    object?: string;
+    place?: string;
+  };
+}
+
+interface SentenceOrderQuizQuestion {
+  scrambled: string[];
+  correct: string;
+  explanation: string;
+}
+
+interface ConjunctionQuizQuestion {
+  sentence1: string;
+  sentence2: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+  conjunctionType: 'en' | 'maar' | 'want' | 'dus' | 'of';
+}
+
 const negationQuizQuestions: NegationQuizQuestion[] = [
   {
     sentence: "Peter is groot. → Peter ___ groot.",
@@ -308,6 +337,67 @@ const negationQuizQuestions: NegationQuizQuestion[] = [
   }
 ];
 
+const sentenceStructureQuizQuestions: SentenceStructureQuizQuestion[] = [
+  {
+    sentence: "Mark fietst naar zijn werk",
+    options: ["Subject: Mark, Verb: fietst, Place: naar zijn werk", "Subject: fietst, Verb: Mark, Place: werk", "Subject: Mark, Verb: naar, Place: fietst"],
+    correct: 0,
+    explanation: "Mark (who) fietst (verb) naar zijn werk (where)",
+    parts: { subject: "Mark", verb: "fietst", place: "naar zijn werk" }
+  }
+];
+
+const sentenceOrderQuizQuestions: SentenceOrderQuizQuestion[] = [
+  {
+    scrambled: ["naar", "Ik", "ga", "school"],
+    correct: "Ik ga naar school",
+    explanation: "Subject (Ik) + Verb (ga) + Rest (naar school)"
+  }
+];
+
+const conjunctionQuizQuestions: ConjunctionQuizQuestion[] = [
+  {
+    sentence1: "De docent drinkt koffie",
+    sentence2: "de cursisten drinken thee",
+    options: ["en", "maar", "want"],
+    correct: 0,
+    explanation: "'En' connects two similar actions - both drinking something",
+    conjunctionType: 'en'
+  },
+  {
+    sentence1: "Ik wil graag tv kijken",
+    sentence2: "de tv is kapot",
+    options: ["en", "maar", "dus"],
+    correct: 1,
+    explanation: "'Maar' shows contrast - wanting to watch TV but it's broken",
+    conjunctionType: 'maar'
+  },
+  {
+    sentence1: "Ik ga naar de dokter",
+    sentence2: "ik heb pijn",
+    options: ["maar", "want", "dus"],
+    correct: 1,
+    explanation: "'Want' gives a reason - going to doctor because of pain",
+    conjunctionType: 'want'
+  },
+  {
+    sentence1: "Het is mooi weer",
+    sentence2: "we kunnen een wandeling maken",
+    options: ["want", "dus", "maar"],
+    correct: 1,
+    explanation: "'Dus' shows result - nice weather so we can walk",
+    conjunctionType: 'dus'
+  },
+  {
+    sentence1: "Je kunt naar buiten gaan",
+    sentence2: "je kunt binnen blijven",
+    options: ["en", "of", "want"],
+    correct: 1,
+    explanation: "'Of' shows choice - either go outside or stay inside",
+    conjunctionType: 'of'
+  }
+];
+
 export default function Grammar() {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [selectedSubtopic, setSelectedSubtopic] = useState<string | null>(null);
@@ -316,7 +406,7 @@ export default function Grammar() {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'negation'>('basic');
+  const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'negation' | 'structure' | 'order' | 'conjunction'>('basic');
   const [showDutchText, setShowDutchText] = useState<{[key: string]: boolean}>({});
 
   const toggleDutchText = (key: string) => {
@@ -354,6 +444,12 @@ export default function Grammar() {
     if (selectedTopic === 'negation') {
       return negationQuizQuestions;
     }
+    if (selectedTopic === 'hoofdzinnen') {
+      if (quizType === 'structure') return sentenceStructureQuizQuestions;
+      if (quizType === 'order') return sentenceOrderQuizQuestions;
+      if (quizType === 'conjunction') return conjunctionQuizQuestions;
+      return sentenceStructureQuizQuestions;
+    }
     return verbQuizQuestions;
   };
 
@@ -383,7 +479,7 @@ export default function Grammar() {
     }
   };
 
-  const resetQuizWithType = (type: 'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable') => {
+  const resetQuizWithType = (type: 'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'structure' | 'order' | 'conjunction') => {
     setQuizType(type);
     resetQuiz();
   };
@@ -1243,6 +1339,245 @@ export default function Grammar() {
     );
   }
 
+  if (selectedTopic === 'hoofdzinnen') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
+        <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <Button onClick={handleBackToTopics} variant="ghost" className="flex items-center gap-2">
+                <ArrowLeft className="w-4 h-4" />
+                Back to Topics
+              </Button>
+              <h1 className="text-2xl font-bold">HoofdZinnen (Main Clauses)</h1>
+              <div className="w-32" />
+            </div>
+          </div>
+        </header>
+
+        <main className="container mx-auto px-4 py-8 space-y-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <BookOpen className="w-6 h-6" />
+                Basic Structure (1-2-3)
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                A hoofdzin (main clause) is a complete sentence that can stand alone. The basic structure follows a simple 1-2-3 pattern that forms the foundation of Dutch sentence construction.
+              </p>
+              
+              <div className="bg-blue-50 dark:bg-blue-950 p-6 rounded-lg">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2 bg-green-100 dark:bg-green-900">1. Wie of wat</th>
+                        <th className="text-left p-2 bg-blue-100 dark:bg-blue-900">2. Werkwoord</th>
+                        <th className="text-left p-2 bg-yellow-100 dark:bg-yellow-900">3. Rest</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold text-green-700">Mark</td>
+                        <td className="p-2 font-semibold text-blue-700">fietst</td>
+                        <td className="p-2 font-semibold text-yellow-700">naar zijn werk</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold text-green-700">Ik</td>
+                        <td className="p-2 font-semibold text-blue-700">slaap</td>
+                        <td className="p-2 font-semibold text-yellow-700">'s nachts</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold text-green-700">Oma</td>
+                        <td className="p-2 font-semibold text-blue-700">loopt</td>
+                        <td className="p-2 font-semibold text-yellow-700">in het park</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Detailed Structure (1-2-3A-3B-3C-4)
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">1. Subject</th>
+                        <th className="text-left p-2">2. 1e werkwoord</th>
+                        <th className="text-left p-2">3A. Tijd</th>
+                        <th className="text-left p-2">3B. Object/Manier</th>
+                        <th className="text-left p-2">3C. Plaats</th>
+                        <th className="text-left p-2">4. 2e werkwoord</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">Aleksandra</td>
+                        <td className="p-2 text-primary font-bold">wil</td>
+                        <td className="p-2">nu</td>
+                        <td className="p-2"></td>
+                        <td className="p-2">naar bed</td>
+                        <td className="p-2 text-red-600 font-bold">gaan</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">Tom</td>
+                        <td className="p-2 text-primary font-bold">reist</td>
+                        <td className="p-2">elke ochtend</td>
+                        <td className="p-2">met de bus</td>
+                        <td className="p-2">naar zijn werk</td>
+                        <td className="p-2"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Users className="w-6 h-6" />
+                Connecting Main Clauses (EN, MAAR, WANT, DUS, OF)
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <Card className="bg-blue-50 dark:bg-blue-950">
+                  <CardContent className="p-4">
+                    <h3 className="font-bold text-lg mb-2 text-blue-800 dark:text-blue-200">EN (and)</h3>
+                    <p className="text-sm mb-2 text-blue-600 dark:text-blue-400">Addition</p>
+                    <p className="text-xs">De docent drinkt koffie <strong>en</strong> de cursisten drinken thee.</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-red-50 dark:bg-red-950">
+                  <CardContent className="p-4">
+                    <h3 className="font-bold text-lg mb-2 text-red-800 dark:text-red-200">MAAR (but)</h3>
+                    <p className="text-sm mb-2 text-red-600 dark:text-red-400">Contrast</p>
+                    <p className="text-xs">Ik wil graag tv kijken, <strong>maar</strong> de tv is kapot.</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-green-50 dark:bg-green-950">
+                  <CardContent className="p-4">
+                    <h3 className="font-bold text-lg mb-2 text-green-800 dark:text-green-200">WANT (because)</h3>
+                    <p className="text-sm mb-2 text-green-600 dark:text-green-400">Reason</p>
+                    <p className="text-xs">Ik ga naar de dokter, <strong>want</strong> ik heb pijn.</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-yellow-50 dark:bg-yellow-950">
+                  <CardContent className="p-4">
+                    <h3 className="font-bold text-lg mb-2 text-yellow-800 dark:text-yellow-200">DUS (so)</h3>
+                    <p className="text-sm mb-2 text-yellow-600 dark:text-yellow-400">Result</p>
+                    <p className="text-xs">Het is mooi weer, <strong>dus</strong> we kunnen een wandeling maken.</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-purple-50 dark:bg-purple-950">
+                  <CardContent className="p-4">
+                    <h3 className="font-bold text-lg mb-2 text-purple-800 dark:text-purple-200">OF (or)</h3>
+                    <p className="text-sm mb-2 text-purple-600 dark:text-purple-400">Choice</p>
+                    <p className="text-xs">Je kunt naar buiten gaan <strong>of</strong> je kunt binnen blijven.</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Conjunction Practice Quiz
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {!quizCompleted ? (
+                <div className="space-y-6">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-semibold">Question {currentQuiz + 1} of {conjunctionQuizQuestions.length}</h3>
+                    <div className="text-sm text-muted-foreground">Score: {score}/{conjunctionQuizQuestions.length}</div>
+                  </div>
+                  
+                  <div className="text-center space-y-4">
+                    <p className="text-lg">Choose the correct conjunction:</p>
+                    <div className="bg-muted/50 p-4 rounded-lg">
+                      <p className="text-xl font-bold text-primary mb-2">{conjunctionQuizQuestions[currentQuiz].sentence1}</p>
+                      <p className="text-lg">___</p>
+                      <p className="text-xl font-bold text-primary mt-2">{conjunctionQuizQuestions[currentQuiz].sentence2}</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4">
+                    {conjunctionQuizQuestions[currentQuiz].options.map((option, index) => (
+                      <Button
+                        key={index}
+                        variant={selectedAnswer === index ? 
+                          (index === conjunctionQuizQuestions[currentQuiz].correct ? "default" : "destructive") : 
+                          "outline"
+                        }
+                        className={`p-4 text-lg ${
+                          showResult && index === conjunctionQuizQuestions[currentQuiz].correct ? 
+                          "bg-green-500 hover:bg-green-600" : ""
+                        }`}
+                        onClick={() => handleAnswerSelect(index)}
+                        disabled={showResult}
+                      >
+                        {showResult && index === conjunctionQuizQuestions[currentQuiz].correct && (
+                          <CheckCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {showResult && selectedAnswer === index && index !== conjunctionQuizQuestions[currentQuiz].correct && (
+                          <XCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {option}
+                      </Button>
+                    ))}
+                  </div>
+
+                  {showResult && (
+                    <div className="space-y-4">
+                      <div className="bg-muted p-4 rounded-lg">
+                        <p className="font-semibold mb-2">Explanation:</p>
+                        <p>{conjunctionQuizQuestions[currentQuiz].explanation}</p>
+                      </div>
+                      <Button onClick={handleNextQuestion} className="w-full">
+                        {currentQuiz < conjunctionQuizQuestions.length - 1 ? "Next Question" : "Finish Quiz"}
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-center space-y-4">
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                  <h3 className="text-2xl font-bold">Quiz Completed!</h3>
+                  <p className="text-lg">Final Score: {score}/{conjunctionQuizQuestions.length}</p>
+                  <Button onClick={() => resetQuizWithType('conjunction')} className="flex items-center gap-2">
+                    <RotateCcw className="w-4 h-4" />
+                    Try Again
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </main>
+      </div>
+    );
+  }
+
   if (selectedTopic === 'negation') {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
@@ -1842,6 +2177,23 @@ export default function Grammar() {
             <CardContent>
               <p className="text-muted-foreground mb-4">
                 Learn how to make negative sentences using 'niet' and 'geen' with proper positioning rules.
+              </p>
+              <Button className="w-full">
+                Start Learning
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleTopicSelect('hoofdzinnen')}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <BookOpen className="w-5 h-5" />
+                HoofdZinnen (Main Clauses)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-4">
+                Learn Dutch sentence structure, word order, and connecting sentences with conjunctions.
               </p>
               <Button className="w-full">
                 Start Learning
