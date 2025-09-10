@@ -262,6 +262,52 @@ const separableVerbQuizQuestions: SeparableVerbQuizQuestion[] = [
   }
 ];
 
+interface NegationQuizQuestion {
+  sentence: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+  type: 'niet' | 'geen';
+}
+
+const negationQuizQuestions: NegationQuizQuestion[] = [
+  {
+    sentence: "Peter is groot. → Peter ___ groot.",
+    options: ["is niet", "is geen", "niet is"],
+    correct: 0,
+    explanation: "'Niet' comes before adjectives: Peter is niet groot",
+    type: 'niet'
+  },
+  {
+    sentence: "Johan kan sporten. → Johan ___ sporten.",
+    options: ["kan niet", "niet kan", "kan geen"],
+    correct: 0,
+    explanation: "'Niet' comes before the second verb (infinitive): Johan kan niet sporten",
+    type: 'niet'
+  },
+  {
+    sentence: "Julia koopt een fiets. → Julia koopt ___ fiets.",
+    options: ["niet een", "geen", "niet"],
+    correct: 1,
+    explanation: "'Geen' replaces 'een' (indefinite article): Julia koopt geen fiets",
+    type: 'geen'
+  },
+  {
+    sentence: "Ik hou van pasta. → Ik hou ___ van pasta.",
+    options: ["niet", "geen", "niet een"],
+    correct: 0,
+    explanation: "'Niet' comes before prepositions: Ik hou niet van pasta",
+    type: 'niet'
+  },
+  {
+    sentence: "Wij hebben katten. → Wij hebben ___ katten.",
+    options: ["niet", "geen", "niet een"],
+    correct: 1,
+    explanation: "'Geen' is used with indefinite nouns (plural): Wij hebben geen katten",
+    type: 'geen'
+  }
+];
+
 export default function Grammar() {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [selectedSubtopic, setSelectedSubtopic] = useState<string | null>(null);
@@ -270,7 +316,7 @@ export default function Grammar() {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable'>('basic');
+  const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'negation'>('basic');
   const [showDutchText, setShowDutchText] = useState<{[key: string]: boolean}>({});
 
   const toggleDutchText = (key: string) => {
@@ -304,6 +350,9 @@ export default function Grammar() {
       if (quizType === 'position') return positionVerbQuizQuestions;
       if (quizType === 'separable') return separableVerbQuizQuestions;
       return verbQuizQuestions;
+    }
+    if (selectedTopic === 'negation') {
+      return negationQuizQuestions;
     }
     return verbQuizQuestions;
   };
@@ -472,7 +521,6 @@ export default function Grammar() {
         <main className="container mx-auto px-4 py-8 space-y-8">
           {selectedSubtopic === 'basic' && (
             <>
-              {/* Basic conjugation content from original file */}
               <Card>
                 <CardHeader>
                   <CardTitle className="text-2xl flex items-center gap-2">
@@ -512,6 +560,164 @@ export default function Grammar() {
                       </ul>
                     )}
                   </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <BookOpen className="w-6 h-6" />
+                    Verb Forms and Stem
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      onClick={() => toggleDutchText('verb-forms')}
+                      className="ml-auto"
+                    >
+                      {showDutchText['verb-forms'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      Dutch
+                    </Button>
+                  </CardTitle>
+                  {showDutchText['verb-forms'] && (
+                    <p className="text-sm text-muted-foreground">Werkwoordvormen en Stam</p>
+                  )}
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="bg-green-50 dark:bg-green-950 p-4 rounded-lg">
+                    <h3 className="font-semibold mb-2 text-green-800 dark:text-green-200">Finding the Stem:</h3>
+                    {showDutchText['verb-forms'] && (
+                      <p className="text-xs text-green-600 dark:text-green-400 mb-2">De stam vinden:</p>
+                    )}
+                    <p className="text-sm mb-2">Remove '-en' from the infinitive to get the stem:</p>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <p className="font-semibold mb-1">Examples:</p>
+                        <ul className="text-sm space-y-1">
+                          <li>• werk<strong>en</strong> → werk</li>
+                          <li>• fietsen → fiets</li>
+                          <li>• lopen → lop</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">Special cases:</p>
+                        <ul className="text-sm space-y-1">
+                          <li>• Double consonant → single</li>
+                          <li>• V/Z rule applies</li>
+                          <li>• Long vowel rules</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
+                    <h3 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Conjugation Pattern:</h3>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b">
+                            <th className="text-left p-2">Subject</th>
+                            <th className="text-left p-2">Verb Form</th>
+                            <th className="text-left p-2">Example (werken)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-b">
+                            <td className="p-2 font-semibold">ik</td>
+                            <td className="p-2">stem</td>
+                            <td className="p-2 text-primary font-bold">ik werk</td>
+                          </tr>
+                          <tr className="border-b">
+                            <td className="p-2 font-semibold">jij/je</td>
+                            <td className="p-2">stem + t</td>
+                            <td className="p-2 text-primary font-bold">jij werkt</td>
+                          </tr>
+                          <tr className="border-b">
+                            <td className="p-2 font-semibold">hij/zij/het</td>
+                            <td className="p-2">stem + t</td>
+                            <td className="p-2 text-primary font-bold">hij werkt</td>
+                          </tr>
+                          <tr className="border-b">
+                            <td className="p-2 font-semibold">wij/jullie/zij</td>
+                            <td className="p-2">infinitive</td>
+                            <td className="p-2 text-primary font-bold">wij werken</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Target className="w-6 h-6" />
+                    Basic Conjugation Quiz
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {!quizCompleted ? (
+                    <div className="space-y-6">
+                      <div className="flex justify-between items-center">
+                        <h3 className="text-lg font-semibold">Question {currentQuiz + 1} of {verbQuizQuestions.length}</h3>
+                        <div className="text-sm text-muted-foreground">Score: {score}/{verbQuizQuestions.length}</div>
+                      </div>
+                      
+                      <div className="text-center space-y-4">
+                        <p className="text-lg">Complete the sentence:</p>
+                        <p className="text-2xl font-bold text-primary">{verbQuizQuestions[currentQuiz].sentence}</p>
+                        <p className="text-sm text-muted-foreground">Verb: {verbQuizQuestions[currentQuiz].verb}</p>
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-4">
+                        {verbQuizQuestions[currentQuiz].options.map((option, index) => (
+                          <Button
+                            key={index}
+                            variant={selectedAnswer === index ? 
+                              (index === verbQuizQuestions[currentQuiz].correct ? "default" : "destructive") : 
+                              "outline"
+                            }
+                            className={`p-4 text-lg ${
+                              showResult && index === verbQuizQuestions[currentQuiz].correct ? 
+                              "bg-green-500 hover:bg-green-600" : ""
+                            }`}
+                            onClick={() => handleAnswerSelect(index)}
+                            disabled={showResult}
+                          >
+                            {showResult && index === verbQuizQuestions[currentQuiz].correct && (
+                              <CheckCircle className="w-5 h-5 mr-2" />
+                            )}
+                            {showResult && selectedAnswer === index && index !== verbQuizQuestions[currentQuiz].correct && (
+                              <XCircle className="w-5 h-5 mr-2" />
+                            )}
+                            {option}
+                          </Button>
+                        ))}
+                      </div>
+
+                      {showResult && (
+                        <div className="space-y-4">
+                          <div className="bg-muted p-4 rounded-lg">
+                            <p className="font-semibold mb-2">Explanation:</p>
+                            <p>{verbQuizQuestions[currentQuiz].explanation}</p>
+                          </div>
+                          <Button onClick={handleNextQuestion} className="w-full">
+                            {currentQuiz < verbQuizQuestions.length - 1 ? "Next Question" : "Finish Quiz"}
+                          </Button>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="text-center space-y-4">
+                      <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                      <h3 className="text-2xl font-bold">Quiz Completed!</h3>
+                      <p className="text-lg">Final Score: {score}/{verbQuizQuestions.length}</p>
+                      <Button onClick={() => resetQuizWithType('basic')} className="flex items-center gap-2">
+                        <RotateCcw className="w-4 h-4" />
+                        Try Again
+                      </Button>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             </>
@@ -713,6 +919,460 @@ export default function Grammar() {
               </Card>
             </>
           )}
+
+          {selectedSubtopic === 'position' && (
+            <>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <Users className="w-6 h-6" />
+                    Position Verbs
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      onClick={() => toggleDutchText('position-verbs')}
+                      className="ml-auto"
+                    >
+                      {showDutchText['position-verbs'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      Dutch
+                    </Button>
+                  </CardTitle>
+                  {showDutchText['position-verbs'] && (
+                    <p className="text-sm text-muted-foreground">Positiewerkwoorden</p>
+                  )}
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <p className="text-lg">Instead of using 'zijn' (to be) for location, Dutch uses specific position verbs based on how objects are positioned.</p>
+                  {showDutchText['position-verbs'] && (
+                    <p className="text-sm text-muted-foreground">In plaats van 'zijn' voor locatie, gebruikt het Nederlands specifieke positiewerkwoorden gebaseerd op hoe objecten gepositioneerd zijn.</p>
+                  )}
+                  
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <Card className="bg-blue-50 dark:bg-blue-950">
+                      <CardHeader>
+                        <CardTitle className="text-lg text-blue-800 dark:text-blue-200">STAAN (to stand)</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm mb-2">Vertical position:</p>
+                        <ul className="text-sm space-y-1">
+                          <li>• De lamp staat op de kast</li>
+                          <li>• Het glas staat op tafel</li>
+                          <li>• De boom staat in de tuin</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="bg-green-50 dark:bg-green-950">
+                      <CardHeader>
+                        <CardTitle className="text-lg text-green-800 dark:text-green-200">LIGGEN (to lie)</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm mb-2">Horizontal position:</p>
+                        <ul className="text-sm space-y-1">
+                          <li>• Het boek ligt op de tafel</li>
+                          <li>• De krant ligt op de bank</li>
+                          <li>• De sleutels liggen hier</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="bg-red-50 dark:bg-red-950">
+                      <CardHeader>
+                        <CardTitle className="text-lg text-red-800 dark:text-red-200">ZITTEN (to sit)</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm mb-2">Inside/attached:</p>
+                        <ul className="text-sm space-y-1">
+                          <li>• De sleutels zitten in mijn tas</li>
+                          <li>• Het geld zit in mijn portemonnee</li>
+                          <li>• De knoop zit aan mijn jas</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  <Card className="bg-yellow-50 dark:bg-yellow-950">
+                    <CardHeader>
+                      <CardTitle className="text-lg text-yellow-800 dark:text-yellow-200">HANGEN (to hang)</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm mb-2">Hanging position:</p>
+                      <ul className="text-sm space-y-1">
+                        <li>• Het schilderij hangt aan de muur</li>
+                        <li>• Mijn jas hangt in de kast</li>
+                        <li>• De lamp hangt boven de tafel</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Target className="w-6 h-6" />
+                    Position Verbs Quiz
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {!quizCompleted ? (
+                    <div className="space-y-6">
+                      <div className="flex justify-between items-center">
+                        <h3 className="text-lg font-semibold">Question {currentQuiz + 1} of {positionVerbQuizQuestions.length}</h3>
+                        <div className="text-sm text-muted-foreground">Score: {score}/{positionVerbQuizQuestions.length}</div>
+                      </div>
+                      
+                      <div className="text-center space-y-4">
+                        <p className="text-lg">Choose the correct position verb:</p>
+                        <p className="text-2xl font-bold text-primary">{positionVerbQuizQuestions[currentQuiz].sentence}</p>
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-4">
+                        {positionVerbQuizQuestions[currentQuiz].options.map((option, index) => (
+                          <Button
+                            key={index}
+                            variant={selectedAnswer === index ? 
+                              (index === positionVerbQuizQuestions[currentQuiz].correct ? "default" : "destructive") : 
+                              "outline"
+                            }
+                            className={`p-4 text-lg ${
+                              showResult && index === positionVerbQuizQuestions[currentQuiz].correct ? 
+                              "bg-green-500 hover:bg-green-600" : ""
+                            }`}
+                            onClick={() => handleAnswerSelect(index)}
+                            disabled={showResult}
+                          >
+                            {showResult && index === positionVerbQuizQuestions[currentQuiz].correct && (
+                              <CheckCircle className="w-5 h-5 mr-2" />
+                            )}
+                            {showResult && selectedAnswer === index && index !== positionVerbQuizQuestions[currentQuiz].correct && (
+                              <XCircle className="w-5 h-5 mr-2" />
+                            )}
+                            {option}
+                          </Button>
+                        ))}
+                      </div>
+
+                      {showResult && (
+                        <div className="space-y-4">
+                          <div className="bg-muted p-4 rounded-lg">
+                            <p className="font-semibold mb-2">Explanation:</p>
+                            <p>{positionVerbQuizQuestions[currentQuiz].explanation}</p>
+                          </div>
+                          <Button onClick={handleNextQuestion} className="w-full">
+                            {currentQuiz < positionVerbQuizQuestions.length - 1 ? "Next Question" : "Finish Quiz"}
+                          </Button>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="text-center space-y-4">
+                      <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                      <h3 className="text-2xl font-bold">Quiz Completed!</h3>
+                      <p className="text-lg">Final Score: {score}/{positionVerbQuizQuestions.length}</p>
+                      <Button onClick={() => resetQuizWithType('position')} className="flex items-center gap-2">
+                        <RotateCcw className="w-4 h-4" />
+                        Try Again
+                      </Button>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </>
+          )}
+
+          {selectedSubtopic === 'separable' && (
+            <>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <Volume2 className="w-6 h-6" />
+                    Separable Verbs
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      onClick={() => toggleDutchText('separable-verbs')}
+                      className="ml-auto"
+                    >
+                      {showDutchText['separable-verbs'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      Dutch
+                    </Button>
+                  </CardTitle>
+                  {showDutchText['separable-verbs'] && (
+                    <p className="text-sm text-muted-foreground">Scheidbare werkwoorden</p>
+                  )}
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <p className="text-lg">Separable verbs split into two parts: the main verb (conjugated) and the prefix (goes to the end).</p>
+                  {showDutchText['separable-verbs'] && (
+                    <p className="text-sm text-muted-foreground">Scheidbare werkwoorden splitsen in twee delen: het hoofdwerkwoord (vervoegd) en het voorvoegsel (gaat naar het einde).</p>
+                  )}
+                  
+                  <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
+                    <h3 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Common Separable Verbs:</h3>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <ul className="text-sm space-y-1">
+                          <li>• aankomen (to arrive)</li>
+                          <li>• meebrengen (to bring along)</li>
+                          <li>• dichtdoen (to close)</li>
+                          <li>• opbellen (to call)</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul className="text-sm space-y-1">
+                          <li>• weggaan (to go away)</li>
+                          <li>• uitnodigen (to invite)</li>
+                          <li>• terugkomen (to come back)</li>
+                          <li>• voorstellen (to introduce)</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-green-50 dark:bg-green-950 p-4 rounded-lg">
+                    <h3 className="font-semibold mb-2 text-green-800 dark:text-green-200">Examples:</h3>
+                    <div className="space-y-2">
+                      <p className="text-sm"><strong>aankomen:</strong> De trein komt om 10.00 uur aan.</p>
+                      <p className="text-sm"><strong>meebrengen:</strong> Ik breng mijn vriend mee.</p>
+                      <p className="text-sm"><strong>dichtdoen:</strong> Doe je de deur dicht?</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-yellow-50 dark:bg-yellow-950 p-4 rounded-lg">
+                    <h3 className="font-semibold mb-2 text-yellow-800 dark:text-yellow-200">With Two Verbs:</h3>
+                    <p className="text-sm mb-2">When using modal verbs, the separable verb stays together:</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• Peter wil straks weggaan. (not: Peter wil straks weg gaan)</li>
+                      <li>• Ik kan je morgen opbellen. (not: Ik kan je morgen op bellen)</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Target className="w-6 h-6" />
+                    Separable Verbs Quiz
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {!quizCompleted ? (
+                    <div className="space-y-6">
+                      <div className="flex justify-between items-center">
+                        <h3 className="text-lg font-semibold">Question {currentQuiz + 1} of {separableVerbQuizQuestions.length}</h3>
+                        <div className="text-sm text-muted-foreground">Score: {score}/{separableVerbQuizQuestions.length}</div>
+                      </div>
+                      
+                      <div className="text-center space-y-4">
+                        <p className="text-lg">Complete the sentence:</p>
+                        <p className="text-2xl font-bold text-primary">{separableVerbQuizQuestions[currentQuiz].sentence}</p>
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-4">
+                        {separableVerbQuizQuestions[currentQuiz].options.map((option, index) => (
+                          <Button
+                            key={index}
+                            variant={selectedAnswer === index ? 
+                              (index === separableVerbQuizQuestions[currentQuiz].correct ? "default" : "destructive") : 
+                              "outline"
+                            }
+                            className={`p-4 text-lg ${
+                              showResult && index === separableVerbQuizQuestions[currentQuiz].correct ? 
+                              "bg-green-500 hover:bg-green-600" : ""
+                            }`}
+                            onClick={() => handleAnswerSelect(index)}
+                            disabled={showResult}
+                          >
+                            {showResult && index === separableVerbQuizQuestions[currentQuiz].correct && (
+                              <CheckCircle className="w-5 h-5 mr-2" />
+                            )}
+                            {showResult && selectedAnswer === index && index !== separableVerbQuizQuestions[currentQuiz].correct && (
+                              <XCircle className="w-5 h-5 mr-2" />
+                            )}
+                            {option}
+                          </Button>
+                        ))}
+                      </div>
+
+                      {showResult && (
+                        <div className="space-y-4">
+                          <div className="bg-muted p-4 rounded-lg">
+                            <p className="font-semibold mb-2">Explanation:</p>
+                            <p>{separableVerbQuizQuestions[currentQuiz].explanation}</p>
+                          </div>
+                          <Button onClick={handleNextQuestion} className="w-full">
+                            {currentQuiz < separableVerbQuizQuestions.length - 1 ? "Next Question" : "Finish Quiz"}
+                          </Button>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="text-center space-y-4">
+                      <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                      <h3 className="text-2xl font-bold">Quiz Completed!</h3>
+                      <p className="text-lg">Final Score: {score}/{separableVerbQuizQuestions.length}</p>
+                      <Button onClick={() => resetQuizWithType('separable')} className="flex items-center gap-2">
+                        <RotateCcw className="w-4 h-4" />
+                        Try Again
+                      </Button>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </>
+          )}
+        </main>
+      </div>
+    );
+  }
+
+  if (selectedTopic === 'negation') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
+        <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <Button onClick={handleBackToTopics} variant="ghost" className="flex items-center gap-2">
+                <ArrowLeft className="w-4 h-4" />
+                Back to Topics
+              </Button>
+              <h1 className="text-2xl font-bold">Negation (Niet & Geen)</h1>
+              <div className="w-32" />
+            </div>
+          </div>
+        </header>
+
+        <main className="container mx-auto px-4 py-8 space-y-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <XCircle className="w-6 h-6" />
+                Negation: Niet and Geen
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => toggleDutchText('negation-main')}
+                  className="ml-auto"
+                >
+                  {showDutchText['negation-main'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  Dutch
+                </Button>
+              </CardTitle>
+              {showDutchText['negation-main'] && (
+                <p className="text-sm text-muted-foreground">Niet en Geen</p>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-lg">Learn how to make negative sentences in Dutch using 'niet' (not) and 'geen' (no/not a). The choice and position depend on what you're negating.</p>
+              {showDutchText['negation-main'] && (
+                <p className="text-sm text-muted-foreground">Leer hoe je ontkennende zinnen maakt in het Nederlands met 'niet' en 'geen'. De keuze en positie hangen af van wat je ontkent.</p>
+              )}
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="bg-red-50 dark:bg-red-950">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-red-800 dark:text-red-200">NIET (Not)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="text-sm space-y-1">
+                      <li>• At end of sentence</li>
+                      <li>• Before second verb</li>
+                      <li>• Before prepositions</li>
+                      <li>• Before adjectives/adverbs</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-blue-50 dark:bg-blue-950">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-blue-800 dark:text-blue-200">GEEN (No/Not a)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="text-sm space-y-1">
+                      <li>• Always before nouns</li>
+                      <li>• Replaces 'een' (a/an)</li>
+                      <li>• With indefinite nouns</li>
+                      <li>• geen = niet + een</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Negation Practice Quiz
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {!quizCompleted ? (
+                <div className="space-y-6">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-semibold">Question {currentQuiz + 1} of {negationQuizQuestions.length}</h3>
+                    <div className="text-sm text-muted-foreground">Score: {score}/{negationQuizQuestions.length}</div>
+                  </div>
+                  
+                  <div className="text-center space-y-4">
+                    <p className="text-lg">Make this sentence negative:</p>
+                    <p className="text-2xl font-bold text-primary">{negationQuizQuestions[currentQuiz].sentence}</p>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4">
+                    {negationQuizQuestions[currentQuiz].options.map((option, index) => (
+                      <Button
+                        key={index}
+                        variant={selectedAnswer === index ? 
+                          (index === negationQuizQuestions[currentQuiz].correct ? "default" : "destructive") : 
+                          "outline"
+                        }
+                        className={`p-4 text-lg ${
+                          showResult && index === negationQuizQuestions[currentQuiz].correct ? 
+                          "bg-green-500 hover:bg-green-600" : ""
+                        }`}
+                        onClick={() => handleAnswerSelect(index)}
+                        disabled={showResult}
+                      >
+                        {showResult && index === negationQuizQuestions[currentQuiz].correct && (
+                          <CheckCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {showResult && selectedAnswer === index && index !== negationQuizQuestions[currentQuiz].correct && (
+                          <XCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {option}
+                      </Button>
+                    ))}
+                  </div>
+
+                  {showResult && (
+                    <div className="space-y-4">
+                      <div className="bg-muted p-4 rounded-lg">
+                        <p className="font-semibold mb-2">Explanation:</p>
+                        <p>{negationQuizQuestions[currentQuiz].explanation}</p>
+                      </div>
+                      <Button onClick={handleNextQuestion} className="w-full">
+                        {currentQuiz < negationQuizQuestions.length - 1 ? "Next Question" : "Finish Quiz"}
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-center space-y-4">
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                  <h3 className="text-2xl font-bold">Quiz Completed!</h3>
+                  <p className="text-lg">Final Score: {score}/{negationQuizQuestions.length}</p>
+                  <Button onClick={() => resetQuizWithType('negation')} className="flex items-center gap-2">
+                    <RotateCcw className="w-4 h-4" />
+                    Try Again
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
         </main>
       </div>
     );
@@ -735,7 +1395,6 @@ export default function Grammar() {
         </header>
 
         <main className="container mx-auto px-4 py-8 space-y-8">
-          {/* Klinkers content from original file */}
           <Card>
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2">
@@ -786,6 +1445,162 @@ export default function Grammar() {
                   <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">Een klinker aan het einde van een lettergreep is lang.</p>
                 )}
               </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Long Vowel Rules
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => toggleDutchText('long-vowels')}
+                  className="ml-auto"
+                >
+                  {showDutchText['long-vowels'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  Dutch
+                </Button>
+              </CardTitle>
+              {showDutchText['long-vowels'] && (
+                <p className="text-sm text-muted-foreground">Lange Klinker Regels</p>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="bg-green-50 dark:bg-green-950 p-4 rounded-lg">
+                <h3 className="font-semibold mb-2 text-green-800 dark:text-green-200">Long Vowel Examples:</h3>
+                {showDutchText['long-vowels'] && (
+                  <p className="text-xs text-green-600 dark:text-green-400 mb-2">Lange Klinker Voorbeelden:</p>
+                )}
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p className="font-semibold mb-1">Double vowels:</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• maan (moon) → ma-an</li>
+                      <li>• boot (boat) → boot</li>
+                      <li>• beer (bear) → beer</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">Open syllables:</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• maken (to make) → ma-ken</li>
+                      <li>• lopen (to walk) → lo-pen</li>
+                      <li>• leven (to live) → le-ven</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-red-50 dark:bg-red-950 p-4 rounded-lg">
+                <h3 className="font-semibold mb-2 text-red-800 dark:text-red-200">Short Vowel Examples:</h3>
+                {showDutchText['long-vowels'] && (
+                  <p className="text-xs text-red-600 dark:text-red-400 mb-2">Korte Klinker Voorbeelden:</p>
+                )}
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p className="font-semibold mb-1">Closed syllables:</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• man (man) → man</li>
+                      <li>• pot (pot) → pot</li>
+                      <li>• vis (fish) → vis</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">Double consonants:</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• kommen (to come) → kom-men</li>
+                      <li>• zitten (to sit) → zit-ten</li>
+                      <li>• happen (to bite) → hap-pen</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Vowel Practice Quiz
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => toggleDutchText('quiz-vowels')}
+                  className="ml-auto"
+                >
+                  {showDutchText['quiz-vowels'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  Dutch
+                </Button>
+              </CardTitle>
+              {showDutchText['quiz-vowels'] && (
+                <p className="text-sm text-muted-foreground">Oefenquiz Klinkers</p>
+              )}
+            </CardHeader>
+            <CardContent>
+              {!quizCompleted ? (
+                <div className="space-y-6">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-semibold">Question {currentQuiz + 1} of {klinkerQuizQuestions.length}</h3>
+                    <div className="text-sm text-muted-foreground">Score: {score}/{klinkerQuizQuestions.length}</div>
+                  </div>
+                  
+                  <div className="text-center space-y-4">
+                    <p className="text-lg">What is the plural of:</p>
+                    <p className="text-3xl font-bold text-primary">{klinkerQuizQuestions[currentQuiz].word}</p>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    {klinkerQuizQuestions[currentQuiz].options.map((option, index) => (
+                      <Button
+                        key={index}
+                        variant={selectedAnswer === index ? 
+                          (index === klinkerQuizQuestions[currentQuiz].correct ? "default" : "destructive") : 
+                          "outline"
+                        }
+                        className={`p-4 text-lg ${
+                          showResult && index === klinkerQuizQuestions[currentQuiz].correct ? 
+                          "bg-green-500 hover:bg-green-600" : ""
+                        }`}
+                        onClick={() => handleAnswerSelect(index)}
+                        disabled={showResult}
+                      >
+                        {showResult && index === klinkerQuizQuestions[currentQuiz].correct && (
+                          <CheckCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {showResult && selectedAnswer === index && index !== klinkerQuizQuestions[currentQuiz].correct && (
+                          <XCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {option}
+                      </Button>
+                    ))}
+                  </div>
+
+                  {showResult && (
+                    <div className="space-y-4">
+                      <div className="bg-muted p-4 rounded-lg">
+                        <p className="font-semibold mb-2">Explanation:</p>
+                        <p>{klinkerQuizQuestions[currentQuiz].explanation}</p>
+                      </div>
+                      <Button onClick={handleNextQuestion} className="w-full">
+                        {currentQuiz < klinkerQuizQuestions.length - 1 ? "Next Question" : "Finish Quiz"}
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-center space-y-4">
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                  <h3 className="text-2xl font-bold">Quiz Completed!</h3>
+                  <p className="text-lg">Final Score: {score}/{klinkerQuizQuestions.length}</p>
+                  <Button onClick={() => resetQuizWithType('basic')} className="flex items-center gap-2">
+                    <RotateCcw className="w-4 h-4" />
+                    Try Again
+                  </Button>
+                </div>
+              )}
             </CardContent>
           </Card>
         </main>
@@ -874,6 +1689,23 @@ export default function Grammar() {
             <CardContent>
               <p className="text-muted-foreground mb-4">
                 Learn Dutch verb conjugations, regular and irregular verbs, with sentence structure and practice quizzes.
+              </p>
+              <Button className="w-full">
+                Start Learning
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleTopicSelect('negation')}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <XCircle className="w-5 h-5" />
+                Negation (Niet & Geen)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-4">
+                Learn how to make negative sentences using 'niet' and 'geen' with proper positioning rules.
               </p>
               <Button className="w-full">
                 Start Learning
