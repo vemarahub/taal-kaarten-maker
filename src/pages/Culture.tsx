@@ -27,6 +27,8 @@ export default function Culture() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [cultureData, setCultureData] = useState<CultureSection[]>([]);
   const [loading, setLoading] = useState(true);
+  const [wordOfTheDay, setWordOfTheDay] = useState<CultureWord | null>(null);
+  const [showWordOfDay, setShowWordOfDay] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -129,6 +131,45 @@ export default function Culture() {
     }
   };
 
+  const getRandomCultureWord = () => {
+    const allWords: CultureWord[] = [];
+    cultureData.forEach(section => {
+      allWords.push(...section.words);
+    });
+    
+    if (allWords.length === 0) return;
+    
+    const usedWords = JSON.parse(localStorage.getItem('usedCultureWords') || '[]');
+    const availableWords = allWords.filter(word => 
+      !usedWords.some((used: CultureWord) => 
+        used.dutch === word.dutch && used.english === word.english
+      )
+    );
+    
+    let selectedWord: CultureWord;
+    if (availableWords.length === 0) {
+      localStorage.removeItem('usedCultureWords');
+      selectedWord = allWords[Math.floor(Math.random() * allWords.length)];
+      toast({
+        title: "All culture words shown! 🎉",
+        description: "Starting fresh with all culture words again.",
+      });
+    } else {
+      selectedWord = availableWords[Math.floor(Math.random() * availableWords.length)];
+    }
+    
+    const newUsedWords = [...usedWords, selectedWord];
+    localStorage.setItem('usedCultureWords', JSON.stringify(newUsedWords));
+    
+    setWordOfTheDay(selectedWord);
+    setShowWordOfDay(true);
+    
+    toast({
+      title: "Cultural Word of the Day! 🇳🇱",
+      description: `Today's word: ${selectedWord.dutch}`,
+    });
+  };
+
   const getSectionEnglishTitle = (dutchTitle: string): string => {
     const sectionTitles: Record<string, string> = {
       'Een nieuwe huurwoning': 'A New Rental Home',
@@ -152,7 +193,33 @@ export default function Culture() {
       'Zo gaat dat op school': 'How School Works',
       'De kosten van het onderwijs': 'Education Costs',
       'Kinderopvang': 'Childcare',
-      'Hulp bij opvoeding': 'Parenting Support'
+      'Hulp bij opvoeding': 'Parenting Support',
+      'Werk zoeken': 'Job Searching',
+      'Solliciteren': 'Job Applications',
+      'Een uitkering': 'Benefits',
+      'Blijven leren': 'Lifelong Learning',
+      'Communiceren op je werk': 'Workplace Communication',
+      'Regels op je werk': 'Workplace Rules',
+      'Een eigen bedrijf beginnen': 'Starting Your Own Business',
+      'Contact met de overheid': 'Contact with Government',
+      'Naar het gemeentehuis': 'To the City Hall',
+      'In Nederland blijven': 'Staying in the Netherlands',
+      'Belasting betalen': 'Paying Taxes',
+      'Toeslagen': 'Benefits',
+      'Naar de politie': 'To the Police',
+      'Hulp bij sociale en juridische problemen': 'Help with Social and Legal Problems',
+      'Verzekeren en schade': 'Insurance and Damage',
+      'Het land': 'The Country',
+      'Het ontstaan van Nederland': 'The Formation of the Netherlands',
+      'Het was oorlog': 'It Was War',
+      'Wetten en regels': 'Laws and Rules',
+      'De scheiding van de macht': 'Separation of Powers',
+      'De democratie': 'Democracy',
+      'De koning': 'The King',
+      'De landelijke politiek': 'National Politics',
+      'De provincie': 'The Province',
+      'De gemeente': 'The Municipality',
+      'De Europese Unie': 'The European Union'
     };
     return sectionTitles[dutchTitle] || dutchTitle;
   };
@@ -167,6 +234,71 @@ export default function Culture() {
           <Globe className="w-8 h-8 animate-spin mx-auto mb-4 text-primary" />
           <p className="text-muted-foreground">Loading culture content...</p>
         </div>
+      </div>
+    );
+  }
+
+  if (showWordOfDay && wordOfTheDay) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
+        <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <Button
+                variant="ghost"
+                onClick={() => setShowWordOfDay(false)}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Topics
+              </Button>
+              <div className="text-center">
+                <h1 className="text-xl font-bold text-foreground">
+                  Cultural Word of the Day
+                </h1>
+                <p className="text-sm text-muted-foreground">Cultureel woord van de dag</p>
+              </div>
+              <div className="w-48" />
+            </div>
+          </div>
+        </header>
+
+        <main className="container mx-auto px-4 py-8">
+          <Card className="max-w-2xl mx-auto">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl flex items-center justify-center gap-2">
+                <Globe className="w-6 h-6" />
+                Cultural Word of the Day
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="text-center">
+                <h2 className="text-4xl font-bold text-primary mb-2">{wordOfTheDay.dutch}</h2>
+                <p className="text-xl text-muted-foreground">{wordOfTheDay.english}</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  From: {wordOfTheDay.topic} - {getSectionEnglishTitle(wordOfTheDay.section)}
+                </p>
+              </div>
+              
+              <div className="bg-muted/50 p-4 rounded-lg">
+                <h3 className="font-semibold mb-2">Definition:</h3>
+                {wordOfTheDay.english_definition && (
+                  <p className="text-base mb-2">{wordOfTheDay.english_definition}</p>
+                )}
+                <p className="text-sm text-muted-foreground">{wordOfTheDay.definition}</p>
+              </div>
+
+              <div className="flex gap-2 justify-center">
+                <Button onClick={getRandomCultureWord} variant="outline">
+                  Get Another Word
+                </Button>
+                <Button onClick={() => setShowWordOfDay(false)}>
+                  Back to Topics
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </main>
       </div>
     );
   }
@@ -282,13 +414,21 @@ export default function Culture() {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Choose a Topic
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
             Select a topic below to start learning about Dutch culture and society.
           </p>
+          <Button 
+            onClick={getRandomCultureWord}
+            className="bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
+            disabled={cultureData.length === 0}
+          >
+            <Globe className="w-5 h-5 mr-2" />
+            Cultural Word of the Day
+          </Button>
         </div>
 
         {!selectedTopic ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-8 gap-6 max-w-8xl mx-auto">
             <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectTopic('Topic 1: Living')}>
               <CardHeader>
                 <CardTitle className="text-xl">Topic 1: Living</CardTitle>
@@ -335,6 +475,58 @@ export default function Culture() {
               <CardContent>
                 <p className="text-muted-foreground mb-4">
                   Learn about the Dutch education system, childcare, and parenting support.
+                </p>
+                <Button className="w-full">
+                  Select Topic
+                </Button>
+              </CardContent>
+            </Card>
+            <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectTopic('Topic 5: Work & Income')}>
+              <CardHeader>
+                <CardTitle className="text-xl">Topic 5: Work & Income</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Learn about job searching, employment, benefits, and starting a business in the Netherlands.
+                </p>
+                <Button className="w-full">
+                  Select Topic
+                </Button>
+              </CardContent>
+            </Card>
+            <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectTopic('Topic 6: Agencies')}>
+              <CardHeader>
+                <CardTitle className="text-xl">Topic 6: Agencies</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Learn about government agencies, taxes, permits, police, and insurance in the Netherlands.
+                </p>
+                <Button className="w-full">
+                  Select Topic
+                </Button>
+              </CardContent>
+            </Card>
+            <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectTopic('Topic 7: Past & Present')}>
+              <CardHeader>
+                <CardTitle className="text-xl">Topic 7: Past & Present</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Learn about Dutch geography, history, and important historical events and figures.
+                </p>
+                <Button className="w-full">
+                  Select Topic
+                </Button>
+              </CardContent>
+            </Card>
+            <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleSelectTopic('Topic 8: Politics & Judiciary')}>
+              <CardHeader>
+                <CardTitle className="text-xl">Topic 8: Politics & Judiciary</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Learn about Dutch laws, democracy, government structure, and political system.
                 </p>
                 <Button className="w-full">
                   Select Topic
