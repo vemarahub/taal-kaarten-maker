@@ -562,32 +562,6 @@ const adjectiveInflectionQuizQuestions: AdjectiveInflectionQuizQuestion[] = [
     wordType: 'het-word',
     articleType: 'demonstrative'
   }
-];aat Sandra sporten", "Gaat zaterdag Sandra sporten"],
-    correct: 1,
-    explanation: "Time first: Zaterdag + verb + subject + rest",
-    inversionType: 'time'
-  },
-  {
-    normalSentence: "Veel mensen wonen in India",
-    options: ["In India veel mensen wonen", "In India wonen veel mensen", "Wonen in India veel mensen"],
-    correct: 1,
-    explanation: "Place first: In India + verb + subject",
-    inversionType: 'place'
-  },
-  {
-    normalSentence: "Hij eet die hamburger in 1 minuut op",
-    options: ["Die hamburger hij eet in 1 minuut op", "Die hamburger eet hij in 1 minuut op", "Eet die hamburger hij in 1 minuut op"],
-    correct: 1,
-    explanation: "Object first: Die hamburger + verb + subject + rest",
-    inversionType: 'object'
-  },
-  {
-    normalSentence: "Ik ga morgen met mijn moeder naar het park",
-    options: ["Morgen ik ga met mijn moeder naar het park", "Morgen ga ik met mijn moeder naar het park", "Ga morgen ik met mijn moeder naar het park"],
-    correct: 1,
-    explanation: "Time first: Morgen + verb + subject + rest",
-    inversionType: 'time'
-  }
 ];
 
 export default function Grammar() {
