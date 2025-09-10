@@ -334,6 +334,15 @@ interface ReferenceWordQuizQuestion {
   wordType: 'de-word' | 'het-word' | 'plural';
 }
 
+interface SubordinateClauseQuizQuestion {
+  mainClause: string;
+  subordinateClause: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+  type: 'omdat' | 'als' | 'dat';
+}
+
 const negationQuizQuestions: NegationQuizQuestion[] = [
   {
     sentence: "Peter is groot. → Peter ___ groot.",
@@ -624,6 +633,57 @@ const referenceWordQuizQuestions: ReferenceWordQuizQuestion[] = [
   }
 ];
 
+const subordinateClauseQuizQuestions: SubordinateClauseQuizQuestion[] = [
+  {
+    mainClause: "Ik ben moe, omdat",
+    subordinateClause: "(ik ben laat naar bed gegaan)",
+    options: ["ik laat naar bed gegaan ben", "ik ben laat naar bed gegaan", "ik laat naar bed ben gegaan"],
+    correct: 0,
+    explanation: "In subordinate clauses, all verbs go to the end: 'gegaan ben'",
+    type: 'omdat'
+  },
+  {
+    mainClause: "Ik drink een glas water als",
+    subordinateClause: "(ik heb dorst)",
+    options: ["ik dorst heb", "ik heb dorst", "dorst ik heb"],
+    correct: 0,
+    explanation: "In subordinate clauses with 'als', the verb goes to the end: 'dorst heb'",
+    type: 'als'
+  },
+  {
+    mainClause: "Petra zegt dat",
+    subordinateClause: "(Mark is ziek)",
+    options: ["Mark ziek is", "Mark is ziek", "ziek Mark is"],
+    correct: 0,
+    explanation: "In subordinate clauses with 'dat', the verb goes to the end: 'ziek is'",
+    type: 'dat'
+  },
+  {
+    mainClause: "Ik ga naar de garage als",
+    subordinateClause: "(mijn auto is kapot)",
+    options: ["mijn auto kapot is", "mijn auto is kapot", "kapot mijn auto is"],
+    correct: 0,
+    explanation: "In subordinate clauses, the verb goes to the end: 'kapot is'",
+    type: 'als'
+  },
+  {
+    mainClause: "Ik denk dat",
+    subordinateClause: "(het morgen gaat regenen)",
+    options: ["het morgen gaat regenen", "het morgen regenen gaat", "het gaat morgen regenen"],
+    correct: 1,
+    explanation: "With two verbs in subordinate clauses, both go to the end: 'regenen gaat'",
+    type: 'dat'
+  },
+  {
+    mainClause: "Het is hier koud, omdat",
+    subordinateClause: "(het raam staat open)",
+    options: ["het raam open staat", "het raam staat open", "open het raam staat"],
+    correct: 0,
+    explanation: "In subordinate clauses, the verb goes to the end: 'open staat'",
+    type: 'omdat'
+  }
+];
+
 export default function Grammar() {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [selectedSubtopic, setSelectedSubtopic] = useState<string | null>(null);
@@ -632,7 +692,7 @@ export default function Grammar() {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'negation' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords'>('basic');
+  const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'negation' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords' | 'subordinateclauses'>('basic');
   const [showDutchText, setShowDutchText] = useState<{[key: string]: boolean}>({});
 
   const toggleDutchText = (key: string) => {
@@ -686,6 +746,9 @@ export default function Grammar() {
     if (selectedTopic === 'referencewords') {
       return referenceWordQuizQuestions;
     }
+    if (selectedTopic === 'subordinateclauses') {
+      return subordinateClauseQuizQuestions;
+    }
     return verbQuizQuestions;
   };
 
@@ -715,7 +778,7 @@ export default function Grammar() {
     }
   };
 
-  const resetQuizWithType = (type: 'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords') => {
+  const resetQuizWithType = (type: 'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords' | 'subordinateclauses') => {
     setQuizType(type);
     resetQuiz();
   };
@@ -3046,6 +3109,286 @@ export default function Grammar() {
     );
   }
 
+  if (selectedTopic === 'subordinateclauses') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
+        <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <Button onClick={handleBackToTopics} variant="ghost" className="flex items-center gap-2">
+                <ArrowLeft className="w-4 h-4" />
+                Back to Topics
+              </Button>
+              <h1 className="text-2xl font-bold">Subordinate Clauses (Bijzinnen)</h1>
+              <div className="w-32" />
+            </div>
+          </div>
+        </header>
+
+        <main className="container mx-auto px-4 py-8 space-y-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <BookOpen className="w-6 h-6" />
+                What are Subordinate Clauses?
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                A subordinate clause (bijzin) is a dependent clause that cannot stand alone as a complete sentence. The key difference from main clauses is that in subordinate clauses, all verbs move to the end of the clause. This creates a different word order that is essential for proper Dutch grammar.
+              </p>
+              
+              <div className="bg-blue-50 dark:bg-blue-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-blue-800 dark:text-blue-200">Review: Main Clause Structure</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Subject</th>
+                        <th className="text-left p-2">1st Verb</th>
+                        <th className="text-left p-2">Time</th>
+                        <th className="text-left p-2">Object/Manner</th>
+                        <th className="text-left p-2">Place</th>
+                        <th className="text-left p-2">2nd Verb</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-2 font-semibold">Ik</td>
+                        <td className="p-2 text-primary font-bold">ga</td>
+                        <td className="p-2">zaterdag</td>
+                        <td className="p-2">met mijn vriend</td>
+                        <td className="p-2">in het park</td>
+                        <td className="p-2 text-red-600 font-bold">sporten</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-green-800 dark:text-green-200">Key Rule: Verbs at the End</h3>
+                <p className="text-sm mb-3">In subordinate clauses, ALL verbs move to the very end of the clause.</p>
+                <div className="space-y-2">
+                  <p className="text-sm"><strong>Main clause:</strong> Het is mooi weer.</p>
+                  <p className="text-sm"><strong>Subordinate clause:</strong> ...omdat het mooi weer <strong>is</strong>.</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Subordinate Clauses with 'OMDAT' (Because)
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                'Omdat' introduces a subordinate clause that gives a reason. It's similar to 'want' but requires different word order. Compare the difference between coordinating conjunctions (want) and subordinating conjunctions (omdat).
+              </p>
+              
+              <div className="bg-yellow-50 dark:bg-yellow-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-yellow-800 dark:text-yellow-200">Comparison: WANT vs OMDAT</h3>
+                <div className="space-y-4">
+                  <div>
+                    <p className="font-semibold mb-2">With WANT (coordinating - main clause):</p>
+                    <div className="space-y-1">
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded">Ik ga naar het park <strong>want</strong> het <strong>is</strong> mooi weer.</p>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded">De toets ging goed <strong>want</strong> alle cursisten <strong>zijn</strong> slim.</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-2">With OMDAT (subordinating - subordinate clause):</p>
+                    <div className="space-y-1">
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded">Ik ga naar het park <strong>omdat</strong> het mooi weer <strong>is</strong>.</p>
+                      <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded">De toets ging goed <strong>omdat</strong> alle cursisten slim <strong>zijn</strong>.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blue-50 dark:bg-blue-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-blue-800 dark:text-blue-200">Two Verbs in Subordinate Clauses</h3>
+                <p className="text-sm mb-3">When there are two verbs, both go to the end and can be switched:</p>
+                <div className="space-y-2">
+                  <p className="text-sm">Ik heb honger omdat ik niet genoeg <strong>heb gegeten</strong>.</p>
+                  <p className="text-sm">Ik heb honger omdat ik niet genoeg <strong>gegeten heb</strong>.</p>
+                  <p className="text-xs text-blue-600 dark:text-blue-400 mt-2">Both orders are correct!</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Users className="w-6 h-6" />
+                Subordinate Clauses with 'ALS' (If/When)
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                'Als' introduces conditional or temporal subordinate clauses. It expresses conditions (if) or time relationships (when). The verb placement follows the same rule: all verbs go to the end.
+              </p>
+              
+              <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-green-800 dark:text-green-200">Examples with ALS:</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p className="font-semibold mb-2">Conditional (If):</p>
+                    <div className="space-y-1 text-sm">
+                      <p>Ik blijf binnen <strong>als</strong> het weer slecht <strong>is</strong>.</p>
+                      <p>Ik ga naar de tandarts <strong>als</strong> ik kiespijn <strong>heb</strong>.</p>
+                      <p>Ik ren <strong>als</strong> ik te laat <strong>ben</strong>.</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-2">Temporal (When):</p>
+                    <div className="space-y-1 text-sm">
+                      <p>Ik drink water <strong>als</strong> ik dorst <strong>heb</strong>.</p>
+                      <p>Ik ga naar bed <strong>als</strong> ik moe <strong>ben</strong>.</p>
+                      <p>Ik was mijn handen <strong>als</strong> ze vies <strong>zijn</strong>.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Volume2 className="w-6 h-6" />
+                Subordinate Clauses with 'DAT' (That)
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                'Dat' introduces subordinate clauses for indirect speech and thoughts. It's used after verbs like denken, zeggen, geloven, vinden, etc. This transforms direct speech into indirect speech with proper subordinate clause word order.
+              </p>
+              
+              <div className="bg-purple-50 dark:bg-purple-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-purple-800 dark:text-purple-200">Direct vs Indirect Speech:</h3>
+                <div className="space-y-4">
+                  <div>
+                    <p className="font-semibold mb-2">Direct Speech:</p>
+                    <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded">Petra zegt: "Mark <strong>is</strong> ziek."</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-2">Indirect Speech (with DAT):</p>
+                    <p className="text-sm bg-white/50 dark:bg-black/20 p-2 rounded">Petra zegt <strong>dat</strong> Mark ziek <strong>is</strong>.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-red-50 dark:bg-red-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-red-800 dark:text-red-200">Common Verbs Used with DAT:</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <ul className="text-sm space-y-1">
+                      <li>• <strong>denken</strong> - Ik denk dat het gaat regenen.</li>
+                      <li>• <strong>geloven</strong> - Ik geloof dat hij komt.</li>
+                      <li>• <strong>horen</strong> - Ik hoorde dat je ziek was.</li>
+                      <li>• <strong>zeggen</strong> - Hij zegt dat hij moe is.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <ul className="text-sm space-y-1">
+                      <li>• <strong>vinden</strong> - Ik vind dat dit moeilijk is.</li>
+                      <li>• <strong>vertellen</strong> - Ze vertelt dat ze komt.</li>
+                      <li>• <strong>lezen</strong> - Ik las dat het duur wordt.</li>
+                      <li>• <strong>zien</strong> - Ik zie dat je een nieuwe jas hebt.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Subordinate Clauses Practice Quiz
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {!quizCompleted ? (
+                <div className="space-y-6">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-semibold">Question {currentQuiz + 1} of {subordinateClauseQuizQuestions.length}</h3>
+                    <div className="text-sm text-muted-foreground">Score: {score}/{subordinateClauseQuizQuestions.length}</div>
+                  </div>
+                  
+                  <div className="text-center space-y-4">
+                    <p className="text-lg">Complete the subordinate clause:</p>
+                    <div className="bg-muted/50 p-4 rounded-lg">
+                      <p className="text-xl font-bold text-primary mb-2">{subordinateClauseQuizQuestions[currentQuiz].mainClause}</p>
+                      <p className="text-sm text-muted-foreground">Transform: {subordinateClauseQuizQuestions[currentQuiz].subordinateClause}</p>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-4">
+                    {subordinateClauseQuizQuestions[currentQuiz].options.map((option, index) => (
+                      <Button
+                        key={index}
+                        variant={selectedAnswer === index ? 
+                          (index === subordinateClauseQuizQuestions[currentQuiz].correct ? "default" : "destructive") : 
+                          "outline"
+                        }
+                        className={`p-4 text-lg text-left justify-start ${
+                          showResult && index === subordinateClauseQuizQuestions[currentQuiz].correct ? 
+                          "bg-green-500 hover:bg-green-600" : ""
+                        }`}
+                        onClick={() => handleAnswerSelect(index)}
+                        disabled={showResult}
+                      >
+                        {showResult && index === subordinateClauseQuizQuestions[currentQuiz].correct && (
+                          <CheckCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {showResult && selectedAnswer === index && index !== subordinateClauseQuizQuestions[currentQuiz].correct && (
+                          <XCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {option}
+                      </Button>
+                    ))}
+                  </div>
+
+                  {showResult && (
+                    <div className="space-y-4">
+                      <div className="bg-muted p-4 rounded-lg">
+                        <p className="font-semibold mb-2">Explanation:</p>
+                        <p>{subordinateClauseQuizQuestions[currentQuiz].explanation}</p>
+                        <p className="text-sm text-muted-foreground mt-2">
+                          Type: Subordinate clause with '{subordinateClauseQuizQuestions[currentQuiz].type}'
+                        </p>
+                      </div>
+                      <Button onClick={handleNextQuestion} className="w-full">
+                        {currentQuiz < subordinateClauseQuizQuestions.length - 1 ? "Next Question" : "Finish Quiz"}
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-center space-y-4">
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                  <h3 className="text-2xl font-bold">Quiz Completed!</h3>
+                  <p className="text-lg">Final Score: {score}/{subordinateClauseQuizQuestions.length}</p>
+                  <Button onClick={() => resetQuizWithType('subordinateclauses')} className="flex items-center gap-2">
+                    <RotateCcw className="w-4 h-4" />
+                    Try Again
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </main>
+      </div>
+    );
+  }
+
   if (selectedTopic === 'negation') {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
@@ -3722,6 +4065,23 @@ export default function Grammar() {
             <CardContent>
               <p className="text-muted-foreground mb-4">
                 Learn Dutch reference words for things: hij/hem, het, ze - avoid repetition in sentences.
+              </p>
+              <Button className="w-full">
+                Start Learning
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleTopicSelect('subordinateclauses')}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <BookOpen className="w-5 h-5" />
+                Subordinate Clauses (Bijzinnen)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-4">
+                Learn Dutch subordinate clauses with omdat, als, and dat - verb placement at the end.
               </p>
               <Button className="w-full">
                 Start Learning
