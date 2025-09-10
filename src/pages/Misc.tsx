@@ -188,7 +188,12 @@ export default function Misc() {
               <p className="text-muted-foreground mb-4">
                 Left, right, straight ahead
               </p>
-              <p className="text-sm text-muted-foreground">Coming soon</p>
+              <Button 
+                onClick={() => document.getElementById('directions-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full"
+              >
+                Learn Directions
+              </Button>
             </CardContent>
           </Card>
         </div>
@@ -324,6 +329,242 @@ export default function Misc() {
                       <p className="text-xs text-muted-foreground">Remove 'de' from time period</p>
                     </CardContent>
                   </Card>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Directions Section */}
+      <section id="directions-section" className="bg-muted/30 py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              De weg wijzen (Giving Directions)
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Learn essential Dutch vocabulary for giving and understanding directions.
+            </p>
+          </div>
+
+          {/* Basic Directions */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <MapPin className="w-6 h-6" />
+                Basic Directions (Basisrichtingen)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="bg-red-50 dark:bg-red-950 border-red-200 dark:border-red-800">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-4xl mb-4">←</div>
+                    <h3 className="font-bold text-xl mb-2 text-red-800 dark:text-red-200">Links</h3>
+                    <p className="text-red-600 dark:text-red-400 mb-4">Left</p>
+                    <div className="space-y-2 text-sm">
+                      <p><strong>Ga naar links</strong><br/>Go to the left</p>
+                      <p><strong>Ga linksaf</strong><br/>Turn left</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-4xl mb-4">↑</div>
+                    <h3 className="font-bold text-xl mb-2 text-green-800 dark:text-green-200">Rechtdoor</h3>
+                    <p className="text-green-600 dark:text-green-400 mb-4">Straight</p>
+                    <div className="space-y-2 text-sm">
+                      <p><strong>Ga rechtdoor</strong><br/>Go straight</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-4xl mb-4">→</div>
+                    <h3 className="font-bold text-xl mb-2 text-blue-800 dark:text-blue-200">Rechts</h3>
+                    <p className="text-blue-600 dark:text-blue-400 mb-4">Right</p>
+                    <div className="space-y-2 text-sm">
+                      <p><strong>Ga naar rechts</strong><br/>Go to the right</p>
+                      <p><strong>Ga rechtsaf</strong><br/>Turn right</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Position Expressions */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl">Position Expressions (Positie-uitdrukkingen)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="bg-purple-50 dark:bg-purple-950">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-lg mb-4 text-purple-800 dark:text-purple-200">Aan de rechterkant</h3>
+                    <p className="text-purple-600 dark:text-purple-400 mb-2">On the right side</p>
+                    <p className="text-sm">Used to describe where something is located</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-orange-50 dark:bg-orange-950">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-lg mb-4 text-orange-800 dark:text-orange-200">Aan de linkerkant</h3>
+                    <p className="text-orange-600 dark:text-orange-400 mb-2">On the left side</p>
+                    <p className="text-sm">Used to describe where something is located</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Giving Instructions */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl">Giving Instructions (Instructies geven)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                <div className="bg-yellow-50 dark:bg-yellow-950 p-6 rounded-lg">
+                  <h3 className="font-bold text-lg mb-4 text-yellow-800 dark:text-yellow-200">Three Ways to Give Directions:</h3>
+                  
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-yellow-700 dark:text-yellow-300">1. Statement Form</h4>
+                      <div className="bg-white/50 dark:bg-black/20 p-3 rounded">
+                        <p className="font-mono text-sm mb-1">Je gaat eerst naar rechts.</p>
+                        <p className="text-xs text-muted-foreground">You go first to the right.</p>
+                      </div>
+                      <div className="bg-white/50 dark:bg-black/20 p-3 rounded">
+                        <p className="font-mono text-sm mb-1">Je gaat daarna naar links.</p>
+                        <p className="text-xs text-muted-foreground">You go then to the left.</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-yellow-700 dark:text-yellow-300">2. Inversion Form</h4>
+                      <div className="bg-white/50 dark:bg-black/20 p-3 rounded">
+                        <p className="font-mono text-sm mb-1">Eerst ga je naar rechts.</p>
+                        <p className="text-xs text-muted-foreground">First you go to the right.</p>
+                      </div>
+                      <div className="bg-white/50 dark:bg-black/20 p-3 rounded">
+                        <p className="font-mono text-sm mb-1">Daarna ga je naar links.</p>
+                        <p className="text-xs text-muted-foreground">Then you go to the left.</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-yellow-700 dark:text-yellow-300">3. Imperative Form</h4>
+                      <div className="bg-white/50 dark:bg-black/20 p-3 rounded">
+                        <p className="font-mono text-sm mb-1">Ga naar rechts.</p>
+                        <p className="text-xs text-muted-foreground">Go to the right.</p>
+                      </div>
+                      <div className="bg-white/50 dark:bg-black/20 p-3 rounded">
+                        <p className="font-mono text-sm mb-1">Ga daarna naar links.</p>
+                        <p className="text-xs text-muted-foreground">Go then to the left.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Interactive Challenge */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl">Direction Challenge (Richting Uitdaging)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                <div className="text-center">
+                  <p className="text-lg mb-6">Follow the directions to reach the destination!</p>
+                  
+                  <div className="bg-gradient-to-br from-blue-50 to-green-50 dark:from-blue-950 dark:to-green-950 p-8 rounded-lg border-2 border-dashed border-primary/30">
+                    <div className="grid grid-cols-5 gap-4 max-w-md mx-auto">
+                      {/* Simple 5x5 grid for direction challenge */}
+                      {Array.from({ length: 25 }, (_, i) => {
+                        const row = Math.floor(i / 5);
+                        const col = i % 5;
+                        const isStart = row === 4 && col === 0; // Bottom left
+                        const isEnd = row === 0 && col === 4;   // Top right
+                        const isPath = (row === 4 && col <= 2) || (col === 2 && row >= 2) || (row === 2 && col >= 2);
+                        
+                        return (
+                          <div
+                            key={i}
+                            className={`w-8 h-8 rounded border-2 flex items-center justify-center text-xs font-bold ${
+                              isStart ? 'bg-green-500 text-white border-green-600' :
+                              isEnd ? 'bg-red-500 text-white border-red-600' :
+                              isPath ? 'bg-blue-200 dark:bg-blue-800 border-blue-300 dark:border-blue-700' :
+                              'bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600'
+                            }`}
+                          >
+                            {isStart ? 'S' : isEnd ? 'E' : ''}
+                          </div>
+                        );
+                      })}
+                    </div>
+                    
+                    <div className="mt-6 space-y-3">
+                      <h3 className="font-bold text-lg">Instructions:</h3>
+                      <div className="grid md:grid-cols-3 gap-4 text-sm">
+                        <div className="bg-white/70 dark:bg-black/30 p-3 rounded">
+                          <p className="font-semibold mb-1">1. Ga eerst naar rechts</p>
+                          <p className="text-muted-foreground">Go first to the right</p>
+                        </div>
+                        <div className="bg-white/70 dark:bg-black/30 p-3 rounded">
+                          <p className="font-semibold mb-1">2. Ga daarna rechtdoor</p>
+                          <p className="text-muted-foreground">Then go straight</p>
+                        </div>
+                        <div className="bg-white/70 dark:bg-black/30 p-3 rounded">
+                          <p className="font-semibold mb-1">3. Ga rechtsaf</p>
+                          <p className="text-muted-foreground">Turn right</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center justify-center gap-4 mt-4">
+                        <div className="flex items-center gap-2">
+                          <div className="w-4 h-4 bg-green-500 rounded"></div>
+                          <span className="text-sm">Start (S)</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-4 h-4 bg-blue-200 dark:bg-blue-800 rounded border border-blue-300"></div>
+                          <span className="text-sm">Path</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-4 h-4 bg-red-500 rounded"></div>
+                          <span className="text-sm">End (E)</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg">
+                  <h3 className="font-bold text-lg mb-4 text-green-800 dark:text-green-200">Practice Sentences:</h3>
+                  <div className="grid md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <p className="font-semibold mb-2">Formal Instructions:</p>
+                      <ul className="space-y-1">
+                        <li>• U gaat eerst naar rechts</li>
+                        <li>• Daarna gaat u rechtdoor</li>
+                        <li>• Ten slotte gaat u naar links</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-2">Informal Instructions:</p>
+                      <ul className="space-y-1">
+                        <li>• Ga eerst naar rechts</li>
+                        <li>• Dan ga je rechtdoor</li>
+                        <li>• Daarna ga je linksaf</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </CardContent>

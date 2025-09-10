@@ -540,25 +540,28 @@ export default function Grammar() {
                     <p className="text-sm text-muted-foreground">Wat is een werkwoord?</p>
                   )}
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-lg">A verb is a word for an action. Verbs are often things you can do.</p>
+                <CardContent className="space-y-6">
+                  <p className="text-lg leading-relaxed">
+                    Verbs are the backbone of Dutch sentences. They express actions, states, or occurrences and must agree with their subject in number and person. Understanding verb conjugation is essential because Dutch verbs change their form depending on who is performing the action and when it happens.
+                  </p>
                   {showDutchText['verb-intro'] && (
-                    <p className="text-sm text-muted-foreground">Een werkwoord is een woord voor een actie. Werkwoorden zijn vaak dingen die je kunt doen.</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Werkwoorden zijn de ruggengraat van Nederlandse zinnen. Ze drukken acties, toestanden of gebeurtenissen uit en moeten overeenkomen met hun onderwerp in getal en persoon.
+                    </p>
                   )}
+                  
                   <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
-                    <h3 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">What is a verb?</h3>
-                    <ul className="text-blue-700 dark:text-blue-300 space-y-1">
-                      <li>• Action (cycling, working, walking)</li>
-                      <li>• Change: number (singular/plural)</li>
-                      <li>• Change: time (present tense)</li>
-                    </ul>
+                    <h3 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Key Characteristics of Verbs:</h3>
                     {showDutchText['verb-intro'] && (
-                      <ul className="text-xs text-blue-600 dark:text-blue-400 space-y-1 mt-2 border-t pt-2">
-                        <li>• Actie (fietsen, werken, lopen)</li>
-                        <li>• Verandering: aantal (enkelvoud/meervoud)</li>
-                        <li>• Verandering: tijd (tegenwoordige tijd)</li>
-                      </ul>
+                      <p className="text-xs text-blue-600 dark:text-blue-400 mb-2">Belangrijke kenmerken van werkwoorden:</p>
                     )}
+                    <ul className="text-blue-700 dark:text-blue-300 space-y-1">
+                      <li>• Express actions (cycling, working, walking)</li>
+                      <li>• Change form based on subject (I work vs. he works)</li>
+                      <li>• Indicate time (present, past, future)</li>
+                      <li>• Can be regular or irregular in conjugation</li>
+                      <li>• Form the core of sentence structure</li>
+                    </ul>
                   </div>
                 </CardContent>
               </Card>
@@ -745,9 +748,13 @@ export default function Grammar() {
                   )}
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <p className="text-lg">You can also make sentences with two verbs. The second verb goes at the end of the main clause.</p>
+                  <p className="text-lg leading-relaxed">
+                    Dutch sentence structure becomes more complex when using two verbs together. This construction is very common and essential for expressing intentions, abilities, and obligations. The key rule is that only the first verb is conjugated, while the second verb remains in its infinitive form and moves to the end of the sentence.
+                  </p>
                   {showDutchText['two-verbs'] && (
-                    <p className="text-sm text-muted-foreground">Je kunt ook zinnen maken met twee werkwoorden. Het tweede werkwoord staat aan het einde van de hoofdzin.</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Nederlandse zinsstructuur wordt complexer bij het gebruik van twee werkwoorden samen. Deze constructie is zeer gebruikelijk en essentieel voor het uitdrukken van intenties, vaardigheden en verplichtingen.
+                    </p>
                   )}
                   
                   <div className="bg-green-50 dark:bg-green-950 p-4 rounded-lg">
@@ -942,9 +949,13 @@ export default function Grammar() {
                   )}
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <p className="text-lg">Instead of using 'zijn' (to be) for location, Dutch uses specific position verbs based on how objects are positioned.</p>
+                  <p className="text-lg leading-relaxed">
+                    Position verbs are a unique feature of Dutch that often confuses English speakers. Instead of simply saying something 'is' somewhere, Dutch requires you to specify HOW the object is positioned in that location. This creates more precise and vivid descriptions of spatial relationships and is essential for natural-sounding Dutch.
+                  </p>
                   {showDutchText['position-verbs'] && (
-                    <p className="text-sm text-muted-foreground">In plaats van 'zijn' voor locatie, gebruikt het Nederlands specifieke positiewerkwoorden gebaseerd op hoe objecten gepositioneerd zijn.</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Positiewerkwoorden zijn een uniek kenmerk van het Nederlands dat Engelstaligen vaak verwarrt. In plaats van simpelweg te zeggen dat iets ergens 'is', vereist het Nederlands dat je specificeert HOE het object op die locatie gepositioneerd is.
+                    </p>
                   )}
                   
                   <div className="grid md:grid-cols-3 gap-6">
@@ -1103,9 +1114,13 @@ export default function Grammar() {
                   )}
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <p className="text-lg">Separable verbs split into two parts: the main verb (conjugated) and the prefix (goes to the end).</p>
+                  <p className="text-lg leading-relaxed">
+                    Separable verbs are compound verbs that literally 'separate' in certain sentence constructions. They consist of a prefix (like 'aan', 'mee', 'op') attached to a base verb. In main clauses, these verbs split apart: the main verb is conjugated and stays in the second position, while the prefix jumps to the very end of the sentence. This creates a 'verbal bracket' that frames the sentence.
+                  </p>
                   {showDutchText['separable-verbs'] && (
-                    <p className="text-sm text-muted-foreground">Scheidbare werkwoorden splitsen in twee delen: het hoofdwerkwoord (vervoegd) en het voorvoegsel (gaat naar het einde).</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Scheidbare werkwoorden zijn samengestelde werkwoorden die letterlijk 'scheiden' in bepaalde zinsconstructies. Ze bestaan uit een voorvoegsel dat aan een basiswerkwoord is gehecht.
+                    </p>
                   )}
                   
                   <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
@@ -1264,10 +1279,14 @@ export default function Grammar() {
                 <p className="text-sm text-muted-foreground">Niet en Geen</p>
               )}
             </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-lg">Learn how to make negative sentences in Dutch using 'niet' (not) and 'geen' (no/not a). The choice and position depend on what you're negating.</p>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Negation in Dutch requires careful attention to word choice and positioning. Unlike English, which primarily uses 'not', Dutch has two main negation words: 'niet' and 'geen'. The choice between them depends on what type of word you're negating, and their position in the sentence follows specific rules that affect meaning and naturalness.
+              </p>
               {showDutchText['negation-main'] && (
-                <p className="text-sm text-muted-foreground">Leer hoe je ontkennende zinnen maakt in het Nederlands met 'niet' en 'geen'. De keuze en positie hangen af van wat je ontkent.</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Ontkenning in het Nederlands vereist zorgvuldige aandacht voor woordkeuze en positionering. In tegenstelling tot het Engels gebruikt het Nederlands twee hoofdontkennende woorden: 'niet' en 'geen'.
+                </p>
               )}
               
               <div className="grid md:grid-cols-2 gap-6">
@@ -1276,9 +1295,10 @@ export default function Grammar() {
                     <CardTitle className="text-lg text-red-800 dark:text-red-200">NIET (Not)</CardTitle>
                   </CardHeader>
                   <CardContent>
+                    <p className="text-sm mb-2">Used to negate verbs, adjectives, adverbs, and prepositional phrases:</p>
                     <ul className="text-sm space-y-1">
-                      <li>• At end of sentence</li>
-                      <li>• Before second verb</li>
+                      <li>• At end of sentence (simple negation)</li>
+                      <li>• Before second verb (infinitives)</li>
                       <li>• Before prepositions</li>
                       <li>• Before adjectives/adverbs</li>
                     </ul>
@@ -1290,15 +1310,67 @@ export default function Grammar() {
                     <CardTitle className="text-lg text-blue-800 dark:text-blue-200">GEEN (No/Not a)</CardTitle>
                   </CardHeader>
                   <CardContent>
+                    <p className="text-sm mb-2">Used to negate nouns, especially indefinite ones:</p>
                     <ul className="text-sm space-y-1">
-                      <li>• Always before nouns</li>
+                      <li>• Always directly before nouns</li>
                       <li>• Replaces 'een' (a/an)</li>
-                      <li>• With indefinite nouns</li>
-                      <li>• geen = niet + een</li>
+                      <li>• With indefinite plural nouns</li>
+                      <li>• Think: geen = niet + een</li>
                     </ul>
                   </CardContent>
                 </Card>
               </div>
+
+              <Card className="bg-yellow-50 dark:bg-yellow-950">
+                <CardHeader>
+                  <CardTitle className="text-lg text-yellow-800 dark:text-yellow-200">Detailed Examples</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold mb-2">NIET Examples:</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <p className="font-medium">Positive:</p>
+                          <p>Ik werk vandaag.</p>
+                          <p>Hij is groot.</p>
+                          <p>Zij kan zwemmen.</p>
+                          <p>Wij gaan naar huis.</p>
+                        </div>
+                        <div>
+                          <p className="font-medium">Negative:</p>
+                          <p>Ik werk vandaag <strong>niet</strong>.</p>
+                          <p>Hij is <strong>niet</strong> groot.</p>
+                          <p>Zij kan <strong>niet</strong> zwemmen.</p>
+                          <p>Wij gaan <strong>niet</strong> naar huis.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold mb-2">GEEN Examples:</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <p className="font-medium">Positive:</p>
+                          <p>Ik heb een auto.</p>
+                          <p>Er zijn studenten hier.</p>
+                          <p>Hij drinkt koffie.</p>
+                          <p>Wij hebben tijd.</p>
+                        </div>
+                        <div>
+                          <p className="font-medium">Negative:</p>
+                          <p>Ik heb <strong>geen</strong> auto.</p>
+                          <p>Er zijn <strong>geen</strong> studenten hier.</p>
+                          <p>Hij drinkt <strong>geen</strong> koffie.</p>
+                          <p>Wij hebben <strong>geen</strong> tijd.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </CardContent>
           </Card>
 
@@ -1414,7 +1486,16 @@ export default function Grammar() {
                 <p className="text-sm text-muted-foreground">Lange en Korte Klinkers</p>
               )}
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Understanding vowels is crucial for Dutch pronunciation and spelling. Dutch vowels can be either long or short, and this affects how words are spelled and pronounced. The length of a vowel determines whether consonants are doubled in spelling and how plurals are formed.
+              </p>
+              {showDutchText['vowels'] && (
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Het begrijpen van klinkers is cruciaal voor Nederlandse uitspraak en spelling. Nederlandse klinkers kunnen lang of kort zijn, en dit beïnvloedt hoe woorden gespeld en uitgesproken worden.
+                </p>
+              )}
+              
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="font-semibold mb-2">Vowels:</h3>
@@ -1431,19 +1512,27 @@ export default function Grammar() {
                   <p className="text-sm font-mono bg-muted p-2 rounded">B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Z</p>
                 </div>
               </div>
+              
               <div>
-                <h3 className="font-semibold mb-2">Syllable Examples:</h3>
+                <h3 className="font-semibold mb-2">How to Divide Words into Syllables:</h3>
                 {showDutchText['vowels'] && (
-                  <p className="text-xs text-muted-foreground mb-1">Lettergreep voorbeelden:</p>
+                  <p className="text-xs text-muted-foreground mb-1">Hoe woorden in lettergrepen te verdelen:</p>
                 )}
+                <p className="text-sm mb-2">To understand vowel length, you need to divide words into syllables. Each syllable contains one vowel sound.</p>
                 <p className="font-mono bg-muted p-2 rounded">Li-sa, Ca-ro-li-na, Sil-ves-ter, Ba-naan, To-ma-ten</p>
               </div>
+              
               <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
-                <h3 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Important Rule:</h3>
-                <p className="text-blue-700 dark:text-blue-300">A vowel at the end of a syllable is long.</p>
+                <h3 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Key Rules:</h3>
                 {showDutchText['vowels'] && (
-                  <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">Een klinker aan het einde van een lettergreep is lang.</p>
+                  <p className="text-xs text-blue-600 dark:text-blue-400 mb-2">Belangrijke regels:</p>
                 )}
+                <ul className="text-blue-700 dark:text-blue-300 space-y-1">
+                  <li>• A vowel at the end of a syllable is long</li>
+                  <li>• A vowel followed by one consonant in a closed syllable is short</li>
+                  <li>• Double vowels (aa, ee, oo, uu) are always long</li>
+                  <li>• This affects spelling in plurals and verb forms</li>
+                </ul>
               </div>
             </CardContent>
           </Card>
@@ -1452,70 +1541,117 @@ export default function Grammar() {
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2">
                 <Target className="w-6 h-6" />
-                Long Vowel Rules
+                Spelling Rules Overview
                 <Button 
                   variant="ghost" 
                   size="sm" 
-                  onClick={() => toggleDutchText('long-vowels')}
+                  onClick={() => toggleDutchText('spelling-rules')}
                   className="ml-auto"
                 >
-                  {showDutchText['long-vowels'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  {showDutchText['spelling-rules'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   Dutch
                 </Button>
               </CardTitle>
-              {showDutchText['long-vowels'] && (
-                <p className="text-sm text-muted-foreground">Lange Klinker Regels</p>
+              {showDutchText['spelling-rules'] && (
+                <p className="text-sm text-muted-foreground">Spellingsregels Overzicht</p>
               )}
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="bg-green-50 dark:bg-green-950 p-4 rounded-lg">
-                <h3 className="font-semibold mb-2 text-green-800 dark:text-green-200">Long Vowel Examples:</h3>
-                {showDutchText['long-vowels'] && (
-                  <p className="text-xs text-green-600 dark:text-green-400 mb-2">Lange Klinker Voorbeelden:</p>
+              <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
+                <h3 className="font-semibold mb-3 text-blue-800 dark:text-blue-200">Rule 1: Vowel at End of Syllable is Long</h3>
+                {showDutchText['spelling-rules'] && (
+                  <p className="text-xs text-blue-600 dark:text-blue-400 mb-2">Regel 1: Klinker aan het einde van lettergreep is lang</p>
                 )}
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <p className="font-semibold mb-1">Double vowels:</p>
-                    <ul className="text-sm space-y-1">
-                      <li>• maan (moon) → ma-an</li>
-                      <li>• boot (boat) → boot</li>
-                      <li>• beer (bear) → beer</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="font-semibold mb-1">Open syllables:</p>
-                    <ul className="text-sm space-y-1">
-                      <li>• maken (to make) → ma-ken</li>
-                      <li>• lopen (to walk) → lo-pen</li>
-                      <li>• leven (to live) → le-ven</li>
-                    </ul>
-                  </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Word</th>
+                        <th className="text-left p-2">Syllables</th>
+                        <th className="text-left p-2">Long Vowel</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b"><td className="p-2">Banaan</td><td className="p-2 font-mono">Ba-naan</td><td className="p-2 text-primary font-bold">Ba (long a)</td></tr>
+                      <tr className="border-b"><td className="p-2">Eten</td><td className="p-2 font-mono">E-ten</td><td className="p-2 text-primary font-bold">E (long e)</td></tr>
+                      <tr className="border-b"><td className="p-2">Kopen</td><td className="p-2 font-mono">Ko-pen</td><td className="p-2 text-primary font-bold">Ko (long o)</td></tr>
+                      <tr className="border-b"><td className="p-2">Praten</td><td className="p-2 font-mono">Pra-ten</td><td className="p-2 text-primary font-bold">Pra (long a)</td></tr>
+                      <tr className="border-b"><td className="p-2">Tomaten</td><td className="p-2 font-mono">To-ma-ten</td><td className="p-2 text-primary font-bold">To, ma (long o, a)</td></tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
 
-              <div className="bg-red-50 dark:bg-red-950 p-4 rounded-lg">
-                <h3 className="font-semibold mb-2 text-red-800 dark:text-red-200">Short Vowel Examples:</h3>
-                {showDutchText['long-vowels'] && (
-                  <p className="text-xs text-red-600 dark:text-red-400 mb-2">Korte Klinker Voorbeelden:</p>
+              <div className="bg-green-50 dark:bg-green-950 p-4 rounded-lg">
+                <h3 className="font-semibold mb-3 text-green-800 dark:text-green-200">Long Vowels: Infinitive to Ik-vorm</h3>
+                {showDutchText['spelling-rules'] && (
+                  <p className="text-xs text-green-600 dark:text-green-400 mb-2">Lange klinkers: van infinitief naar ik-vorm</p>
                 )}
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <p className="font-semibold mb-1">Closed syllables:</p>
-                    <ul className="text-sm space-y-1">
-                      <li>• man (man) → man</li>
-                      <li>• pot (pot) → pot</li>
-                      <li>• vis (fish) → vis</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="font-semibold mb-1">Double consonants:</p>
-                    <ul className="text-sm space-y-1">
-                      <li>• kommen (to come) → kom-men</li>
-                      <li>• zitten (to sit) → zit-ten</li>
-                      <li>• happen (to bite) → hap-pen</li>
-                    </ul>
-                  </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Infinitive</th>
+                        <th className="text-left p-2">Syllables</th>
+                        <th className="text-left p-2">Stem</th>
+                        <th className="text-left p-2">Ik-vorm</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b"><td className="p-2">Praten</td><td className="p-2 font-mono">Pra-ten</td><td className="p-2">Prat</td><td className="p-2 text-primary font-bold">Praat</td></tr>
+                      <tr className="border-b"><td className="p-2">Eten</td><td className="p-2 font-mono">E-ten</td><td className="p-2">Et</td><td className="p-2 text-primary font-bold">Eet</td></tr>
+                      <tr className="border-b"><td className="p-2">Lopen</td><td className="p-2 font-mono">Lo-pen</td><td className="p-2">Lop</td><td className="p-2 text-primary font-bold">Loop</td></tr>
+                    </tbody>
+                  </table>
                 </div>
+                <p className="text-xs mt-2 text-green-700 dark:text-green-300">Note: Double the vowel in ik-vorm to keep it long</p>
+              </div>
+
+              <div className="bg-red-50 dark:bg-red-950 p-4 rounded-lg">
+                <h3 className="font-semibold mb-3 text-red-800 dark:text-red-200">Rule 2: No Double Consonants at Word End</h3>
+                {showDutchText['spelling-rules'] && (
+                  <p className="text-xs text-red-600 dark:text-red-400 mb-2">Regel 2: Geen dubbele medeklinkers aan het einde van een woord</p>
+                )}
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Infinitive</th>
+                        <th className="text-left p-2">Stem</th>
+                        <th className="text-left p-2">Ik-vorm</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b"><td className="p-2">Zeggen</td><td className="p-2">Zegg</td><td className="p-2 text-primary font-bold">Zeg</td></tr>
+                      <tr className="border-b"><td className="p-2">Zitten</td><td className="p-2">Zitt</td><td className="p-2 text-primary font-bold">Zit</td></tr>
+                      <tr className="border-b"><td className="p-2">Spellen</td><td className="p-2">Spell</td><td className="p-2 text-primary font-bold">Spel</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-xs mt-2 text-red-700 dark:text-red-300">Note: Remove one consonant from double consonants</p>
+              </div>
+
+              <div className="bg-yellow-50 dark:bg-yellow-950 p-4 rounded-lg">
+                <h3 className="font-semibold mb-3 text-yellow-800 dark:text-yellow-200">Rule 3: No V or Z at Word End</h3>
+                {showDutchText['spelling-rules'] && (
+                  <p className="text-xs text-yellow-600 dark:text-yellow-400 mb-2">Regel 3: Geen v en z aan het einde van een woord</p>
+                )}
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Infinitive</th>
+                        <th className="text-left p-2">Stem</th>
+                        <th className="text-left p-2">Ik-vorm</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b"><td className="p-2">Verven</td><td className="p-2">Verv</td><td className="p-2 text-primary font-bold">Verf (v→f)</td></tr>
+                      <tr className="border-b"><td className="p-2">Verhuizen</td><td className="p-2">Verhuiz</td><td className="p-2 text-primary font-bold">Verhuis (z→s)</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-xs mt-2 text-yellow-700 dark:text-yellow-300">Note: V becomes F, Z becomes S at word end</p>
               </div>
             </CardContent>
           </Card>
