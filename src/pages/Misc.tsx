@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Clock, Calendar, Hand, MapPin, Sun, Moon, Sunrise, Sunset } from 'lucide-react';
+import { Clock, Calendar, Hand, MapPin, Sun, Moon, Sunrise, Sunset, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
@@ -10,6 +10,7 @@ import heroImage from '@/assets/dutch-hero.jpg';
 export default function Misc() {
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
   const [selectedPeriod, setSelectedPeriod] = useState<string | null>(null);
+  const [hoveredBodyPart, setHoveredBodyPart] = useState<string | null>(null);
 
   const days = [
     { dutch: 'Maandag', english: 'Monday', color: 'bg-red-100 dark:bg-red-900' },
@@ -106,6 +107,10 @@ export default function Misc() {
               <Calendar className="w-5 h-5" />
               <span>Days & Time</span>
             </div>
+            <div className="flex items-center space-x-2">
+              <User className="w-5 h-5" />
+              <span>Body Parts</span>
+            </div>
           </div>
         </div>
       </section>
@@ -121,7 +126,7 @@ export default function Misc() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
           <Card className="text-center group hover:shadow-lg transition-shadow">
             <CardHeader>
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
@@ -193,6 +198,26 @@ export default function Misc() {
                 className="w-full"
               >
                 Learn Directions
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center group hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <div className="w-12 h-12 bg-orange/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-orange/20 transition-colors">
+                <User className="w-6 h-6 text-orange-600" />
+              </div>
+              <CardTitle className="text-lg">Body Parts</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-4">
+                Head, arms, legs, and more
+              </p>
+              <Button 
+                onClick={() => document.getElementById('body-parts-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full"
+              >
+                Learn Body Parts
               </Button>
             </CardContent>
           </Card>
@@ -333,6 +358,316 @@ export default function Misc() {
               </div>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* Body Parts Section */}
+      <section id="body-parts-section" className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Lichaamsdelen (Body Parts)
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Learn Dutch body parts with an interactive human body diagram.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Interactive Body Diagram */}
+            <Card className="p-8">
+              <CardHeader>
+                <CardTitle className="text-2xl text-center mb-6">Interactive Body (Interactief Lichaam)</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="relative mx-auto" style={{ width: '300px', height: '500px' }}>
+                  {/* SVG Human Body */}
+                  <svg viewBox="0 0 300 500" className="w-full h-full">
+                    {/* Head */}
+                    <ellipse 
+                      cx="150" cy="60" rx="40" ry="50" 
+                      fill={hoveredBodyPart === 'head' ? '#fbbf24' : '#e5e7eb'}
+                      stroke="#374151" strokeWidth="2"
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('head')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    
+                    {/* Face features */}
+                    <circle cx="135" cy="50" r="3" fill="#374151" /> {/* Left eye */}
+                    <circle cx="165" cy="50" r="3" fill="#374151" /> {/* Right eye */}
+                    <ellipse cx="150" cy="60" rx="8" ry="4" fill="#f59e0b" 
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('nose')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    /> {/* Nose */}
+                    <ellipse cx="150" cy="75" rx="12" ry="6" fill="#ef4444" 
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('mouth')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    /> {/* Mouth */}
+                    
+                    {/* Ears */}
+                    <ellipse cx="110" cy="50" rx="8" ry="15" fill={hoveredBodyPart === 'ear' ? '#fbbf24' : '#e5e7eb'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('ear')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    <ellipse cx="190" cy="50" rx="8" ry="15" fill={hoveredBodyPart === 'ear' ? '#fbbf24' : '#e5e7eb'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('ear')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    
+                    {/* Neck */}
+                    <rect x="135" y="110" width="30" height="30" 
+                      fill={hoveredBodyPart === 'neck' ? '#fbbf24' : '#e5e7eb'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('neck')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    
+                    {/* Body/Stomach */}
+                    <rect x="120" y="140" width="60" height="120" rx="10" 
+                      fill={hoveredBodyPart === 'stomach' ? '#fbbf24' : '#e5e7eb'}
+                      stroke="#374151" strokeWidth="2"
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('stomach')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    
+                    {/* Back (shown as outline) */}
+                    <rect x="122" y="142" width="56" height="116" rx="8" 
+                      fill="none" stroke={hoveredBodyPart === 'back' ? '#fbbf24' : '#9ca3af'} strokeWidth="2" strokeDasharray="5,5"
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('back')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    
+                    {/* Left Arm */}
+                    <rect x="80" y="150" width="40" height="15" rx="7" 
+                      fill={hoveredBodyPart === 'arm' ? '#fbbf24' : '#e5e7eb'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('arm')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    <rect x="70" y="165" width="15" height="60" rx="7" 
+                      fill={hoveredBodyPart === 'arm' ? '#fbbf24' : '#e5e7eb'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('arm')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    
+                    {/* Right Arm */}
+                    <rect x="180" y="150" width="40" height="15" rx="7" 
+                      fill={hoveredBodyPart === 'arm' ? '#fbbf24' : '#e5e7eb'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('arm')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    <rect x="215" y="165" width="15" height="60" rx="7" 
+                      fill={hoveredBodyPart === 'arm' ? '#fbbf24' : '#e5e7eb'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('arm')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    
+                    {/* Left Hand */}
+                    <circle cx="77" cy="235" r="12" 
+                      fill={hoveredBodyPart === 'hand' ? '#fbbf24' : '#e5e7eb'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('hand')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    
+                    {/* Right Hand */}
+                    <circle cx="223" cy="235" r="12" 
+                      fill={hoveredBodyPart === 'hand' ? '#fbbf24' : '#e5e7eb'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('hand')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    
+                    {/* Left Leg */}
+                    <rect x="130" y="260" width="18" height="120" rx="9" 
+                      fill={hoveredBodyPart === 'leg' ? '#fbbf24' : '#e5e7eb'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('leg')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    
+                    {/* Right Leg */}
+                    <rect x="152" y="260" width="18" height="120" rx="9" 
+                      fill={hoveredBodyPart === 'leg' ? '#fbbf24' : '#e5e7eb'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('leg')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    
+                    {/* Left Knee */}
+                    <circle cx="139" cy="320" r="8" 
+                      fill={hoveredBodyPart === 'knee' ? '#fbbf24' : '#d1d5db'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('knee')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    
+                    {/* Right Knee */}
+                    <circle cx="161" cy="320" r="8" 
+                      fill={hoveredBodyPart === 'knee' ? '#fbbf24' : '#d1d5db'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('knee')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    
+                    {/* Left Foot */}
+                    <ellipse cx="139" cy="395" rx="15" ry="25" 
+                      fill={hoveredBodyPart === 'foot' ? '#fbbf24' : '#e5e7eb'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('foot')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                    
+                    {/* Right Foot */}
+                    <ellipse cx="161" cy="395" rx="15" ry="25" 
+                      fill={hoveredBodyPart === 'foot' ? '#fbbf24' : '#e5e7eb'}
+                      className="cursor-pointer transition-colors"
+                      onMouseEnter={() => setHoveredBodyPart('foot')}
+                      onMouseLeave={() => setHoveredBodyPart(null)}
+                    />
+                  </svg>
+                  
+                  {/* Hover Information */}
+                  {hoveredBodyPart && (
+                    <div className="absolute top-4 left-4 bg-primary text-primary-foreground p-3 rounded-lg shadow-lg z-10">
+                      <div className="font-bold text-lg">
+                        {hoveredBodyPart === 'head' && 'het hoofd'}
+                        {hoveredBodyPart === 'face' && 'het gezicht'}
+                        {hoveredBodyPart === 'eyes' && 'de ogen'}
+                        {hoveredBodyPart === 'nose' && 'de neus'}
+                        {hoveredBodyPart === 'mouth' && 'de mond'}
+                        {hoveredBodyPart === 'ear' && 'het oor'}
+                        {hoveredBodyPart === 'neck' && 'de hals'}
+                        {hoveredBodyPart === 'arm' && 'de arm'}
+                        {hoveredBodyPart === 'hand' && 'de hand'}
+                        {hoveredBodyPart === 'stomach' && 'de buik'}
+                        {hoveredBodyPart === 'back' && 'de rug'}
+                        {hoveredBodyPart === 'leg' && 'het been'}
+                        {hoveredBodyPart === 'knee' && 'de knie'}
+                        {hoveredBodyPart === 'foot' && 'de voet'}
+                      </div>
+                      <div className="text-sm opacity-90">
+                        {hoveredBodyPart === 'head' && 'the head'}
+                        {hoveredBodyPart === 'face' && 'the face'}
+                        {hoveredBodyPart === 'eyes' && 'the eyes'}
+                        {hoveredBodyPart === 'nose' && 'the nose'}
+                        {hoveredBodyPart === 'mouth' && 'the mouth'}
+                        {hoveredBodyPart === 'ear' && 'the ear'}
+                        {hoveredBodyPart === 'neck' && 'the neck'}
+                        {hoveredBodyPart === 'arm' && 'the arm'}
+                        {hoveredBodyPart === 'hand' && 'the hand'}
+                        {hoveredBodyPart === 'stomach' && 'the stomach'}
+                        {hoveredBodyPart === 'back' && 'the back'}
+                        {hoveredBodyPart === 'leg' && 'the leg'}
+                        {hoveredBodyPart === 'knee' && 'the knee'}
+                        {hoveredBodyPart === 'foot' && 'the foot'}
+                      </div>
+                    </div>
+                  )}
+                </div>
+                
+                <p className="text-center text-sm text-muted-foreground mt-4">
+                  Hover over body parts to see Dutch translations
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Body Parts Vocabulary */}
+            <div className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">Body Parts Vocabulary</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid gap-3">
+                    {[
+                      { dutch: 'het lichaamsdeel', english: 'the body part' },
+                      { dutch: 'het lichaam', english: 'the body' },
+                      { dutch: 'het hoofd', english: 'the head' },
+                      { dutch: 'het gezicht', english: 'the face' },
+                      { dutch: 'de ogen', english: 'the eyes' },
+                      { dutch: 'de neus', english: 'the nose' },
+                      { dutch: 'de mond', english: 'the mouth' },
+                      { dutch: 'het oor', english: 'the ear' },
+                      { dutch: 'de tand', english: 'the tooth' },
+                      { dutch: 'de hals', english: 'the neck' },
+                      { dutch: 'de arm', english: 'the arm' },
+                      { dutch: 'de hand', english: 'the hand' },
+                      { dutch: 'de buik', english: 'the stomach' },
+                      { dutch: 'de rug', english: 'the back' },
+                      { dutch: 'het been', english: 'the leg' },
+                      { dutch: 'de knie', english: 'the knee' },
+                      { dutch: 'de voet', english: 'the foot' }
+                    ].map((item, index) => (
+                      <div key={index} className="flex justify-between items-center p-3 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
+                        <span className="font-semibold text-primary">{item.dutch}</span>
+                        <span className="text-muted-foreground">{item.english}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">Example Sentences</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="bg-red-50 dark:bg-red-950 p-4 rounded-lg border border-red-200 dark:border-red-800">
+                      <p className="font-semibold text-red-800 dark:text-red-200 mb-2">Ik heb hoofdpijn.</p>
+                      <p className="text-red-600 dark:text-red-400 text-sm">I have a headache.</p>
+                    </div>
+                    
+                    <div className="bg-orange-50 dark:bg-orange-950 p-4 rounded-lg border border-orange-200 dark:border-orange-800">
+                      <p className="font-semibold text-orange-800 dark:text-orange-200 mb-2">Hij heeft zijn been gebroken.</p>
+                      <p className="text-orange-600 dark:text-orange-400 text-sm">He broke his leg.</p>
+                    </div>
+                    
+                    <div className="bg-yellow-50 dark:bg-yellow-950 p-4 rounded-lg border border-yellow-200 dark:border-yellow-800">
+                      <p className="font-semibold text-yellow-800 dark:text-yellow-200 mb-2">Ik ben misselijk en heb maagpijn.</p>
+                      <p className="text-yellow-600 dark:text-yellow-400 text-sm">I feel sick and my stomach hurts.</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">Grammar Notes</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
+                      <h4 className="font-semibold text-blue-800 dark:text-blue-200 mb-2">Articles (De/Het)</h4>
+                      <div className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
+                        <p><strong>De words:</strong> de arm, de hand, de voet, de ogen, de mond, de neus, de hals, de rug, de buik, de knie, de tand</p>
+                        <p><strong>Het words:</strong> het hoofd, het gezicht, het oor, het been, het lichaam, het lichaamsdeel</p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-green-50 dark:bg-green-950 p-4 rounded-lg">
+                      <h4 className="font-semibold text-green-800 dark:text-green-200 mb-2">Expressing Pain</h4>
+                      <div className="text-sm text-green-700 dark:text-green-300 space-y-1">
+                        <p><strong>Pattern:</strong> Ik heb + [body part] + pijn</p>
+                        <p><strong>Examples:</strong> hoofdpijn (headache), buikpijn (stomach ache), rugpijn (back pain)</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </div>
       </section>
 

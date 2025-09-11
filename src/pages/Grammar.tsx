@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { ArrowLeft, BookOpen, Target, Users, Volume2, CheckCircle, XCircle, RotateCcw, ChevronDown, ChevronUp, Clock, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -871,6 +872,188 @@ const nounQuizQuestions: NounQuizQuestion[] = [
   }
 ];
 
+interface GrammarCorrectionQuestion {
+  incorrectSentence: string;
+  correctSentence: string;
+  errorType: string;
+  explanation: string;
+}
+
+const grammarCorrectionQuestions: GrammarCorrectionQuestion[] = [
+  {
+    incorrectSentence: "Ik loop naar winkel.",
+    correctSentence: "Ik loop naar de winkel.",
+    errorType: "Lidwoord",
+    explanation: "Missing definite article 'de' before 'winkel'"
+  },
+  {
+    incorrectSentence: "De kat zitten op de tafel.",
+    correctSentence: "De kat zit op de tafel.",
+    errorType: "Congruentie",
+    explanation: "Subject 'de kat' (singular) requires singular verb 'zit', not plural 'zitten'"
+  },
+  {
+    incorrectSentence: "Wij gaan morgen naar de park.",
+    correctSentence: "Wij gaan morgen naar het park.",
+    errorType: "Lidwoord",
+    explanation: "'Park' is a het-word, so use 'het park' not 'de park'"
+  },
+  {
+    incorrectSentence: "Zij leezt een boek in de bibliotheek.",
+    correctSentence: "Zij leest een boek in de bibliotheek.",
+    errorType: "Spelling",
+    explanation: "Correct spelling is 'leest' not 'leezt' for the verb 'lezen'"
+  },
+  {
+    incorrectSentence: "Mijn moeder maakt eten lekker voor het avondeten.",
+    correctSentence: "Mijn moeder maakt lekker eten voor het avondeten.",
+    errorType: "Adjectief voor substantief",
+    explanation: "Adjective 'lekker' should come before the noun 'eten'"
+  },
+  {
+    incorrectSentence: "De jongen spelen voetbal op het grasveld.",
+    correctSentence: "De jongen speelt voetbal op het grasveld.",
+    errorType: "Congruentie",
+    explanation: "Subject 'de jongen' (singular) requires singular verb 'speelt', not plural 'spelen'"
+  },
+  {
+    incorrectSentence: "Ik will graag Nederlands oefenen.",
+    correctSentence: "Ik wil graag Nederlands oefenen.",
+    errorType: "Spelling (/Engels)",
+    explanation: "Dutch uses 'wil' not English 'will' for the modal verb"
+  },
+  {
+    incorrectSentence: "Ik gekocht een nieuwe jas.",
+    correctSentence: "Ik heb een nieuwe jas gekocht.",
+    errorType: "Zinsstructuur / congruentie",
+    explanation: "Perfect tense requires auxiliary verb 'heb' + past participle 'gekocht' at the end"
+  },
+  {
+    incorrectSentence: "Jij kan tekenen niet.",
+    correctSentence: "Jij kan niet tekenen.",
+    errorType: "Zinsstructuur",
+    explanation: "'Niet' comes before the infinitive 'tekenen', not after it"
+  },
+  {
+    incorrectSentence: "Het kind drink water uit het glas.",
+    correctSentence: "Het kind drinkt water uit het glas.",
+    errorType: "Congruentie",
+    explanation: "Subject 'het kind' (hij/zij form) requires verb with 't': 'drinkt'"
+  },
+  {
+    incorrectSentence: "Nu ik leer Nederlands.",
+    correctSentence: "Nu leer ik Nederlands.",
+    errorType: "Zinsstructuur (specifiek: inversie)",
+    explanation: "With time word 'nu' first, use inversion: verb 'leer' + subject 'ik'"
+  },
+  {
+    incorrectSentence: "Wij warren op vakantie.",
+    correctSentence: "Wij waren op vakantie.",
+    errorType: "Spelling (/imperfectum)",
+    explanation: "Past tense of 'zijn' is 'waren' not 'warren'"
+  },
+  {
+    incorrectSentence: "Wij wonen in een grote huis met een grote tuin.",
+    correctSentence: "Wij wonen in een groot huis met een grote tuin.",
+    errorType: "Spelling/adjectief-e",
+    explanation: "Het-word + 'een' = no -e on adjective: 'een groot huis' (not 'grote')"
+  },
+  {
+    incorrectSentence: "De hond rent in het park snel.",
+    correctSentence: "De hond rent snel in het park.",
+    errorType: "Zinsstructuur (manier)",
+    explanation: "Manner 'snel' comes before place 'in het park' in Dutch word order"
+  },
+  {
+    incorrectSentence: "Hij koopt een nieuwe schoenen bij de winkel.",
+    correctSentence: "Hij koopt nieuwe schoenen bij de winkel.",
+    errorType: "Lidwoord",
+    explanation: "Plural nouns don't use 'een': 'nieuwe schoenen' not 'een nieuwe schoenen'"
+  },
+  {
+    incorrectSentence: "De student voor het examen leert.",
+    correctSentence: "De student leert voor het examen.",
+    errorType: "Zinsstructuur",
+    explanation: "Basic word order: subject + verb + rest. 'Leert' should come after 'student'"
+  },
+  {
+    incorrectSentence: "Jij werkt ochtends in de supermarkt.",
+    correctSentence: "Jij werkt 's ochtends in de supermarkt.",
+    errorType: "Spelling",
+    explanation: "Time expressions need 's: ''s ochtends' not just 'ochtends'"
+  },
+  {
+    incorrectSentence: "Hij vervde het huis groen.",
+    correctSentence: "Hij verfde het huis groen.",
+    errorType: "Spelling (/imperfectum)",
+    explanation: "Past tense: 'verven' → ik-vorm 'verf' → 'verfde' (v becomes f)"
+  },
+  {
+    incorrectSentence: "Het meisje zijn heel klein.",
+    correctSentence: "Het meisje is heel klein.",
+    errorType: "Congruentie",
+    explanation: "Subject 'het meisje' (singular) requires singular verb 'is', not plural 'zijn'"
+  },
+  {
+    incorrectSentence: "Ik ga niet naar school omdat ik ben ziek.",
+    correctSentence: "Ik ga niet naar school omdat ik ziek ben.",
+    errorType: "Zinsstructuur (bijzinnen)",
+    explanation: "In subordinate clauses, the verb 'ben' goes to the end: 'ziek ben'"
+  }
+];
+
+interface DailyQuizQuestion {
+  question: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+  rule: string;
+  topic: string;
+}
+
+const allGrammarQuestions: DailyQuizQuestion[] = [
+  {
+    question: "Complete: Ik ___ naar school.",
+    options: ["fiets", "fietst", "fietsen"],
+    correct: 0,
+    explanation: "With 'ik' we use the stem form of the verb.",
+    rule: "Verb conjugation: 'ik' + stem form",
+    topic: "Verbs"
+  },
+  {
+    question: "Choose the correct article: ___ huis is groot.",
+    options: ["De", "Het", "Een"],
+    correct: 1,
+    explanation: "'Huis' is a het-word, so we use 'het'.",
+    rule: "Articles: het-words use 'het'",
+    topic: "Articles"
+  },
+  {
+    question: "Make plural: De kat → De ___",
+    options: ["kats", "katten", "katen"],
+    correct: 1,
+    explanation: "'Kat' has a short vowel, so double the consonant: katten.",
+    rule: "Plural formation: short vowel + double consonant + -en",
+    topic: "Plurals"
+  },
+  {
+    question: "Inversion: Ik ga morgen naar huis → ___ ga ik naar huis.",
+    options: ["Morgen", "Naar huis", "Ik"],
+    correct: 0,
+    explanation: "Time expressions can start sentences with inversion.",
+    rule: "Inversion: Time + verb + subject + rest",
+    topic: "Word Order"
+  },
+  {
+    question: "Comparative: groot → ___",
+    options: ["groter", "grooter", "het grootst"],
+    correct: 0,
+    explanation: "Regular comparative: adjective + -er.",
+    rule: "Comparatives: adjective + -er",
+    topic: "Adjectives"
+  }
+];
+
 export default function Grammar() {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [selectedSubtopic, setSelectedSubtopic] = useState<string | null>(null);
@@ -881,6 +1064,12 @@ export default function Grammar() {
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'negation' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords' | 'subordinateclauses' | 'imperfectum' | 'perfectum' | 'nouns'>('basic');
   const [showDutchText, setShowDutchText] = useState<{[key: string]: boolean}>({});
+  const [showDailyQuiz, setShowDailyQuiz] = useState(false);
+  const [showGrammarCorrection, setShowGrammarCorrection] = useState(false);
+  const [dailyQuizQuestion, setDailyQuizQuestion] = useState<DailyQuizQuestion | null>(null);
+  const [correctionQuestion, setCorrectionQuestion] = useState<GrammarCorrectionQuestion | null>(null);
+  const [userCorrection, setUserCorrection] = useState('');
+  const [correctionSubmitted, setCorrectionSubmitted] = useState(false);
 
   const toggleDutchText = (key: string) => {
     setShowDutchText(prev => ({ ...prev, [key]: !prev[key] }));
@@ -986,6 +1175,64 @@ export default function Grammar() {
   const handleBackToSubtopics = () => {
     setSelectedSubtopic(null);
     resetQuiz();
+  };
+
+  const startDailyQuiz = () => {
+    const randomQuestion = allGrammarQuestions[Math.floor(Math.random() * allGrammarQuestions.length)];
+    setDailyQuizQuestion(randomQuestion);
+    setShowDailyQuiz(true);
+    setSelectedAnswer(null);
+    setShowResult(false);
+  };
+
+  const startGrammarCorrection = () => {
+    const randomQuestion = grammarCorrectionQuestions[Math.floor(Math.random() * grammarCorrectionQuestions.length)];
+    setCorrectionQuestion(randomQuestion);
+    setShowGrammarCorrection(true);
+    setShowResult(false);
+  };
+
+  const closeDailyQuiz = () => {
+    setShowDailyQuiz(false);
+    setDailyQuizQuestion(null);
+    setSelectedAnswer(null);
+    setShowResult(false);
+  };
+
+  const closeGrammarCorrection = () => {
+    setShowGrammarCorrection(false);
+    setCorrectionQuestion(null);
+    setShowResult(false);
+    setUserCorrection('');
+    setCorrectionSubmitted(false);
+  };
+
+  const submitCorrection = () => {
+    if (!correctionQuestion || !userCorrection.trim()) return;
+    
+    setCorrectionSubmitted(true);
+    setShowResult(true);
+    
+    // Check if the user's correction matches the correct answer (case-insensitive, trimmed)
+    const isCorrect = userCorrection.trim().toLowerCase() === correctionQuestion.correctSentence.toLowerCase();
+    
+    if (isCorrect) {
+      toast.success("Perfect! Your correction is correct!");
+    } else {
+      toast.error("Not quite right. Check the correct answer below.");
+    }
+  };
+
+  const handleDailyQuizAnswer = (answerIndex: number) => {
+    if (showResult || !dailyQuizQuestion) return;
+    setSelectedAnswer(answerIndex);
+    setShowResult(true);
+    
+    if (answerIndex === dailyQuizQuestion.correct) {
+      toast.success("Correct!");
+    } else {
+      toast.error("Try again!");
+    }
   };
 
   if (selectedTopic === 'werkwoorden') {
@@ -5245,9 +5492,28 @@ export default function Grammar() {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Grammar Topics
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             Discover various grammar topics to improve your Dutch language skills.
           </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <Button 
+              onClick={startDailyQuiz}
+              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3"
+              size="lg"
+            >
+              <Target className="w-5 h-5" />
+              Grammar Quiz of the Day
+            </Button>
+            <Button 
+              onClick={startGrammarCorrection}
+              className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3"
+              size="lg"
+            >
+              <XCircle className="w-5 h-5" />
+              Correct the Grammar
+            </Button>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -5439,6 +5705,176 @@ export default function Grammar() {
           </Card>
         </div>
       </section>
+
+      {/* Daily Quiz Modal */}
+      {showDailyQuiz && dailyQuizQuestion && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <Card className="w-full max-w-2xl">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center gap-2">
+                  <Target className="w-6 h-6 text-blue-600" />
+                  Grammar Quiz of the Day
+                </CardTitle>
+                <Button variant="ghost" size="sm" onClick={closeDailyQuiz}>
+                  <XCircle className="w-4 h-4" />
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
+                <p className="text-sm text-blue-600 dark:text-blue-400 mb-2">Topic: {dailyQuizQuestion.topic}</p>
+                <p className="text-lg font-semibold">{dailyQuizQuestion.question}</p>
+              </div>
+
+              <div className="grid gap-3">
+                {dailyQuizQuestion.options.map((option, index) => (
+                  <Button
+                    key={index}
+                    variant={selectedAnswer === index ? 
+                      (index === dailyQuizQuestion.correct ? "default" : "destructive") : 
+                      "outline"
+                    }
+                    className={`p-4 text-left justify-start ${
+                      showResult && index === dailyQuizQuestion.correct ? 
+                      "bg-green-500 hover:bg-green-600 text-white" : ""
+                    }`}
+                    onClick={() => handleDailyQuizAnswer(index)}
+                    disabled={showResult}
+                  >
+                    {showResult && index === dailyQuizQuestion.correct && (
+                      <CheckCircle className="w-5 h-5 mr-2" />
+                    )}
+                    {showResult && selectedAnswer === index && index !== dailyQuizQuestion.correct && (
+                      <XCircle className="w-5 h-5 mr-2" />
+                    )}
+                    {option}
+                  </Button>
+                ))}
+              </div>
+
+              {showResult && (
+                <div className="space-y-4">
+                  <div className="bg-muted p-4 rounded-lg">
+                    <p className="font-semibold mb-2">Explanation:</p>
+                    <p className="mb-2">{dailyQuizQuestion.explanation}</p>
+                    <p className="text-sm text-muted-foreground">
+                      <strong>Rule:</strong> {dailyQuizQuestion.rule}
+                    </p>
+                  </div>
+                  <Button onClick={startDailyQuiz} className="w-full">
+                    Try Another Question
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* Grammar Correction Modal */}
+      {showGrammarCorrection && correctionQuestion && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <Card className="w-full max-w-2xl">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center gap-2">
+                  <XCircle className="w-6 h-6 text-red-600" />
+                  Correct the Grammar
+                </CardTitle>
+                <Button variant="ghost" size="sm" onClick={closeGrammarCorrection}>
+                  <XCircle className="w-4 h-4" />
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div>
+                <h3 className="font-semibold mb-3 text-lg">Vind de fout</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  In elke zin zit één fout. Corrigeer de fout.
+                </p>
+              </div>
+
+              <div className="bg-red-50 dark:bg-red-950 p-4 rounded-lg">
+                <p className="font-semibold mb-2 text-red-800 dark:text-red-200">Incorrect Sentence:</p>
+                <p className="text-lg font-mono bg-white/50 dark:bg-black/20 p-3 rounded">
+                  {correctionQuestion.incorrectSentence}
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <p className="font-semibold mb-2">Type your correction:</p>
+                  <Input
+                    value={userCorrection}
+                    onChange={(e) => setUserCorrection(e.target.value)}
+                    placeholder="Write the corrected sentence here..."
+                    className="text-lg p-3"
+                    disabled={correctionSubmitted}
+                  />
+                </div>
+                
+                {!correctionSubmitted ? (
+                  <Button 
+                    onClick={submitCorrection}
+                    className="w-full bg-blue-600 hover:bg-blue-700"
+                    disabled={!userCorrection.trim()}
+                  >
+                    Submit Correction
+                  </Button>
+                ) : null}
+              </div>
+
+              {showResult && correctionSubmitted ? (
+                <div className="space-y-4">
+                  <div className="bg-yellow-50 dark:bg-yellow-950 p-4 rounded-lg">
+                    <p className="font-semibold mb-2 text-yellow-800 dark:text-yellow-200">Your Answer:</p>
+                    <p className="text-lg font-mono bg-white/50 dark:bg-black/20 p-3 rounded">
+                      {userCorrection}
+                    </p>
+                  </div>
+                  
+                  <div className={`p-4 rounded-lg ${
+                    userCorrection.trim().toLowerCase() === correctionQuestion.correctSentence.toLowerCase() 
+                      ? 'bg-green-50 dark:bg-green-950' 
+                      : 'bg-red-50 dark:bg-red-950'
+                  }`}>
+                    <p className={`font-semibold mb-2 ${
+                      userCorrection.trim().toLowerCase() === correctionQuestion.correctSentence.toLowerCase() 
+                        ? 'text-green-800 dark:text-green-200' 
+                        : 'text-red-800 dark:text-red-200'
+                    }`}>
+                      {userCorrection.trim().toLowerCase() === correctionQuestion.correctSentence.toLowerCase() 
+                        ? '✓ Correct!' 
+                        : '✗ Correct Answer:'}
+                    </p>
+                    <p className="text-lg font-mono bg-white/50 dark:bg-black/20 p-3 rounded">
+                      {correctionQuestion.correctSentence}
+                    </p>
+                  </div>
+
+                  <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <p className="font-semibold mb-1 text-blue-800 dark:text-blue-200">Type of Error:</p>
+                        <p className="text-sm">{correctionQuestion.errorType}</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1 text-blue-800 dark:text-blue-200">Explanation:</p>
+                        <p className="text-sm">{correctionQuestion.explanation}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <Button onClick={startGrammarCorrection} className="w-full">
+                    Try Another Correction
+                  </Button>
+                </div>
+              ) : null}
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   );
 }
