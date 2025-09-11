@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Clock, Calendar, GraduationCap, MapPin, Sun, Moon, Sunrise, Sunset, User } from 'lucide-react';
+import { Clock, Calendar, GraduationCap, MapPin, Sun, Moon, Sunrise, Sunset, User, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
@@ -112,6 +112,10 @@ export default function Misc() {
               <User className="w-5 h-5" />
               <span>Body Parts</span>
             </div>
+            <div className="flex items-center space-x-2">
+              <Users className="w-5 h-5" />
+              <span>Family Relations</span>
+            </div>
           </div>
         </div>
       </section>
@@ -127,7 +131,7 @@ export default function Misc() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 max-w-8xl mx-auto">
           <Card className="text-center group hover:shadow-lg transition-shadow">
             <CardHeader>
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
@@ -224,6 +228,26 @@ export default function Misc() {
                 className="w-full"
               >
                 Learn Body Parts
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center group hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <div className="w-12 h-12 bg-pink/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-pink/20 transition-colors">
+                <Users className="w-6 h-6 text-pink-600" />
+              </div>
+              <CardTitle className="text-lg">Family Relations</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-4">
+                Parents, siblings, relatives
+              </p>
+              <Button 
+                onClick={() => document.getElementById('family-relations-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full"
+              >
+                Learn Family Tree
               </Button>
             </CardContent>
           </Card>
@@ -1543,8 +1567,333 @@ export default function Misc() {
         </div>
       </section>
 
+      {/* Family Relations Section */}
+      <section id="family-relations-section" className="bg-muted/30 py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Familierelaties (Family Relations)
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Learn Dutch family vocabulary with an interactive family tree structure.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+            {/* Interactive Family Tree */}
+            <Card className="p-6">
+              <CardHeader>
+                <CardTitle className="text-2xl text-center mb-6">Interactive Family Tree (Stamboom)</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="relative" style={{ height: '600px' }}>
+                  <svg viewBox="0 0 800 600" className="w-full h-full">
+                    {/* Grandparents Generation */}
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('grootvader')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="150" y="50" width="120" height="60" rx="10" fill={hoveredBodyPart === 'grootvader' ? '#3b82f6' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="210" y="75" textAnchor="middle" className="text-sm font-semibold fill-current">De grootvader</text>
+                      <text x="210" y="95" textAnchor="middle" className="text-xs fill-current">Grandfather</text>
+                    </g>
+                    
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('grootmoeder')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="300" y="50" width="120" height="60" rx="10" fill={hoveredBodyPart === 'grootmoeder' ? '#ec4899' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="360" y="75" textAnchor="middle" className="text-sm font-semibold fill-current">De grootmoeder</text>
+                      <text x="360" y="95" textAnchor="middle" className="text-xs fill-current">Grandmother</text>
+                    </g>
+                    
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('opa')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="450" y="50" width="120" height="60" rx="10" fill={hoveredBodyPart === 'opa' ? '#3b82f6' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="510" y="75" textAnchor="middle" className="text-sm font-semibold fill-current">De opa</text>
+                      <text x="510" y="95" textAnchor="middle" className="text-xs fill-current">Grandpa</text>
+                    </g>
+                    
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('oma')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="600" y="50" width="120" height="60" rx="10" fill={hoveredBodyPart === 'oma' ? '#ec4899' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="660" y="75" textAnchor="middle" className="text-sm font-semibold fill-current">De oma</text>
+                      <text x="660" y="95" textAnchor="middle" className="text-xs fill-current">Grandma</text>
+                    </g>
+                    
+                    {/* Connection lines from grandparents to parents */}
+                    <path d="M285 110 L285 140 L375 140 L375 170" stroke="#374151" strokeWidth="2" fill="none"/>
+                    <path d="M585 110 L585 140 L425 140 L425 170" stroke="#374151" strokeWidth="2" fill="none"/>
+                    
+                    {/* Parents Generation */}
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('vader')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="300" y="170" width="120" height="60" rx="10" fill={hoveredBodyPart === 'vader' ? '#3b82f6' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="360" y="195" textAnchor="middle" className="text-sm font-semibold fill-current">De vader</text>
+                      <text x="360" y="215" textAnchor="middle" className="text-xs fill-current">Father</text>
+                    </g>
+                    
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('moeder')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="450" y="170" width="120" height="60" rx="10" fill={hoveredBodyPart === 'moeder' ? '#ec4899' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="510" y="195" textAnchor="middle" className="text-sm font-semibold fill-current">De moeder</text>
+                      <text x="510" y="215" textAnchor="middle" className="text-xs fill-current">Mother</text>
+                    </g>
+                    
+                    {/* Marriage line */}
+                    <path d="M420 200 L450 200" stroke="#374151" strokeWidth="3" fill="none"/>
+                    
+                    {/* Connection line to children */}
+                    <path d="M435 230 L435 260 L400 260 L400 290" stroke="#374151" strokeWidth="2" fill="none"/>
+                    <path d="M435 260 L470 260 L470 290" stroke="#374151" strokeWidth="2" fill="none"/>
+                    <path d="M435 260 L435 290" stroke="#374151" strokeWidth="2" fill="none"/>
+                    
+                    {/* Children Generation */}
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('zoon')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="340" y="290" width="120" height="60" rx="10" fill={hoveredBodyPart === 'zoon' ? '#3b82f6' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="400" y="315" textAnchor="middle" className="text-sm font-semibold fill-current">De zoon</text>
+                      <text x="400" y="335" textAnchor="middle" className="text-xs fill-current">Son</text>
+                    </g>
+                    
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('dochter')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="480" y="290" width="120" height="60" rx="10" fill={hoveredBodyPart === 'dochter' ? '#ec4899' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="540" y="315" textAnchor="middle" className="text-sm font-semibold fill-current">De dochter</text>
+                      <text x="540" y="335" textAnchor="middle" className="text-xs fill-current">Daughter</text>
+                    </g>
+                    
+                    {/* Extended Family */}
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('oom')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="50" y="170" width="120" height="60" rx="10" fill={hoveredBodyPart === 'oom' ? '#10b981' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="110" y="195" textAnchor="middle" className="text-sm font-semibold fill-current">De oom</text>
+                      <text x="110" y="215" textAnchor="middle" className="text-xs fill-current">Uncle</text>
+                    </g>
+                    
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('tante')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="620" y="170" width="120" height="60" rx="10" fill={hoveredBodyPart === 'tante' ? '#f59e0b' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="680" y="195" textAnchor="middle" className="text-sm font-semibold fill-current">De tante</text>
+                      <text x="680" y="215" textAnchor="middle" className="text-xs fill-current">Aunt</text>
+                    </g>
+                    
+                    {/* Cousins */}
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('neef')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="50" y="290" width="120" height="60" rx="10" fill={hoveredBodyPart === 'neef' ? '#10b981' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="110" y="315" textAnchor="middle" className="text-sm font-semibold fill-current">De neef</text>
+                      <text x="110" y="335" textAnchor="middle" className="text-xs fill-current">Nephew/Cousin</text>
+                    </g>
+                    
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('nicht')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="620" y="290" width="120" height="60" rx="10" fill={hoveredBodyPart === 'nicht' ? '#f59e0b' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="680" y="315" textAnchor="middle" className="text-sm font-semibold fill-current">De nicht</text>
+                      <text x="680" y="335" textAnchor="middle" className="text-xs fill-current">Niece/Cousin</text>
+                    </g>
+                    
+                    {/* Connection lines for extended family */}
+                    <path d="M110 230 L110 260 L110 290" stroke="#374151" strokeWidth="2" fill="none"/>
+                    <path d="M680 230 L680 260 L680 290" stroke="#374151" strokeWidth="2" fill="none"/>
+                    
+                    {/* Siblings */}
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('broer')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="200" y="290" width="120" height="60" rx="10" fill={hoveredBodyPart === 'broer' ? '#8b5cf6' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="260" y="315" textAnchor="middle" className="text-sm font-semibold fill-current">De broer</text>
+                      <text x="260" y="335" textAnchor="middle" className="text-xs fill-current">Brother</text>
+                    </g>
+                    
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('zus')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="620" y="410" width="120" height="60" rx="10" fill={hoveredBodyPart === 'zus' ? '#ec4899' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="680" y="435" textAnchor="middle" className="text-sm font-semibold fill-current">De zus</text>
+                      <text x="680" y="455" textAnchor="middle" className="text-xs fill-current">Sister</text>
+                    </g>
+                    
+                    {/* Connection for siblings */}
+                    <path d="M320 320 L260 320 L260 290" stroke="#374151" strokeWidth="2" fill="none"/>
+                    <path d="M540 350 L540 380 L680 380 L680 410" stroke="#374151" strokeWidth="2" fill="none"/>
+                    
+                    {/* In-laws */}
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('schoonvader')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="50" y="410" width="120" height="60" rx="10" fill={hoveredBodyPart === 'schoonvader' ? '#dc2626' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="110" y="435" textAnchor="middle" className="text-sm font-semibold fill-current">Schoonvader</text>
+                      <text x="110" y="455" textAnchor="middle" className="text-xs fill-current">Father-in-law</text>
+                    </g>
+                    
+                    <g className="cursor-pointer" onMouseEnter={() => setHoveredBodyPart('schoonmoeder')} onMouseLeave={() => setHoveredBodyPart(null)}>
+                      <rect x="200" y="410" width="120" height="60" rx="10" fill={hoveredBodyPart === 'schoonmoeder' ? '#dc2626' : '#e5e7eb'} stroke="#374151" strokeWidth="2"/>
+                      <text x="260" y="435" textAnchor="middle" className="text-sm font-semibold fill-current">Schoonmoeder</text>
+                      <text x="260" y="455" textAnchor="middle" className="text-xs fill-current">Mother-in-law</text>
+                    </g>
+                    
+                    {/* Generation labels */}
+                    <text x="20" y="80" className="text-xs fill-gray-600 font-semibold">Grandparents</text>
+                    <text x="20" y="200" className="text-xs fill-gray-600 font-semibold">Parents</text>
+                    <text x="20" y="320" className="text-xs fill-gray-600 font-semibold">Children</text>
+                    <text x="20" y="440" className="text-xs fill-gray-600 font-semibold">In-laws</text>
+                  </svg>
+                  
+                  {/* Hover Information */}
+                  {hoveredBodyPart && (
+                    <div className="absolute top-4 right-4 bg-gradient-to-br from-primary to-primary/80 text-primary-foreground p-4 rounded-xl shadow-xl z-10 border border-primary/20 backdrop-blur-sm">
+                      <div className="font-bold text-xl mb-1">
+                        {hoveredBodyPart === 'grootvader' && 'de grootvader'}
+                        {hoveredBodyPart === 'grootmoeder' && 'de grootmoeder'}
+                        {hoveredBodyPart === 'opa' && 'de opa'}
+                        {hoveredBodyPart === 'oma' && 'de oma'}
+                        {hoveredBodyPart === 'vader' && 'de vader'}
+                        {hoveredBodyPart === 'moeder' && 'de moeder'}
+                        {hoveredBodyPart === 'zoon' && 'de zoon'}
+                        {hoveredBodyPart === 'dochter' && 'de dochter'}
+                        {hoveredBodyPart === 'broer' && 'de broer'}
+                        {hoveredBodyPart === 'zus' && 'de zus'}
+                        {hoveredBodyPart === 'oom' && 'de oom'}
+                        {hoveredBodyPart === 'tante' && 'de tante'}
+                        {hoveredBodyPart === 'neef' && 'de neef'}
+                        {hoveredBodyPart === 'nicht' && 'de nicht'}
+                        {hoveredBodyPart === 'schoonvader' && 'de schoonvader'}
+                        {hoveredBodyPart === 'schoonmoeder' && 'de schoonmoeder'}
+                      </div>
+                      <div className="text-sm opacity-90 mb-2">
+                        {hoveredBodyPart === 'grootvader' && 'grandfather'}
+                        {hoveredBodyPart === 'grootmoeder' && 'grandmother'}
+                        {hoveredBodyPart === 'opa' && 'grandpa'}
+                        {hoveredBodyPart === 'oma' && 'grandma'}
+                        {hoveredBodyPart === 'vader' && 'father'}
+                        {hoveredBodyPart === 'moeder' && 'mother'}
+                        {hoveredBodyPart === 'zoon' && 'son'}
+                        {hoveredBodyPart === 'dochter' && 'daughter'}
+                        {hoveredBodyPart === 'broer' && 'brother'}
+                        {hoveredBodyPart === 'zus' && 'sister'}
+                        {hoveredBodyPart === 'oom' && 'uncle'}
+                        {hoveredBodyPart === 'tante' && 'aunt'}
+                        {hoveredBodyPart === 'neef' && 'nephew/cousin (m)'}
+                        {hoveredBodyPart === 'nicht' && 'niece/cousin (f)'}
+                        {hoveredBodyPart === 'schoonvader' && 'father-in-law'}
+                        {hoveredBodyPart === 'schoonmoeder' && 'mother-in-law'}
+                      </div>
+                      <div className="text-xs bg-white/20 px-2 py-1 rounded">
+                        de-word
+                      </div>
+                    </div>
+                  )}
+                </div>
+                
+                <div className="text-center mt-6">
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Hover over family members to see Dutch translations
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2 text-xs">
+                    <div className="flex items-center gap-1">
+                      <div className="w-3 h-3 bg-blue-500 rounded"></div>
+                      <span>Male</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-3 h-3 bg-pink-500 rounded"></div>
+                      <span>Female</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-3 h-3 bg-green-500 rounded"></div>
+                      <span>Extended Family</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Family Vocabulary */}
+            <div className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">Core Family (Kernfamilie)</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid gap-3">
+                    {[
+                      { dutch: 'de familie', english: 'the family' },
+                      { dutch: 'de ouders', english: 'the parents' },
+                      { dutch: 'de vader', english: 'the father' },
+                      { dutch: 'de moeder', english: 'the mother' },
+                      { dutch: 'de kinderen', english: 'the children' },
+                      { dutch: 'de zoon', english: 'the son' },
+                      { dutch: 'de dochter', english: 'the daughter' },
+                      { dutch: 'de broer', english: 'the brother' },
+                      { dutch: 'de zus', english: 'the sister' }
+                    ].map((item, index) => (
+                      <div key={index} className="flex justify-between items-center p-3 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
+                        <span className="font-semibold text-primary">{item.dutch}</span>
+                        <span className="text-muted-foreground">{item.english}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">Extended Family (Uitgebreide Familie)</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid gap-3">
+                    {[
+                      { dutch: 'de grootouders', english: 'the grandparents' },
+                      { dutch: 'de grootvader', english: 'the grandfather' },
+                      { dutch: 'de grootmoeder', english: 'the grandmother' },
+                      { dutch: 'de opa', english: 'the grandpa' },
+                      { dutch: 'de oma', english: 'the grandma' },
+                      { dutch: 'de oom', english: 'the uncle' },
+                      { dutch: 'de tante', english: 'the aunt' },
+                      { dutch: 'de neef', english: 'the nephew/cousin (m)' },
+                      { dutch: 'de nicht', english: 'the niece/cousin (f)' }
+                    ].map((item, index) => (
+                      <div key={index} className="flex justify-between items-center p-3 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
+                        <span className="font-semibold text-secondary">{item.dutch}</span>
+                        <span className="text-muted-foreground">{item.english}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">In-Laws (Schoonfamilie)</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid gap-3">
+                    {[
+                      { dutch: 'de schoonfamilie', english: 'the in-laws' },
+                      { dutch: 'de schoonvader', english: 'the father-in-law' },
+                      { dutch: 'de schoonmoeder', english: 'the mother-in-law' },
+                      { dutch: 'de schoonzoon', english: 'the son-in-law' },
+                      { dutch: 'de schoondochter', english: 'the daughter-in-law' },
+                      { dutch: 'de zwager', english: 'the brother-in-law' },
+                      { dutch: 'de schoonzus', english: 'the sister-in-law' }
+                    ].map((item, index) => (
+                      <div key={index} className="flex justify-between items-center p-3 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
+                        <span className="font-semibold text-accent">{item.dutch}</span>
+                        <span className="text-muted-foreground">{item.english}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">Example Sentences</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
+                      <p className="font-semibold text-blue-800 dark:text-blue-200 mb-2">Mijn familie is groot.</p>
+                      <p className="text-blue-600 dark:text-blue-400 text-sm">My family is big.</p>
+                    </div>
+                    
+                    <div className="bg-green-50 dark:bg-green-950 p-4 rounded-lg border border-green-200 dark:border-green-800">
+                      <p className="font-semibold text-green-800 dark:text-green-200 mb-2">Ik heb twee broers en één zus.</p>
+                      <p className="text-green-600 dark:text-green-400 text-sm">I have two brothers and one sister.</p>
+                    </div>
+                    
+                    <div className="bg-purple-50 dark:bg-purple-950 p-4 rounded-lg border border-purple-200 dark:border-purple-800">
+                      <p className="font-semibold text-purple-800 dark:text-purple-200 mb-2">Mijn opa en oma wonen in Amsterdam.</p>
+                      <p className="text-purple-600 dark:text-purple-400 text-sm">My grandpa and grandma live in Amsterdam.</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Directions Section */}
-      <section id="directions-section" className="bg-muted/30 py-16">
+      <section id="directions-section" className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
