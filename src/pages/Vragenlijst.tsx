@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { ThemaCard } from '@/components/ThemaCard';
 import { QuestionCard } from '@/components/QuestionCard';
 import Navigation from '@/components/Navigation';
-import { ArrowLeft, BookOpen, Target, Users, Loader2 } from 'lucide-react';
+import { ArrowLeft, BookOpen, Target, Users, Loader2, Sparkles } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import heroImage from '@/assets/dutch-hero.jpg';
 import { loadTopicDataFromExcel, type Thema } from '@/utils/csvLoader';
@@ -14,6 +14,7 @@ export default function Vragenlijst() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [themaDat, setThemaDat] = useState<Thema[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isDailyQuestion, setIsDailyQuestion] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -49,6 +50,31 @@ export default function Vragenlijst() {
   const handleBackToThemas = () => {
     setSelectedThema(null);
     setCurrentQuestionIndex(0);
+    setIsDailyQuestion(false);
+  };
+
+  const handleInteractionOfTheDay = () => {
+    if (themaDat.length === 0) return;
+    
+    // Get all questions from all themes
+    const allQuestions = themaDat.flatMap(thema => 
+      thema.questions.map(question => ({ thema, question }))
+    );
+    
+    if (allQuestions.length === 0) return;
+    
+    // Select random question
+    const randomIndex = Math.floor(Math.random() * allQuestions.length);
+    const selectedItem = allQuestions[randomIndex];
+    
+    setSelectedThema(selectedItem.thema.id);
+    setCurrentQuestionIndex(selectedItem.thema.questions.indexOf(selectedItem.question));
+    setIsDailyQuestion(true);
+    
+    toast({
+      title: "Interaction of the Day! ✨",
+      description: `Random question from ${selectedItem.thema.title}`,
+    });
   };
 
   const handleNextQuestion = () => {
@@ -102,8 +128,12 @@ export default function Vragenlijst() {
               </Button>
               <Navigation />
               <div className="text-center">
-                <h1 className="text-xl font-bold text-foreground">{currentThema?.title}</h1>
-                <p className="text-sm text-muted-foreground">Practise Interactions</p>
+                <h1 className="text-xl font-bold text-foreground">
+                  {isDailyQuestion ? '✨ Interaction of the Day' : currentThema?.title}
+                </h1>
+                <p className="text-sm text-muted-foreground">
+                  {isDailyQuestion ? `From: ${currentThema?.title}` : 'Practise Interactions'}
+                </p>
               </div>
             </div>
           </div>
@@ -176,6 +206,19 @@ export default function Vragenlijst() {
            Select a topic to start practicing. Each topic contains several questions
 that will help you improve your Dutch conversation skills.
           </p>
+        </div>
+
+        {/* Interaction of the Day Button */}
+        <div className="flex justify-center mb-12">
+          <Button
+            onClick={handleInteractionOfTheDay}
+            size="lg"
+            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            disabled={themaDat.length === 0}
+          >
+            <Sparkles className="w-6 h-6 mr-3" />
+            Interaction of the Day
+          </Button>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
