@@ -361,6 +361,14 @@ interface PerfectumQuizQuestion {
   type: 'regular' | 'irregular' | 'auxiliary';
 }
 
+interface NounQuizQuestion {
+  sentence: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+  type: 'de-het' | 'plural' | 'diminutive';
+}
+
 const negationQuizQuestions: NegationQuizQuestion[] = [
   {
     sentence: "Peter is groot. → Peter ___ groot.",
@@ -804,6 +812,65 @@ const subordinateClauseQuizQuestions: SubordinateClauseQuizQuestion[] = [
   }
 ];
 
+const nounQuizQuestions: NounQuizQuestion[] = [
+  {
+    sentence: "___ huis is groot.",
+    options: ["De", "Het", "Een"],
+    correct: 1,
+    explanation: "'Huis' is a het-word, so we use 'het huis'",
+    type: 'de-het'
+  },
+  {
+    sentence: "___ auto staat buiten.",
+    options: ["De", "Het", "Een"],
+    correct: 0,
+    explanation: "'Auto' is a de-word, so we use 'de auto'",
+    type: 'de-het'
+  },
+  {
+    sentence: "Ik heb twee ___.",
+    options: ["kind", "kinderen", "kinds"],
+    correct: 1,
+    explanation: "The plural of 'kind' is 'kinderen' (irregular plural)",
+    type: 'plural'
+  },
+  {
+    sentence: "De ___ zijn mooi.",
+    options: ["bloem", "bloemen", "bloems"],
+    correct: 1,
+    explanation: "The plural of 'bloem' is 'bloemen' (add -en)",
+    type: 'plural'
+  },
+  {
+    sentence: "Het ___ is schattig.",
+    options: ["hond", "hondje", "honds"],
+    correct: 1,
+    explanation: "'Hondje' is the diminutive form of 'hond' (add -je)",
+    type: 'diminutive'
+  },
+  {
+    sentence: "___ water is koud.",
+    options: ["De", "Het", "Een"],
+    correct: 1,
+    explanation: "'Water' is a het-word, so we use 'het water'",
+    type: 'de-het'
+  },
+  {
+    sentence: "Ik zie veel ___.",
+    options: ["kat", "katten", "kats"],
+    correct: 1,
+    explanation: "The plural of 'kat' is 'katten' (double consonant + -en)",
+    type: 'plural'
+  },
+  {
+    sentence: "Het kleine ___ speelt.",
+    options: ["meisje", "meisjes", "meisjen"],
+    correct: 0,
+    explanation: "'Meisje' is already a diminutive form (ends in -je)",
+    type: 'diminutive'
+  }
+];
+
 export default function Grammar() {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [selectedSubtopic, setSelectedSubtopic] = useState<string | null>(null);
@@ -812,7 +879,7 @@ export default function Grammar() {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'negation' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords' | 'subordinateclauses' | 'imperfectum' | 'perfectum'>('basic');
+  const [quizType, setQuizType] = useState<'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'negation' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords' | 'subordinateclauses' | 'imperfectum' | 'perfectum' | 'nouns'>('basic');
   const [showDutchText, setShowDutchText] = useState<{[key: string]: boolean}>({});
 
   const toggleDutchText = (key: string) => {
@@ -875,6 +942,9 @@ export default function Grammar() {
     if (selectedTopic === 'perfectum') {
       return perfectumQuizQuestions;
     }
+    if (selectedTopic === 'nouns') {
+      return nounQuizQuestions;
+    }
     return verbQuizQuestions;
   };
 
@@ -904,7 +974,7 @@ export default function Grammar() {
     }
   };
 
-  const resetQuizWithType = (type: 'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords' | 'subordinateclauses' | 'imperfectum' | 'perfectum') => {
+  const resetQuizWithType = (type: 'basic' | 'stem' | 'sentence' | 'twoverb' | 'position' | 'separable' | 'structure' | 'order' | 'conjunction' | 'inversie' | 'adjective' | 'inflection' | 'referencewords' | 'subordinateclauses' | 'imperfectum' | 'perfectum' | 'nouns') => {
     setQuizType(type);
     resetQuiz();
   };
@@ -3795,6 +3865,380 @@ export default function Grammar() {
     );
   }
 
+  if (selectedTopic === 'nouns') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
+        <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <Button onClick={handleBackToTopics} variant="ghost" className="flex items-center gap-2">
+                <ArrowLeft className="w-4 h-4" />
+                Back to Topics
+              </Button>
+              <h1 className="text-2xl font-bold">Nouns (Zelfstandige Naamwoorden)</h1>
+              <div className="w-32" />
+            </div>
+          </div>
+        </header>
+
+        <main className="container mx-auto px-4 py-8 space-y-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <BookOpen className="w-6 h-6" />
+                What are Nouns?
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => toggleDutchText('noun-intro')}
+                  className="ml-auto"
+                >
+                  {showDutchText['noun-intro'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  Dutch
+                </Button>
+              </CardTitle>
+              {showDutchText['noun-intro'] && (
+                <p className="text-sm text-muted-foreground">Wat zijn zelfstandige naamwoorden?</p>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Nouns are words that name people, places, things, or ideas. In Dutch, every noun has a gender (de or het) and can be made plural or diminutive. Understanding Dutch nouns is essential because they determine which articles and adjectives to use.
+              </p>
+              {showDutchText['noun-intro'] && (
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Zelfstandige naamwoorden zijn woorden die personen, plaatsen, dingen of ideeën benoemen. In het Nederlands heeft elk zelfstandig naamwoord een geslacht (de of het) en kan het meervoud of verkleind worden gemaakt.
+                </p>
+              )}
+              
+              <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
+                <h3 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Key Features of Dutch Nouns:</h3>
+                {showDutchText['noun-intro'] && (
+                  <p className="text-xs text-blue-600 dark:text-blue-400 mb-2">Belangrijke kenmerken van Nederlandse zelfstandige naamwoorden:</p>
+                )}
+                <ul className="text-blue-700 dark:text-blue-300 space-y-1">
+                  <li>• Have gender: de-words or het-words</li>
+                  <li>• Can be made plural (meervoud)</li>
+                  <li>• Can be made diminutive (verkleinwoord)</li>
+                  <li>• Determine article and adjective forms</li>
+                  <li>• Essential for sentence structure</li>
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                DE-words vs HET-words
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => toggleDutchText('de-het-words')}
+                  className="ml-auto"
+                >
+                  {showDutchText['de-het-words'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  Dutch
+                </Button>
+              </CardTitle>
+              {showDutchText['de-het-words'] && (
+                <p className="text-sm text-muted-foreground">De-woorden vs Het-woorden</p>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Dutch nouns are divided into two groups based on their definite article: de-words (about 75%) and het-words (about 25%). This distinction affects which articles, adjectives, and pronouns you use with the noun.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="bg-green-50 dark:bg-green-950">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-green-800 dark:text-green-200">DE-words (75%)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm mb-2">Most Dutch nouns:</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• <strong>de</strong> man (the man)</li>
+                      <li>• <strong>de</strong> vrouw (the woman)</li>
+                      <li>• <strong>de</strong> auto (the car)</li>
+                      <li>• <strong>de</strong> tafel (the table)</li>
+                      <li>• <strong>de</strong> school (the school)</li>
+                    </ul>
+                    <p className="text-xs mt-2 text-green-600 dark:text-green-400">Indefinite: een man, een vrouw</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-blue-50 dark:bg-blue-950">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-blue-800 dark:text-blue-200">HET-words (25%)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm mb-2">Smaller group of nouns:</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• <strong>het</strong> huis (the house)</li>
+                      <li>• <strong>het</strong> kind (the child)</li>
+                      <li>• <strong>het</strong> boek (the book)</li>
+                      <li>• <strong>het</strong> water (the water)</li>
+                      <li>• <strong>het</strong> meisje (the girl)</li>
+                    </ul>
+                    <p className="text-xs mt-2 text-blue-600 dark:text-blue-400">Indefinite: een huis, een kind</p>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="bg-yellow-50 dark:bg-yellow-950 p-4 rounded-lg">
+                <h3 className="font-semibold mb-2 text-yellow-800 dark:text-yellow-200">Tips for HET-words:</h3>
+                <ul className="text-sm space-y-1">
+                  <li>• Most diminutives (words ending in -je): het meisje, het hondje</li>
+                  <li>• Many words ending in -um: het museum, het centrum</li>
+                  <li>• Languages and metals: het Nederlands, het goud</li>
+                  <li>• Many abstract concepts: het geluk, het leven</li>
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Users className="w-6 h-6" />
+                Plural Forms (Meervoud)
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => toggleDutchText('plural-forms')}
+                  className="ml-auto"
+                >
+                  {showDutchText['plural-forms'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  Dutch
+                </Button>
+              </CardTitle>
+              {showDutchText['plural-forms'] && (
+                <p className="text-sm text-muted-foreground">Meervoudsvormen</p>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Dutch has several ways to make nouns plural. The most common endings are -en and -s, but there are also irregular plurals that must be memorized.
+              </p>
+              
+              <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-green-800 dark:text-green-200">Common Plural Patterns:</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p className="font-semibold mb-2">Add -en (most common):</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• huis → <strong>huizen</strong></li>
+                      <li>• tafel → <strong>tafels</strong></li>
+                      <li>• bloem → <strong>bloemen</strong></li>
+                      <li>• kat → <strong>katten</strong></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-2">Add -s:</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• auto → <strong>auto's</strong></li>
+                      <li>• foto → <strong>foto's</strong></li>
+                      <li>• café → <strong>café's</strong></li>
+                      <li>• baby → <strong>baby's</strong></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-red-50 dark:bg-red-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-red-800 dark:text-red-200">Irregular Plurals:</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Singular</th>
+                        <th className="text-left p-2">Plural</th>
+                        <th className="text-left p-2">English</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-2">kind</td>
+                        <td className="p-2 text-primary font-bold">kinderen</td>
+                        <td className="p-2 text-muted-foreground">children</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2">ei</td>
+                        <td className="p-2 text-primary font-bold">eieren</td>
+                        <td className="p-2 text-muted-foreground">eggs</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-2">schip</td>
+                        <td className="p-2 text-primary font-bold">schepen</td>
+                        <td className="p-2 text-muted-foreground">ships</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Volume2 className="w-6 h-6" />
+                Diminutives (Verkleinwoorden)
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => toggleDutchText('diminutives')}
+                  className="ml-auto"
+                >
+                  {showDutchText['diminutives'] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  Dutch
+                </Button>
+              </CardTitle>
+              {showDutchText['diminutives'] && (
+                <p className="text-sm text-muted-foreground">Verkleinwoorden</p>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Diminutives make nouns smaller, cuter, or more endearing. In Dutch, diminutives are very common and always become het-words, regardless of the original noun's gender. The most common ending is -je.
+              </p>
+              
+              <div className="bg-purple-50 dark:bg-purple-950 p-6 rounded-lg">
+                <h3 className="font-semibold mb-3 text-purple-800 dark:text-purple-200">Diminutive Patterns:</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p className="font-semibold mb-2">Add -je (most common):</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• hond → <strong>het hondje</strong></li>
+                      <li>• boom → <strong>het boompje</strong></li>
+                      <li>• tafel → <strong>het tafeltje</strong></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-2">Add -tje:</p>
+                    <ul className="text-sm space-y-1">
+                      <li>• auto → <strong>het autootje</strong></li>
+                      <li>• ei → <strong>het eitje</strong></li>
+                      <li>• baby → <strong>het babytje</strong></li>
+                    </ul>
+                  </div>
+                </div>
+                <p className="text-xs mt-3 text-purple-600 dark:text-purple-400">Important: ALL diminutives become het-words!</p>
+              </div>
+
+              <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
+                <h3 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Common Diminutives:</h3>
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div>
+                    <ul className="text-sm space-y-1">
+                      <li>• het meisje (girl)</li>
+                      <li>• het jongetje (little boy)</li>
+                      <li>• het huisje (little house)</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <ul className="text-sm space-y-1">
+                      <li>• het kopje (cup)</li>
+                      <li>• het boekje (booklet)</li>
+                      <li>• het kindje (little child)</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <ul className="text-sm space-y-1">
+                      <li>• het bloemetje (little flower)</li>
+                      <li>• het katje (kitten)</li>
+                      <li>• het beetje (a little bit)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Target className="w-6 h-6" />
+                Noun Practice Quiz
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {!quizCompleted ? (
+                <div className="space-y-6">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-semibold">Question {currentQuiz + 1} of {nounQuizQuestions.length}</h3>
+                    <div className="text-sm text-muted-foreground">Score: {score}/{nounQuizQuestions.length}</div>
+                  </div>
+                  
+                  <div className="text-center space-y-4">
+                    <p className="text-lg">Complete the sentence:</p>
+                    <div className="bg-muted/50 p-4 rounded-lg">
+                      <p className="text-xl font-bold text-primary">{nounQuizQuestions[currentQuiz].sentence}</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4">
+                    {nounQuizQuestions[currentQuiz].options.map((option, index) => (
+                      <Button
+                        key={index}
+                        variant={selectedAnswer === index ? 
+                          (index === nounQuizQuestions[currentQuiz].correct ? "default" : "destructive") : 
+                          "outline"
+                        }
+                        className={`p-4 text-lg ${
+                          showResult && index === nounQuizQuestions[currentQuiz].correct ? 
+                          "bg-green-500 hover:bg-green-600" : ""
+                        }`}
+                        onClick={() => handleAnswerSelect(index)}
+                        disabled={showResult}
+                      >
+                        {showResult && index === nounQuizQuestions[currentQuiz].correct && (
+                          <CheckCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {showResult && selectedAnswer === index && index !== nounQuizQuestions[currentQuiz].correct && (
+                          <XCircle className="w-5 h-5 mr-2" />
+                        )}
+                        {option}
+                      </Button>
+                    ))}
+                  </div>
+
+                  {showResult && (
+                    <div className="space-y-4">
+                      <div className="bg-muted p-4 rounded-lg">
+                        <p className="font-semibold mb-2">Explanation:</p>
+                        <p>{nounQuizQuestions[currentQuiz].explanation}</p>
+                        <p className="text-sm text-muted-foreground mt-2">
+                          Type: {nounQuizQuestions[currentQuiz].type === 'de-het' ? 'DE/HET article' : 
+                                nounQuizQuestions[currentQuiz].type === 'plural' ? 'Plural form' : 'Diminutive form'}
+                        </p>
+                      </div>
+                      <Button onClick={handleNextQuestion} className="w-full">
+                        {currentQuiz < nounQuizQuestions.length - 1 ? "Next Question" : "Finish Quiz"}
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-center space-y-4">
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                  <h3 className="text-2xl font-bold">Quiz Completed!</h3>
+                  <p className="text-lg">Final Score: {score}/{nounQuizQuestions.length}</p>
+                  <Button onClick={() => resetQuizWithType('nouns')} className="flex items-center gap-2">
+                    <RotateCcw className="w-4 h-4" />
+                    Try Again
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </main>
+      </div>
+    );
+  }
+
   if (selectedTopic === 'perfectum') {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
@@ -4892,12 +5336,20 @@ export default function Grammar() {
             </CardContent>
           </Card>
 
-          <Card className="text-center">
+          <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleTopicSelect('nouns')}>
             <CardHeader>
-              <CardTitle className="text-muted-foreground">Nouns</CardTitle>
+              <CardTitle className="flex items-center gap-2">
+                <BookOpen className="w-5 h-5" />
+                Nouns (Zelfstandige Naamwoorden)
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Coming soon</p>
+              <p className="text-muted-foreground mb-4">
+                Learn Dutch nouns: de/het articles, plural forms, and diminutives with examples and practice.
+              </p>
+              <Button className="w-full">
+                Start Learning
+              </Button>
             </CardContent>
           </Card>
 
