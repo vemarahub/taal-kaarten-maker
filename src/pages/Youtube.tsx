@@ -1,34 +1,77 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Play, Music, Globe, Users } from 'lucide-react';
+import { Play, Music, Globe, Users, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import heroImage from '@/assets/dutch-hero.jpg';
 
-const musicVideos = [
-  {
-    id: 's86VUMu73AU',
-    title: 'Nederlandse Muziek Video 1'
-  },
-  {
-    id: 'wW8jga2D_ok', 
-    title: 'Nederlandse Muziek Video 2'
-  },
-  {
-    id: 'pyg9fiTSRm8',
-    title: 'Nederlandse Muziek Video 3'
-  },
-  {
-    id: '1Z0kML7JrwU',
-    title: 'Nederlandse Muziek Video 4'
+interface Video {
+  id: string;
+  title: string;
+  artist?: string;
+  description?: string;
+  topic?: string;
+}
+
+const loadVideosFromCSV = async (filename: string): Promise<Video[]> => {
+  try {
+    const response = await fetch(`/data/${filename}`);
+    const csvText = await response.text();
+    const lines = csvText.trim().split('\n');
+    const headers = lines[0].split(',');
+    
+    return lines.slice(1).map(line => {
+      const values = line.split(',');
+      const video: any = {};
+      headers.forEach((header, index) => {
+        video[header.trim()] = values[index]?.trim() || '';
+      });
+      return video as Video;
+    });
+  } catch (error) {
+    console.error(`Failed to load ${filename}:`, error);
+    return [];
   }
-];
+};
 
 export default function Youtube() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [musicVideos, setMusicVideos] = useState<Video[]>([]);
+  const [cultureVideos, setCultureVideos] = useState<Video[]>([]);
+  const [educationalVideos, setEducationalVideos] = useState<Video[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  if (selectedCategory === 'music') {
+  useEffect(() => {
+    const loadAllVideos = async () => {
+      setLoading(true);
+      const [music, culture, educational] = await Promise.all([
+        loadVideosFromCSV('dutch-music-videos.csv'),
+        loadVideosFromCSV('dutch-culture-videos.csv'),
+        loadVideosFromCSV('dutch-educational-videos.csv')
+      ]);
+      
+      setMusicVideos(music);
+      setCultureVideos(culture);
+      setEducationalVideos(educational);
+      setLoading(false);
+    };
+
+    loadAllVideos();
+  }, []);
+
+  const renderVideoCategory = (videos: Video[], title: string, subtitle: string) => {
+    if (loading) {
+      return (
+        <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background flex items-center justify-center">
+          <div className="text-center">
+            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-primary" />
+            <p className="text-muted-foreground">Loading videos...</p>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
         <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
@@ -49,15 +92,15 @@ export default function Youtube() {
         <section className="container mx-auto px-4 py-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Nederlandse Muziek
+              {title}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Geniet van populaire Nederlandse liedjes en artiesten
+              {subtitle}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {musicVideos.map((video) => (
+            {videos.map((video) => (
               <Card key={video.id} className="overflow-hidden">
                 <CardContent className="p-0">
                   <div className="aspect-video">
@@ -74,6 +117,15 @@ export default function Youtube() {
                   </div>
                   <div className="p-4">
                     <h3 className="font-semibold text-foreground">{video.title}</h3>
+                    {video.artist && (
+                      <p className="text-sm text-muted-foreground mt-1">by {video.artist}</p>
+                    )}
+                    {video.description && (
+                      <p className="text-sm text-muted-foreground mt-1">{video.description}</p>
+                    )}
+                    {video.topic && (
+                      <p className="text-sm text-muted-foreground mt-1">Topic: {video.topic}</p>
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -82,6 +134,18 @@ export default function Youtube() {
         </section>
       </div>
     );
+  };
+
+  if (selectedCategory === 'music') {
+    return renderVideoCategory(musicVideos, 'Nederlandse Muziek', 'Geniet van populaire Nederlandse liedjes en artiesten');
+  }
+
+  if (selectedCategory === 'culture') {
+    return renderVideoCategory(cultureVideos, 'Nederlandse Cultuur', 'Documentaires en video\'s over Nederlandse cultuur');
+  }
+
+  if (selectedCategory === 'educational') {
+    return renderVideoCategory(educationalVideos, 'Educatieve Video\'s', 'Nederlandse taal leervideos');
   }
 
   return (
@@ -154,7 +218,7 @@ export default function Youtube() {
             </CardContent>
           </Card>
 
-          <Card className="text-center group hover:shadow-lg transition-shadow">
+          <Card className="text-center group hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setSelectedCategory('culture')}>
             <CardHeader>
               <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary/20 transition-colors">
                 <Globe className="w-6 h-6 text-secondary" />
@@ -165,11 +229,14 @@ export default function Youtube() {
               <p className="text-muted-foreground mb-4">
              Documentaries and videos about Dutch culture
               </p>
-              <p className="text-sm text-muted-foreground">Binnenkort beschikbaar</p>
+              <Button variant="outline" size="sm">
+                <Play className="w-4 h-4 mr-2" />
+                Bekijk Video's
+              </Button>
             </CardContent>
           </Card>
 
-          <Card className="text-center group hover:shadow-lg transition-shadow">
+          <Card className="text-center group hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setSelectedCategory('educational')}>
             <CardHeader>
               <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20 transition-colors">
                 <Users className="w-6 h-6 text-accent" />
@@ -180,7 +247,10 @@ export default function Youtube() {
               <p className="text-muted-foreground mb-4">
                 Dutch language learning videos
               </p>
-              <p className="text-sm text-muted-foreground">Coming Soon</p>
+              <Button variant="outline" size="sm">
+                <Play className="w-4 h-4 mr-2" />
+                Bekijk Video's
+              </Button>
             </CardContent>
           </Card>
         </div>
