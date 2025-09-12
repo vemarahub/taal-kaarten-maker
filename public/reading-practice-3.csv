@@ -1,0 +1,259 @@
+id,type,text,question,option1,option2,option3,option4,correct
+1,text,"Theo woont in de gemeente Rommeldam. Hij heeft een huis gehuurd bij Woningbureau Rommelaar. Hij krijgt een brief van de gemeente.
+
+Rommeldam wil het regenwater en het afvalwater uit uw huis beter scheiden. Regenwater is schoon. Het afvalwater is vies en moet gezuiverd worden.
+
+Hebt u een koophuis? Dan moet u hier misschien zelf iets aan doen. U moet het regenwater, bijvoorbeeld vanaf uw dak, scheiden van het afvalwater uit uw woning.
+
+Hebt u een huurhuis? Dan gaat de gemeente het systeem controleren en gratis verbeteren.
+
+Vragen?
+Hebt u vragen over de verbeteringen die u moet aanbrengen?
+Neem dan contact op met de gemeente Rommeldam.
+Ons telefoonnummer is: 073 – 88321191.
+Ons emailadres is: rioolbuis@rommeldam.nl","Wie is de eigenaar van de woning van Theo?","Theo.","De gemeente Rommeldam.","Woningbureau Rommelaar.","Rioolbuis.",2
+2,text,"Rommeldam wil het regenwater en het afvalwater uit uw huis beter scheiden. Regenwater is schoon. Het afvalwater is vies en moet gezuiverd worden.
+
+Hebt u een koophuis? Dan moet u hier misschien zelf iets aan doen.
+
+Hebt u een huurhuis? Dan gaat de gemeente het systeem controleren en gratis verbeteren.
+
+U kunt subsidie ontvangen, als u het systeem moet verbeteren.","Het huis van Theo is oud. Het afvalwater uit zijn huis en het regenwater moeten beter gescheiden worden. Moet hij zelf de verbeteringen betalen?","Ja, de controle is gratis, maar hij moet de verbeteringen zelf betalen.","Nee, voor Theo zijn de controle en de verbeteringen gratis.","Hij moet de verbeteringen zelf betalen, maar hij krijgt subsidie.",,1
+3,text,"Vragen?
+Hebt u vragen over de verbeteringen die u moet aanbrengen?
+Neem dan contact op met de gemeente Rommeldam.
+Ons telefoonnummer is: 073 – 88321191.
+Ons emailadres is: rioolbuis@rommeldam.nl","Theo begrijpt niet goed wat er gaat gebeuren. Wat moet hij doen?","Hij kan kiezen: hij kan bellen of een e-mail sturen naar de gemeente.","Hij moet bellen.","Hij moet een e-mail sturen.",,0
+4,text,"Janneke heeft een hond. Zij krijgt een formulier van de gemeente.
+
+Hebt u een hond? Dan moet u dat melden bij de gemeente.
+Als u geen hondenbelasting betaalt, kunt u een boete krijgen.
+Gebruik dit formulier of ga op internet naar www.rommeldam.nl/belasting.
+
+Aangiftebiljet hondenbelasting
+Naam: ............................
+Adres: ….........................
+Postcode/woonplaats: ….........................
+BSN: ...........................
+
+Doet hierbij aangifte als houder van: (aankruisen)
+⃝ één hond € 78,84 per jaar
+⃝ twee honden € 118,56 per jaar
+⃝ drie honden € 158,16 per jaar
+⃝ een vrijgestelde* hond € 0,00
+
+Hebt u een vrijgestelde hond* stuur dan een kopie mee van het bewijsstuk (bijvoorbeeld een certificaat).
+
+Formulier opsturen naar:
+Afdeling Belastingen Rommeldam, Postbus 12347, 5210 VZ Rommeldam
+
+* Een vrijgestelde hond is een hulp-hond of blindengeleidehond.","Janneke is blind en zij heeft een blindengeleidehond. Wat moet zij doen met dit formulier van de gemeente?","Zij hoeft niets te doen, zij kan het formulier weggooien.","Zij moet het formulier invullen en hondenbelasting betalen.","Zij moet het formulier invullen, maar zij hoeft geen belasting te betalen.","Zij moet het formulier invullen en zij moet een boete betalen.",2
+5,text,"Doet hierbij aangifte als houder van: (aankruisen)
+⃝ één hond € 78,84 per jaar
+⃝ twee honden € 118,56 per jaar
+⃝ drie honden € 158,16 per jaar
+⃝ een vrijgestelde* hond € 0,00
+
+* Een vrijgestelde hond is een hulp-hond of blindengeleidehond.","De vriendin van Janneke heeft ook een hond. Zij moet hondenbelasting betalen. Hoeveel belasting moet zij betalen?","De vriendin hoeft geen belasting te betalen, de hond is vrijgesteld.","De vriendin moet € 78,84 per jaar betalen.","De vriendin moet € 78,84 per jaar betalen en ook een boete.",,1
+6,text,"Ahmed krijgt een brief over vrijstellingen voor het inburgeringsexamen.
+
+Beste Ahmed
+
+U bent inburgeringsplichtig. U moet inburgeringsexamens afleggen. Soms kunt u een vrijstelling krijgen. Welke vrijstellingen zijn er?
+
+Gedeeltelijke vrijstelling
+Een gedeeltelijke vrijstelling betekent dat u een deel van het inburgeringsexamen niet hoeft te doen. Andere delen van het inburgeringsexamen moet u nog wel doen. Bent u geslaagd voor die andere delen? Dan voldoet u aan de inburgeringsplicht.
+
+Gehele vrijstelling
+Een gehele vrijstelling betekent dat u het hele inburgeringsexamen niet hoeft te doen. U wordt dan vrijgesteld van de inburgeringsplicht.
+
+Hebt u een diploma behaald in Nederland? Dan krijgt u misschien een gehele vrijstelling. Krijgt u een gehele vrijstelling? Dan kunt u geen inburgeringsdiploma krijgen.
+
+Tijdelijke vrijstelling
+Doet u nu een Nederlandstalige opleiding (MBO of HBO) waarvoor u een gehele vrijstelling kunt krijgen? Dan kunt u nu een tijdelijke vrijstelling krijgen.
+
+Haalt u het MBO-diploma? Dan kunt u de tijdelijke vrijstelling veranderen in een gehele vrijstelling.","Ahmed is inburgeringsplichtig. Hij is nog niet geslaagd voor zijn examens. Hij doet een MBO-opleiding voor kok. Volgend jaar krijgt hij zijn MBO-diploma. Welke vrijstelling heeft Ahmed?","Hij heeft een tijdelijke vrijstelling, hij moet zijn inburgeringsexamen over 1 jaar doen.","Hij heeft een tijdelijke vrijstelling. Hij kan later een volledige vrijstelling krijgen.","Hij heeft een volledige vrijstelling.","Hij heeft een gedeeltelijke vrijstelling.",1
+7,text,"Tijdelijke vrijstelling
+Doet u nu een Nederlandstalige opleiding (MBO of HBO) waarvoor u een gehele vrijstelling kunt krijgen? Dan kunt u nu een tijdelijke vrijstelling krijgen.
+
+Haalt u het MBO-diploma? Dan kunt u de tijdelijke vrijstelling veranderen in een gehele vrijstelling.","Wat gebeurt er, als Ahmed niet slaagt voor zijn MBO-opleiding?","Dan krijgt hij geen vrijstelling voor het inburgeringsexamen.","Dan krijgt hij een gedeeltelijke vrijstelling voor het inburgeringsexamen.","Dan krijgt hij een gehele vrijstelling voor het inburgeringsexamen.",,0
+8,text,"Mirjam leest iets over vrijwilligerswerk.
+
+Divers zoekt vrijwilligers om eenzame, oude, zieke en zwakke mensen te helpen.
+
+Zoek je een stageplaats of gewoon vrijwilligerswerk? Wij zoeken gemotiveerde en energieke mensen die aan de slag willen in Rommeldam.
+
+Woon je in Rommeldam?
+Houd je van mensen?
+Ben je 18 jaar of ouder en heb je tijd over?
+Kun je minimaal 4 uur en maximaal 20 uur per week werken?
+Kun je minimaal 4 weken als vrijwilliger bij ons werken?
+Zoek je een stageplaats in verband met je opleiding of school?
+Wil je een taalmaatje zijn voor mensen die nog niet zo goed Nederlands spreken?
+
+Onze coördinator geeft je informatie en bekijkt je mogelijkheden. Op werkdagen van maandag tot en met donderdag kun je contact opnemen via telefoonnummer 073 – 9934345. Of je stuurt een mailtje naar info@zorgrommeldam.com
+
+Jongeren die een stageplaats zoeken voor hun school/opleiding kunnen zich ook aanmelden. Divers zet zich in om jongeren vooruit te helpen in hun ontwikkeling en werkt daarom samen met alle regionale scholen van Rommeldam.","Mirjam moet bij haar opleiding een stage lopen van vier weken en 16 uur. Kan zij dat bij Divers doen?","Ja, want het minimum aantal uren bij Divers is 4 uur per week.","Nee, want het minimum aantal uren bij Divers is 20 uur per week.","Nee, want het maximum aantal uren bij Divers is 4 uren per week.",,0
+9,text,"Onze coördinator geeft je informatie en bekijkt je mogelijkheden. Op werkdagen van maandag tot en met donderdag kun je contact opnemen via telefoonnummer 073 – 9934345. Of je stuurt een mailtje naar info@zorgrommeldam.com","Mirjam is vrijdag vrij. Zij wil dan de coördinator bellen. Is dat mogelijk?","Nee, want dan is Divers niet telefonisch bereikbaar.","Ja, je kunt dan bellen met 073 – 9934345.","Ja, want op vrijdag is Divers gewoon open.",,0
+10,text,"Jongeren die een stageplaats zoeken voor hun school/opleiding kunnen zich ook aanmelden. Divers zet zich in om jongeren vooruit te helpen in hun ontwikkeling en werkt daarom samen met alle regionale scholen van Rommeldam.","Mirjam wil graag een stageplek bij Divers. Geeft Divers jongeren een kans op een stageplek?","Nee, Divers wil het liefst oude en ervaren vrijwilligers.","Ja, Divers wil jonge mensen graag helpen met hun carrière.","Nee, Divers zoekt taalmaatjes – dat zijn oudere mensen.",,1
+11,text,"Michael schrijft een e-mail aan zijn werkloze vriend Diego. Hij wil Diego helpen om werk te vinden. Michael heeft een idee.
+
+Hoi Diego
+
+Hi kameraad, hoe is het met je? Vervelend voor je dat je geen werk kunt vinden. Hoe lang zit je nu al zonder? Ik hoop dat je binnenkort iets vindt.
+
+Alleen maar voor de televisie hangen en af en toe naar de sportclub gaan, nee dat lijkt mij niks.
+
+Ik heb een advertentie gezien van DIVERS, dat is een bedrijf in Rommeldam, waar je woont.
+
+DIVERS zoekt vrijwilligers die ouderen en zieken helpen met huishouden en boodschappen doen. Je moet even op hun website kijken. Daar vind je meer informatie over hoe je kunt helpen en wat voor werk je wanneer precies kunt doen. Ze hebben van alles.
+
+Kijk hier: www.zorgdivers.com
+
+Werken in de zorg is misschien niet je echte droombaan, je wilt het liefst bij de politie werken, ik weet het. Misschien is de politie iets voor de verre, verre toekomst. Maar in de zorg kun je snel aan de slag, eerst als vrijwilliger, later ook betaald. Denk ik. Nou, ja, het is maar een idee van mij.
+
+Laten we gauw weer eens samen naar het café gaan. Biertje! Ik hoor van je.
+
+Groetjes,
+Michael.","Wat voor werk doet Diego?","Hij werkt bij de politie.","Hij werkt niet.","Hij werkt als vrijwilliger.",,1
+12,text,"Ik heb een advertentie gezien van DIVERS, dat is een bedrijf in Rommeldam, waar je woont.
+
+DIVERS zoekt vrijwilligers die ouderen en zieken helpen met huishouden en boodschappen doen.","Welk advies heeft Michael voor Diego?","Hij adviseert Diego om oude en zieke mensen te helpen.","Hij adviseert Diego om naar Rommeldam te verhuizen.","Hij adviseert Diego om bij de politie te gaan werken.","Hij adviseert Diego om bij de sportclub te gaan werken.",0
+13,text,"Laten we gauw weer eens samen naar het café gaan. Biertje! Ik hoor van je.
+
+Groetjes,
+Michael.","Wat voor werk doet Michael?","Hij werkt in een café.","Hij werkt bij de politie.","Hij werkt bij DIVERS.","Dat is niet duidelijk.",3
+14,text,"Karen ziet op internet een bericht over een wegafsluiting.
+
+WEEKENDAFSLUITING A10 tussen knooppunt Amstel en knooppunt Watergraafsmeer richting Zaandam. Van vrijdagavond 13 december 21.00 uur tot maandagochtend 16 december 06.00 uur.
+
+Komend weekend is de A10 richting Zaandam afgesloten voor verkeer in verband met vernieuwing van het wegdek. De weg is afgesloten tussen de knooppunten Amstel en Watergraafsmeer. Moet u in het weekend naar Zaandam?
+
+Verkeersborden geven vanaf knooppunt Amstel een alternatieve route aan. Rekent u op files en vertragingen van minimaal 30 minuten.
+
+U kunt ook kiezen voor het openbaar vervoer (metro, bus en trein).
+
+Kijk voor meer informatie op: www.vanAnaarBeter.nl/wegwerkzaamheden","Karen leest dat de A10 wordt afgesloten. Waarom wordt de weg afgesloten?","Omdat er een file is tussen de knooppunten Amstel en Watergraafsmeer.","Omdat er op vrijdagavond een file is bij knooppunt Amstel.","Omdat het asfalt vernieuwd moet worden.",,2
+15,text,"WEEKENDAFSLUITING A10 tussen knooppunt Amstel en knooppunt Watergraafsmeer richting Zaandam. Van vrijdagavond 13 december 21.00 uur tot maandagochtend 16 december 06.00 uur.
+
+Komend weekend is de A10 richting Zaandam afgesloten voor verkeer in verband met vernieuwing van het wegdek.
+
+Verkeersborden geven vanaf knooppunt Amstel een alternatieve route aan. Rekent u op files en vertragingen van minimaal 30 minuten.
+
+U kunt ook kiezen voor het openbaar vervoer (metro, bus en trein).","Karen wil op zondag 15 december naar haar vriendin in Zaandam. Kan dat?","Ja, maar zij kan op die dag niet met de auto reizen.","Ja, maar zij moet met het openbaar vervoer (trein, bus, metro) reizen.","Ja, maar er zullen files zijn. Het is verstandig om met het openbaar vervoer te gaan.",,2
+16,text,"Patrick is lid geworden van de politieke partij GroenLinks. Hij krijgt een e-mail van Jesse.
+
+Hoi Patrick
+
+Dank je wel voor je belangstelling voor GroenLinks.
+
+Wij zijn trots dat veel jonge en moderne mensen zoals jij zich bij ons aansluiten.
+
+Je bent nu 17 jaar en nog niet stemgerechtigd. Dat duurt nog 1 jaar.
+
+Maar je kunt je stem binnen onze politieke beweging wel laten horen.
+
+Je kunt naar onze meet-ups komen, je kunt groene en linkse ideeën helpen verspreiden.
+
+GroenLinks wil en kan veel veranderen in Nederland.
+Het milieu heeft bescherming nodig.
+Jonge mensen en nieuwkomers hebben steun en onderwijs nodig.
+Iedereen heeft recht op een mooi en gezond leven.
+
+Wij willen dit samen met jou bereiken.
+
+Wij gaan je via appjes, mails en Facebook-berichten sturen: zo kun je op de hoogte blijven van politiek belangrijke zaken.
+
+We gaan je zien! En jij gaat GroenLinks zien. Onze beweging is niet te stoppen.
+
+Tot gauw,
+Jesse","Hoe kan Patrick lid worden van de politieke partij GroenLinks?","Hij moet nog 1 jaar wachten.","Hij moet een e-mail sturen.","Hij moet appjes, mails en Facebook-berichten sturen.","Patrick is al lid, hij hoeft niets meer te doen.",3
+17,text,"Wij gaan je via appjes, mails en Facebook-berichten sturen: zo kun je op de hoogte blijven van politiek belangrijke zaken.","Hoe krijgt Patrick informatie over politiek belangrijke zaken?","Hij krijgt een e-mail van Jesse.","Hij krijgt appjes, e-mails en Facebook-berichten.","Hij moet nog 1 jaar wachten. Daarna krijgt hij veel berichten van Jesse.",,1
+18,text,"Jordi krijgt een oproep voor het praktijkexamen rijbewijs. Hij leest de brief.
+
+Praktijkexamen rijbewijs
+
+U gaat praktijkexamen doen.
+U moet een geldig identiteitsbewijs meenemen.
+U moet ook deze uitnodigingsbrief meenemen.
+Vergeet u één van deze twee, dan kunt u geen examen doen.
+
+U moet minimaal 15 minuten voor aanvang aanwezig zijn
+Bent u te laat, dan kunt u geen examen doen.
+
+Het examen verloopt zo:
+U maakt eerst kennis met de examinator.
+De examinator vertelt u wat er tijdens het examen gaat gebeuren.
+De examinator controleert of u veilig en zelfstandig kunt rijden.
+De examinator controleert of u voldoende rekening houdt met andere weggebruikers.
+
+De examinator controleert ook:
+- hoe goed kent u de auto
+- hoe haalt u andere auto's in
+- hoe rijdt u op kruispunten en op rotondes
+- hoe geeft u voorrang
+- kijkt u voldoende in de spiegel
+- hoe goed kunt u parkeren
+
+Na afloop van het examen krijgt u direct te horen of u geslaagd bent.","Als Jordi bij het examencentrum komt zonder zijn uitnodigingsbrief, wat gebeurt er dan?","Dan bespreekt hij dit met de examinator.","Dan kan hij geen examen doen.","Dan mag hij wel het examen doen, maar hij zal dan niet slagen.",,1
+19,text,"De examinator controleert of u veilig en zelfstandig kunt rijden.
+De examinator controleert of u voldoende rekening houdt met andere weggebruikers.
+
+De examinator controleert ook:
+- hoe goed kent u de auto
+- hoe haalt u andere auto's in
+- hoe rijdt u op kruispunten en op rotondes","Welke dingen controleert de examinator?","Hij controleert de andere weggebruikers.","Hij controleert hoe goed Jordi kan autorijden.","Hij controleert de kwaliteit van de auto.",,1
+20,text,"Na afloop van het examen krijgt u direct te horen of u geslaagd bent.","Wat gebeurt er na afloop van het examen?","Dan hoort Jordi het resultaat van het examen.","Dan krijgt Jordi zijn rijbewijs.","Dan maakt Jordi kennis met andere weggebruikers.",,0
+21,text,"Anna is 18 jaar en wil graag gaan studeren. Zij leest deze folder.
+
+Wil je volgend jaar studeren of een opleiding volgen?
+Lees deze folder.
+
+Praktisch
+Vraag je Digi-D aan. Aanmelden voor een opleiding of studie kan alleen als je een Digi-D hebt.
+
+Welke studie
+Er zijn veel manieren om een studie te kiezen. Kijk op www.studiekeuze123.nl. Ga naar open dagen en meeloopdagen van verschillende universiteiten en scholen. Daar kun je informatie over scholen en adviezen krijgen. Vraag ook informatie en advies aan familie en vrienden.
+
+Meld je op tijd aan
+Als je je wilt aanmelden voor een studie, ga dan naar www.studielink.nl. Doe dit vóór 1 mei. Als je je later aanmeldt, kun je de studie van je keuze misschien niet meer volgen. Voor sommige studies, zoals medicijnen, is veel belangstelling.
+
+Studiefinanciering
+Als je geen geld hebt voor je studie, kun je geld lenen bij DUO. Dit heet studiefinanciering. Vraag studiefinanciering aan via www.duo.nl.","Waarom leest Anna deze folder van het Ministerie?","Omdat zij binnenkort wil gaan studeren.","Omdat het Ministerie aan iedereen deze folder stuurt.","Omdat zij 18 jaar is.","Omdat zij naar school moet.",0
+22,text,"Studiefinanciering
+Als je geen geld hebt voor je studie, kun je geld lenen bij DUO. Dit heet studiefinanciering. Vraag studiefinanciering aan via www.duo.nl.","Anna heeft geen geld. Zij heeft studiefinanciering nodig. Kan zij geld krijgen van DUO?","Nee, zij krijgt geld van haar ouders.","Zij krijgt geen geld, maar zij kan wel geld lenen van DUO.","Ja, zij krijgt geld van DUO om te studeren.",,1
+23,text,"Praktisch
+Vraag je Digi-D aan. Aanmelden voor een opleiding of studie kan alleen als je een Digi-D hebt.
+
+Welke studie
+Er zijn veel manieren om een studie te kiezen. Kijk op www.studiekeuze123.nl.
+
+Meld je op tijd aan
+Als je je wilt aanmelden voor een studie, ga dan naar www.studielink.nl.
+
+Studiefinanciering
+Vraag studiefinanciering aan via www.duo.nl.","Anna wil een Digi-D aanvragen. Waar kan zij dat doen?","Op www.duo.nl.","Op www.studielink.nl.","Op www.studiekeuze123.nl.","Dat staat niet in deze tekst.",3
+24,text,"Gonnie schrijft een e-mailtje aan de manager op haar werk.
+
+Aan: marc@lidl.com
+Onderwerp: vakantie aanvragen
+
+Beste Marc,
+
+Ik wil graag volgende maand een weekje vakantie. Ik weet het, het is een beetje onverwacht. Maar ik zal het even uitleggen.
+
+Mijn moeder is al erg oud en ik wil met haar op reis naar Parijs. In de zomer is het straks veel te warm om met haar op reis te gaan naar zo'n grote stad. Daarom wil ik dus volgende maand, in mei. Ik kan dan in de zomer natuurlijk een andere week extra werken, bijvoorbeeld als een andere collega op vakantie is.
+
+Ik hoop dat je akkoord bent, dan kan ik mijn moeder verwennen. Zij zal het leuk vinden, dat weet ik zeker.
+
+We zullen natuurlijk ook een souvenirtje voor je meenemen.
+
+Ik hoor het graag voor het weekend, want ik wil graag snel de treintickets kopen.
+
+Dankjewel!
+
+Je collega,
+Gonnie van Druiven","Gonnie vraagt vakantie. Zij wil met haar moeder naar Parijs. Wanneer wil zij graag met haar moeder op reis gaan?","In de zomer.","In het weekend.","In mei.","Dat weet ze nog niet precies.",2
+25,text,"Ik kan dan in de zomer natuurlijk een andere week extra werken, bijvoorbeeld als een andere collega op vakantie is.
+
+We zullen natuurlijk ook een souvenirtje voor je meenemen.","Gonnie wil graag dat Marc akkoord gaat. Wat belooft zij hem?","Zij belooft hem, dat zij in de zomer een andere week extra gaat werken.","Zij belooft hem een cadeautje uit Parijs.","Zij belooft hem, dat ze in de zomer extra zal werken en zij belooft hem ook een cadeautje.",,2
