@@ -153,7 +153,7 @@ export default function Misc() {
       </section>
 
       {/* Content Section */}
-      <section className="container mx-auto px-4 py-16">
+      <section id="useful-categories" className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Useful Categories
@@ -177,9 +177,9 @@ export default function Misc() {
               </p>
               <Button 
                 onClick={() => document.getElementById('alphabets-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full"
+                className="w-full h-10"
               >
-                Learn Alphabets
+                Start
               </Button>
             </CardContent>
           </Card>
@@ -197,9 +197,9 @@ export default function Misc() {
               </p>
               <Button 
                 onClick={() => document.getElementById('numbers-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full"
+                className="w-full h-10"
               >
-                Learn Numbers
+                Start
               </Button>
             </CardContent>
           </Card>
@@ -217,9 +217,9 @@ export default function Misc() {
               </p>
               <Button 
                 onClick={() => document.getElementById('time-practice')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full"
+                className="w-full h-10"
               >
-                Practice Time
+                Start
               </Button>
             </CardContent>
           </Card>
@@ -237,9 +237,9 @@ export default function Misc() {
               </p>
               <Button 
                 onClick={() => document.getElementById('days-week-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full"
+                className="w-full h-10"
               >
-                Learn Days & Time
+                Start
               </Button>
             </CardContent>
           </Card>
@@ -257,9 +257,9 @@ export default function Misc() {
               </p>
               <Button 
                 onClick={() => document.getElementById('directions-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full"
+                className="w-full h-10"
               >
-                Learn Directions
+                Start
               </Button>
             </CardContent>
           </Card>
@@ -277,9 +277,9 @@ export default function Misc() {
               </p>
               <Button 
                 onClick={() => document.getElementById('body-parts-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full"
+                className="w-full h-10"
               >
-                Learn Body Parts
+                Start
               </Button>
             </CardContent>
           </Card>
@@ -297,9 +297,9 @@ export default function Misc() {
               </p>
               <Button 
                 onClick={() => document.getElementById('family-relations-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full"
+                className="w-full h-10"
               >
-                Learn Family Tree
+                Start
               </Button>
             </CardContent>
           </Card>
@@ -317,9 +317,9 @@ export default function Misc() {
               </p>
               <Button 
                 onClick={() => document.getElementById('education-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full"
+                className="w-full h-10"
               >
-                Learn Education System
+                Start
               </Button>
             </CardContent>
           </Card>
@@ -329,6 +329,15 @@ export default function Misc() {
       {/* Days & Week Section */}
       <section id="days-week-section" className="bg-muted/30 py-16">
         <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-8">
+            <Button 
+              variant="outline" 
+              onClick={() => document.getElementById('useful-categories')?.scrollIntoView({ behavior: 'smooth' })}
+              className="flex items-center gap-2"
+            >
+              ← Back to Topics
+            </Button>
+          </div>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Days & Time Periods
@@ -642,6 +651,15 @@ export default function Misc() {
       {/* Dutch Education System Section */}
       <section id="education-section" className="py-16">
         <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-8">
+            <Button 
+              variant="outline" 
+              onClick={() => document.getElementById('useful-categories')?.scrollIntoView({ behavior: 'smooth' })}
+              className="flex items-center gap-2"
+            >
+              ← Back to Topics
+            </Button>
+          </div>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Het Nederlandse Onderwijssysteem (Dutch Education System)
@@ -1233,6 +1251,15 @@ export default function Misc() {
       {/* Body Parts Section */}
       <section id="body-parts-section" className="py-16">
         <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-8">
+            <Button 
+              variant="outline" 
+              onClick={() => document.getElementById('useful-categories')?.scrollIntoView({ behavior: 'smooth' })}
+              className="flex items-center gap-2"
+            >
+              ← Back to Topics
+            </Button>
+          </div>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Lichaamsdelen (Body Parts)
@@ -1642,6 +1669,15 @@ export default function Misc() {
       {/* Family Relations Section */}
       <section id="family-relations-section" className="bg-muted/30 py-16">
         <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-8">
+            <Button 
+              variant="outline" 
+              onClick={() => document.getElementById('useful-categories')?.scrollIntoView({ behavior: 'smooth' })}
+              className="flex items-center gap-2"
+            >
+              ← Back to Topics
+            </Button>
+          </div>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Familierelaties (Family Relations)
@@ -1967,6 +2003,15 @@ export default function Misc() {
       {/* Numbers Section */}
       <section id="numbers-section" className="py-16">
         <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-8">
+            <Button 
+              variant="outline" 
+              onClick={() => document.getElementById('useful-categories')?.scrollIntoView({ behavior: 'smooth' })}
+              className="flex items-center gap-2"
+            >
+              ← Back to Topics
+            </Button>
+          </div>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Nederlandse Getallen (Dutch Numbers)
@@ -2321,6 +2366,15 @@ export default function Misc() {
       {/* Directions Section */}
       <section id="directions-section" className="py-16">
         <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-8">
+            <Button 
+              variant="outline" 
+              onClick={() => document.getElementById('useful-categories')?.scrollIntoView({ behavior: 'smooth' })}
+              className="flex items-center gap-2"
+            >
+              ← Back to Topics
+            </Button>
+          </div>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               De weg wijzen (Giving Directions)
@@ -2557,6 +2611,15 @@ export default function Misc() {
       {/* Alphabets Section */}
       <section id="alphabets-section" className="bg-muted/30 py-16">
         <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-8">
+            <Button 
+              variant="outline" 
+              onClick={() => document.getElementById('useful-categories')?.scrollIntoView({ behavior: 'smooth' })}
+              className="flex items-center gap-2"
+            >
+              ← Back to Topics
+            </Button>
+          </div>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Het Nederlandse Alfabet (Dutch Alphabet)
@@ -2869,6 +2932,15 @@ export default function Misc() {
       {/* Time Practice Section */}
       <section id="time-practice" className="py-16">
         <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-8">
+            <Button 
+              variant="outline" 
+              onClick={() => document.getElementById('useful-categories')?.scrollIntoView({ behavior: 'smooth' })}
+              className="flex items-center gap-2"
+            >
+              ← Back to Topics
+            </Button>
+          </div>
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Time Practice
