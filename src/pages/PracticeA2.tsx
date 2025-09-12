@@ -63,59 +63,208 @@ export default function PracticeA2() {
   const getExamQuestions = (section: string, examNumber: number) => {
     const questionSets = {
       reading: {
-        1: Array.from({length: 30}, (_, i) => {
-          const questions = [
-            {
-              id: i + 1,
-              type: 'text',
-              text: "Beste mevrouw De Vries,\n\nIk schrijf u omdat ik een afspraak wil maken bij de tandarts. Ik heb pijn in mijn tand en kan niet goed eten. Kunt u mij helpen? Ik kan donderdag of vrijdag komen.\n\nMet vriendelijke groet,\nPiet Janssen",
-              question: "Waarom schrijft Piet deze brief?",
-              options: ["Hij wil een afspraak maken", "Hij wil zijn tand laten trekken", "Hij wil informatie over tandartsen", "Hij wil zijn rekening betalen"],
-              correct: 0
-            },
-            {
-              id: i + 1,
-              type: 'text',
-              text: "OPENINGSTIJDEN BIBLIOTHEEK\n\nMaandag: 10:00 - 18:00\nDinsdag: Gesloten\nWoensdag: 10:00 - 21:00\nDonderdag: 10:00 - 18:00\nVrijdag: 10:00 - 17:00\nZaterdag: 10:00 - 16:00\nZondag: 13:00 - 17:00",
-              question: "Op welke dag is de bibliotheek het langst open?",
-              options: ["Maandag", "Woensdag", "Donderdag", "Zaterdag"],
-              correct: 1
-            },
-            {
-              id: i + 1,
-              type: 'text',
-              text: "Te koop: Fiets, 3 jaar oud, goede staat. Prijs: €150. Interesse? Bel 06-12345678 na 18:00 uur.",
-              question: "Hoe oud is de fiets?",
-              options: ["1 jaar", "2 jaar", "3 jaar", "4 jaar"],
-              correct: 2
-            },
-            {
-              id: i + 1,
-              type: 'text',
-              text: "Let op! Morgen geen warme maaltijden in de kantine vanwege reparatie van de keuken. Broodjes en drinken zijn wel verkrijgbaar.",
-              question: "Wat kun je morgen NIET kopen in de kantine?",
-              options: ["Broodjes", "Warme maaltijden", "Drinken", "Koffie"],
-              correct: 1
-            },
-            {
-              id: i + 1,
-              type: 'text',
-              text: "Cursus Nederlands voor beginners\nStart: 15 september\nTijd: Elke dinsdag van 19:00 tot 21:00\nPlaats: Gemeentehuis, zaal 3\nKosten: €75 voor 10 lessen\nAanmelden: www.gemeente.nl",
-              question: "Hoeveel kost de cursus per les?",
-              options: ["€7,50", "€10", "€15", "€75"],
-              correct: 0
-            },
-            {
-              id: i + 1,
-              type: 'text',
-              text: "Geachte heer/mevrouw,\n\nIk wil graag een klacht indienen over de service in uw restaurant. Gisteren heb ik daar gegeten en het eten was koud. Ook was de bediening niet vriendelijk.\n\nIk hoop op een reactie.\n\nMet vriendelijke groet,\nAnna Bakker",
-              question: "Waarover klaagt Anna?",
-              options: ["Het eten en de service", "Alleen het eten", "Alleen de service", "De prijs"],
-              correct: 0
-            }
-          ];
-          return questions[i % questions.length];
-        })
+        1: [
+          {
+            id: 1,
+            type: 'text',
+            text: "Het is december. Paulo krijgt van de gemeente een folder met informatie over het afsteken van vuurwerk.\n\nWanneer mag u vuurwerk afsteken?\nU mag vuurwerk afsteken tussen 31 december 18.00 uur en 1 januari 02.00 uur. U kunt een boete van € 100 krijgen als u vuurwerk afsteekt buiten deze tijden.\n\nVuurwerkverbod op bepaalde plekken\nIn onze gemeente is op sommige plekken het afsteken van vuurwerk verboden: in het winkelcentrum, in de buurt van het Maxima-ziekenhuis en bij alle kinderboerderijen.\n\nVeilig vuurwerk afsteken\nGaat u tijdens de jaarwisseling vuurwerk afsteken of buiten naar het vuurwerk kijken? Dan kunt u het beste uw ogen beschermen met een vuurwerkbril.",
+            question: "Paulo wil vuurwerk afsteken met oud & nieuw. Wanneer mag dat precies?",
+            options: ["Alleen op 31 december de hele dag.", "Alleen op 1 januari de hele dag.", "Van 31 december om 18 uur 's avonds tot 1 januari om 2 uur 's nachts.", "Op 31 december & op 1 januari de hele dag."],
+            correct: 2
+          },
+          {
+            id: 2,
+            type: 'text',
+            text: "Het is december. Paulo krijgt van de gemeente een folder met informatie over het afsteken van vuurwerk.\n\nWanneer mag u vuurwerk afsteken?\nU mag vuurwerk afsteken tussen 31 december 18.00 uur en 1 januari 02.00 uur. U kunt een boete van € 100 krijgen als u vuurwerk afsteekt buiten deze tijden.\n\nVuurwerkverbod op bepaalde plekken\nIn onze gemeente is op sommige plekken het afsteken van vuurwerk verboden: in het winkelcentrum, in de buurt van het Maxima-ziekenhuis en bij alle kinderboerderijen.",
+            question: "Paulo wil vuurwerk afsteken. Waar mag hij dat doen?",
+            options: ["Dichtbij het ziekenhuis.", "In het winkelcentrum.", "Niet bij het ziekenhuis en ook niet in het winkelcentrum."],
+            correct: 2
+          },
+          {
+            id: 3,
+            type: 'text',
+            text: "Veilig vuurwerk afsteken\nGaat u tijdens de jaarwisseling vuurwerk afsteken of buiten naar het vuurwerk kijken? Dan kunt u het beste uw ogen beschermen met een vuurwerkbril.",
+            question: "Paolo koopt een vuurwerkbril. Waarom koopt hij die speciale bril?",
+            options: ["Die bril beschermt zijn ogen.", "Met die bril kan hij het vuurwerk beter zien.", "De vuurwerkbril is verplicht."],
+            correct: 0
+          },
+          {
+            id: 4,
+            type: 'text',
+            text: "Hoi Nanda\nHoe gaat het met je? Met ons is alles goed. Het is druk in onze kaaswinkel en ook bij ons thuis. Dit weekend hebben we een afspraak met je. We hadden afgesproken, dat we zaterdagochtend om 10 uur bij jou zijn. We gaan je trakteren op een dagje uit. We komen, maar we moeten in de ochtend nog werken in onze winkel. Dus 10 uur redden we niet. Het wordt iets later, we denken half 12. We sturen je een foto mee van het bootje, dat we gehuurd hebben. Daarmee gaan we zaterdagmiddag samen het water op. Leuk, toch?\nWij slapen van zaterdag op zondag in een Bed & Breakfast, dichtbij jouw huis.",
+            question: "Nanda krijgt bezoek. Wanneer komen Adriaan en Olivier aan?",
+            options: ["Op zaterdagochtend om 10 uur.", "Op zaterdagochtend om half 12.", "Op zondagochtend om 10 uur.", "Zaterdagmiddag."],
+            correct: 1
+          },
+          {
+            id: 5,
+            type: 'text',
+            text: "Hoi Nanda\nHoe gaat het met je? Met ons is alles goed. Het is druk in onze kaaswinkel en ook bij ons thuis. Dit weekend hebben we een afspraak met je. We hadden afgesproken, dat we zaterdagochtend om 10 uur bij jou zijn. We gaan je trakteren op een dagje uit. We komen, maar we moeten in de ochtend nog werken in onze winkel. Dus 10 uur redden we niet.",
+            question: "Moeten Adriaan en Olivier op zaterdag werken?",
+            options: ["Ja, zij moeten eerst werken op hun boot.", "Ja, zij moeten eerst werken in hun winkel.", "Ja, zij hebben een Bed & Breakfast-bedrijf.", "Nee, zij staan vroeg op en gaan extra vroeg naar Nanda."],
+            correct: 1
+          },
+          {
+            id: 6,
+            type: 'text',
+            text: "Geachte heer, mevrouw,\n\nWij hebben uw vraag over schadevergoeding ontvangen. U heeft schade aan uw nieuwe auto. U wilt dat wij deze schade vergoeden. U hebt ons alle informatie gestuurd over de schade.\n\nOp basis van de informatie die u ons heeft gegeven, kunnen we u het volgende meedelen: u hebt recht op een schadevergoeding, maar u hebt ook een eigen risico van € 250. U moet, zoals ook in de polis staat, uw auto laten repareren bij uw eigen Toyota-garage.\n\nWij wensen u na deze reparatie weer veel schadevrije kilometers!\n\nMet vriendelijke groet,\nARAG Autoverzekeringen",
+            question: "Hoeveel schadevergoeding krijgt Fatima?",
+            options: ["De schade aan de nieuwe auto wordt 100% vergoed.", "Zij zal € 250 euro schadevergoeding krijgen van de verzekering.", "Zij krijgt een vergoeding, maar zij moet € 250 zelf betalen.", "De garage weet hoeveel schadevergoeding Fatima zal krijgen."],
+            correct: 2
+          },
+          {
+            id: 7,
+            type: 'text',
+            text: "U moet, zoals ook in de polis staat, uw auto laten repareren bij uw eigen Toyota-garage.",
+            question: "Wie gaat de auto repareren?",
+            options: ["Fatima heeft de auto zelf gerepareerd.", "De ARAG repareert de auto van Fatima.", "De Toyota-garage gaat de auto van Fatima repareren."],
+            correct: 2
+          },
+          {
+            id: 8,
+            type: 'text',
+            text: "Storyplus –magazine – speciaal voor u!\n\nStoryplus –magazine is al tientallen jaren het belangrijkste tijdschrift voor iedereen die alles wil weten van de Nederlandse televisiesterren en de leden van het koninklijk huis. En zegt u nu zelf: wie wil dat niet?\n\nStoryplus –magazine verschijnt wekelijks. Wij hebben voor u een speciaal aanbod: U betaalt niet € 82,95, maar slechts € 49,75 voor een jaarabonnement. Dat is een korting van 40%. U betaalt minder dan 1 euro per week!",
+            question: "Wat voor soort tijdschrift is Storyplus –magazine?",
+            options: ["Een dagblad.", "Een maandblad.", "Een weekblad."],
+            correct: 2
+          },
+          {
+            id: 9,
+            type: 'text',
+            text: "Storyplus –magazine is al tientallen jaren het belangrijkste tijdschrift voor iedereen die alles wil weten van de Nederlandse televisiesterren en de leden van het koninklijk huis.",
+            question: "Wat voor nieuws kan Maxima lezen in Storyplus –magazine?",
+            options: ["Nieuws over het koninklijk huis.", "Nieuws over belangrijke politieke zaken.", "Nieuws over kleding die je met 40% korting kunt kopen."],
+            correct: 0
+          },
+          {
+            id: 10,
+            type: 'text',
+            text: "Laat deze unieke kans niet lopen: bel uiterlijk vóór 31 december naar 0900 – 244.62 44 of vul (vóór 31 december) het formulier in op www.storyplus.nl",
+            question: "Maxima wil een jaarabonnement nemen op Storyplus –magazine. Hoe kan zij gebruik maken van deze aanbieding van 40% korting?",
+            options: ["Zij moet deze week € 49,75 betalen aan Storyplus –magazine.", "Zij moet deze maand € 49,75 betalen aan Storyplus –magazine.", "Zij moet vóór 31 december bellen of een formulier invullen."],
+            correct: 2
+          },
+          {
+            id: 11,
+            type: 'text',
+            text: "De mensen in Nederland worden ouder en ouder.\n\nVergrijzing\nEr komen steeds meer oude mensen in Nederland. In 2018 waren er 2.9 miljoen 65-plussers. In 2040 zullen dat er 4,7 miljoen zijn. Tot 2060 blijft dat aantal ongeveer hetzelfde. Vanaf 2025 komen er snel meer 80-plussers.\n\nIn 2040 is ongeveer 26 procent van de bevolking 65-plusser. Bijna 10% van de Nederlanders is in 2040 ouder dan 80 jaar. In 2012 waren er 686.227 mensen van 80 jaar of ouder, in 2040 zijn dat er 1.554.742.",
+            question: "Hoeveel 80-plussers zullen er in 2040 in Nederland wonen?",
+            options: ["2.900.000.", "4.700.000.", "1.554.742."],
+            correct: 2
+          },
+          {
+            id: 12,
+            type: 'text',
+            text: "In 2040 is ongeveer 26 procent van de bevolking 65-plusser. Bijna 10% van de Nederlanders is in 2040 ouder dan 80 jaar.",
+            question: "Hoeveel procent van de Nederlandse bevolking is in 2040 ouder dan 65 jaar?",
+            options: ["26%.", "10%.", "Minder dan 10%.", "Veel meer dan 26%."],
+            correct: 0
+          },
+          {
+            id: 13,
+            type: 'text',
+            text: "In 2040 zullen dat er 4,7 miljoen zijn. Tot 2060 blijft dat aantal ongeveer hetzelfde.",
+            question: "Hoeveel 65-plussers zijn er in 2060 ongeveer in Nederland?",
+            options: ["Hierover staat niets in deze tekst.", "Ongeveer 4,7 miljoen.", "Ongeveer 2,9 miljoen.", "Ongeveer 1,5 miljoen."],
+            correct: 1
+          },
+          {
+            id: 14,
+            type: 'text',
+            text: "Beste Karel de Schone,\n\nIk schrijf u deze mail om u te vertellen dat ik stop met het werk bij het bedrijf De Schone B.V.\n\nIk heb twee jaar lang bij u gewerkt, maar u wilt mij geen vast contract geven. Ook vind ik het salaris onvoldoende. Daarom ga ik weg.\n\nIk heb met plezier het werk gedaan en ik heb fijne collega's gehad, maar ik kan bij een andere werkgever een beter contract krijgen.",
+            question: "Waarom stopt Clara met werken bij De Schone B.V.?",
+            options: ["Zij is ontevreden over haar salaris en over haar contract.", "Zij vindt dat werk niet leuk.", "Zij heeft ruzie met haar collega's Maria en Carolien."],
+            correct: 0
+          },
+          {
+            id: 15,
+            type: 'text',
+            text: "Ik wil per direct stoppen. Ik kom dus morgen ook niet werken.",
+            question: "Wanneer stopt Clara precies met het werk bij De Schone B.V.?",
+            options: ["Over twee jaar.", "Overmorgen.", "Over een week.", "Vandaag."],
+            correct: 3
+          },
+          {
+            id: 16,
+            type: 'text',
+            text: "Werken in de zorg.\n\nIn Nederland hebben in 2019 ruim 1 miljoen mensen betaald werk in de zorg. Ruim een derde van hen (36%) werkt in de verpleging, verzorging en thuiszorg (VVT), een kwart (27%) werkt in een ziekenhuis. Tussen 2013 en 2019 hebben steeds minder mensen een betaalde baan in de zorg gevonden.\n\nWel zijn er veel meer vrijwilligers in de zorg gaan werken. Dat heet mantelzorg: zieke en oude mensen worden verzorgd door hun familie of door een bekende.\n\nHet aantal mantelzorgers is tussen de drie en vier miljoen.",
+            question: "Ivan leest dat veel Nederlanders actief zijn in de zorgsector. Hoeveel Nederlanders hebben een betaalde baan in de zorg?",
+            options: ["Meer dan 1 miljoen.", "370.000", "Tussen de drie en vier miljoen.", "280.000"],
+            correct: 0
+          },
+          {
+            id: 17,
+            type: 'text',
+            text: "Wel zijn er veel meer vrijwilligers in de zorg gaan werken. Dat heet mantelzorg: zieke en oude mensen worden verzorgd door hun familie of door een bekende.",
+            question: "Wat is een mantelzorger volgens deze tekst?",
+            options: ["Iemand die werkt met gehandicapten.", "Iemand die werkt in een ziekenhuis.", "Iemand die vrijwilligerswerk doet."],
+            correct: 2
+          },
+          {
+            id: 18,
+            type: 'text',
+            text: "'Fit voor de bevalling'\n\nJe krijgt binnenkort een kindje. Spannend!\n\nGeef je nu op voor de zwangerschapscursus 'Fit voor de bevalling'. Tijdens de cursus die begint op 1 maart, krijg je veel informatie over de zwangerschap en je doet ook wekelijks yoga-oefeningen in Het Buurtcentrum in Kollum.\n\nDeze oefeningen zijn belangrijk als na 9 maanden de baby komt! Met speciale ademhaling kun je in deze periode tot en met de geboorte van je kindje fit blijven.\n\nDe cursus bestaat uit 7 lessen à 90 minuten en vindt plaats in kleine groepen (maximaal 10 deelnemers).",
+            question: "Manou wil graag fit blijven in de periode van de zwangerschap. Wat gaat zij doen?",
+            options: ["Zij gaat 7 weken lang meedoen aan een cursus zwangerschapsyoga.", "Zij gaat 9 maanden lang meedoen aan de cursus zwangerschapsyoga.", "Zij gaat 18 weken lang meedoen aan de cursus zwangerschapsyoga."],
+            correct: 0
+          },
+          {
+            id: 19,
+            type: 'text',
+            text: "Tijdens de cursus die begint op 1 maart, krijg je veel informatie over de zwangerschap en je doet ook wekelijks yoga-oefeningen in Het Buurtcentrum in Kollum.",
+            question: "Manou wil meedoen aan deze cursus. Wat krijgt zij tijdens de cursus?",
+            options: ["Een kindje.", "Betere ademhaling.", "Zij krijgt veel informatie en zij gaat veel yoga-oefeningen doen."],
+            correct: 2
+          },
+          {
+            id: 20,
+            type: 'text',
+            text: "De cursus bestaat uit 7 lessen à 90 minuten en vindt plaats in kleine groepen (maximaal 10 deelnemers).",
+            question: "Hoe lang duurt één les?",
+            options: ["1 uur.", "1,5 uur.", "Dat staat niet in deze tekst."],
+            correct: 1
+          },
+          {
+            id: 21,
+            type: 'text',
+            text: "FEESTJE NA RENOVATIE ROORDASTRAAT BOERHAAVEWIJK\n\nIn de Roordastraat was het feest op donderdagmiddag 18 mei 2019. Bewoners van de Roordastraat vierden samen met hun woningbouwvereniging Elan Wonen de renovatie van de flat in hun straat.\n\nDe renovatie heeft ongeveer 18 maanden geduurd, van januari 2018 tot augustus 2019.",
+            question: "In welke periode zijn de woningen gerenoveerd?",
+            options: ["In de periode 2018-2019.", "Op 18 mei 2019.", "In het jaar 2019.", "In het jaar 2018."],
+            correct: 0
+          },
+          {
+            id: 22,
+            type: 'text',
+            text: "De entree en de balkons zijn gemoderniseerd. Ook de liften in het gebouw zijn vernieuwd. Tenslotte zijn alle kozijnen en buitendeuren gerenoveerd.\n\nDe huurprijzen veranderen in 2019 voor de bewoners niet. De huurprijzen in de Roordastraat zijn gelijk gebleven.",
+            question: "Wat is niet veranderd bij de renovatie van de Roordastraat?",
+            options: ["De liften.", "De kozijnen en de buitendeuren.", "De huurprijs."],
+            correct: 2
+          },
+          {
+            id: 23,
+            type: 'text',
+            text: "Bewoners van de Roordastraat vierden samen met hun woningbouwvereniging Elan Wonen de renovatie van de flat in hun straat.",
+            question: "Wie is de eigenaar van de woning van Ahmed in de Roordastraat?",
+            options: ["Ahmed.", "De wethouder van de gemeente.", "De vereniging Elan Wonen."],
+            correct: 2
+          },
+          {
+            id: 24,
+            type: 'text',
+            text: "Hoi Ineke\n\nHet is nu zondagavond en ik stuur je even een e-mailtje.\nHoe was je vakantie? Ik hoop dat je goed uitgerust bent …\n\nWelkom terug en succes morgen! Er is veel te doen …\n\nGa je met mij mee naar de HEMA morgen of op dinsdag? We kopen daar dan spullen voor het afscheidsfeest van Ad. Dat feest is over twee weken, op 2 september.",
+            question: "Wat wil Marleen graag met Ineke afspreken?",
+            options: ["Zij wil graag met Ineke naar de HEMA.", "Zij wil graag met Ineke naar Ad.", "Zij wil graag met Ineke op vakantie.", "Zij wil graag met Ineke naar een feest."],
+            correct: 0
+          },
+          {
+            id: 25,
+            type: 'text',
+            text: "Op donderdag kom ik weer werken.\n\nAls je dus morgen of overmorgen met mij naar de HEMA wil, stuur me dan even een bericht of bel me!",
+            question: "Wanneer gaat Marleen weer naar haar werk?",
+            options: ["Op 2 september.", "Op maandag.", "Op dinsdag.", "Op donderdag."],
+            correct: 3
+          }
+        ]
       },
       writing: {
         1: [
@@ -1156,10 +1305,9 @@ export default function PracticeA2() {
                         <div className="flex justify-between">
                           <span>Pass Probability:</span>
                           <span className="font-bold">
-                            {score.points >= 600 ? '95%' : 
-                             score.points >= 550 ? '80%' : 
-                             score.points >= 500 ? '65%' : 
-                             score.points >= 450 ? '35%' : '15%'}
+                            {score.correct >= 23 ? '95%' : 
+                             score.correct >= 18 ? '65%' : 
+                             score.correct >= 13 ? '35%' : '15%'}
                           </span>
                         </div>
                       </div>
