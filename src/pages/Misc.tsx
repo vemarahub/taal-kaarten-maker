@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Clock, Calendar, GraduationCap, MapPin, Sun, Moon, Sunrise, Sunset, User, Users, Hash } from 'lucide-react';
+import { Clock, Calendar, GraduationCap, MapPin, Sun, Moon, Sunrise, Sunset, User, Users, Hash, Type } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
@@ -13,6 +13,7 @@ export default function Misc() {
   const [hoveredBodyPart, setHoveredBodyPart] = useState<string | null>(null);
   const [selectedEducationLevel, setSelectedEducationLevel] = useState<string | null>(null);
   const [selectedNumber, setSelectedNumber] = useState<number | null>(null);
+  const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
 
   const days = [
     { dutch: 'Maandag', english: 'Monday', color: 'bg-red-100 dark:bg-red-900' },
@@ -121,6 +122,10 @@ export default function Misc() {
               <Hash className="w-5 h-5" />
               <span>Numbers</span>
             </div>
+            <div className="flex items-center space-x-2">
+              <Type className="w-5 h-5" />
+              <span>Alphabets</span>
+            </div>
           </div>
         </div>
       </section>
@@ -136,23 +141,43 @@ export default function Misc() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-6 max-w-full mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 gap-6 max-w-full mx-auto">
           <Card className="text-center group hover:shadow-lg transition-shadow">
             <CardHeader>
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                <GraduationCap className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 bg-violet/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-violet/20 transition-colors">
+                <Type className="w-6 h-6 text-violet-600" />
               </div>
-              <CardTitle className="text-lg">Education System</CardTitle>
+              <CardTitle className="text-lg">Alphabets</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-4">
-                Dutch schooling levels and paths
+                A-Z with Dutch pronunciation
               </p>
               <Button 
-                onClick={() => document.getElementById('education-section')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('alphabets-section')?.scrollIntoView({ behavior: 'smooth' })}
                 className="w-full"
               >
-                Learn Education System
+                Learn Alphabets
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center group hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <div className="w-12 h-12 bg-indigo/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo/20 transition-colors">
+                <Hash className="w-6 h-6 text-indigo-600" />
+              </div>
+              <CardTitle className="text-lg">Numbers</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-4">
+                Count from 0 to millions
+              </p>
+              <Button 
+                onClick={() => document.getElementById('numbers-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full"
+              >
+                Learn Numbers
               </Button>
             </CardContent>
           </Card>
@@ -259,20 +284,20 @@ export default function Misc() {
 
           <Card className="text-center group hover:shadow-lg transition-shadow">
             <CardHeader>
-              <div className="w-12 h-12 bg-indigo/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo/20 transition-colors">
-                <Hash className="w-6 h-6 text-indigo-600" />
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
+                <GraduationCap className="w-6 h-6 text-primary" />
               </div>
-              <CardTitle className="text-lg">Numbers</CardTitle>
+              <CardTitle className="text-lg">Education System</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-4">
-                Count from 0 to millions
+                Dutch schooling levels and paths
               </p>
               <Button 
-                onClick={() => document.getElementById('numbers-section')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('education-section')?.scrollIntoView({ behavior: 'smooth' })}
                 className="w-full"
               >
-                Learn Numbers
+                Learn Education System
               </Button>
             </CardContent>
           </Card>
@@ -2498,6 +2523,314 @@ export default function Misc() {
                         <li>• Dan ga je rechtdoor</li>
                         <li>• Daarna ga je linksaf</li>
                       </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Alphabets Section */}
+      <section id="alphabets-section" className="bg-muted/30 py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Het Nederlandse Alfabet (Dutch Alphabet)
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Learn the Dutch alphabet with interactive pronunciation guide and examples.
+            </p>
+          </div>
+
+          {/* Interactive Alphabet Grid */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Type className="w-6 h-6" />
+                Interactive Alphabet (Interactief Alfabet)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-4">
+                {[
+                  { letter: 'A', dutch: 'aa', english: 'ah', example: 'appel (apple)' },
+                  { letter: 'B', dutch: 'bee', english: 'bay', example: 'boek (book)' },
+                  { letter: 'C', dutch: 'see', english: 'say', example: 'café (café)' },
+                  { letter: 'D', dutch: 'dee', english: 'day', example: 'deur (door)' },
+                  { letter: 'E', dutch: 'ee', english: 'ay', example: 'een (one)' },
+                  { letter: 'F', dutch: 'ef', english: 'eff', example: 'fiets (bike)' },
+                  { letter: 'G', dutch: 'ghee', english: 'khay', example: 'goed (good)' },
+                  { letter: 'H', dutch: 'haa', english: 'hah', example: 'huis (house)' },
+                  { letter: 'I', dutch: 'ie', english: 'ee', example: 'is (is)' },
+                  { letter: 'J', dutch: 'jee', english: 'yay', example: 'ja (yes)' },
+                  { letter: 'K', dutch: 'kaa', english: 'kah', example: 'kat (cat)' },
+                  { letter: 'L', dutch: 'el', english: 'ell', example: 'lamp (lamp)' },
+                  { letter: 'M', dutch: 'em', english: 'emm', example: 'man (man)' },
+                  { letter: 'N', dutch: 'en', english: 'enn', example: 'nee (no)' },
+                  { letter: 'O', dutch: 'oo', english: 'oh', example: 'ook (also)' },
+                  { letter: 'P', dutch: 'pee', english: 'pay', example: 'papa (dad)' },
+                  { letter: 'Q', dutch: 'kuu', english: 'koo', example: 'quiz (quiz)' },
+                  { letter: 'R', dutch: 'er', english: 'air', example: 'rood (red)' },
+                  { letter: 'S', dutch: 'es', english: 'ess', example: 'snel (fast)' },
+                  { letter: 'T', dutch: 'tee', english: 'tay', example: 'tafel (table)' },
+                  { letter: 'U', dutch: 'uu', english: 'oo', example: 'uit (out)' },
+                  { letter: 'V', dutch: 'vee', english: 'vay', example: 'vis (fish)' },
+                  { letter: 'W', dutch: 'wee', english: 'vay', example: 'water (water)' },
+                  { letter: 'X', dutch: 'iks', english: 'icks', example: 'extra (extra)' },
+                  { letter: 'Y', dutch: 'ie-grec', english: 'ee-greek', example: 'yoga (yoga)' },
+                  { letter: 'Z', dutch: 'zet', english: 'zett', example: 'zee (sea)' }
+                ].map((item) => (
+                  <Card 
+                    key={item.letter}
+                    className={`cursor-pointer transition-all hover:shadow-lg text-center border-2 ${
+                      selectedLetter === item.letter 
+                        ? 'ring-2 ring-violet-500 bg-violet-50 dark:bg-violet-950 border-violet-300' 
+                        : 'hover:bg-muted/50 border-muted-foreground/20'
+                    }`}
+                    onClick={() => setSelectedLetter(selectedLetter === item.letter ? null : item.letter)}
+                  >
+                    <CardContent className="p-4">
+                      <div className="text-3xl font-bold mb-2 text-violet-600">{item.letter}</div>
+                      <div className="font-semibold text-lg">{item.dutch}</div>
+                      <div className="text-sm text-muted-foreground">[{item.english}]</div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+              
+              {selectedLetter && (
+                <div className="mt-8 bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950 dark:to-purple-950 p-6 rounded-xl border border-violet-200 dark:border-violet-800">
+                  <div className="text-center">
+                    <div className="text-6xl font-bold text-violet-600 mb-4">{selectedLetter}</div>
+                    <div className="grid md:grid-cols-3 gap-6">
+                      <div>
+                        <h4 className="font-semibold text-lg mb-2 text-violet-800 dark:text-violet-200">Dutch Pronunciation</h4>
+                        <p className="text-2xl font-bold text-violet-600">
+                          {[
+                            { letter: 'A', dutch: 'aa' }, { letter: 'B', dutch: 'bee' }, { letter: 'C', dutch: 'see' },
+                            { letter: 'D', dutch: 'dee' }, { letter: 'E', dutch: 'ee' }, { letter: 'F', dutch: 'ef' },
+                            { letter: 'G', dutch: 'ghee' }, { letter: 'H', dutch: 'haa' }, { letter: 'I', dutch: 'ie' },
+                            { letter: 'J', dutch: 'jee' }, { letter: 'K', dutch: 'kaa' }, { letter: 'L', dutch: 'el' },
+                            { letter: 'M', dutch: 'em' }, { letter: 'N', dutch: 'en' }, { letter: 'O', dutch: 'oo' },
+                            { letter: 'P', dutch: 'pee' }, { letter: 'Q', dutch: 'kuu' }, { letter: 'R', dutch: 'er' },
+                            { letter: 'S', dutch: 'es' }, { letter: 'T', dutch: 'tee' }, { letter: 'U', dutch: 'uu' },
+                            { letter: 'V', dutch: 'vee' }, { letter: 'W', dutch: 'wee' }, { letter: 'X', dutch: 'iks' },
+                            { letter: 'Y', dutch: 'ie-grec' }, { letter: 'Z', dutch: 'zet' }
+                          ].find(l => l.letter === selectedLetter)?.dutch}
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-lg mb-2 text-violet-800 dark:text-violet-200">English Approximation</h4>
+                        <p className="text-xl text-muted-foreground">
+                          [{[
+                            { letter: 'A', english: 'ah' }, { letter: 'B', english: 'bay' }, { letter: 'C', english: 'say' },
+                            { letter: 'D', english: 'day' }, { letter: 'E', english: 'ay' }, { letter: 'F', english: 'eff' },
+                            { letter: 'G', english: 'khay' }, { letter: 'H', english: 'hah' }, { letter: 'I', english: 'ee' },
+                            { letter: 'J', english: 'yay' }, { letter: 'K', english: 'kah' }, { letter: 'L', english: 'ell' },
+                            { letter: 'M', english: 'emm' }, { letter: 'N', english: 'enn' }, { letter: 'O', english: 'oh' },
+                            { letter: 'P', english: 'pay' }, { letter: 'Q', english: 'koo' }, { letter: 'R', english: 'air' },
+                            { letter: 'S', english: 'ess' }, { letter: 'T', english: 'tay' }, { letter: 'U', english: 'oo' },
+                            { letter: 'V', english: 'vay' }, { letter: 'W', english: 'vay' }, { letter: 'X', english: 'icks' },
+                            { letter: 'Y', english: 'ee-greek' }, { letter: 'Z', english: 'zett' }
+                          ].find(l => l.letter === selectedLetter)?.english}]
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-lg mb-2 text-violet-800 dark:text-violet-200">Example Word</h4>
+                        <p className="text-lg font-medium">
+                          {[
+                            { letter: 'A', example: 'appel (apple)' }, { letter: 'B', example: 'boek (book)' }, { letter: 'C', example: 'café (café)' },
+                            { letter: 'D', example: 'deur (door)' }, { letter: 'E', example: 'een (one)' }, { letter: 'F', example: 'fiets (bike)' },
+                            { letter: 'G', example: 'goed (good)' }, { letter: 'H', example: 'huis (house)' }, { letter: 'I', example: 'is (is)' },
+                            { letter: 'J', example: 'ja (yes)' }, { letter: 'K', example: 'kat (cat)' }, { letter: 'L', example: 'lamp (lamp)' },
+                            { letter: 'M', example: 'man (man)' }, { letter: 'N', example: 'nee (no)' }, { letter: 'O', example: 'ook (also)' },
+                            { letter: 'P', example: 'papa (dad)' }, { letter: 'Q', example: 'quiz (quiz)' }, { letter: 'R', example: 'rood (red)' },
+                            { letter: 'S', example: 'snel (fast)' }, { letter: 'T', example: 'tafel (table)' }, { letter: 'U', example: 'uit (out)' },
+                            { letter: 'V', example: 'vis (fish)' }, { letter: 'W', example: 'water (water)' }, { letter: 'X', example: 'extra (extra)' },
+                            { letter: 'Y', example: 'yoga (yoga)' }, { letter: 'Z', example: 'zee (sea)' }
+                          ].find(l => l.letter === selectedLetter)?.example}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              <div className="text-center mt-6">
+                <p className="text-sm text-muted-foreground mb-4">
+                  Click on letters to see pronunciation details and examples
+                </p>
+                <div className="flex flex-wrap justify-center gap-2 text-xs">
+                  <div className="flex items-center gap-1">
+                    <div className="w-3 h-3 bg-gray-300 rounded"></div>
+                    <span>Not selected</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <div className="w-3 h-3 bg-violet-500 rounded"></div>
+                    <span>Selected</span>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Pronunciation Guide */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl">Pronunciation Guide (Uitspraakgids)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-6">
+                  <div className="bg-blue-50 dark:bg-blue-950 p-6 rounded-lg">
+                    <h3 className="font-bold text-lg mb-4 text-blue-800 dark:text-blue-200">Special Dutch Sounds</h3>
+                    <div className="space-y-3">
+                      <div className="bg-white/70 dark:bg-black/30 p-3 rounded">
+                        <p className="font-semibold mb-1">G - "ghee" [χ]</p>
+                        <p className="text-sm text-muted-foreground">Guttural sound, like clearing throat</p>
+                        <p className="text-xs">Example: <strong>goed</strong> (good)</p>
+                      </div>
+                      <div className="bg-white/70 dark:bg-black/30 p-3 rounded">
+                        <p className="font-semibold mb-1">R - "er" [r]</p>
+                        <p className="text-sm text-muted-foreground">Rolled R, stronger than English</p>
+                        <p className="text-xs">Example: <strong>rood</strong> (red)</p>
+                      </div>
+                      <div className="bg-white/70 dark:bg-black/30 p-3 rounded">
+                        <p className="font-semibold mb-1">W - "wee" [ʋ]</p>
+                        <p className="text-sm text-muted-foreground">Between V and W sound</p>
+                        <p className="text-xs">Example: <strong>water</strong> (water)</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg">
+                    <h3 className="font-bold text-lg mb-4 text-green-800 dark:text-green-200">Spelling Tips</h3>
+                    <div className="space-y-3">
+                      <div className="bg-white/70 dark:bg-black/30 p-3 rounded">
+                        <p className="font-semibold mb-1">Double Letters</p>
+                        <p className="text-sm text-muted-foreground">aa, ee, oo, uu for long vowels</p>
+                        <p className="text-xs">Example: <strong>naam</strong> (name)</p>
+                      </div>
+                      <div className="bg-white/70 dark:bg-black/30 p-3 rounded">
+                        <p className="font-semibold mb-1">IJ Combination</p>
+                        <p className="text-sm text-muted-foreground">Treated as one letter, sounds like "eye"</p>
+                        <p className="text-xs">Example: <strong>ijs</strong> (ice)</p>
+                      </div>
+                      <div className="bg-white/70 dark:bg-black/30 p-3 rounded">
+                        <p className="font-semibold mb-1">CH Combination</p>
+                        <p className="text-sm text-muted-foreground">Like German "ach" sound</p>
+                        <p className="text-xs">Example: <strong>acht</strong> (eight)</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Alphabet Practice */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl">Alphabet Practice (Alfabet Oefening)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950 dark:to-pink-950">
+                  <CardContent className="p-6 text-center">
+                    <h4 className="font-bold text-lg mb-4">Spelling Practice</h4>
+                    <p className="text-sm mb-4">Practice spelling Dutch words letter by letter</p>
+                    <div className="bg-white/70 dark:bg-black/30 p-3 rounded mb-4">
+                      <p className="font-semibold">Nederland</p>
+                      <p className="text-xs text-muted-foreground">en-ee-dee-ee-er-el-aa-en-dee</p>
+                    </div>
+                    <Button 
+                      onClick={() => {
+                        const randomLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+                        setSelectedLetter(randomLetter);
+                      }}
+                      className="w-full"
+                    >
+                      Random Letter
+                    </Button>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950 dark:to-cyan-950">
+                  <CardContent className="p-6 text-center">
+                    <h4 className="font-bold text-lg mb-4">Common Words</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="bg-white/70 dark:bg-black/30 p-2 rounded">
+                        <p><strong>Hallo</strong> - haa-aa-el-el-oo</p>
+                      </div>
+                      <div className="bg-white/70 dark:bg-black/30 p-2 rounded">
+                        <p><strong>Dank je</strong> - dee-aa-en-kaa jee-ee</p>
+                      </div>
+                      <div className="bg-white/70 dark:bg-black/30 p-2 rounded">
+                        <p><strong>Goed</strong> - ghee-oo-ee-dee</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950">
+                  <CardContent className="p-6 text-center">
+                    <h4 className="font-bold text-lg mb-4">Memory Tips</h4>
+                    <div className="space-y-2 text-sm text-left">
+                      <p>• <strong>G</strong> sounds like clearing throat</p>
+                      <p>• <strong>J</strong> sounds like English Y</p>
+                      <p>• <strong>W</strong> is between V and W</p>
+                      <p>• <strong>R</strong> is rolled/trilled</p>
+                      <p>• <strong>IJ</strong> = one letter (sounds like "eye")</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Phonetic Examples */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl">Phonetic Examples (Fonetische Voorbeelden)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                <div className="bg-yellow-50 dark:bg-yellow-950 p-6 rounded-lg">
+                  <h3 className="font-bold text-lg mb-4 text-yellow-800 dark:text-yellow-200">Complete Alphabet Song</h3>
+                  <div className="bg-white/70 dark:bg-black/30 p-4 rounded text-center">
+                    <p className="font-mono text-sm leading-relaxed">
+                      aa-bee-see-dee-ee-ef-ghee-haa-ie-jee-kaa-el-em-en-oo-pee-kuu-er-es-tee-uu-vee-wee-iks-ie-grec-zet
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-2">
+                      A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="bg-red-50 dark:bg-red-950 p-6 rounded-lg">
+                    <h4 className="font-semibold text-lg mb-4 text-red-800 dark:text-red-200">Vowels (Klinkers)</h4>
+                    <div className="space-y-2 text-sm">
+                      <p><strong>A</strong> - aa [ah] - <em>appel</em></p>
+                      <p><strong>E</strong> - ee [ay] - <em>een</em></p>
+                      <p><strong>I</strong> - ie [ee] - <em>is</em></p>
+                      <p><strong>O</strong> - oo [oh] - <em>ook</em></p>
+                      <p><strong>U</strong> - uu [oo] - <em>uit</em></p>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-blue-50 dark:bg-blue-950 p-6 rounded-lg">
+                    <h4 className="font-semibold text-lg mb-4 text-blue-800 dark:text-blue-200">Consonants (Medeklinkers)</h4>
+                    <div className="space-y-2 text-sm">
+                      <p><strong>B</strong> - bee [bay] - <em>boek</em></p>
+                      <p><strong>D</strong> - dee [day] - <em>deur</em></p>
+                      <p><strong>F</strong> - ef [eff] - <em>fiets</em></p>
+                      <p><strong>K</strong> - kaa [kah] - <em>kat</em></p>
+                      <p><strong>L</strong> - el [ell] - <em>lamp</em></p>
                     </div>
                   </div>
                 </div>
