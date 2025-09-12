@@ -26,51 +26,96 @@ export default function PracticeA2() {
     }
   }, [timeLeft, examInProgress]);
 
+  // Add missing dependency for handleSubmitExam
+  const handleSubmitExam = () => {
+    if (!currentExam) return;
+    
+    const questions = getExamQuestions(currentExam.section, currentExam.examNumber);
+    let correct = 0;
+    
+    questions.forEach(q => {
+      if (q.type === 'multiple' || q.type === 'text' || q.type === 'audio') {
+        if (answers[q.id] === q.options?.[q.correct]?.toString() || parseInt(answers[q.id]) === q.correct) {
+          correct++;
+        }
+      } else if (q.type === 'writing' || q.type === 'speaking') {
+        // For writing/speaking, give partial credit if answered
+        if (answers[q.id] && answers[q.id].length > 10) {
+          correct += 0.8; // 80% credit for attempting
+        }
+      }
+    });
+    
+    const percentage = (correct / questions.length) * 100;
+    const points = Math.round(200 + (percentage / 100) * 600); // Scale to 200-800
+    
+    setScore({
+      correct: Math.round(correct),
+      total: questions.length,
+      percentage: Math.round(percentage),
+      points
+    });
+    
+    setExamInProgress(false);
+    setExamCompleted(true);
+  };
+
   const getExamQuestions = (section: string, examNumber: number) => {
     const questionSets = {
       reading: {
-        1: [
-          {
-            id: 1,
-            type: 'text',
-            text: "Beste mevrouw De Vries,\n\nIk schrijf u omdat ik een afspraak wil maken bij de tandarts. Ik heb pijn in mijn tand en kan niet goed eten. Kunt u mij helpen? Ik kan donderdag of vrijdag komen.\n\nMet vriendelijke groet,\nPiet Janssen",
-            question: "Waarom schrijft Piet deze brief?",
-            options: ["Hij wil een afspraak maken", "Hij wil zijn tand laten trekken", "Hij wil informatie over tandartsen", "Hij wil zijn rekening betalen"],
-            correct: 0
-          },
-          {
-            id: 2,
-            type: 'text',
-            text: "OPENINGSTIJDEN BIBLIOTHEEK\n\nMaandag: 10:00 - 18:00\nDinsdag: Gesloten\nWoensdag: 10:00 - 21:00\nDonderdag: 10:00 - 18:00\nVrijdag: 10:00 - 17:00\nZaterdag: 10:00 - 16:00\nZondag: 13:00 - 17:00",
-            question: "Op welke dag is de bibliotheek het langst open?",
-            options: ["Maandag", "Woensdag", "Donderdag", "Zaterdag"],
-            correct: 1
-          },
-          {
-            id: 3,
-            type: 'text',
-            text: "Te koop: Fiets, 3 jaar oud, goede staat. Prijs: €150. Interesse? Bel 06-12345678 na 18:00 uur.",
-            question: "Hoe oud is de fiets?",
-            options: ["1 jaar", "2 jaar", "3 jaar", "4 jaar"],
-            correct: 2
-          },
-          {
-            id: 4,
-            type: 'text',
-            text: "Let op! Morgen geen warme maaltijden in de kantine vanwege reparatie van de keuken. Broodjes en drinken zijn wel verkrijgbaar.",
-            question: "Wat kun je morgen NIET kopen in de kantine?",
-            options: ["Broodjes", "Warme maaltijden", "Drinken", "Koffie"],
-            correct: 1
-          },
-          {
-            id: 5,
-            type: 'text',
-            text: "Cursus Nederlands voor beginners\nStart: 15 september\nTijd: Elke dinsdag van 19:00 tot 21:00\nPlaats: Gemeentehuis, zaal 3\nKosten: €75 voor 10 lessen\nAanmelden: www.gemeente.nl",
-            question: "Hoeveel kost de cursus per les?",
-            options: ["€7,50", "€10", "€15", "€75"],
-            correct: 0
-          }
-        ]
+        1: Array.from({length: 30}, (_, i) => {
+          const questions = [
+            {
+              id: i + 1,
+              type: 'text',
+              text: "Beste mevrouw De Vries,\n\nIk schrijf u omdat ik een afspraak wil maken bij de tandarts. Ik heb pijn in mijn tand en kan niet goed eten. Kunt u mij helpen? Ik kan donderdag of vrijdag komen.\n\nMet vriendelijke groet,\nPiet Janssen",
+              question: "Waarom schrijft Piet deze brief?",
+              options: ["Hij wil een afspraak maken", "Hij wil zijn tand laten trekken", "Hij wil informatie over tandartsen", "Hij wil zijn rekening betalen"],
+              correct: 0
+            },
+            {
+              id: i + 1,
+              type: 'text',
+              text: "OPENINGSTIJDEN BIBLIOTHEEK\n\nMaandag: 10:00 - 18:00\nDinsdag: Gesloten\nWoensdag: 10:00 - 21:00\nDonderdag: 10:00 - 18:00\nVrijdag: 10:00 - 17:00\nZaterdag: 10:00 - 16:00\nZondag: 13:00 - 17:00",
+              question: "Op welke dag is de bibliotheek het langst open?",
+              options: ["Maandag", "Woensdag", "Donderdag", "Zaterdag"],
+              correct: 1
+            },
+            {
+              id: i + 1,
+              type: 'text',
+              text: "Te koop: Fiets, 3 jaar oud, goede staat. Prijs: €150. Interesse? Bel 06-12345678 na 18:00 uur.",
+              question: "Hoe oud is de fiets?",
+              options: ["1 jaar", "2 jaar", "3 jaar", "4 jaar"],
+              correct: 2
+            },
+            {
+              id: i + 1,
+              type: 'text',
+              text: "Let op! Morgen geen warme maaltijden in de kantine vanwege reparatie van de keuken. Broodjes en drinken zijn wel verkrijgbaar.",
+              question: "Wat kun je morgen NIET kopen in de kantine?",
+              options: ["Broodjes", "Warme maaltijden", "Drinken", "Koffie"],
+              correct: 1
+            },
+            {
+              id: i + 1,
+              type: 'text',
+              text: "Cursus Nederlands voor beginners\nStart: 15 september\nTijd: Elke dinsdag van 19:00 tot 21:00\nPlaats: Gemeentehuis, zaal 3\nKosten: €75 voor 10 lessen\nAanmelden: www.gemeente.nl",
+              question: "Hoeveel kost de cursus per les?",
+              options: ["€7,50", "€10", "€15", "€75"],
+              correct: 0
+            },
+            {
+              id: i + 1,
+              type: 'text',
+              text: "Geachte heer/mevrouw,\n\nIk wil graag een klacht indienen over de service in uw restaurant. Gisteren heb ik daar gegeten en het eten was koud. Ook was de bediening niet vriendelijk.\n\nIk hoop op een reactie.\n\nMet vriendelijke groet,\nAnna Bakker",
+              question: "Waarover klaagt Anna?",
+              options: ["Het eten en de service", "Alleen het eten", "Alleen de service", "De prijs"],
+              correct: 0
+            }
+          ];
+          return questions[i % questions.length];
+        })
       },
       writing: {
         1: [
@@ -172,17 +217,47 @@ export default function PracticeA2() {
         ]
       },
       knm: {
-        1: [
-          {
-            id: 1,
-            type: 'multiple',
-            question: "Wat is de hoofdstad van Nederland?",
-            options: ["Rotterdam", "Amsterdam", "Den Haag", "Utrecht"],
-            correct: 1
-          },
-          {
-            id: 2,
-            type: 'multiple',
+        1: Array.from({length: 30}, (_, i) => {
+          const questions = [
+            {
+              id: i + 1,
+              type: 'multiple',
+              question: "Wat is de hoofdstad van Nederland?",
+              options: ["Rotterdam", "Amsterdam", "Den Haag", "Utrecht"],
+              correct: 1
+            },
+            {
+              id: i + 1,
+              type: 'multiple',
+              question: "Welke kleur heeft de Nederlandse vlag?",
+              options: ["Rood, wit, blauw", "Rood, wit, groen", "Oranje, wit, blauw", "Rood, geel, blauw"],
+              correct: 0
+            },
+            {
+              id: i + 1,
+              type: 'multiple',
+              question: "Hoe heet de Nederlandse koning?",
+              options: ["Willem-Alexander", "Beatrix", "Juliana", "Máxima"],
+              correct: 0
+            },
+            {
+              id: i + 1,
+              type: 'multiple',
+              question: "Wat moet je doen als je 18 wordt in Nederland?",
+              options: ["Trouwen", "Stemmen", "Inschrijven GBA", "Rijbewijs halen"],
+              correct: 2
+            },
+            {
+              id: i + 1,
+              type: 'multiple',
+              question: "Welke feestdag vieren Nederlanders op 5 mei?",
+              options: ["Koningsdag", "Sinterklaas", "Bevrijdingsdag", "Nieuwjaar"],
+              correct: 2
+            }
+          ];
+          return questions[i % questions.length];
+        })
+      }le',
             question: "Welke kleur heeft de Nederlandse vlag?",
             options: ["Rood, wit, blauw", "Rood, wit, groen", "Oranje, wit, blauw", "Rood, geel, blauw"],
             correct: 0
@@ -220,15 +295,10 @@ export default function PracticeA2() {
     const questions = getExamQuestions(currentExam.section, currentExam.examNumber);
     if (questions.length === 0) return;
     
-    const duration = {
-      reading: 65 * 60,
-      writing: 90 * 60,
-      listening: 30 * 60,
-      speaking: 15 * 60,
-      knm: 45 * 60
-    };
+    const section = sections.find(s => s.id === currentExam.section);
+    const timeInSeconds = (section?.actualMinutes || 65) * 60;
     
-    setTimeLeft(duration[currentExam.section] || 3900);
+    setTimeLeft(timeInSeconds);
     setExamInProgress(true);
     setCurrentQuestion(0);
     setAnswers({});
@@ -298,6 +368,8 @@ export default function PracticeA2() {
       description: 'Practice reading comprehension with A2 level texts',
       duration: '65 minutes',
       questions: '30 questions',
+      actualMinutes: 65,
+      actualQuestions: 30,
       color: 'bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800',
       iconColor: 'text-blue-600'
     },
@@ -308,6 +380,8 @@ export default function PracticeA2() {
       description: 'Practice writing skills with formal and informal texts',
       duration: '90 minutes',
       questions: '3 tasks',
+      actualMinutes: 90,
+      actualQuestions: 3,
       color: 'bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800',
       iconColor: 'text-green-600'
     },
@@ -318,6 +392,8 @@ export default function PracticeA2() {
       description: 'Practice listening comprehension with audio materials',
       duration: '30 minutes',
       questions: '30 questions',
+      actualMinutes: 30,
+      actualQuestions: 30,
       color: 'bg-purple-50 dark:bg-purple-950 border-purple-200 dark:border-purple-800',
       iconColor: 'text-purple-600'
     },
@@ -328,6 +404,8 @@ export default function PracticeA2() {
       description: 'Practice speaking skills with interactive exercises',
       duration: '15 minutes',
       questions: '3 tasks',
+      actualMinutes: 15,
+      actualQuestions: 3,
       color: 'bg-orange-50 dark:bg-orange-950 border-orange-200 dark:border-orange-800',
       iconColor: 'text-orange-600'
     },
@@ -338,6 +416,8 @@ export default function PracticeA2() {
       description: 'Knowledge of Dutch Society practice tests',
       duration: '45 minutes',
       questions: '30 questions',
+      actualMinutes: 45,
+      actualQuestions: 30,
       color: 'bg-red-50 dark:bg-red-950 border-red-200 dark:border-red-800',
       iconColor: 'text-red-600'
     }
@@ -790,11 +870,15 @@ export default function PracticeA2() {
                 </Button>
               </div>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <Clock className="w-4 h-4" />
-                  <span className={timeLeft < 300 ? 'text-red-500 font-bold' : ''}>
+                <div className="flex items-center gap-2 bg-muted/50 px-3 py-1 rounded">
+                  <Clock className={`w-5 h-5 ${timeLeft < 300 ? 'text-red-500' : 'text-primary'}`} />
+                  <span className={`font-mono text-lg font-bold ${
+                    timeLeft < 300 ? 'text-red-500 animate-pulse' : 
+                    timeLeft < 600 ? 'text-orange-500' : 'text-primary'
+                  }`}>
                     {formatTime(timeLeft)}
                   </span>
+                  <span className="text-sm text-muted-foreground">remaining</span>
                 </div>
                 <div>
                   Question {currentQuestion + 1} of {getExamQuestions(currentExam.section, currentExam.examNumber).length}
