@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Clock, Calendar, GraduationCap, MapPin, Sun, Moon, Sunrise, Sunset, User, Users } from 'lucide-react';
+import { Clock, Calendar, GraduationCap, MapPin, Sun, Moon, Sunrise, Sunset, User, Users, Hash } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
@@ -12,6 +12,7 @@ export default function Misc() {
   const [selectedPeriod, setSelectedPeriod] = useState<string | null>(null);
   const [hoveredBodyPart, setHoveredBodyPart] = useState<string | null>(null);
   const [selectedEducationLevel, setSelectedEducationLevel] = useState<string | null>(null);
+  const [selectedNumber, setSelectedNumber] = useState<number | null>(null);
 
   const days = [
     { dutch: 'Maandag', english: 'Monday', color: 'bg-red-100 dark:bg-red-900' },
@@ -116,6 +117,10 @@ export default function Misc() {
               <Users className="w-5 h-5" />
               <span>Family Relations</span>
             </div>
+            <div className="flex items-center space-x-2">
+              <Hash className="w-5 h-5" />
+              <span>Numbers</span>
+            </div>
           </div>
         </div>
       </section>
@@ -131,7 +136,7 @@ export default function Misc() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 max-w-8xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-6 max-w-full mx-auto">
           <Card className="text-center group hover:shadow-lg transition-shadow">
             <CardHeader>
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
@@ -248,6 +253,26 @@ export default function Misc() {
                 className="w-full"
               >
                 Learn Family Tree
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center group hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <div className="w-12 h-12 bg-indigo/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo/20 transition-colors">
+                <Hash className="w-6 h-6 text-indigo-600" />
+              </div>
+              <CardTitle className="text-lg">Numbers</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-4">
+                Count from 0 to millions
+              </p>
+              <Button 
+                onClick={() => document.getElementById('numbers-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full"
+              >
+                Learn Numbers
               </Button>
             </CardContent>
           </Card>
@@ -1889,6 +1914,360 @@ export default function Misc() {
               </Card>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Numbers Section */}
+      <section id="numbers-section" className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Nederlandse Getallen (Dutch Numbers)
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Learn Dutch numbers from 0 to millions with interactive examples and pronunciation.
+            </p>
+          </div>
+
+          {/* Basic Numbers 0-20 */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Hash className="w-6 h-6" />
+                Basic Numbers (0-20)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4">
+                {[
+                  { num: 0, dutch: 'nul', english: 'zero' },
+                  { num: 1, dutch: 'een', english: 'one' },
+                  { num: 2, dutch: 'twee', english: 'two' },
+                  { num: 3, dutch: 'drie', english: 'three' },
+                  { num: 4, dutch: 'vier', english: 'four' },
+                  { num: 5, dutch: 'vijf', english: 'five' },
+                  { num: 6, dutch: 'zes', english: 'six' },
+                  { num: 7, dutch: 'zeven', english: 'seven' },
+                  { num: 8, dutch: 'acht', english: 'eight' },
+                  { num: 9, dutch: 'negen', english: 'nine' },
+                  { num: 10, dutch: 'tien', english: 'ten' },
+                  { num: 11, dutch: 'elf', english: 'eleven' },
+                  { num: 12, dutch: 'twaalf', english: 'twelve' },
+                  { num: 13, dutch: 'dertien', english: 'thirteen' },
+                  { num: 14, dutch: 'veertien', english: 'fourteen' },
+                  { num: 15, dutch: 'vijftien', english: 'fifteen' },
+                  { num: 16, dutch: 'zestien', english: 'sixteen' },
+                  { num: 17, dutch: 'zeventien', english: 'seventeen' },
+                  { num: 18, dutch: 'achttien', english: 'eighteen' },
+                  { num: 19, dutch: 'negentien', english: 'nineteen' },
+                  { num: 20, dutch: 'twintig', english: 'twenty' }
+                ].map((item) => (
+                  <Card 
+                    key={item.num}
+                    className={`cursor-pointer transition-all hover:shadow-md text-center ${
+                      selectedNumber === item.num ? 'ring-2 ring-indigo-500 bg-indigo-50 dark:bg-indigo-950' : 'hover:bg-muted/50'
+                    }`}
+                    onClick={() => setSelectedNumber(selectedNumber === item.num ? null : item.num)}
+                  >
+                    <CardContent className="p-4">
+                      <div className="text-3xl font-bold mb-2 text-indigo-600">{item.num}</div>
+                      <div className="font-semibold text-lg">{item.dutch}</div>
+                      <div className="text-sm text-muted-foreground">{item.english}</div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Tens */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl">Tens (Tientallen)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+                {[
+                  { num: 30, dutch: 'dertig', english: 'thirty' },
+                  { num: 40, dutch: 'veertig', english: 'forty' },
+                  { num: 50, dutch: 'vijftig', english: 'fifty' },
+                  { num: 60, dutch: 'zestig', english: 'sixty' },
+                  { num: 70, dutch: 'zeventig', english: 'seventy' },
+                  { num: 80, dutch: 'tachtig', english: 'eighty' },
+                  { num: 90, dutch: 'negentig', english: 'ninety' }
+                ].map((item) => (
+                  <Card 
+                    key={item.num}
+                    className={`cursor-pointer transition-all hover:shadow-md text-center ${
+                      selectedNumber === item.num ? 'ring-2 ring-green-500 bg-green-50 dark:bg-green-950' : 'hover:bg-muted/50'
+                    }`}
+                    onClick={() => setSelectedNumber(selectedNumber === item.num ? null : item.num)}
+                  >
+                    <CardContent className="p-4">
+                      <div className="text-2xl font-bold mb-2 text-green-600">{item.num}</div>
+                      <div className="font-semibold text-lg">{item.dutch}</div>
+                      <div className="text-sm text-muted-foreground">{item.english}</div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Number Formation Rules */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl">Number Formation Rules (Getalvorming)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-6">
+                  <div className="bg-blue-50 dark:bg-blue-950 p-6 rounded-lg">
+                    <h3 className="font-bold text-lg mb-4 text-blue-800 dark:text-blue-200">21-99: Ones + en + Tens</h3>
+                    <div className="space-y-3">
+                      <div className="bg-white/70 dark:bg-black/30 p-3 rounded">
+                        <p className="font-semibold mb-1">21 = eenën­twintig</p>
+                        <p className="text-sm text-muted-foreground">one + and + twenty</p>
+                      </div>
+                      <div className="bg-white/70 dark:bg-black/30 p-3 rounded">
+                        <p className="font-semibold mb-1">35 = vijfën­dertig</p>
+                        <p className="text-sm text-muted-foreground">five + and + thirty</p>
+                      </div>
+                      <div className="bg-white/70 dark:bg-black/30 p-3 rounded">
+                        <p className="font-semibold mb-1">67 = zevenën­zestig</p>
+                        <p className="text-sm text-muted-foreground">seven + and + sixty</p>
+                      </div>
+                      <div className="bg-white/70 dark:bg-black/30 p-3 rounded">
+                        <p className="font-semibold mb-1">99 = negenën­negentig</p>
+                        <p className="text-sm text-muted-foreground">nine + and + ninety</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="bg-purple-50 dark:bg-purple-950 p-6 rounded-lg">
+                    <h3 className="font-bold text-lg mb-4 text-purple-800 dark:text-purple-200">Interactive Number Builder</h3>
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        <select className="border rounded p-2 bg-background" onChange={(e) => {
+                          const ones = parseInt(e.target.value);
+                          const tens = Math.floor((selectedNumber || 20) / 10) * 10;
+                          if (tens >= 20) setSelectedNumber(ones + tens);
+                        }}>
+                          <option value="1">een</option>
+                          <option value="2">twee</option>
+                          <option value="3">drie</option>
+                          <option value="4">vier</option>
+                          <option value="5">vijf</option>
+                          <option value="6">zes</option>
+                          <option value="7">zeven</option>
+                          <option value="8">acht</option>
+                          <option value="9">negen</option>
+                        </select>
+                        <span className="font-semibold">en</span>
+                        <select className="border rounded p-2 bg-background" onChange={(e) => {
+                          const tens = parseInt(e.target.value);
+                          const ones = (selectedNumber || 21) % 10 || 1;
+                          setSelectedNumber(ones + tens);
+                        }}>
+                          <option value="20">twintig</option>
+                          <option value="30">dertig</option>
+                          <option value="40">veertig</option>
+                          <option value="50">vijftig</option>
+                          <option value="60">zestig</option>
+                          <option value="70">zeventig</option>
+                          <option value="80">tachtig</option>
+                          <option value="90">negentig</option>
+                        </select>
+                      </div>
+                      
+                      {selectedNumber && selectedNumber > 20 && selectedNumber < 100 && (
+                        <div className="bg-white/70 dark:bg-black/30 p-4 rounded text-center">
+                          <div className="text-2xl font-bold text-purple-600 mb-2">{selectedNumber}</div>
+                          <div className="font-semibold text-lg">
+                            {(() => {
+                              const ones = selectedNumber % 10;
+                              const tens = Math.floor(selectedNumber / 10) * 10;
+                              const onesNames = ['', 'een', 'twee', 'drie', 'vier', 'vijf', 'zes', 'zeven', 'acht', 'negen'];
+                              const tensNames = {20: 'twintig', 30: 'dertig', 40: 'veertig', 50: 'vijftig', 60: 'zestig', 70: 'zeventig', 80: 'tachtig', 90: 'negentig'};
+                              return ones === 0 ? tensNames[tens] : `${onesNames[ones]}en${tensNames[tens]}`;
+                            })()} 
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Large Numbers */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl">Large Numbers (Grote Getallen)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <Card className="bg-red-50 dark:bg-red-950 border-red-200 dark:border-red-800">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-2xl font-bold mb-2 text-red-600">100</div>
+                    <h3 className="font-bold text-lg mb-2 text-red-800 dark:text-red-200">honderd</h3>
+                    <p className="text-red-600 dark:text-red-400 mb-2">hundred</p>
+                    <div className="space-y-1 text-sm">
+                      <p><strong>101:</strong> honderdéén</p>
+                      <p><strong>150:</strong> honderdvijftig</p>
+                      <p><strong>200:</strong> tweehonderd</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-orange-50 dark:bg-orange-950 border-orange-200 dark:border-orange-800">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-2xl font-bold mb-2 text-orange-600">1.000</div>
+                    <h3 className="font-bold text-lg mb-2 text-orange-800 dark:text-orange-200">duizend</h3>
+                    <p className="text-orange-600 dark:text-orange-400 mb-2">thousand</p>
+                    <div className="space-y-1 text-sm">
+                      <p><strong>1.001:</strong> duizendéén</p>
+                      <p><strong>2.500:</strong> tweeduizendvijfhonderd</p>
+                      <p><strong>10.000:</strong> tienduizend</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-yellow-50 dark:bg-yellow-950 border-yellow-200 dark:border-yellow-800">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-2xl font-bold mb-2 text-yellow-600">1.000.000</div>
+                    <h3 className="font-bold text-lg mb-2 text-yellow-800 dark:text-yellow-200">miljoen</h3>
+                    <p className="text-yellow-600 dark:text-yellow-400 mb-2">million</p>
+                    <div className="space-y-1 text-sm">
+                      <p><strong>1.5M:</strong> anderhalf miljoen</p>
+                      <p><strong>2M:</strong> twee miljoen</p>
+                      <p><strong>10M:</strong> tien miljoen</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-2xl font-bold mb-2 text-green-600">1.000.000.000</div>
+                    <h3 className="font-bold text-lg mb-2 text-green-800 dark:text-green-200">miljard</h3>
+                    <p className="text-green-600 dark:text-green-400 mb-2">billion</p>
+                    <div className="space-y-1 text-sm">
+                      <p><strong>1.5B:</strong> anderhalf miljard</p>
+                      <p><strong>2B:</strong> twee miljard</p>
+                      <p><strong>100B:</strong> honderd miljard</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Practical Examples */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl">Practical Examples (Praktische Voorbeelden)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  <h3 className="font-bold text-lg mb-4">Prices & Money (Prijzen & Geld)</h3>
+                  <div className="space-y-3">
+                    <div className="bg-green-50 dark:bg-green-950 p-4 rounded-lg">
+                      <p className="font-semibold mb-1">€2,50 = twee euro vijftig</p>
+                      <p className="text-sm text-muted-foreground">Two euros fifty</p>
+                    </div>
+                    <div className="bg-green-50 dark:bg-green-950 p-4 rounded-lg">
+                      <p className="font-semibold mb-1">€15,99 = vijftien euro negenennegentig</p>
+                      <p className="text-sm text-muted-foreground">Fifteen euros ninety-nine</p>
+                    </div>
+                    <div className="bg-green-50 dark:bg-green-950 p-4 rounded-lg">
+                      <p className="font-semibold mb-1">€125 = honderdvijfentwintig euro</p>
+                      <p className="text-sm text-muted-foreground">One hundred twenty-five euros</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <h3 className="font-bold text-lg mb-4">Time & Dates (Tijd & Data)</h3>
+                  <div className="space-y-3">
+                    <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
+                      <p className="font-semibold mb-1">14:30 = veertien dertig / half drie</p>
+                      <p className="text-sm text-muted-foreground">Two thirty PM / Half past two</p>
+                    </div>
+                    <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
+                      <p className="font-semibold mb-1">2024 = tweeduizendvierentwintig</p>
+                      <p className="text-sm text-muted-foreground">Two thousand twenty-four</p>
+                    </div>
+                    <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
+                      <p className="font-semibold mb-1">25/12 = vijfentwintig december</p>
+                      <p className="text-sm text-muted-foreground">Twenty-fifth of December</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Number Quiz */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl">Number Challenge (Getal Uitdaging)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-center space-y-6">
+                <p className="text-lg mb-6">Click on numbers above to practice, or try these challenges:</p>
+                
+                <div className="grid md:grid-cols-3 gap-6">
+                  <Card className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950 dark:to-pink-950">
+                    <CardContent className="p-6 text-center">
+                      <h4 className="font-bold text-lg mb-4">Random Number</h4>
+                      <Button 
+                        onClick={() => {
+                          const randomNum = Math.floor(Math.random() * 100) + 1;
+                          setSelectedNumber(randomNum);
+                        }}
+                        className="w-full mb-4"
+                      >
+                        Generate Random (1-100)
+                      </Button>
+                      {selectedNumber && (
+                        <div className="bg-white/70 dark:bg-black/30 p-3 rounded">
+                          <div className="text-2xl font-bold text-purple-600">{selectedNumber}</div>
+                          <p className="text-sm text-muted-foreground mt-2">Try to say this in Dutch!</p>
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950 dark:to-cyan-950">
+                    <CardContent className="p-6 text-center">
+                      <h4 className="font-bold text-lg mb-4">Pattern Practice</h4>
+                      <div className="space-y-2 text-sm">
+                        <p><strong>Count by 10s:</strong> tien, twintig, dertig...</p>
+                        <p><strong>Count by 5s:</strong> vijf, tien, vijftien...</p>
+                        <p><strong>Teens:</strong> dertien, veertien, vijftien...</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950">
+                    <CardContent className="p-6 text-center">
+                      <h4 className="font-bold text-lg mb-4">Memory Tips</h4>
+                      <div className="space-y-2 text-sm text-left">
+                        <p>• <strong>elf</strong> & <strong>twaalf</strong> are irregular</p>
+                        <p>• <strong>-tien</strong> ending for 13-19</p>
+                        <p>• <strong>-tig</strong> ending for 30, 40, 50...</p>
+                        <p>• Always <strong>ones + en + tens</strong></p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
