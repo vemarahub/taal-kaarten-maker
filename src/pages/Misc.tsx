@@ -164,160 +164,160 @@ export default function Misc() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 gap-6 max-w-full mx-auto">
-          <Card className="text-center group hover:shadow-lg transition-shadow">
-            <CardHeader>
+          <Card className="text-center group hover:shadow-lg transition-shadow flex flex-col h-full">
+            <CardHeader className="flex-shrink-0">
               <div className="w-12 h-12 bg-violet/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-violet/20 transition-colors">
                 <Type className="w-6 h-6 text-violet-600" />
               </div>
               <CardTitle className="text-lg">Alphabets</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">
+            <CardContent className="flex flex-col flex-grow">
+              <p className="text-muted-foreground mb-4 flex-grow">
                 A-Z with Dutch pronunciation
               </p>
               <Button 
                 onClick={() => document.getElementById('alphabets-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full h-10"
+                className="w-full h-10 mt-auto"
               >
                 Start
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="text-center group hover:shadow-lg transition-shadow">
-            <CardHeader>
+          <Card className="text-center group hover:shadow-lg transition-shadow flex flex-col h-full">
+            <CardHeader className="flex-shrink-0">
               <div className="w-12 h-12 bg-indigo/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo/20 transition-colors">
                 <Hash className="w-6 h-6 text-indigo-600" />
               </div>
               <CardTitle className="text-lg">Numbers</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">
+            <CardContent className="flex flex-col flex-grow">
+              <p className="text-muted-foreground mb-4 flex-grow">
                 Count from 0 to millions
               </p>
               <Button 
                 onClick={() => document.getElementById('numbers-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full h-10"
+                className="w-full h-10 mt-auto"
               >
                 Start
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="text-center group hover:shadow-lg transition-shadow">
-            <CardHeader>
+          <Card className="text-center group hover:shadow-lg transition-shadow flex flex-col h-full">
+            <CardHeader className="flex-shrink-0">
               <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary/20 transition-colors">
                 <Clock className="w-6 h-6 text-secondary" />
               </div>
               <CardTitle className="text-lg">Time</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">
+            <CardContent className="flex flex-col flex-grow">
+              <p className="text-muted-foreground mb-4 flex-grow">
                 Hours, minutes, time expressions
               </p>
               <Button 
                 onClick={() => document.getElementById('time-practice')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full h-10"
+                className="w-full h-10 mt-auto"
               >
                 Start
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="text-center group hover:shadow-lg transition-shadow">
-            <CardHeader>
+          <Card className="text-center group hover:shadow-lg transition-shadow flex flex-col h-full">
+            <CardHeader className="flex-shrink-0">
               <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20 transition-colors">
                 <Calendar className="w-6 h-6 text-accent" />
               </div>
               <CardTitle className="text-lg">Days & Week</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">
+            <CardContent className="flex flex-col flex-grow">
+              <p className="text-muted-foreground mb-4 flex-grow">
                 Weekdays, time periods, combinations
               </p>
               <Button 
                 onClick={() => document.getElementById('days-week-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full h-10"
+                className="w-full h-10 mt-auto"
               >
                 Start
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="text-center group hover:shadow-lg transition-shadow">
-            <CardHeader>
+          <Card className="text-center group hover:shadow-lg transition-shadow flex flex-col h-full">
+            <CardHeader className="flex-shrink-0">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
                 <MapPin className="w-6 h-6 text-primary" />
               </div>
               <CardTitle className="text-lg">Directions</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">
+            <CardContent className="flex flex-col flex-grow">
+              <p className="text-muted-foreground mb-4 flex-grow">
                 Left, right, straight ahead
               </p>
               <Button 
                 onClick={() => document.getElementById('directions-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full h-10"
+                className="w-full h-10 mt-auto"
               >
                 Start
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="text-center group hover:shadow-lg transition-shadow">
-            <CardHeader>
+          <Card className="text-center group hover:shadow-lg transition-shadow flex flex-col h-full">
+            <CardHeader className="flex-shrink-0">
               <div className="w-12 h-12 bg-orange/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-orange/20 transition-colors">
                 <User className="w-6 h-6 text-orange-600" />
               </div>
               <CardTitle className="text-lg">Body Parts</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">
+            <CardContent className="flex flex-col flex-grow">
+              <p className="text-muted-foreground mb-4 flex-grow">
                 Head, arms, legs, and more
               </p>
               <Button 
                 onClick={() => document.getElementById('body-parts-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full h-10"
+                className="w-full h-10 mt-auto"
               >
                 Start
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="text-center group hover:shadow-lg transition-shadow">
-            <CardHeader>
+          <Card className="text-center group hover:shadow-lg transition-shadow flex flex-col h-full">
+            <CardHeader className="flex-shrink-0">
               <div className="w-12 h-12 bg-pink/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-pink/20 transition-colors">
                 <Users className="w-6 h-6 text-pink-600" />
               </div>
               <CardTitle className="text-lg">Family Relations</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">
+            <CardContent className="flex flex-col flex-grow">
+              <p className="text-muted-foreground mb-4 flex-grow">
                 Parents, siblings, relatives
               </p>
               <Button 
                 onClick={() => document.getElementById('family-relations-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full h-10"
+                className="w-full h-10 mt-auto"
               >
                 Start
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="text-center group hover:shadow-lg transition-shadow">
-            <CardHeader>
+          <Card className="text-center group hover:shadow-lg transition-shadow flex flex-col h-full">
+            <CardHeader className="flex-shrink-0">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
                 <GraduationCap className="w-6 h-6 text-primary" />
               </div>
               <CardTitle className="text-lg">Education System</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">
+            <CardContent className="flex flex-col flex-grow">
+              <p className="text-muted-foreground mb-4 flex-grow">
                 Dutch schooling levels and paths
               </p>
               <Button 
                 onClick={() => document.getElementById('education-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full h-10"
+                className="w-full h-10 mt-auto"
               >
                 Start
               </Button>
