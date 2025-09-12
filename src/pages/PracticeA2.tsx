@@ -7,6 +7,8 @@ import heroImage from '@/assets/dutch-hero.jpg';
 
 export default function PracticeA2() {
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
+  const [currentExam, setCurrentExam] = useState<{section: string, examNumber: number} | null>(null);
+  const [examStarted, setExamStarted] = useState(false);
 
   const sections = [
     {
@@ -431,8 +433,8 @@ export default function PracticeA2() {
                       <Button 
                         className="w-full"
                         onClick={() => {
-                          // This will be implemented with actual exam logic
-                          alert(`Starting ${section.title} Practice Exam ${examNumber}. This will be implemented with full exam functionality.`);
+                          setCurrentExam({section: section.id, examNumber});
+                          setExamStarted(true);
                         }}
                       >
                         Start Exam {examNumber}
@@ -490,6 +492,84 @@ export default function PracticeA2() {
           </CardContent>
         </Card>
       </section>
+
+      {/* Exam Interface */}
+      {examStarted && currentExam && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <Card className="w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+            <CardHeader className="border-b">
+              <div className="flex justify-between items-center">
+                <CardTitle className="text-2xl">
+                  {sections.find(s => s.id === currentExam.section)?.title} - Practice Exam {currentExam.examNumber}
+                </CardTitle>
+                <Button 
+                  variant="outline" 
+                  onClick={() => {
+                    setExamStarted(false);
+                    setCurrentExam(null);
+                  }}
+                >
+                  Exit Exam
+                </Button>
+              </div>
+              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <div className="flex items-center gap-1">
+                  <Clock className="w-4 h-4" />
+                  <span>{sections.find(s => s.id === currentExam.section)?.duration}</span>
+                </div>
+                <div>
+                  {sections.find(s => s.id === currentExam.section)?.questions}
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="p-6">
+              <div className="text-center space-y-6">
+                <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-8 rounded-lg border border-primary/20">
+                  <h3 className="text-2xl font-bold mb-4">Exam Starting Soon...</h3>
+                  <p className="text-lg text-muted-foreground mb-6">
+                    You are about to start the {sections.find(s => s.id === currentExam.section)?.title} practice exam.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4 mb-6">
+                    <div className="bg-white/50 dark:bg-black/20 p-4 rounded">
+                      <h4 className="font-semibold mb-2">Exam Instructions</h4>
+                      <ul className="text-sm text-left space-y-1">
+                        <li>• Read all questions carefully</li>
+                        <li>• Manage your time effectively</li>
+                        <li>• You can review answers before submitting</li>
+                        <li>• No external help is allowed</li>
+                      </ul>
+                    </div>
+                    <div className="bg-white/50 dark:bg-black/20 p-4 rounded">
+                      <h4 className="font-semibold mb-2">Technical Requirements</h4>
+                      <ul className="text-sm text-left space-y-1">
+                        <li>• Stable internet connection</li>
+                        <li>• Quiet environment</li>
+                        <li>• Full screen recommended</li>
+                        <li>• Do not refresh the page</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <Button 
+                      size="lg" 
+                      className="w-full md:w-auto px-8"
+                      onClick={() => {
+                        // This will start the actual exam
+                        alert(`Starting ${sections.find(s => s.id === currentExam.section)?.title} Practice Exam ${currentExam.examNumber}. Full exam interface will be implemented here.`);
+                      }}
+                    >
+                      Begin Exam
+                    </Button>
+                    <p className="text-xs text-muted-foreground">
+                      By clicking "Begin Exam", you confirm that you are ready to start the timed practice exam.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   );
 }
