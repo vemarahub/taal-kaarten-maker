@@ -15,6 +15,28 @@ export default function Misc() {
   const [selectedNumber, setSelectedNumber] = useState<number | null>(null);
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
 
+  const playDutchPronunciation = (letter: string) => {
+    const letterData = [
+      { letter: 'A', dutch: 'aa' }, { letter: 'B', dutch: 'bee' }, { letter: 'C', dutch: 'see' },
+      { letter: 'D', dutch: 'dee' }, { letter: 'E', dutch: 'ee' }, { letter: 'F', dutch: 'ef' },
+      { letter: 'G', dutch: 'ghee' }, { letter: 'H', dutch: 'haa' }, { letter: 'I', dutch: 'ie' },
+      { letter: 'J', dutch: 'jee' }, { letter: 'K', dutch: 'kaa' }, { letter: 'L', dutch: 'el' },
+      { letter: 'M', dutch: 'em' }, { letter: 'N', dutch: 'en' }, { letter: 'O', dutch: 'oo' },
+      { letter: 'P', dutch: 'pee' }, { letter: 'Q', dutch: 'kuu' }, { letter: 'R', dutch: 'er' },
+      { letter: 'S', dutch: 'es' }, { letter: 'T', dutch: 'tee' }, { letter: 'U', dutch: 'uu' },
+      { letter: 'V', dutch: 'vee' }, { letter: 'W', dutch: 'wee' }, { letter: 'X', dutch: 'iks' },
+      { letter: 'Y', dutch: 'ie-grec' }, { letter: 'Z', dutch: 'zet' }
+    ];
+    
+    const pronunciation = letterData.find(l => l.letter === letter)?.dutch;
+    if (pronunciation && 'speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(pronunciation);
+      utterance.lang = 'nl-NL';
+      utterance.rate = 0.8;
+      speechSynthesis.speak(utterance);
+    }
+  };
+
   const days = [
     { dutch: 'Maandag', english: 'Monday', color: 'bg-red-100 dark:bg-red-900' },
     { dutch: 'Dinsdag', english: 'Tuesday', color: 'bg-orange-100 dark:bg-orange-900' },
@@ -2589,7 +2611,10 @@ export default function Misc() {
                         ? 'ring-2 ring-violet-500 bg-violet-50 dark:bg-violet-950 border-violet-300' 
                         : 'hover:bg-muted/50 border-muted-foreground/20'
                     }`}
-                    onClick={() => setSelectedLetter(selectedLetter === item.letter ? null : item.letter)}
+                    onClick={() => {
+                      setSelectedLetter(selectedLetter === item.letter ? null : item.letter);
+                      playDutchPronunciation(item.letter);
+                    }}
                   >
                     <CardContent className="p-4">
                       <div className="text-3xl font-bold mb-2 text-violet-600">{item.letter}</div>
@@ -2751,6 +2776,7 @@ export default function Misc() {
                       onClick={() => {
                         const randomLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
                         setSelectedLetter(randomLetter);
+                        playDutchPronunciation(randomLetter);
                       }}
                       className="w-full"
                     >
