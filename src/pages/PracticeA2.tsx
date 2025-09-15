@@ -215,12 +215,18 @@ export default function PracticeA2() {
           </CardContent>
         </Card>
 
-        {/* Practice Reading Button */}
-        <div className="text-center mt-12">
+        {/* Practice Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
           <Link to="/reading-game">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
               <BookOpen className="w-6 h-6 mr-2" />
               Practice Reading
+            </Button>
+          </Link>
+          <Link to="/knm-game">
+            <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 text-lg">
+              <GraduationCap className="w-6 h-6 mr-2" />
+              Practice KNM
             </Button>
           </Link>
         </div>

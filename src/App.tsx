@@ -12,6 +12,7 @@ import Culture from "./pages/Culture";
 import Misc from "./pages/Misc";
 import PracticeA2 from "./pages/PracticeA2";
 import ReadingGame from "./pages/ReadingGame";
+import KnmGame from "./pages/KnmGame";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/misc" element={<Misc />} />
           <Route path="/practice-a2" element={<PracticeA2 />} />
           <Route path="/reading-game" element={<ReadingGame />} />
+          <Route path="/knm-game" element={<KnmGame />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
