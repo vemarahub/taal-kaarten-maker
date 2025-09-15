@@ -43,6 +43,63 @@ Wij slapen van zaterdag op zondag in een Bed & Breakfast, dichtbij jouw huis.
 
 Op zondagochtend gaan we zoals afgesproken samen met jou om 10 uur naar de kerk. We hebben er zin in!
 Groetjes en tot zaterdag, Adriaan & Olivier`
+      },
+      {
+        id: 3,
+        title: "E-mail over Autoverzekering",
+        content: `Fatima heeft schade aan haar nieuwe auto. Zij wil de kosten van de schade vergoed krijgen van de verzekeringsmaatschappij. Zij krijgt deze e-mail.
+
+Geachte heer, mevrouw,
+Wij hebben uw vraag over schadevergoeding ontvangen. U heeft schade aan uw nieuwe auto. U wilt dat wij deze schade vergoeden. U hebt ons alle informatie gestuurd over de schade.
+Op basis van de informatie die u ons heeft gegeven, kunnen we u het volgende meedelen: u hebt recht op een schadevergoeding, maar u hebt ook een eigen risico van € 250. U moet, zoals ook in de polis staat, uw auto laten repareren bij uw eigen Toyota-garage.
+Wij wensen u na deze reparatie weer veel schadevrije kilometers!
+Met vriendelijke groet,`
+      },
+      {
+        id: 4,
+        title: "Reclame voor Storyplus Magazine",
+        content: `Maxima ziet een folder met reclame voor een abonnement op een tijdschrift.
+
+Storyplus –magazine – speciaal voor u!
+40% korting
+Storyplus –magazine is al tientallen jaren het belangrijkste tijdschrift voor iedereen die alles wil weten van de Nederlandse televisiesterren en de leden van het koninklijk huis. En zegt u nu zelf: wie wil dat niet?
+Storyplus –magazine verschijnt wekelijks. Wij hebben voor u een speciaal aanbod: U betaalt niet € 82,95, maar slechts € 49,75 voor een jaarabonnement. Dat is een korting van 40%. U betaalt minder dan 1 euro per week!
+Wilt u straks ook alles weten over onze koning, over onze koningin en over hun kinderen? Wilt u het laatste nieuws weten over alle bekende Nederlanders die u elke dag op de televisie ziet? Dat kan!
+Laat deze unieke kans niet lopen: bel uiterlijk vóór 31 december naar 0900 – 244.62 44 of vul (vóór 31 december) het formulier in op www.storyplus.nl
+Storyplus –magazine … Lees ons elke week en u weet echt alles!!!`
+      },
+      {
+        id: 5,
+        title: "Clara's Ontslagmail",
+        content: `Clara schrijft deze e-mail aan haar baas, Karel de Schone.
+
+Aan: karel@deschone.nl
+CC:
+Onderwerp: stoppen met werken bij De Schone B.V.
+
+Beste Karel de Schone,
+Ik schrijf u deze mail om u te vertellen dat ik stop met het werk bij het bedrijf De Schone B.V.
+Ik heb twee jaar lang bij u gewerkt, maar u wilt mij geen vast contract geven. Ook vind ik het salaris onvoldoende. Daarom ga ik weg.
+Ik heb met plezier het werk gedaan en ik heb fijne collega's gehad, maar ik kan bij een andere werkgever een beter contract krijgen.
+Ik wil per direct stoppen. Ik kom dus morgen ook niet werken.
+Mijn collega's Maria en Carolien kunnen deze week mijn werk overnemen. Zij weten, dat ik stop bij uw bedrijf en zij weten dat ik deze mail aan u schrijf.
+Met vriendelijke groet,
+Clara Marks.`
+      },
+      {
+        id: 6,
+        title: "Zwangerschapscursus Folder",
+        content: `Manou is 18 weken zwanger. Zij krijgt een folder van haar huisarts.
+
+'Fit voor de bevalling'
+Je krijgt binnenkort een kindje. Spannend!
+Geef je nu op voor de zwangerschapscursus 'Fit voor de bevalling'. Tijdens de cursus die begint op 1 maart, krijg je veel informatie over de zwangerschap en je doet ook wekelijks yoga-oefeningen in Het Buurtcentrum in Kollum.
+Deze oefeningen zijn belangrijk als na 9 maanden de baby komt! Met speciale ademhaling kun je in deze periode tot en met de geboorte van je kindje fit blijven. Je komt naar de cursus samen met andere aanstaande moeders.
+Lesinformatie
+De cursus bestaat uit 7 lessen à 90 minuten en vindt plaats in kleine groepen (maximaal 10 deelnemers).
+Kosten Zwangerschapsyoga: € 85
+Tijdstip: Maandagavond 19.15 uur. Start: 1 maart.
+Plaats: Buurtcentrum, Hoofdstraat 1, Kollum`
       }
     ],
     
@@ -106,6 +163,128 @@ Groetjes en tot zaterdag, Adriaan & Olivier`
           "Ja, zij moeten eerst werken in hun winkel.",
           "Ja, zij hebben een Bed & Breakfast-bedrijf.",
           "Nee, zij staan vroeg op en gaan extra vroeg naar Nanda."
+        ],
+        correct: 1,
+        points: 100
+      },
+      {
+        id: 6,
+        textId: 3,
+        question: "Hoeveel schadevergoeding krijgt Fatima?",
+        options: [
+          "De schade aan de nieuwe auto wordt 100% vergoed.",
+          "Zij zal € 250 euro schadevergoeding krijgen van de verzekering.",
+          "Zij krijgt een vergoeding, maar zij moet € 250 zelf betalen.",
+          "De garage weet hoeveel schadevergoeding Fatima zal krijgen."
+        ],
+        correct: 2,
+        points: 100
+      },
+      {
+        id: 7,
+        textId: 3,
+        question: "Wie gaat de auto repareren?",
+        options: [
+          "Fatima heeft de auto zelf gerepareerd.",
+          "De ARAG repareert de auto van Fatima.",
+          "De Toyota-garage gaat de auto van Fatima repareren."
+        ],
+        correct: 2,
+        points: 100
+      },
+      {
+        id: 8,
+        textId: 4,
+        question: "Wat voor soort tijdschrift is Storyplus –magazine?",
+        options: [
+          "Een dagblad.",
+          "Een maandblad.",
+          "Een weekblad."
+        ],
+        correct: 2,
+        points: 100
+      },
+      {
+        id: 9,
+        textId: 4,
+        question: "Wat voor nieuws kan Maxima lezen in Storyplus –magazine?",
+        options: [
+          "Nieuws over het koninklijk huis.",
+          "Nieuws over belangrijke politieke zaken.",
+          "Nieuws over kleding die je met 40% korting kunt kopen."
+        ],
+        correct: 0,
+        points: 100
+      },
+      {
+        id: 10,
+        textId: 4,
+        question: "Maxima wil een jaarabonnement nemen op Storyplus –magazine. Hoe kan zij gebruik maken van deze aanbieding van 40% korting?",
+        options: [
+          "Zij moet deze week € 49,75 betalen aan Storyplus –magazine.",
+          "Zij moet deze maand € 49,75 betalen aan Storyplus –magazine.",
+          "Zij moet vóór 31 december bellen of een formulier invullen."
+        ],
+        correct: 2,
+        points: 100
+      },
+      {
+        id: 11,
+        textId: 5,
+        question: "Waarom stopt Clara met werken bij De Schone B.V.?",
+        options: [
+          "Zij is ontevreden over haar salaris en over haar contract.",
+          "Zij vindt dat werk niet leuk.",
+          "Zij heeft ruzie met haar collega's Maria en Carolien."
+        ],
+        correct: 0,
+        points: 100
+      },
+      {
+        id: 12,
+        textId: 5,
+        question: "Wanneer stopt Clara precies met het werk bij De Schone B.V.?",
+        options: [
+          "Over twee jaar.",
+          "Overmorgen.",
+          "Over een week.",
+          "Vandaag."
+        ],
+        correct: 3,
+        points: 100
+      },
+      {
+        id: 13,
+        textId: 6,
+        question: "Manou wil graag fit blijven in de periode van de zwangerschap. Wat gaat zij doen?",
+        options: [
+          "Zij gaat 7 weken lang meedoen aan een cursus zwangerschapsyoga.",
+          "Zij gaat 9 maanden lang meedoen aan de cursus zwangerschapsyoga.",
+          "Zij gaat 18 weken lang meedoen aan de cursus zwangerschapsyoga."
+        ],
+        correct: 0,
+        points: 100
+      },
+      {
+        id: 14,
+        textId: 6,
+        question: "Manou wil meedoen aan deze cursus. Wat krijgt zij tijdens de cursus?",
+        options: [
+          "Een kindje.",
+          "Betere ademhaling.",
+          "Zij krijgt veel informatie en zij gaat veel yoga-oefeningen doen."
+        ],
+        correct: 2,
+        points: 100
+      },
+      {
+        id: 15,
+        textId: 6,
+        question: "Hoe lang duurt één les?",
+        options: [
+          "1 uur.",
+          "1,5 uur.",
+          "Dat staat niet in deze tekst."
         ],
         correct: 1,
         points: 100
