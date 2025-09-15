@@ -1,5 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { BookOpen, PenTool, Headphones, Mic, GraduationCap, Clock, Target } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import heroImage from '@/assets/dutch-hero.jpg';
 
@@ -212,6 +214,16 @@ export default function PracticeA2() {
             </p>
           </CardContent>
         </Card>
+
+        {/* Practice Reading Button */}
+        <div className="text-center mt-12">
+          <Link to="/reading-game">
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
+              <BookOpen className="w-6 h-6 mr-2" />
+              Practice Reading
+            </Button>
+          </Link>
+        </div>
       </section>
     </div>
   );
