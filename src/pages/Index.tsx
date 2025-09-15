@@ -7,10 +7,9 @@ import { Link } from 'react-router-dom';
 import heroImage from '@/assets/dutch-hero.jpg';
 
 const Index = () => {
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
-      {/* Navigation */
+      {/* Navigation */}
       <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4">
           <Navigation />
