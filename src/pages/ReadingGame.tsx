@@ -16,7 +16,11 @@ export default function ReadingGame() {
   const [lives, setLives] = useState(3);
 
   const gameData = {
-    text: `Het is december. Paulo krijgt van de gemeente een folder met informatie
+    texts: [
+      {
+        id: 1,
+        title: "Tekst over Vuurwerk",
+        content: `Het is december. Paulo krijgt van de gemeente een folder met informatie
 
 Wanneer mag u vuurwerk afsteken?
 U mag vuurwerk afsteken tussen 31 december 18.00 uur en 1 januari 02.00 uur. U kunt een boete van € 100 krijgen als u vuurwerk afsteekt buiten deze tijden.
@@ -25,11 +29,27 @@ Vuurwerkverbod op bepaalde plekken
 In onze gemeente is op sommige plekken het afsteken van vuurwerk verboden: in het winkelcentrum, in de buurt van het Maxima-ziekenhuis en bij alle kinderboerderijen.
 
 Veilig vuurwerk afsteken
-Gaat u tijdens de jaarwisseling vuurwerk afsteken of buiten naar het vuurwerk kijken? Dan kunt u het beste uw ogen beschermen met een vuurwerkbril.`,
+Gaat u tijdens de jaarwisseling vuurwerk afsteken of buiten naar het vuurwerk kijken? Dan kunt u het beste uw ogen beschermen met een vuurwerkbril.`
+      },
+      {
+        id: 2,
+        title: "E-mail van Adriaan en Olivier",
+        content: `Nanda krijgt een e-mail van haar broer Adriaan en zijn vriend Olivier.
+Zij schrijven haar over het plan voor het weekend.
+
+Hoi Nanda
+Hoe gaat het met je? Met ons is alles goed. Het is druk in onze kaaswinkel en ook bij ons thuis. Dit weekend hebben we een afspraak met je. We hadden afgesproken, dat we zaterdagochtend om 10 uur bij jou zijn. We gaan je trakteren op een dagje uit. We komen, maar we moeten in de ochtend nog werken in onze winkel. Dus 10 uur redden we niet. Het wordt iets later, we denken half 12. We sturen je een foto mee van het bootje, dat we gehuurd hebben. Daarmee gaan we zaterdagmiddag samen het water op. Leuk, toch?
+Wij slapen van zaterdag op zondag in een Bed & Breakfast, dichtbij jouw huis.
+
+Op zondagochtend gaan we zoals afgesproken samen met jou om 10 uur naar de kerk. We hebben er zin in!
+Groetjes en tot zaterdag, Adriaan & Olivier`
+      }
+    ],
     
     questions: [
       {
         id: 1,
+        textId: 1,
         question: "Paulo wil vuurwerk afsteken met oud & nieuw. Wanneer mag dat precies?",
         options: [
           "Alleen op 31 december de hele dag.",
@@ -42,6 +62,7 @@ Gaat u tijdens de jaarwisseling vuurwerk afsteken of buiten naar het vuurwerk ki
       },
       {
         id: 2,
+        textId: 1,
         question: "Paulo wil vuurwerk afsteken. Waar mag hij dat doen?",
         options: [
           "Dichtbij het ziekenhuis.",
@@ -53,6 +74,7 @@ Gaat u tijdens de jaarwisseling vuurwerk afsteken of buiten naar het vuurwerk ki
       },
       {
         id: 3,
+        textId: 1,
         question: "Paulo koopt een vuurwerkbril. Waarom koopt hij die speciale bril?",
         options: [
           "Die bril beschermt zijn ogen.",
@@ -60,6 +82,32 @@ Gaat u tijdens de jaarwisseling vuurwerk afsteken of buiten naar het vuurwerk ki
           "De vuurwerkbril is verplicht."
         ],
         correct: 0,
+        points: 100
+      },
+      {
+        id: 4,
+        textId: 2,
+        question: "Nanda krijgt bezoek. Wanneer komen Adriaan en Olivier aan?",
+        options: [
+          "Op zaterdagochtend om 10 uur.",
+          "Op zaterdagochtend om half 12.",
+          "Op zondagochtend om 10 uur.",
+          "Zaterdagmiddag."
+        ],
+        correct: 1,
+        points: 100
+      },
+      {
+        id: 5,
+        textId: 2,
+        question: "Moeten Adriaan en Olivier op zaterdag werken?",
+        options: [
+          "Ja, zij moeten eerst werken op hun boot.",
+          "Ja, zij moeten eerst werken in hun winkel.",
+          "Ja, zij hebben een Bed & Breakfast-bedrijf.",
+          "Nee, zij staan vroeg op en gaan extra vroeg naar Nanda."
+        ],
+        correct: 1,
         points: 100
       }
     ]
@@ -267,13 +315,13 @@ Gaat u tijdens de jaarwisseling vuurwerk afsteken of buiten naar het vuurwerk ki
             <CardHeader>
               <div className="flex items-center gap-3">
                 <BookOpen className="w-6 h-6 text-blue-600" />
-                <CardTitle className="text-xl">Tekst over Vuurwerk</CardTitle>
+                <CardTitle className="text-xl">{gameData.texts.find(t => t.id === question.textId)?.title}</CardTitle>
               </div>
             </CardHeader>
             <CardContent>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border shadow-sm">
                 <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed">
-                  {gameData.text}
+                  {gameData.texts.find(t => t.id === question.textId)?.content}
                 </pre>
               </div>
             </CardContent>
