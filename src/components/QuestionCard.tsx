@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Volume2, Eye, EyeOff, RotateCcw, CheckCircle } from 'lucide-react';
+import { Volume2, Eye, EyeOff, RotateCcw, CheckCircle, Languages } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 interface Question {
   id: string;
   question: string;
   answer: string;
+  questionEn?: string;
+  answerEn?: string;
 }
 
 interface QuestionCardProps {
@@ -29,6 +31,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 }) => {
   const [showAnswer, setShowAnswer] = useState(false);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean | null>(null);
+  const [showTranslation, setShowTranslation] = useState(false);
   const { toast } = useToast();
 
   const handlePlayAudio = (text: string) => {
@@ -50,6 +53,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   const resetCard = () => {
     setShowAnswer(false);
     setIsAnswerCorrect(null);
+    setShowTranslation(false);
   };
 
   const markCorrect = () => {
@@ -163,6 +167,50 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               )}
             </div>
           </div>
+
+          {/* Translation section */}
+          {(question.questionEn || question.answerEn) && (
+            <div className="space-y-3">
+              <div className="flex justify-center">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => setShowTranslation(!showTranslation)}
+                >
+                  <Languages className="w-4 h-4 mr-2" />
+                  {showTranslation ? 'Hide Translation' : 'Show Translation'}
+                </Button>
+              </div>
+              
+              {showTranslation && (
+                <div className="bg-blue-50 dark:bg-blue-950 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+                  <div className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-3">
+                    English Translation:
+                  </div>
+                  
+                  {question.questionEn && (
+                    <div className="mb-3">
+                      <div className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1">Question:</div>
+                      <div className="text-sm text-blue-700 dark:text-blue-300">{question.questionEn}</div>
+                    </div>
+                  )}
+                  
+                  {question.answerEn && showAnswer && (
+                    <div>
+                      <div className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1">Answer:</div>
+                      <div className="text-sm text-blue-700 dark:text-blue-300">{question.answerEn}</div>
+                    </div>
+                  )}
+                  
+                  {question.answerEn && !showAnswer && (
+                    <div className="text-xs text-blue-600 dark:text-blue-400 italic">
+                      Show the Dutch answer first to see the English translation
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Self-assessment buttons */}
           {showAnswer && (

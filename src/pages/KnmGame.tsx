@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, GraduationCap, Zap, Target, Trophy, Star, Clock } from 'lucide-react';
+import { ArrowLeft, GraduationCap, Zap, Target, Trophy, Star, Clock, Languages } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 
 interface KnmQuestion {
   id: number;
   question: string;
+  questionEn: string;
   options: string[];
+  optionsEn: string[];
   correct: number;
   points: number;
   category: string;
@@ -18,7 +20,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 1,
     question: "Wanneer werd Nederland een zelfstandige staat?",
+    questionEn: "When did the Netherlands become an independent state?",
     options: ["1568", "1588", "1648", "1795"],
+    optionsEn: ["1568", "1588", "1648", "1795"],
     correct: 2,
     points: 10,
     category: "Geschiedenis"
@@ -26,7 +30,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 2,
     question: "Wie was Willem van Oranje?",
+    questionEn: "Who was William of Orange?",
     options: ["Een Spaanse koning", "Een politiek leider en protestant", "Een katholieke priester", "Een Franse keizer"],
+    optionsEn: ["A Spanish king", "A political leader and protestant", "A Catholic priest", "A French emperor"],
     correct: 1,
     points: 10,
     category: "Geschiedenis"
@@ -34,7 +40,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 3,
     question: "Welke eeuw wordt de Gouden Eeuw genoemd?",
+    questionEn: "Which century is called the Golden Age?",
     options: ["16e eeuw", "17e eeuw", "18e eeuw", "19e eeuw"],
+    optionsEn: ["16th century", "17th century", "18th century", "19th century"],
     correct: 1,
     points: 10,
     category: "Geschiedenis"
@@ -42,7 +50,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 4,
     question: "Hoeveel provincies heeft Nederland?",
+    questionEn: "How many provinces does the Netherlands have?",
     options: ["10", "11", "12", "13"],
+    optionsEn: ["10", "11", "12", "13"],
     correct: 2,
     points: 10,
     category: "Geografie"
@@ -50,7 +60,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 5,
     question: "Wat is de hoofdstad van Nederland?",
+    questionEn: "What is the capital of the Netherlands?",
     options: ["Den Haag", "Rotterdam", "Utrecht", "Amsterdam"],
+    optionsEn: ["The Hague", "Rotterdam", "Utrecht", "Amsterdam"],
     correct: 3,
     points: 10,
     category: "Geografie"
@@ -58,7 +70,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 6,
     question: "Waar zetelt de Nederlandse regering?",
+    questionEn: "Where is the Dutch government seated?",
     options: ["Amsterdam", "Den Haag", "Rotterdam", "Utrecht"],
+    optionsEn: ["Amsterdam", "The Hague", "Rotterdam", "Utrecht"],
     correct: 1,
     points: 10,
     category: "Politiek"
@@ -66,7 +80,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 7,
     question: "Hoe vaak zijn er verkiezingen voor de Tweede Kamer?",
+    questionEn: "How often are there elections for the House of Representatives?",
     options: ["Elke 3 jaar", "Elke 4 jaar", "Elke 5 jaar", "Elke 6 jaar"],
+    optionsEn: ["Every 3 years", "Every 4 years", "Every 5 years", "Every 6 years"],
     correct: 1,
     points: 10,
     category: "Politiek"
@@ -74,7 +90,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 8,
     question: "Wie is het staatshoofd van Nederland?",
+    questionEn: "Who is the head of state of the Netherlands?",
     options: ["De minister-president", "De koning", "De voorzitter van de Tweede Kamer", "De burgemeester van Amsterdam"],
+    optionsEn: ["The prime minister", "The king", "The speaker of the House", "The mayor of Amsterdam"],
     correct: 1,
     points: 10,
     category: "Politiek"
@@ -82,7 +100,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 9,
     question: "Vanaf welke leeftijd is er leerplicht in Nederland?",
+    questionEn: "From what age is there compulsory education in the Netherlands?",
     options: ["4 jaar", "5 jaar", "6 jaar", "7 jaar"],
+    optionsEn: ["4 years", "5 years", "6 years", "7 years"],
     correct: 1,
     points: 10,
     category: "Onderwijs"
@@ -90,7 +110,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 10,
     question: "Tot welke leeftijd duurt de leerplicht?",
+    questionEn: "Until what age does compulsory education last?",
     options: ["15 jaar", "16 jaar", "17 jaar", "18 jaar"],
+    optionsEn: ["15 years", "16 years", "17 years", "18 years"],
     correct: 1,
     points: 10,
     category: "Onderwijs"
@@ -98,7 +120,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 11,
     question: "Welke verzekering is verplicht in Nederland?",
+    questionEn: "Which insurance is mandatory in the Netherlands?",
     options: ["Inboedelverzekering", "Zorgverzekering", "Reisverzekering", "Opstalverzekering"],
+    optionsEn: ["Contents insurance", "Health insurance", "Travel insurance", "Building insurance"],
     correct: 1,
     points: 10,
     category: "Verzekeringen"
@@ -106,7 +130,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 12,
     question: "Wat is het alarmnummer in Nederland?",
+    questionEn: "What is the emergency number in the Netherlands?",
     options: ["110", "111", "112", "113"],
+    optionsEn: ["110", "111", "112", "113"],
     correct: 2,
     points: 10,
     category: "Dienstverlening"
@@ -114,7 +140,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 13,
     question: "Bij welke instantie moet je je inschrijven als je werkloos wordt?",
+    questionEn: "Which agency must you register with when you become unemployed?",
     options: ["Gemeente", "UWV", "Belastingdienst", "SVB"],
+    optionsEn: ["Municipality", "UWV (Employee Insurance Agency)", "Tax office", "SVB (Social Insurance Bank)"],
     correct: 1,
     points: 10,
     category: "Werk"
@@ -122,7 +150,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 14,
     question: "Wanneer is Koningsdag?",
+    questionEn: "When is King's Day?",
     options: ["26 april", "27 april", "28 april", "29 april"],
+    optionsEn: ["April 26", "April 27", "April 28", "April 29"],
     correct: 1,
     points: 10,
     category: "Cultuur"
@@ -130,7 +160,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 15,
     question: "Wanneer is de Nationale Dodenherdenking?",
+    questionEn: "When is the National Remembrance Day?",
     options: ["4 mei", "5 mei", "6 mei", "8 mei"],
+    optionsEn: ["May 4", "May 5", "May 6", "May 8"],
     correct: 0,
     points: 10,
     category: "Cultuur"
@@ -138,7 +170,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 16,
     question: "Wat betekent VOC?",
+    questionEn: "What does VOC stand for?",
     options: ["Vereniging Oost-Indische Compagnie", "Verenigde Oost-Indische Compagnie", "Vrije Oost-Indische Compagnie", "Vroege Oost-Indische Compagnie"],
+    optionsEn: ["Association East India Company", "United East India Company", "Free East India Company", "Early East India Company"],
     correct: 1,
     points: 10,
     category: "Geschiedenis"
@@ -146,7 +180,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 17,
     question: "Welke rivier stroomt door Nederland?",
+    questionEn: "Which river flows through the Netherlands?",
     options: ["De Donau", "De Rijn", "De Seine", "De Theems"],
+    optionsEn: ["The Danube", "The Rhine", "The Seine", "The Thames"],
     correct: 1,
     points: 10,
     category: "Geografie"
@@ -154,7 +190,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 18,
     question: "Wat is de Randstad?",
+    questionEn: "What is the Randstad?",
     options: ["Een provincie", "Een stad", "Een gebied met grote steden", "Een rivier"],
+    optionsEn: ["A province", "A city", "An area with large cities", "A river"],
     correct: 2,
     points: 10,
     category: "Geografie"
@@ -162,7 +200,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 19,
     question: "Hoeveel leden heeft de Tweede Kamer?",
+    questionEn: "How many members does the House of Representatives have?",
     options: ["100", "125", "150", "175"],
+    optionsEn: ["100", "125", "150", "175"],
     correct: 2,
     points: 10,
     category: "Politiek"
@@ -170,7 +210,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 20,
     question: "Wat is een polder?",
+    questionEn: "What is a polder?",
     options: ["Een berg", "Drooggelegd land", "Een meer", "Een bos"],
+    optionsEn: ["A mountain", "Reclaimed land", "A lake", "A forest"],
     correct: 1,
     points: 10,
     category: "Geografie"
@@ -178,7 +220,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 21,
     question: "Wanneer werd de Euro ingevoerd in Nederland?",
+    questionEn: "When was the Euro introduced in the Netherlands?",
     options: ["2000", "2001", "2002", "2003"],
+    optionsEn: ["2000", "2001", "2002", "2003"],
     correct: 2,
     points: 10,
     category: "Geschiedenis"
@@ -186,7 +230,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 22,
     question: "Wat is de AOW?",
+    questionEn: "What is the AOW?",
     options: ["Algemene Ouderdomswet", "Algemene Onderwijs Wet", "Algemene Organisatie Wet", "Algemene Overheid Wet"],
+    optionsEn: ["General Old Age Act", "General Education Act", "General Organization Act", "General Government Act"],
     correct: 0,
     points: 10,
     category: "Sociale zekerheid"
@@ -194,7 +240,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 23,
     question: "Vanaf welke leeftijd krijg je AOW?",
+    questionEn: "From what age do you receive AOW?",
     options: ["65 jaar", "66 jaar", "67 jaar", "68 jaar"],
+    optionsEn: ["65 years", "66 years", "67 years", "68 years"],
     correct: 2,
     points: 10,
     category: "Sociale zekerheid"
@@ -202,7 +250,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 24,
     question: "Wat is een BSN?",
+    questionEn: "What is a BSN?",
     options: ["Burger Service Nummer", "Basis Service Nummer", "Burger Sociaal Nummer", "Basis Sociaal Nummer"],
+    optionsEn: ["Citizen Service Number", "Basic Service Number", "Citizen Social Number", "Basic Social Number"],
     correct: 0,
     points: 10,
     category: "Dienstverlening"
@@ -210,7 +260,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 25,
     question: "Bij welke dokter ga je eerst als je ziek bent?",
+    questionEn: "Which doctor do you go to first when you are sick?",
     options: ["Specialist", "Huisarts", "Tandarts", "Fysiotherapeut"],
+    optionsEn: ["Specialist", "General practitioner", "Dentist", "Physiotherapist"],
     correct: 1,
     points: 10,
     category: "Gezondheidszorg"
@@ -218,7 +270,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 26,
     question: "Wat is de Deltawerken?",
+    questionEn: "What are the Delta Works?",
     options: ["Een museum", "Bescherming tegen water", "Een universiteit", "Een politieke partij"],
+    optionsEn: ["A museum", "Protection against water", "A university", "A political party"],
     correct: 1,
     points: 10,
     category: "Geografie"
@@ -226,7 +280,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 27,
     question: "Wanneer was de Tweede Wereldoorlog in Nederland?",
+    questionEn: "When was World War II in the Netherlands?",
     options: ["1939-1945", "1940-1945", "1941-1945", "1942-1945"],
+    optionsEn: ["1939-1945", "1940-1945", "1941-1945", "1942-1945"],
     correct: 1,
     points: 10,
     category: "Geschiedenis"
@@ -234,7 +290,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 28,
     question: "Wat is de Nederlandse volkslied?",
+    questionEn: "What is the Dutch national anthem?",
     options: ["Het Wilhelmus", "Oranje Boven", "Nederland O Nederland", "Waar de blanke top der duinen"],
+    optionsEn: ["The Wilhelmus", "Orange Above", "Netherlands O Netherlands", "Where the white top of the dunes"],
     correct: 0,
     points: 10,
     category: "Cultuur"
@@ -242,7 +300,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 29,
     question: "Hoeveel inwoners heeft Nederland ongeveer?",
+    questionEn: "How many inhabitants does the Netherlands have approximately?",
     options: ["15 miljoen", "17 miljoen", "19 miljoen", "21 miljoen"],
+    optionsEn: ["15 million", "17 million", "19 million", "21 million"],
     correct: 1,
     points: 10,
     category: "Geografie"
@@ -250,7 +310,9 @@ const knmQuestions: KnmQuestion[] = [
   {
     id: 30,
     question: "Wat is de officiële taal van Nederland?",
+    questionEn: "What is the official language of the Netherlands?",
     options: ["Nederlands", "Nederlands en Fries", "Nederlands en Engels", "Nederlands, Fries en Duits"],
+    optionsEn: ["Dutch", "Dutch and Frisian", "Dutch and English", "Dutch, Frisian and German"],
     correct: 1,
     points: 10,
     category: "Cultuur"
@@ -267,6 +329,7 @@ export default function KnmGame() {
   const [lives, setLives] = useState(3);
   const [timeLeft, setTimeLeft] = useState(45 * 60); // 45 minutes in seconds
   const [gameStarted, setGameStarted] = useState(false);
+  const [showTranslation, setShowTranslation] = useState(false);
 
   useEffect(() => {
     if (gameStarted && timeLeft > 0 && !gameCompleted) {
@@ -602,6 +665,34 @@ export default function KnmGame() {
                     <p className="text-sm text-muted-foreground">
                       Het juiste antwoord is: <strong>{question.options[question.correct]}</strong>
                     </p>
+                  )}
+                  
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={() => setShowTranslation(!showTranslation)}
+                    className="mt-2"
+                  >
+                    <Languages className="w-4 h-4 mr-2" />
+                    {showTranslation ? 'Hide Translation' : 'Show Translation'}
+                  </Button>
+                  
+                  {showTranslation && (
+                    <div className="mt-3 p-3 bg-blue-50 dark:bg-blue-950 rounded-lg border border-blue-200 dark:border-blue-800">
+                      <div className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
+                        English Translation:
+                      </div>
+                      <div className="text-sm text-blue-700 dark:text-blue-300 mb-2">
+                        <strong>Q:</strong> {question.questionEn}
+                      </div>
+                      <div className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
+                        {question.optionsEn.map((optionEn, index) => (
+                          <div key={index} className={index === question.correct ? 'font-semibold' : ''}>
+                            <strong>{String.fromCharCode(65 + index)}:</strong> {optionEn}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   )}
                   <Button 
                     onClick={handleNextQuestion} 

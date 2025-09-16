@@ -2,6 +2,8 @@ export interface Question {
   id: string;
   question: string;
   answer: string;
+  questionEn?: string;
+  answerEn?: string;
 }
 
 export interface Thema {
@@ -121,7 +123,9 @@ export async function loadTopicDataFromExcel(): Promise<Thema[]> {
             questions.push({
               id: `${config.id}-${i}`,
               question: row[0].replace(/"/g, '').trim(),
-              answer: row[1].replace(/"/g, '').trim()
+              answer: row[1].replace(/"/g, '').trim(),
+              questionEn: row[2] ? row[2].replace(/"/g, '').trim() : undefined,
+              answerEn: row[3] ? row[3].replace(/"/g, '').trim() : undefined
             });
           }
         }
@@ -287,8 +291,8 @@ function getFallbackData(): Thema[] {
       description: "Learn to introduce yourself and share personal information in Dutch",
       color: "bg-gradient-to-br from-primary to-primary-glow",
       questions: [
-        { id: "1-1", question: "Wie ben je?", answer: "Ik ben Alper" },
-        { id: "1-2", question: "Waar woon je?", answer: "Ik woon in Almere." }
+        { id: "1-1", question: "Wie ben je?", answer: "Ik ben Alper", questionEn: "Who are you?", answerEn: "I am Alper" },
+        { id: "1-2", question: "Waar woon je?", answer: "Ik woon in Almere.", questionEn: "Where do you live?", answerEn: "I live in Almere." }
         // ... more questions would be here in a real fallback
       ]
     }
