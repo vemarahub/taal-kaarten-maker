@@ -14,6 +14,7 @@ import PracticeA2 from "./pages/PracticeA2";
 import ReadingGame from "./pages/ReadingGame";
 import KnmGame from "./pages/KnmGame";
 import WritingGame from "./pages/WritingGame";
+import SpeakingGame from "./pages/SpeakingGame";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/reading-game" element={<ReadingGame />} />
           <Route path="/knm-game" element={<KnmGame />} />
           <Route path="/writing-game" element={<WritingGame />} />
+          <Route path="/speaking-game" element={<SpeakingGame />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -216,21 +216,27 @@ export default function PracticeA2() {
         </Card>
 
         {/* Practice Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 justify-center mt-12">
           <Link to="/reading-game">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg w-full">
               <BookOpen className="w-6 h-6 mr-2" />
               Practice Reading
             </Button>
           </Link>
           <Link to="/writing-game">
-            <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg">
+            <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg w-full">
               <PenTool className="w-6 h-6 mr-2" />
               Practice Writing
             </Button>
           </Link>
+          <Link to="/speaking-game">
+            <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg w-full">
+              <Mic className="w-6 h-6 mr-2" />
+              Practice Speaking
+            </Button>
+          </Link>
           <Link to="/knm-game">
-            <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 text-lg">
+            <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 text-lg w-full">
               <GraduationCap className="w-6 h-6 mr-2" />
               Practice KNM
             </Button>
