@@ -216,7 +216,7 @@ export default function PracticeA2() {
         </Card>
 
         {/* Practice Buttons */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 justify-center mt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 justify-center mt-12">
           <Link to="/reading-game">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg w-full">
               <BookOpen className="w-6 h-6 mr-2" />
@@ -227,6 +227,12 @@ export default function PracticeA2() {
             <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg w-full">
               <PenTool className="w-6 h-6 mr-2" />
               Practice Writing
+            </Button>
+          </Link>
+          <Link to="/listening-game">
+            <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 text-lg w-full">
+              <Headphones className="w-6 h-6 mr-2" />
+              Practice Listening
             </Button>
           </Link>
           <Link to="/speaking-game">
