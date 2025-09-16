@@ -223,6 +223,12 @@ export default function PracticeA2() {
               Practice Reading
             </Button>
           </Link>
+          <Link to="/writing-game">
+            <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg">
+              <PenTool className="w-6 h-6 mr-2" />
+              Practice Writing
+            </Button>
+          </Link>
           <Link to="/knm-game">
             <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 text-lg">
               <GraduationCap className="w-6 h-6 mr-2" />
