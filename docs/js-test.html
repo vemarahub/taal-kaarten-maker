@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Test</title>
+</head>
+<body>
+    <h1>JavaScript Loading Test</h1>
+    <div id="root">Waiting for JavaScript...</div>
+    
+    <script>
+        console.log("🚀 JS test page loaded");
+        
+        // Test if the main JS file exists and can be loaded
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.src = './assets/index-DWPKY7JD.js';
+        
+        script.onload = function() {
+            console.log('✅ Main JavaScript loaded successfully');
+            document.getElementById('root').innerHTML = '<p style="color: green;">JavaScript loaded!</p>';
+        };
+        
+        script.onerror = function(error) {
+            console.error('❌ Failed to load JavaScript:', error);
+            document.getElementById('root').innerHTML = '<p style="color: red;">JavaScript failed to load. Check console for details.</p>';
+        };
+        
+        document.head.appendChild(script);
+        
+        // Also test CSS loading
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = './assets/index-DaAhhYil.css';
+        
+        link.onload = function() {
+            console.log('✅ CSS loaded successfully');
+        };
+        
+        link.onerror = function(error) {
+            console.error('❌ Failed to load CSS:', error);
+        };
+        
+        document.head.appendChild(link);
+    </script>
+</body>
+</html>
