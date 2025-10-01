@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asset Test</title>
+</head>
+<body>
+    <h1>Testing Asset Loading</h1>
+    <div id="root">Loading...</div>
+    
+    <script>
+        console.log("Test HTML loaded");
+        
+        // Test if we can access the main JS file
+        fetch('/assets/index-DWPKY7JD.js')
+            .then(response => {
+                console.log('JS file response:', response.status, response.statusText);
+                if (response.ok) {
+                    console.log('✅ JS file is accessible');
+                } else {
+                    console.log('❌ JS file not accessible');
+                }
+            })
+            .catch(error => {
+                console.log('❌ Error accessing JS file:', error);
+            });
+            
+        // Test if we can access the CSS file
+        fetch('/assets/index-DaAhhYil.css')
+            .then(response => {
+                console.log('CSS file response:', response.status, response.statusText);
+                if (response.ok) {
+                    console.log('✅ CSS file is accessible');
+                } else {
+                    console.log('❌ CSS file not accessible');
+                }
+            })
+            .catch(error => {
+                console.log('❌ Error accessing CSS file:', error);
+            });
+    </script>
+    
+    <!-- Try to load the actual JS file -->
+    <script type="module" crossorigin src="/assets/index-DWPKY7JD.js"></script>
+</body>
+</html>
