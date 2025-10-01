@@ -25,9 +25,12 @@
   <body>
     <div id="root"></div>
     
-    <!-- Kill any existing service workers -->
+    <!-- Load self-destructing service worker to replace existing one -->
+    <script src="./registerSW.js"></script>
+    
+    <!-- Also try direct cleanup -->
     <script>
-      console.log('🧹 Cleaning up service workers...');
+      console.log('🧹 Direct cleanup of service workers...');
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then(registrations => {
           console.log('Found', registrations.length, 'service workers');
