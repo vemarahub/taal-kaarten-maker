@@ -29,9 +29,9 @@ jobs:
 
       - name: Build
         env:
-          VITE_AUTH_USERNAME: ${{ secrets.VITE_AUTH_USERNAME }}
-          VITE_AUTH_PASSWORD_HASH: ${{ secrets.VITE_AUTH_PASSWORD_HASH }}
-          VITE_SESSION_DURATION: ${{ secrets.VITE_SESSION_DURATION }}
+          VITE_AUTH_USERNAME: ${{ secrets.VITE_AUTH_USERNAME || 'admin' }}
+          VITE_AUTH_PASSWORD_HASH: ${{ secrets.VITE_AUTH_PASSWORD_HASH || '88b0ca5f846091a2578af6fb8d6fd7cee236167bb7750919878b6b9d9874c4d7' }}
+          VITE_SESSION_DURATION: ${{ secrets.VITE_SESSION_DURATION || '24' }}
         run: npm run build # Build the project, outputs to dist folder
 
       - name: Copy dist to docs
