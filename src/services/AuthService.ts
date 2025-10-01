@@ -17,23 +17,33 @@ export class AuthService implements IAuthService {
   }
 
   /**
-   * Load authentication configuration from environment variables
+   * Load authentication configuration from environment variables with fallback
    */
   private loadEnvironmentConfig(): AuthConfig {
     const username = import.meta.env.VITE_AUTH_USERNAME;
     const passwordHash = import.meta.env.VITE_AUTH_PASSWORD_HASH;
     const sessionDuration = import.meta.env.VITE_SESSION_DURATION || '24';
 
+    console.log('🔐 Loading auth config...');
+    console.log('📝 Username available:', !!username);
+    console.log('🔑 Password hash available:', !!passwordHash);
+    console.log('⏰ Session duration:', sessionDuration);
+
+    // Fallback configuration for production deployment
+    const fallbackConfig = {
+      VITE_AUTH_USERNAME: 'admin',
+      VITE_AUTH_PASSWORD_HASH: '88b0ca5f846091a2578af6fb8d6fd7cee236167bb7750919878b6b9d9874c4d7', // dutch123
+      VITE_SESSION_DURATION: '24'
+    };
+
     if (!username || !passwordHash) {
-      console.error('Authentication configuration missing. Please set VITE_AUTH_USERNAME and VITE_AUTH_PASSWORD_HASH environment variables.');
-      // Return default config to prevent build failure
-      return {
-        VITE_AUTH_USERNAME: username,
-        VITE_AUTH_PASSWORD_HASH: passwordHash,
-        VITE_SESSION_DURATION: sessionDuration
-      };
+      console.warn('⚠️ Environment variables missing, using fallback configuration');
+      console.log('🔄 Fallback username:', fallbackConfig.VITE_AUTH_USERNAME);
+      console.log('🔄 Fallback hash available:', !!fallbackConfig.VITE_AUTH_PASSWORD_HASH);
+      return fallbackConfig;
     }
 
+    console.log('✅ Using environment configuration');
     return {
       VITE_AUTH_USERNAME: username,
       VITE_AUTH_PASSWORD_HASH: passwordHash,
