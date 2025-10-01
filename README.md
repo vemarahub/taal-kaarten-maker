@@ -1,4 +1,4 @@
-# Welcome to HelloWereld
+# Welcome to HelloWereld App
 
 ## Project info
 
