@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelloWereld Deployment Diagnostic Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-success { background-color: #28a745; }
+        .status-error { background-color: #dc3545; }
+        .status-warning { background-color: #ffc107; }
+        .status-info { background-color: #17a2b8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 HelloWereld Deployment Diagnostic Tool</h1>
+        <p>This tool will help diagnose why the application shows a white screen on GitHub Pages.</p>
+        
+        <div class="test-section">
+            <h2>🚀 Quick Actions</h2>
+            <button onclick="runAllTests()">Run All Diagnostic Tests</button>
+            <button onclick="testAssetLoading()">Test Asset Loading</button>
+            <button onclick="testNetworkRequests()">Test Network Requests</button>
+            <button onclick="checkEnvironment()">Check Environment</button>
+            <button onclick="clearResults()">Clear Results</button>
+        </div>
+
+        <div id="results"></div>
+        
+        <div class="test-section">
+            <h2>📊 System Information</h2>
+            <div id="systemInfo"></div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables for tracking test results
+        let testResults = [];
+        let assetsToTest = [
+            './assets/index-DWPKY7JD.js',
+            './assets/index-DaAhhYil.css',
+            './assets/dutch-hero-BSEc4vDI.jpg'
+        ];
+
+        // Initialize diagnostic tool
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔍 Diagnostic tool loaded');
+            displaySystemInfo();
+            addResult('info', 'Diagnostic Tool', 'Tool initialized successfully');
+        });
+
+        function addResult(type, title, message, details = null) {
+            const timestamp = new Date().toLocaleTimeString();
+            const result = {
+                type,
+                title,
+                message,
+                details,
+                timestamp
+            };
+            testResults.push(result);
+            displayResult(result);
+        }
+
+        function displayResult(result) {
+            const resultsDiv = document.getElementById('results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${result.type}`;
+            
+            const statusClass = `status-${result.type}`;
+            resultDiv.innerHTML = `
+                <div>
+                    <span class="status-indicator ${statusClass}"></span>
+                    <strong>${result.title}</strong> - ${result.timestamp}
+                </div>
+                <div>${result.message}</div>
+                ${result.details ? `<pre>${result.details}</pre>` : ''}
+            `;
+            
+            resultsDiv.appendChild(resultDiv);
+            resultsDiv.scrollTop = resultsDiv.scrollHeight;
+        }
+
+        function clearResults() {
+            testResults = [];
+            document.getElementById('results').innerHTML = '';
+            addResult('info', 'Results Cleared', 'All test results have been cleared');
+        }
+
+        function displaySystemInfo() {
+            const info = {
+                'Current URL': window.location.href,
+                'User Agent': navigator.userAgent,
+                'Viewport': `${window.innerWidth}x${window.innerHeight}`,
+                'Screen': `${screen.width}x${screen.height}`,
+                'Color Depth': `${screen.colorDepth} bits`,
+                'Language': navigator.language,
+                'Platform': navigator.platform,
+                'Cookies Enabled': navigator.cookieEnabled,
+                'Online Status': navigator.onLine,
+                'Connection': navigator.connection ? navigator.connection.effectiveType : 'Unknown',
+                'Local Storage': typeof(Storage) !== "undefined",
+                'Service Worker Support': 'serviceWorker' in navigator,
+                'Fetch Support': typeof fetch !== 'undefined'
+            };
+
+            const systemInfoDiv = document.getElementById('systemInfo');
+            systemInfoDiv.innerHTML = Object.entries(info)
+                .map(([key, value]) => `<div><strong>${key}:</strong> ${value}</div>`)
+                .join('');
+        }
+
+        async function testAssetLoading() {
+            addResult('info', 'Asset Loading Test', 'Starting asset accessibility tests...');
+            
+            for (const asset of assetsToTest) {
+                try {
+                    const startTime = performance.now();
+                    const response = await fetch(asset, { method: 'HEAD' });
+                    const endTime = performance.now();
+                    const loadTime = Math.round(endTime - startTime);
+                    
+                    if (response.ok) {
+                        addResult('success', 'Asset Test', 
+                            `✅ ${asset} - Status: ${response.status} (${loadTime}ms)`,
+                            `Content-Type: ${response.headers.get('content-type') || 'Unknown'}\\nContent-Length: ${response.headers.get('content-length') || 'Unknown'}`
+                        );
+                    } else {
+                        addResult('error', 'Asset Test', 
+                            `❌ ${asset} - Status: ${response.status} ${response.statusText} (${loadTime}ms)`
+                        );
+                    }
+                } catch (error) {
+                    addResult('error', 'Asset Test', 
+                        `❌ ${asset} - Network Error: ${error.message}`
+                    );
+                }
+            }
+        }
+
+        async function testNetworkRequests() {
+            addResult('info', 'Network Test', 'Testing network connectivity and DNS resolution...');
+            
+            const testUrls = [
+                window.location.origin,
+                'https://hellowereld.com',
+                'https://github.com',
+                'https://api.github.com'
+            ];
+
+            for (const url of testUrls) {
+                try {
+                    const startTime = performance.now();
+                    const response = await fetch(url, { 
+                        method: 'HEAD',
+                        mode: 'no-cors'
+                    });
+                    const endTime = performance.now();
+                    const loadTime = Math.round(endTime - startTime);
+                    
+                    addResult('success', 'Network Test', 
+                        `✅ ${url} - Reachable (${loadTime}ms)`
+                    );
+                } catch (error) {
+                    addResult('warning', 'Network Test', 
+                        `⚠️ ${url} - ${error.message} (CORS or network issue)`
+                    );
+                }
+            }
+        }
+
+        function checkEnvironment() {
+            addResult('info', 'Environment Check', 'Analyzing current environment configuration...');
+            
+            // Check if we're on the correct domain
+            const expectedDomain = 'hellowereld.com';
+            const currentDomain = window.location.hostname;
+            
+            if (currentDomain === expectedDomain) {
+                addResult('success', 'Domain Check', `✅ Correct domain: ${currentDomain}`);
+            } else {
+                addResult('warning', 'Domain Check', `⚠️ Unexpected domain: ${currentDomain} (expected: ${expectedDomain})`);
+            }
+            
+            // Check protocol
+            if (window.location.protocol === 'https:') {
+                addResult('success', 'HTTPS Check', '✅ Site is served over HTTPS');
+            } else {
+                addResult('error', 'HTTPS Check', `❌ Site is not using HTTPS: ${window.location.protocol}`);
+            }
+            
+            // Check for service worker
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(registrations => {
+                    if (registrations.length > 0) {
+                        addResult('warning', 'Service Worker', `⚠️ ${registrations.length} service worker(s) registered - may cause caching issues`);
+                        registrations.forEach((reg, index) => {
+                            addResult('info', 'Service Worker Details', `SW ${index + 1}: ${reg.scope}`);
+                        });
+                    } else {
+                        addResult('success', 'Service Worker', '✅ No service workers registered');
+                    }
+                });
+            }
+            
+            // Check console errors
+            const originalError = console.error;
+            let errorCount = 0;
+            console.error = function(...args) {
+                errorCount++;
+                originalError.apply(console, args);
+            };
+            
+            setTimeout(() => {
+                if (errorCount === 0) {
+                    addResult('success', 'Console Errors', '✅ No console errors detected');
+                } else {
+                    addResult('warning', 'Console Errors', `⚠️ ${errorCount} console errors detected`);
+                }
+                console.error = originalError;
+            }, 1000);
+        }
+
+        async function runAllTests() {
+            addResult('info', 'Full Diagnostic', 'Starting comprehensive diagnostic tests...');
+            clearResults();
+            
+            // Run all tests in sequence
+            await testAssetLoading();
+            await testNetworkRequests();
+            checkEnvironment();
+            
+            // Generate summary
+            setTimeout(() => {
+                generateSummary();
+            }, 2000);
+        }
+
+        function generateSummary() {
+            const successCount = testResults.filter(r => r.type === 'success').length;
+            const errorCount = testResults.filter(r => r.type === 'error').length;
+            const warningCount = testResults.filter(r => r.type === 'warning').length;
+            
+            let summaryMessage = `Tests completed: ${successCount} passed, ${warningCount} warnings, ${errorCount} errors`;
+            let summaryType = 'success';
+            
+            if (errorCount > 0) {
+                summaryType = 'error';
+                summaryMessage += '\\n\\nCritical issues found that may prevent the application from loading.';
+            } else if (warningCount > 0) {
+                summaryType = 'warning';
+                summaryMessage += '\\n\\nSome issues detected that may affect performance or functionality.';
+            } else {
+                summaryMessage += '\\n\\nAll tests passed! The deployment configuration appears to be correct.';
+            }
+            
+            addResult(summaryType, 'Diagnostic Summary', summaryMessage);
+            
+            // Generate recommendations
+            generateRecommendations();
+        }
+
+        function generateRecommendations() {
+            const recommendations = [];
+            
+            // Check for common issues based on test results
+            const hasAssetErrors = testResults.some(r => r.type === 'error' && r.title === 'Asset Test');
+            const hasNetworkErrors = testResults.some(r => r.type === 'error' && r.title === 'Network Test');
+            const hasServiceWorker = testResults.some(r => r.title === 'Service Worker' && r.message.includes('registered'));
+            
+            if (hasAssetErrors) {
+                recommendations.push('• Check that all asset files exist in the docs/assets/ directory');
+                recommendations.push('• Verify that the build process completed successfully');
+                recommendations.push('• Ensure GitHub Pages is serving files from the docs folder');
+            }
+            
+            if (hasNetworkErrors) {
+                recommendations.push('• Check DNS configuration for hellowereld.com');
+                recommendations.push('• Verify GitHub Pages is enabled in repository settings');
+                recommendations.push('• Check for any GitHub Pages build errors');
+            }
+            
+            if (hasServiceWorker) {
+                recommendations.push('• Clear service worker cache in browser developer tools');
+                recommendations.push('• Consider disabling service worker during debugging');
+                recommendations.push('• Check for service worker registration errors');
+            }
+            
+            if (recommendations.length > 0) {
+                addResult('info', 'Recommendations', 
+                    'Based on the test results, consider these actions:\\n\\n' + recommendations.join('\\n')
+                );
+            }
+        }
+
+        // Test if main application JavaScript can be loaded
+        function testMainAppLoading() {
+            addResult('info', 'Main App Test', 'Attempting to load main application JavaScript...');
+            
+            const script = document.createElement('script');
+            script.type = 'module';
+            script.src = './assets/index-DWPKY7JD.js';
+            
+            script.onload = function() {
+                addResult('success', 'Main App Test', '✅ Main JavaScript file loaded successfully');
+            };
+            
+            script.onerror = function(error) {
+                addResult('error', 'Main App Test', '❌ Failed to load main JavaScript file', error.toString());
+            };
+            
+            document.head.appendChild(script);
+        }
+
+        // Add test for main app loading
+        window.addEventListener('load', function() {
+            setTimeout(testMainAppLoading, 1000);
+        });
+    </script>
+</body>
+</html>
