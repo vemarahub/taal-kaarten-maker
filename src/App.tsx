@@ -3,6 +3,11 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
+import SessionRenewalPrompt from "./components/SessionRenewalPrompt";
+import ErrorBoundary from "./components/ErrorBoundary";
+import AuthErrorBoundary from "./components/AuthErrorBoundary";
 import Index from "./pages/Index";
 import Vragenlijst from "./pages/Vragenlijst";
 import Vocabulary from "./pages/Vocabulary";
@@ -16,36 +21,49 @@ import KnmGame from "./pages/KnmGame";
 import WritingGame from "./pages/WritingGame";
 import SpeakingGame from "./pages/SpeakingGame";
 import ListeningGame from "./pages/ListeningGame";
+import LoginPage from "./pages/LoginPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/vragenlijst" element={<Vragenlijst />} />
-          <Route path="/vocabulary" element={<Vocabulary />} />
-          <Route path="/grammar" element={<Grammar />} />
-          <Route path="/youtube" element={<Youtube />} />
-          <Route path="/culture" element={<Culture />} />
-          <Route path="/misc" element={<Misc />} />
-          <Route path="/practice-a2" element={<PracticeA2 />} />
-          <Route path="/reading-game" element={<ReadingGame />} />
-          <Route path="/knm-game" element={<KnmGame />} />
-          <Route path="/writing-game" element={<WritingGame />} />
-          <Route path="/speaking-game" element={<SpeakingGame />} />
-          <Route path="/listening-game" element={<ListeningGame />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AuthErrorBoundary>
+            <AuthProvider>
+              <SessionRenewalPrompt />
+              <Routes>
+              {/* Public route - Login page */}
+              <Route path="/login" element={<LoginPage />} />
+              
+              {/* Protected routes - All existing functionality */}
+              <Route path="/" element={<ProtectedRoute><Index /></ProtectedRoute>} />
+              <Route path="/vragenlijst" element={<ProtectedRoute><Vragenlijst /></ProtectedRoute>} />
+              <Route path="/vocabulary" element={<ProtectedRoute><Vocabulary /></ProtectedRoute>} />
+              <Route path="/grammar" element={<ProtectedRoute><Grammar /></ProtectedRoute>} />
+              <Route path="/youtube" element={<ProtectedRoute><Youtube /></ProtectedRoute>} />
+              <Route path="/culture" element={<ProtectedRoute><Culture /></ProtectedRoute>} />
+              <Route path="/misc" element={<ProtectedRoute><Misc /></ProtectedRoute>} />
+              <Route path="/practice-a2" element={<ProtectedRoute><PracticeA2 /></ProtectedRoute>} />
+              <Route path="/reading-game" element={<ProtectedRoute><ReadingGame /></ProtectedRoute>} />
+              <Route path="/knm-game" element={<ProtectedRoute><KnmGame /></ProtectedRoute>} />
+              <Route path="/writing-game" element={<ProtectedRoute><WritingGame /></ProtectedRoute>} />
+              <Route path="/speaking-game" element={<ProtectedRoute><SpeakingGame /></ProtectedRoute>} />
+              <Route path="/listening-game" element={<ProtectedRoute><ListeningGame /></ProtectedRoute>} />
+              
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+            </Routes>
+            </AuthProvider>
+          </AuthErrorBoundary>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </ErrorBoundary>
 );
 
 export default App;

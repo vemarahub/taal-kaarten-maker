@@ -28,6 +28,10 @@ jobs:
         run: npm ci # Install dependencies in the cloud
 
       - name: Build
+        env:
+          VITE_AUTH_USERNAME: ${{ secrets.VITE_AUTH_USERNAME }}
+          VITE_AUTH_PASSWORD_HASH: ${{ secrets.VITE_AUTH_PASSWORD_HASH }}
+          VITE_SESSION_DURATION: ${{ secrets.VITE_SESSION_DURATION }}
         run: npm run build # Build the project, outputs to dist folder
 
       - name: Copy dist to docs
