@@ -2,11 +2,11 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
-import { VitePWA } from "vite-plugin-pwa";
+// import { VitePWA } from "vite-plugin-pwa"; // Temporarily disabled
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? './' : '/',
+  base: mode === 'production' ? '/' : '/',
   server: {
     host: "::",
     port: 8080,
@@ -64,24 +64,14 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     // Production optimizations
-    target: 'esnext',
+    target: 'es2015',
     minify: 'esbuild',
     sourcemap: mode === 'development',
     rollupOptions: {
       output: {
-        // Let Vite handle automatic chunk splitting for optimal performance
         // Optimize chunk file names for caching
-        chunkFileNames: (chunkInfo) => {
-          const facadeModuleId = chunkInfo.facadeModuleId ? chunkInfo.facadeModuleId.split('/').pop() : 'chunk';
-          return `assets/[name]-[hash].js`;
-        },
+        chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]'
-      },
-      // Tree-shaking optimizations
-      treeshake: {
-        moduleSideEffects: false,
-        propertyReadSideEffects: false,
-        tryCatchDeoptimization: false
       }
     },
     // Optimize for production
