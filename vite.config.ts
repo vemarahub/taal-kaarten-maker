@@ -6,6 +6,7 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/' : '/',
   server: {
     host: "::",
     port: 8080,
@@ -104,8 +105,8 @@ export default defineConfig(({ mode }) => ({
   },
   // Performance optimizations
   esbuild: {
-    // Remove console logs in production
-    drop: mode === 'production' ? ['console', 'debugger'] : [],
+    // Don't drop console logs for now to debug the issue
+    // drop: mode === 'production' ? ['console', 'debugger'] : [],
     // Optimize for modern browsers
     target: 'esnext'
   }

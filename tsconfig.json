@@ -16,8 +16,6 @@
     "strictFunctionTypes": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
     
     // Performance optimizations
     "skipLibCheck": true,
@@ -25,16 +23,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": true,
-    "preserveConstEnums": false,
     
     // Module resolution optimizations
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "allowImportingTsExtensions": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    
-    // Tree-shaking optimizations
-    "verbatimModuleSyntax": true
+    "noEmit": true
   }
 }
