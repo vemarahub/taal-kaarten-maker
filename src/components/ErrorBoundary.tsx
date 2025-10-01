@@ -43,7 +43,7 @@ class ErrorBoundary extends Component<Props, State> {
     console.error('🚨 ErrorBoundary caught an error:', error, errorInfo);
     console.error('🔍 Error stack:', error.stack);
     console.error('🧩 Component stack:', errorInfo.componentStack);
-    
+
     this.setState({
       error,
       errorInfo
@@ -122,7 +122,7 @@ class ErrorBoundary extends Component<Props, State> {
 
                 {/* Action buttons */}
                 <div className="flex flex-col sm:flex-row gap-2">
-                  <Button 
+                  <Button
                     onClick={this.handleRetry}
                     className="flex-1"
                     variant="default"
@@ -130,7 +130,7 @@ class ErrorBoundary extends Component<Props, State> {
                     <RefreshCw className="mr-2 h-4 w-4" />
                     Try Again
                   </Button>
-                  <Button 
+                  <Button
                     onClick={this.handleGoHome}
                     className="flex-1"
                     variant="outline"
